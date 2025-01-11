@@ -128,5 +128,14 @@ The student is expected to know his or her own performance throughout the course
 
 +++
 
+## Biography
+
+Prof. Chi-kwan "CK" Chan is a computational astrophysicist working with cutting edge technologies to advance both theoretical and observational research.
+He has developed new algorithms to study magnetohydrodynamic turbulence, used graphics processing units (GPUs) to accelerate general relativistic ray tracing, designed cloud computing infrastructures to handle big observational data, and applied machine learning algorithms to speed up and automate data processing.
+Some of CK's active projects include simulating and understanding accretion disks, capturing images of black holes, and visualizing astrophysical simulations in virtual reality.
+A true wildcat, CK received his bachelors and doctoral degrees from the University of Arizona.
+
++++
+
 ```{tableofcontents}
 ```
