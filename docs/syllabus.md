@@ -16,10 +16,13 @@ kernelspec:
 
 +++
 
+**Course Website:** https://ua-2025q1-phys305.github.io
+
 **Semester and Year:** Spring 2025  
 **Time:** Tuesday & Thursday 12:30--1:45pm  
-**Location:** Saguaro Hall, Room 114  
-**Course Website:** https://ua-2025q1-phys305.github.io
+**Location:** Saguaro Hall, Room 114
+
+**Format:** Live in person; lectures and hands-on labs.
 
 +++
 
@@ -53,6 +56,15 @@ Through a combination of lectures, hands-on exercises, and projects,
 students will develop a robust understanding of the essential tools
 and techniques required for modern astrophysical research.
 
+This course is a prerequisite for the following courses: PHYS 332, PHYS 426, PHYS 472.
+
++++
+
+## Enrollment Requirements
+
+(PHYS 105A or ECE 175) and (PHYS 142 or 143 or 162H) and (PHYS 240 or 241 or 261H).
+Prerequisite or concurrent registration in MATH 254 (Intro to ODE) or MATH 355 (Analysis of ODE).
+
 +++
 
 ## Scheduled Topics/Activities
@@ -76,6 +88,43 @@ and techniques required for modern astrophysical research.
 15 | Apr 20–Apr 26 | Numerical PDEs III: finite volume methods                       | Numerical PDEs IV: finite element methods (homework)
 16 | Apr 27–May  3 | Project II presentations                                        | Project II presentations
 17 | May  4–May 10 | Visiting UA HPC                                                 | *Reading Day (no class)*
+
++++
+
+## Assessments
+
+Assessment Categories | Percentage of Final Grade
+--- | ---
+6 Homework Assignments | 60%
+Project I (Mid-Term)   | 20%
+Project II (Final)     | 20%
+Total                  | 100%
+
++++
+
+## Grading Scale and Policies
+
+There are 6 homework assignments and 2 projects in total.
+Each homework assignment worth 10 points and each project worth 20 points.
+Students are expected to submit their assignments and projects by the specified deadlines.
+Requests for extensions must be made prior to the due date.
+
+This course provides regular letter grades (A–E), which are based on a simple point system:
+* A: 80–100 points
+* B: 70–79.9 points
+* C: 60–69.9 points
+* D: 50–59.9 points
+* E:  0–49.9 points
+
+No scaling will be applied.
+
+**Incomplete (I) or Withdrawal (W):**
+Incomplete (I) or withdrawal (W) grades must be made in accordance with university policies.
+
+**Dispute of Grade Policy:**
+If a student disagrees on his or her grade on a homework assignment or a project, the student must send the instructor a formal request through email to re-evaluate the grade within a week from the time that the student receives the grade.
+Because no scaling will be applied in the final grade, the final grade cannot be re-evaluated.
+The student is expected to know his or her own performance throughout the course.
 
 +++
 
