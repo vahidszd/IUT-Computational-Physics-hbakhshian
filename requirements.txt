@@ -3,4 +3,3 @@ numpy
 jax
 matplotlib
 sympy
-ghp-import
