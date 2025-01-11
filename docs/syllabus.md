@@ -60,19 +60,39 @@ This course is a prerequisite for the following courses: PHYS 332, PHYS 426, PHY
 
 ## Course Format and Teaching Methods
 
-Live in person; lectures and hands-on labs.
+This course is scheduled to be taught in-person.
+We will meet every Tuesday and Thursday from 12:30pm to 1:45pm at Saguaro Hall, Room 114.
+
+Each session will include about 45 minutes of lecture and 30 minutes of hands-on labs.
+You are required to complete your homework assignments and projects on time.
 
 +++
 
 ## Course Objectives
 
-...
+The goal of this course is to get students ready for modern computation- and data-driven physics.
+In order to do so, we will expose the the students to multiple development tools and software development best practices.
+We will introduce the basic of the `python` and `C` programming languages, and provide hands-on on data analysis and numerical problems.
+We will also introduce basic data analysis methods and numerical analysis.
+After taking this course, students should be able to solve simple physics problems numerically, create plots to visualize their results, and document their work and communicate with other physicists.
+See "Expected Learning Outcomes" below.
 
 +++
 
 ## Expected Learning Outcomes
 
-...
+Upon completion of this course, students should be able to:
+* understand the nature and application of computation methods in physical science;
+* use popular development tools (shell, `git`, Jupyter, etc);
+* use good software development practices (version control, documentation, and automation);
+* use computational thinking to break down complex (physics) problems into smaller pieces;
+* solve these problems by writing programs in the `python` and `C` programming languages;
+* speak and write about scientific knowledge;
+* appreciate computation complexity and have a basic awareness of numerical errors;
+* use data analysis and numerical methods properly, and be aware of their common pitfalls;
+* critically analyze and interpret data and results presented in tables, graphs and charts as well as perform appropriate computations;
+* read and understand scientific literature from popular sources such as magazines and newspapers;
+* aware of a wide range of science use cases, and develop the skill to self-learn computation tools and methods.
 
 +++
 
@@ -103,57 +123,70 @@ Statement on whether students who register after the first class meeting may mak
 
 ## Course Communications
 
-...
+Email is the official method to communicate with the instructor and teaching assistant outside scheduled classes and office hours.
 
 +++
 
 ## Required Texts or Readings
 
-...
+There is no required text.
+References will be listed in the lecture notes.
 
 +++
 
 ## Required or Special Materials
 
-...
+As a course on computational physics, students are excepted to have access to computers.
+Although not required, students will be encouraged to install popular development tools such as `git`, `python`, and `JupyterLab` to their computers.
 
 +++
 
 ## Required Extracurricular Activities
 
-...
+The instructor will provide students additional online videos to broaden the students' knowledge on computational physics.
+When bundled with assignments, students are required to watch them.
+When provided as references, the videos are optional.
+
+Near the end of the semester, students are encuraged to join a field trip to UA's Computer Center and see our supercomputers.
 
 +++
 
 ## Assignments and Examinations: Schedule/Due Dates
 
-...
+The course includes 6 homework assignments and 2 group projects.
+There are no quizzes or exams.
+
+**Homework Assignments:**
+Assignments will be given approximately every two weeks (see schedule below).
+Students should begin working on them during the hands-on labs and submit them within one week of the assignment date.
+
+**Group Projects:**
+Projects will be completed in teams of approximately four students.
+All project materials must be submitted within one week after the corresponding project presentations.
+
+Although this is not a writing intensive course, good documentation is essential in communicating science and developing software.
+Students are required to provide enough written explanations in their assignments.
 
 +++
 
 ## Final Examination or Project
 
-...
+There will be no final exam.
+Instead, students will need to finish two group projects.
+
+The project presentations are scheduled in the weeks of March 2nd and April 27th.
+All project materials must be submitted within one week after the corresponding project presentations.
 
 +++
 
 ## Grading Scale and Policies
 
-There are 6 homework assignments and 2 projects in total.
-Each homework assignment worth 10 points and each project worth 20 points.
-
-Assessment Categories | Percentage of Final Grade
---- | ---
-6 Homework Assignments | 60%
-Project I (Mid-Term)   | 20%
-Project II (Final)     | 20%
-Total                  | 100%
-
+The course includes 6 homework assignments and 2 group projects.
+Each homework assignment worth 10 points and each project worth 20 points, sum up to 100 points total.
 Students are expected to submit their assignments and projects by the specified deadlines.
-Requests for extensions must be made prior to the due date.
 
 This course provides regular letter grades (A–E), which are based on a simple point system:
-* A: 80–100 points
+* A: 80–100  points
 * B: 70–79.9 points
 * C: 60–69.9 points
 * D: 50–59.9 points
