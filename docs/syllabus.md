@@ -131,7 +131,11 @@ Email is the official method to communicate with the instructor and teaching ass
 ## Required Texts or Readings
 
 There is no required text.
-References will be listed in the lecture notes.
+
+The main reference is:
+* Numerical Recipes, 2nd Edition in C or 3rd Edition in C++, by William H. Press, Saul A. Teukolsky, William T. Vetterling, & Brian P. Flannery; online versions: https://numerical.recipes
+
+Additional references will be listed in the lecture notes.
 
 +++
 
