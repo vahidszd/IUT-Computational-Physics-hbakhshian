@@ -1,4 +1,20 @@
-# Introduction
+---
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.4
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
+# Syllabus: PHYS 305
+
++++
 
 Modern science relies heavily on computational methods and data
 analysis, in addition to empirical evidence and scientific theory.
@@ -17,6 +33,7 @@ Through a combination of lectures, hands-on exercises, and projects,
 students will develop a robust understanding of the essential tools
 and techniques required for modern astrophysical research.
 
++++
 
 # | Week | Tuesday | Thursday
 --- | --- | --- | ---
@@ -38,6 +55,7 @@ and techniques required for modern astrophysical research.
 16 | Apr 27--May  3 | Project II presentations                                        | Project II presentations
 17 | May  4--May 10 | Visiting UA HPC                                                 | *Reading Day (no class)*
 
++++
 
 ```{tableofcontents}
 ```
