@@ -12,15 +12,16 @@ kernelspec:
   name: python3
 ---
 
-# PHYS 305 Computational Physics
+# Syllabus
 
 +++
 
-**Course Website:** https://ua-2025q1-phys305.github.io
+**Course Number & Title:** PHYS 305—001 Computational Physics  
+**Course Website:** https://ua-2025q1-phys305.github.io  
 
 **Semester and Year:** Spring 2025  
-**Time:** Tuesday & Thursday 12:30--1:45pm  
-**Location:** Saguaro Hall, Room 114
+**Time:** Tuesday & Thursday 12:30–1:45pm  
+**Location:** [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114)
 
 +++
 
@@ -61,7 +62,7 @@ This course is a prerequisite for the following courses: PHYS 332, PHYS 426, PHY
 ## Course Format and Teaching Methods
 
 This course is scheduled to be taught in-person.
-We will meet every Tuesday and Thursday from 12:30pm to 1:45pm at Saguaro Hall, Room 114.
+We will meet every Tuesday and Thursday from 12:30pm to 1:45pm at [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114).
 
 Each session will include about 45 minutes of lecture and 30 minutes of hands-on labs.
 You are required to complete your homework assignments and projects on time.
@@ -83,7 +84,7 @@ See "Expected Learning Outcomes" below.
 
 Upon completion of this course, students should be able to:
 * understand the nature and application of computation methods in physical science;
-* use popular development tools (shell, `git`, Jupyter, etc);
+* use popular development tools (shell, `git`, `JupyterLab`, etc);
 * use good software development practices (version control, documentation, and automation);
 * use computational thinking to break down complex (physics) problems into smaller pieces;
 * solve these problems by writing programs in the `python` and `C` programming languages;
@@ -309,7 +310,7 @@ https://survivoradvocacy.arizona.edu/
 The Survivor Advocacy Program provides confidential support and advocacy services to student survivors of sexual and gender-based violence.
 The Program can also advise students about relevant non-UA resources available within the local community for support.  
 Email: survivoradvocacy@arizona.edu  
-Phone: 520-621-5767 
+Phone: 520-621-5767
 
 +++
 
@@ -330,8 +331,3 @@ http://www.registrar.arizona.edu/ferpa
 ## Subject to Change Statement
 
 Information contained in the course syllabus, other than the grade and absence policy, may be subject to change with advance notice, as deemed appropriate by the instructor.
-
-+++
-
-```{tableofcontents}
-```
