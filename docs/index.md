@@ -22,7 +22,9 @@ kernelspec:
 **Time:** Tuesday & Thursday 12:30--1:45pm  
 **Location:** [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114)
 
-**Instructor:** Chi-kwan Chan, chanc@arizona.edu (please include PHYS305 in the subject line of all emails)
+**Instructor:** Chi-kwan Chan, chanc@arizona.edu  
+**TA:** Devendran Vemula, devendranvemula@arizona.edu  
+Please include "PHYS305" in the subject of emails
 
 +++
 

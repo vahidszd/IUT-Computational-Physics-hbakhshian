@@ -48,12 +48,12 @@ This course is a prerequisite for the following courses: PHYS 332, PHYS 426, PHY
 ## Instructor and Contact Information
 
 **Instructor:** Chi-kwan Chan  
-**Email:** chanc@arizona.edu (please include PHYS305 in the subject line of all emails)  
+**Email:** chanc@arizona.edu (please include "PHYS305" in the subject of emails)  
 **Office:** Steward Observatory N332  
 **Office Hours:** Wednesday 11am--noon (Steward Observatory N332) or by appointment 
 
-**TA:** TBA  
-**Email:** TBA  
+**TA:** Devendran Vemula  
+**Email:** devendranvemula@arizona.edu (please include "PHYS305" in the subject of emails)  
 **Office:** TBA  
 **Office Hours:** TBA
 
