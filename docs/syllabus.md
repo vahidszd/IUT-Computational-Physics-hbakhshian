@@ -308,28 +308,46 @@ We also want to create a tolerant and open environment where such opinions can b
 
 +++
 
+### Usage of Generative AI
+
+Homework and projects in this course are designed to help students apply class concepts, test their learning, and develop software development and science communication skills.
+Generative AI tools, such as ChatGPT, Google Gemini, and GitHub Co-Pilot, can be useful for brainstorming and debugging.
+However, students must write their own code, take full responsibility for their work, and demonstrate a clear understanding of the concepts.
+
+While AI tools can assist learning, they may produce inaccurate or biased outputs.
+Students are responsible for verifying facts and critically assessing all submitted material.
+Any use of generative AI must be acknowledged or cited (see [guidelines from UA library](https://libguides.library.arizona.edu/students-chatgpt/citing)).
+Failure to disclose such use or to write original code will be considered a violation of academic integrity.
+
+For questions, contact your instructor.
+
++++
+
 ## Additional Resources for Students
 
 UA Academic policies and procedures are available at http://catalog.arizona.edu/policies
 
-**Campus Health**  
+### Campus Health
+
 http://www.health.arizona.edu/  
 Campus Health provides quality medical and mental health care services through virtual and in-person care.  
 Phone: 520-621-9202
 
-**Counseling and Psych Services (CAPS)**  
+### Counseling and Psych Services (CAPS)
+
 https://health.arizona.edu/counseling-psych-services  
 CAPS provides mental health care, including short-term counseling services.  
 Phone: 520-621-3334
 
-**The Dean of Students Office's Student Assistance Program**  
+### The Dean of Students Office's Student Assistance Program
 https://deanofstudents.arizona.edu/support/student-assistance  
 Student Assistance helps students manage crises, life traumas, and other barriers that impede success.
 The staff addresses the needs of students who experience issues related to social adjustment, academic challenges, psychological health, physical health, victimization, and relationship issues, through a variety of interventions, referrals, and follow up services.  
 Email: DOS-deanofstudents@arizona.edu  
 Phone: 520-621-7057
 
-**Survivor Advocacy Program**  
+### Survivor Advocacy Program
+
 https://survivoradvocacy.arizona.edu/  
 The Survivor Advocacy Program provides confidential support and advocacy services to student survivors of sexual and gender-based violence.
 The Program can also advise students about relevant non-UA resources available within the local community for support.  
