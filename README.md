@@ -9,16 +9,6 @@ taught in Spring 2025.
 
 ## Usage
 
-### Running Chapter of the Book as Jupyter Notebook
-
-To edit the materials locally as Jupyter Notebooks, simply use
-Jupytext to create a pair notebook:
-```
-jupytext --sync [chapter].md
-```
-All changed made the notebook will be automatically synced to the MyST
-markdown file.
-
 ### Building the book
 
 If you'd like to develop and/or build the PHYS 305 book, you should:
@@ -55,8 +45,8 @@ Pages when a push or pull request is made to the main branch.
 ## Contributors
 
 We welcome and recognize all contributions.
-You can see a list of current contributors in the [contributors
-tab](https://github.com/rndsrc/astr513/graphs/contributors).
+You can see a list of current contributors in the
+[contributors tab](https://github.com/ua-2025q1-phys305/ua-2025q1-phys305.github.io/graphs/contributors).
 
 
 ## Credits

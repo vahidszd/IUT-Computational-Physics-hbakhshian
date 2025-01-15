@@ -199,7 +199,7 @@ Instead, students will need to finish two group projects.
 The project presentations are scheduled in the weeks of March 2nd and April 27th.
 All project materials must be submitted within one week after the corresponding project presentations.
 
-+++ {"jp-MarkdownHeadingCollapsed": true}
++++
 
 ## Grading Scale and Policies
 
