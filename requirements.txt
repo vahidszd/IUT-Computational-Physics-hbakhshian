@@ -1,5 +1,22 @@
+# Jupyter
+jupyterlab-git
+jupyterlab-myst
+jupyterlab-rise
 jupyter-book
+nbstripout
+
+# Numerics
 numpy
-jax
-matplotlib
+scipy
 sympy
+
+# Visualization
+matplotlib
+
+# Data Science
+pandas
+
+# Special
+jax
+astropy
+h5py
