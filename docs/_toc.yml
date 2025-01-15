@@ -5,3 +5,5 @@ format: jb-book
 root: index
 chapters:
 - file: syllabus
+- file: 01/notes
+- file: 01/lab

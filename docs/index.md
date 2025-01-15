@@ -33,7 +33,7 @@ Please include "PHYS305" in subjects of emails
 
 #  | Week | Tuesday | Thursday
 --- | --- | --- | ---
-1  | Jan 12–Jan 18 |                                                                 | Overview and the Python programming language
+1  | Jan 12–Jan 18 |                                                                 | {doc}`01/notes` and {doc}`01/lab`
 2  | Jan 19–Jan 25 | *Martin Luther King Jr. Day (no class)*                         | Data representation and round-off errors
 3  | Jan 26–Feb  1 | Numerical linear algebra                                        | Guess lecture: useful tools (homework)
 4  | Feb  2–Feb  8 | Fourier transform and spectral analyses                         | Interpolation and extrapolation
