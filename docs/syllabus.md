@@ -36,7 +36,7 @@ Through a combination of lectures, hands-on exercises, and projects, students wi
 
 +++
 
-## Course Prerequisites or Co-requisites
+### Course Prerequisites or Co-requisites
 
 (PHYS 105A or ECE 175) and (PHYS 142 or 143 or 162H) and (PHYS 240 or 241 or 261H).
 Prerequisite or concurrent registration in MATH 254 (Intro to ODE) or MATH 355 (Analysis of ODE).
@@ -45,7 +45,7 @@ This course is a prerequisite for the following courses: PHYS 332, PHYS 426, PHY
 
 +++
 
-## Instructor and Contact Information
+### Instructor and Contact Information
 
 **Instructor:** Chi-kwan Chan  
 **Email:** chanc@arizona.edu (please include "PHYS305" in the subject of emails)  
@@ -59,7 +59,7 @@ This course is a prerequisite for the following courses: PHYS 332, PHYS 426, PHY
 
 +++
 
-## Course Format and Teaching Methods
+### Course Format and Teaching Methods
 
 This course is scheduled to be taught in-person.
 We will meet every Tuesday and Thursday from 12:30pm to 1:45pm at [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114).
@@ -69,7 +69,7 @@ You are required to complete your homework assignments and projects on time.
 
 +++
 
-## Course Objectives
+### Course Objectives
 
 The goal of this course is to get students ready for modern computation- and data-driven physics.
 In order to do so, we will expose the the students to multiple development tools and software development best practices.
@@ -80,7 +80,7 @@ See "Expected Learning Outcomes" below.
 
 +++
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 Upon completion of this course, students should be able to:
 * understand the nature and application of computation methods in physical science;
@@ -97,7 +97,11 @@ Upon completion of this course, students should be able to:
 
 +++
 
-## Absence and Class Participation Policy
+## Policies of Course
+
++++
+
+### Absence and Class Participation Policy
 
 The UA's policy concerning Class Attendance and Participation is available at: https://catalog.arizona.edu/policy/courses-credit/courses/class-attendance-participation.
 
@@ -116,19 +120,23 @@ The Dean of Students Office is located in the Robert L. Nugent Building, room 10
 
 +++
 
-## Makeup Policy for Students Who Register Late
+### Makeup Policy for Students Who Register Late
 
 Statement on whether students who register after the first class meeting may make up missed assignments/quizzes and the deadline for doing so.
 
 +++
 
-## Course Communications
+### Course Communications
 
 Email is the official method to communicate with the instructor and teaching assistant outside scheduled classes and office hours.
 
 +++
 
-## Required Texts or Readings
+## Course Materials
+
++++
+
+### Required Texts or Readings
 
 There is no required text.
 
@@ -139,14 +147,14 @@ Additional references will be listed in the lecture notes.
 
 +++
 
-## Required or Special Materials
+### Required or Special Materials
 
 As a course on computational physics, students are excepted to have access to computers.
 Although not required, students will be encouraged to install popular development tools such as `git`, `python`, and `JupyterLab` to their computers.
 
 +++
 
-## Required Extracurricular Activities
+### Required Extracurricular Activities
 
 The instructor will provide students additional online videos to broaden the students' knowledge on computational physics.
 When bundled with assignments, students are required to watch them.
@@ -156,7 +164,11 @@ Near the end of the semester, students are encuraged to join a field trip to UA'
 
 +++
 
-## Assignments and Examinations: Schedule/Due Dates
+## Assignments and Examinations
+
++++
+
+### Schedule/Due Dates
 
 The course includes 6 homework assignments and 2 group projects.
 There are no quizzes or exams.
@@ -169,12 +181,16 @@ Students should begin working on them during the hands-on labs and submit them w
 Projects will be completed in teams of approximately four students.
 All project materials must be submitted within one week after the corresponding project presentations.
 
++++
+
+### Writing Requirement
+
 Although this is not a writing intensive course, good documentation is essential in communicating science and developing software.
 Students are required to provide enough written explanations in their assignments.
 
 +++
 
-## Final Examination or Project
+### Final Examination or Project
 
 There will be no final exam.
 Instead, students will need to finish two group projects.
@@ -182,7 +198,7 @@ Instead, students will need to finish two group projects.
 The project presentations are scheduled in the weeks of March 2nd and April 27th.
 All project materials must be submitted within one week after the corresponding project presentations.
 
-+++
++++ {"jp-MarkdownHeadingCollapsed": true}
 
 ## Grading Scale and Policies
 
@@ -242,7 +258,11 @@ A true wildcat, CK received his bachelors and doctoral degrees from the Universi
 
 +++
 
-## Classroom Behavior Policy
+## Code of Conduct
+
++++
+
+### Classroom Behavior Policy
 
 To foster a positive learning environment, students and instructors have a shared responsibility.
 We want a safe, welcoming, and inclusive environment where all of us feel comfortable with each other and where we can challenge ourselves to succeed.
@@ -250,19 +270,19 @@ To that end, our focus is on the tasks at hand and not on extraneous activities 
 
 +++
 
-## Threatening Behavior Policy
+### Threatening Behavior Policy
 
 The UA Threatening Behavior by Students Policy prohibits threats of physical harm to any member of the University community, including to oneself. See http://policy.arizona.edu/education-and-student-affairs/threatening-behavior-students.
 
 +++
 
-## Accessibility and Accommodations
+### Accessibility and Accommodations
 
 Recommended language is provided on the Disability Resource Center website: http://drc.arizona.edu/instructors/syllabus-statement.
 
 +++
 
-## Code of Academic Integrity
+### Code of Academic Integrity
 
 Students are encouraged to share intellectual views and discuss freely the principles and applications of course materials.
 However, graded work/exercises must be the product of independent effort unless otherwise instructed.
@@ -277,7 +297,7 @@ This conduct may also constitute copyright infringement.
 
 +++
 
-## Nondiscrimination and Anti-harassment Policy
+### Nondiscrimination and Anti-harassment Policy
 
 The University of Arizona is committed to creating and maintaining an environment free of discrimination.
 In support of this commitment, the University prohibits discrimination, including harassment and retaliation, based on a protected classification, including race, color, religion, sex (including pregnancy), national origin, age, disability, veteran status, sexual orientation, gender identity, or genetic information.
