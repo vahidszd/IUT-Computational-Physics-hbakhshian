@@ -2,21 +2,21 @@
 jupyterlab-git
 jupyterlab-myst
 jupyterlab-rise
-jupyter-book
+#jupyter-book
 nbstripout
 
 # Numerics
 numpy
 scipy
-sympy
+#sympy
 
 # Visualization
 matplotlib
 
 # Data Science
-pandas
+#pandas
 
 # Special
-jax
-astropy
-h5py
+#jax
+#astropy
+#h5py
