@@ -2,7 +2,7 @@
 jupyterlab-git
 jupyterlab-myst
 jupyterlab-rise
-#jupyter-book
+jupyter-book
 nbstripout
 
 # Numerics
