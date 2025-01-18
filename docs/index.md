@@ -24,8 +24,8 @@ kernelspec:
 **Time:** Tuesday & Thursday 12:30--1:45pm  
 **Location:** [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114)
 
-**Instructor:** Chi-kwan Chan <chanc@arizona.edu>  
-**Teaching Assistant:** Devendran Vemula <devendranvemula@arizona.edu>  
+**Instructor:** Chi-kwan "CK" Chan <chanc@arizona.edu> Office hour: Wed 11am–noon (SO N332)  
+**Teaching Assistant:** Devendran "Deva" Vemula <devendranvemula@arizona.edu>  
 **Preceptor:** Nikhil Garuda <nikhilgaruda@arizona.edu>  
 Please include "PHYS305" in subjects of emails
 
