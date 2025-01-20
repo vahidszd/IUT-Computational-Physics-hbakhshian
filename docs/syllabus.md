@@ -21,7 +21,7 @@ kernelspec:
 
 **Semester and Year:** Spring 2025  
 **Time:** Tuesday & Thursday 12:30–1:45pm  
-**Location:** [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114)
+**Location:** [Main Library, Room B254+B252](https://lib.arizona.edu/sites/default/files/main-floor2.pdf) except on Jan 16th, Feb 27th, and Mar 20th, on those days we meet in [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114)
 
 +++
 

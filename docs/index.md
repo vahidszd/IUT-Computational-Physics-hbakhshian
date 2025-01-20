@@ -22,7 +22,7 @@ kernelspec:
 **Full Syllabus:** {doc}`syllabus`
 
 **Time:** Tuesday & Thursday 12:30--1:45pm  
-**Location:** [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114)
+**Location:** [Main Library, Room B254+B252](https://lib.arizona.edu/sites/default/files/main-floor2.pdf) except on Jan 16th, Feb 27th, and Mar 20th, on those days we meet in [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114)
 
 **Instructor:** Chi-kwan "CK" Chan <chanc@arizona.edu> Office hour: Wed 11am–noon (SO N332)  
 **Teaching Assistant:** Devendran "Deva" Vemula <devendranvemula@arizona.edu>  
