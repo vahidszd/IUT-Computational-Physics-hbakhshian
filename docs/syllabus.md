@@ -21,7 +21,7 @@ kernelspec:
 
 **Semester and Year:** Spring 2025  
 **Time:** Tuesday & Thursday 12:30–1:45pm  
-**Location:** [Main Library, Room B254+B252](https://lib.arizona.edu/sites/default/files/main-floor2.pdf) except on Jan 16th, Feb 27th, and Mar 20th, on those days we meet in [Saguaro Hall, Room 114](https://map.arizona.edu/33/0114)
+**Location:** Social Sciences, Room 206
 
 +++
 
@@ -50,7 +50,7 @@ This course is a prerequisite for the following courses: PHYS 332, PHYS 426, PHY
 **Instructor:** Chi-kwan Chan  
 **Email:** chanc@arizona.edu (please include "PHYS305" in subjects of emails)  
 **Office:** Steward Observatory N332  
-**Office Hours:** Wednesday 11am--noon (Steward Observatory N332) or by appointment
+**Office Hours:** Monday 1--2pm, Wednesday 11am--noon (Steward Observatory N332), or by appointment
 
 **Teaching Assistant:** Devendran Vemula  
 **Email:** devendranvemula@arizona.edu (please include "PHYS305" in subjects of emails)
