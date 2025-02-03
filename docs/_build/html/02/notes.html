@@ -1,0 +1,1633 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Representation &#8212; PHYS 305: Computational Physics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02/notes';</script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/language_data.js?v=d4673a71"></script>
+    <script src="../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Errors" href="lab.html" />
+    <link rel="prev" title="Git, Jupyter, and Python" href="../01/lab.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/iutlogo.jpg" class="logo__image only-light" alt="PHYS 305: Computational Physics - Home"/>
+    <img src="../_static/iutlogo.jpg" class="logo__image only-dark pst-js-only" alt="PHYS 305: Computational Physics - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    PHYS 305
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/notes.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/lab.html">Git, Jupyter, and Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/notes.html">Numerical Linear Algebra</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/lab.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/sol.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/notes.html">Fourier Transform and Spectral Analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lab.html">Fourier Transform and Spectral Analyses Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/notes.html">Useful Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/notes.html">Interpolation and Extrapolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/lab.html">Interpolation and Extrapolation Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/notes.html">Numerical and Automatic Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/notes.html">Numerical Integration of Functions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/edit/main/docs/02/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/issues/new?title=Issue%20on%20page%20%2F02/notes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/02/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Representation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#riddle">Riddle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-numbers">Representing Numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation-systems">Positional Notation Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-numbers">Binary Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hexadecimal-system">The Hexadecimal System</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-implementations">Hardware Implementations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-binary-operators">Basic Binary Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmos-implementation">CMOS Implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-gates">Universal Gates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-in-the-binary-system">Addition in the Binary System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#half-adder-building-blocks-for-addition">Half Adder: Building Blocks for Addition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-full-adder-using-nand">Building a Full Adder Using NAND</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-bit-adder">Multi-Bit Adder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-bits-in-an-integer">Number of Bits in an Integer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-and-underflow-error">Overflow and Underflow Error</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-of-negative-numbers">Representation of Negative Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-conversion">Integer Conversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#narrowing-conversion">1. Narrowing Conversion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#widening-conversion">2. Widening Conversion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-moment-of-zen">A Moment of ZEN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-computers-handle-non-integer-numbers">How Do Computers Handle Non-Integer Numbers?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-representation">Floating Point Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-precision-floating-point">Single-Precision Floating Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#double-precision-floating-point">Double-Precision Floating Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-floating-point">Other Floating Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-of-special-values">Encoding of Special Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nan-comparison-rules">NaN Comparison Rules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarkable-increase-in-computing-speed">Remarkable Increase in Computing Speed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moore-s-law">Moore’s Law</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-computing">High-Performance Computing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-determines-computational-performance">What Determines Computational Performance?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-representation">
+<h1>Data Representation<a class="headerlink" href="#data-representation" title="Link to this heading">#</a></h1>
+<section id="riddle">
+<h2>Riddle<a class="headerlink" href="#riddle" title="Link to this heading">#</a></h2>
+<p>You have 1000 bottles of wine for a birthday party.
+20 hours before the party, the winery indicates that 1 bottle is filled with poison, but they don’t tell you which one.
+You have 10 lab mice to test this.
+The poison is so strong that it will kill any mouse that drinks it within 18 hours.
+Is there a way to find the poisoned bottle using the 10 mice before the party?</p>
+</section>
+<section id="representing-numbers">
+<h2>Representing Numbers<a class="headerlink" href="#representing-numbers" title="Link to this heading">#</a></h2>
+<p>Efficient number representation, as illustrated in the riddle, enables us to solve seemingly impossible problems.
+The evolution of numeral systems reflects humanity’s progress toward clarity and efficiency in expressing numbers.</p>
+<ul class="simple">
+<li><p><strong>Unary System</strong>:
+The simplest system, where each number is represented by identical marks.
+For example, 5 is written as “|||||.”
+While easy to understand and requiring no skill for addition, unary becomes impractical for large values—representing 888 requires 888 marks.</p></li>
+<li><p><strong>Roman Numerals</strong>:
+An improvement over unary, Roman numerals use symbols such as I (1), V (5), X (10), L (50), C (100), D (500), and M (1000).
+However, representing numbers like 888 (DCCCLXXXVIII) still requires 12 symbols, making it cumbersome and inefficient for large numbers.</p></li>
+<li><p><strong>Arabic Numerals</strong>:
+A revolutionary advancement, the Arabic numeral system uses positional notation to represent numbers compactly and efficiently.
+For instance, 888 requires only three digits, drastically reducing complexity and enhancing clarity, making it the foundation of modern mathematics.</p></li>
+</ul>
+<section id="positional-notation-systems">
+<h3>Positional Notation Systems<a class="headerlink" href="#positional-notation-systems" title="Link to this heading">#</a></h3>
+<p>The Arabic numeral system is an example of a <strong>positional notation system</strong>, where the value of a digit is determined by both the digit itself and its position within the number.
+This contrasts with systems like Roman numerals or unary numbers, where the position of a symbol does not affect its value.
+In positional notation, each digit’s place corresponds to a specific power of the system’s base.</p>
+<p>In a positional system, representing a number involves the following steps:</p>
+<ol class="arabic">
+<li><p>Decide on the base (or radix) <span class="math notranslate nohighlight">\(b\)</span>.</p></li>
+<li><p>Define the notation for the digits.</p></li>
+<li><p>Write the number as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-40ed4cff-3359-43b1-b5fd-26ee679fe891">
+<span class="eqno">(1)<a class="headerlink" href="#equation-40ed4cff-3359-43b1-b5fd-26ee679fe891" title="Permalink to this equation">#</a></span>\[\begin{align}
+\pm (\dots d_3 d_2 d_1 d_0 . d_{-1} d_{-2} d_{-3} \dots),
+\end{align}\]</div>
+<p>which represents:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-91c49e3c-73ab-49cf-b8a5-299afe6d515a">
+<span class="eqno">(2)<a class="headerlink" href="#equation-91c49e3c-73ab-49cf-b8a5-299afe6d515a" title="Permalink to this equation">#</a></span>\[\begin{align}
+\pm (\dots + d_3 b^3 + d_2 b^2 + d_1 b^1 + d_0 b^0 + d_{-1} b^{-1} + d_{-2} b^{-2} + d_{-3} b^{-3} + \dots).
+\end{align}\]</div>
+</li>
+</ol>
+<p>To convert a number from base <span class="math notranslate nohighlight">\(b\)</span> to decimal, we apply this definition directly.
+For example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-07c03c1b-acaf-4daf-8ac9-807def42d63d">
+<span class="eqno">(3)<a class="headerlink" href="#equation-07c03c1b-acaf-4daf-8ac9-807def42d63d" title="Permalink to this equation">#</a></span>\[\begin{align}
+(256.4)_8 = 2\times8^2 + 5\times8^1 + 6\times8^0 + 4\times8^{-1} = (174.5)_{10}.
+\end{align}\]</div>
+</section>
+<section id="binary-numbers">
+<h3>Binary Numbers<a class="headerlink" href="#binary-numbers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Base: <span class="math notranslate nohighlight">\(b = 2\)</span></p></li>
+<li><p>Digits: 0, 1</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<img alt="../_images/measure.png" src="../_images/measure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Binary system was invented by merchants in medieval England.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The binary system has been used in various forms long before the age of computers.
+Invented by merchants in medieval England, the units of liquid measure were based on the binary system. For example:</p>
+<ul class="simple">
+<li><p>1 gallon = 2 pottles;</p></li>
+<li><p>1 pottle = 2 quarts;</p></li>
+<li><p>1 quart = 2 pints;</p></li>
+<li><p>1 pint = 2 cups; etc.</p></li>
+</ul>
+<p>Similarly, the binary system is used in music to define note durations, i.e., whole note, half note, quarter note, eighth note, sixteenth note, etc.
+These everyday examples reflect the fundamental nature of the binary system, which underpins much of modern computing.</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/binary-shirt.png" src="../_images/binary-shirt.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">There are <code class="docutils literal notranslate"><span class="pre">10</span></code> types of people in the world…</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the binary system, only two digits are used: 0 and 1.
+The position of each digit in a binary number corresponds to a power of 2, just as the position of a digit in the decimal system corresponds to a power of 10.
+For example, the binary number <span class="math notranslate nohighlight">\(1011_2\)</span> represents: <span class="math notranslate nohighlight">\(1 \times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 1 \times 2^0\)</span>.
+This gives the decimal value: <span class="math notranslate nohighlight">\(1 \times 8 + 0 \times 4 + 1 \times 2 + 1 \times 1 = 11\)</span>.</p>
+<p>In Python, you can use the <code class="docutils literal notranslate"><span class="pre">bin()</span></code> function to convert an integer to its binary string representation, and the <code class="docutils literal notranslate"><span class="pre">int()</span></code> function to convert a binary string back to an integer.
+This is particularly useful when working with binary numbers in computations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert an integer to a binary string</span>
+<span class="n">number</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">binary</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Binary representation of </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">binary</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Binary representation of 10: 0b1010
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert a binary string back to an integer</span>
+<span class="n">binary</span> <span class="o">=</span> <span class="s2">&quot;0b1010&quot;</span> <span class="c1"># the leading &quot;0b&quot; is optional</span>
+<span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Integer value of </span><span class="si">{</span><span class="n">binary</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integer value of 0b1010: 10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the above examples use <strong>formatted string literals</strong>, commonly known as “f-strings.”
+F-strings provide a concise and readable way to embed expressions inside string literals by prefixing the string with an <code class="docutils literal notranslate"><span class="pre">f</span></code> or <code class="docutils literal notranslate"><span class="pre">F</span></code> character.</p>
+<p>Python supports representing binary numbers directly using the <code class="docutils literal notranslate"><span class="pre">0b</span></code> prefix for literals.
+This allows you to define binary numbers without converting from a string format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary</span> <span class="o">=</span> <span class="mb">0b1010</span>  <span class="c1"># 10 in decimal</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Binary number: </span><span class="si">{</span><span class="n">binary</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Binary number: 10
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-hexadecimal-system">
+<h3>The Hexadecimal System<a class="headerlink" href="#the-hexadecimal-system" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Base: <span class="math notranslate nohighlight">\(b = 16\)</span></p></li>
+<li><p>Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</p></li>
+</ul>
+<p>The hexadecimal system allows for writing a binary number in a very compact notation.
+It allows one to directly ready the binary content of a file, e.g.,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">hexdump</span> <span class="o">-</span><span class="n">C</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span> <span class="o">|</span> <span class="n">head</span>
+<span class="mi">00000000</span>  <span class="n">ca</span> <span class="n">fe</span> <span class="n">ba</span> <span class="n">be</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">02</span>  <span class="mi">01</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">07</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">03</span>  <span class="o">|................|</span>
+<span class="mi">00000010</span>  <span class="mi">00</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">6</span><span class="n">a</span> <span class="n">b0</span>  <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">0</span><span class="n">e</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">0</span><span class="n">c</span>  <span class="o">|..@...</span><span class="n">j</span><span class="o">.........|</span>
+<span class="mi">00000020</span>  <span class="mi">80</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">00</span> <span class="mi">00</span> <span class="n">c0</span> <span class="mi">00</span>  <span class="mi">00</span> <span class="mi">00</span> <span class="n">cb</span> <span class="mi">70</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">0</span><span class="n">e</span>  <span class="o">|...........</span><span class="n">p</span><span class="o">....|</span>
+<span class="mi">00000030</span>  <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="o">|................|</span>
+<span class="o">*</span>
+<span class="mi">00004000</span>  <span class="n">cf</span> <span class="n">fa</span> <span class="n">ed</span> <span class="n">fe</span> <span class="mi">07</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span>  <span class="mi">03</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="o">|................|</span>
+<span class="mi">00004010</span>  <span class="mi">11</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="n">c0</span> <span class="mi">04</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="mi">85</span> <span class="mi">00</span> <span class="mi">20</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="o">|..........</span> <span class="o">.....|</span>
+<span class="mi">00004020</span>  <span class="mi">19</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">48</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="mi">5</span><span class="n">f</span> <span class="mi">5</span><span class="n">f</span> <span class="mi">50</span> <span class="mi">41</span> <span class="mi">47</span> <span class="mi">45</span> <span class="mi">5</span><span class="n">a</span> <span class="mi">45</span>  <span class="o">|....</span><span class="n">H</span><span class="o">...</span><span class="n">__PAGEZE</span><span class="o">|</span>
+<span class="mi">00004030</span>  <span class="mi">52</span> <span class="mi">4</span><span class="n">f</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="o">|</span><span class="n">RO</span><span class="o">..............|</span>
+<span class="mi">00004040</span>  <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>  <span class="o">|................|</span>
+</pre></div>
+</div>
+<p>or directly select a color</p>
+<figure class="align-default" id="id3">
+<img alt="../_images/color.png" src="../_images/color.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Hex numbers are used to select colors.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Python also supports working with hexadecimal numbers, which are represented using the <code class="docutils literal notranslate"><span class="pre">0x</span></code> prefix.
+Below are examples demonstrating how to handle hexadecimal numbers in Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="n">hexrep</span> <span class="o">=</span> <span class="nb">hex</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hexadecimal representation of </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">hexrep</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hexadecimal representation of 255: 0xff
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hexrep</span> <span class="o">=</span> <span class="s2">&quot;0xff&quot;</span>
+<span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexrep</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Integer value of </span><span class="si">{</span><span class="n">hexrep</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integer value of 0xff: 255
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hexrep</span> <span class="o">=</span> <span class="mh">0xff</span>  <span class="c1"># 10 in decimal</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hexadecimal number: </span><span class="si">{</span><span class="n">hexrep</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hexadecimal number: 255
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<h3 class="rubric" id="quantum-computing-a-new-level-of-number-representation">Quantum Computing: A New Level of Number Representation</h3>
+<p>Quantum computing takes number representation to a whole new level.
+In quantum mechanics, data is represented using quantum bits, or qubits.
+Unlike classical bits, a single qubit can exist in a superposition of two states, <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span>, simultaneously.
+This means that (ignoring normalization for now) one qubit can represent two numbers <span class="math notranslate nohighlight">\(C_0\)</span> and <span class="math notranslate nohighlight">\(C_1\)</span> as in <span class="math notranslate nohighlight">\(C_0 |0\rangle + C_1 |1\rangle\)</span>.</p>
+<p>With two qubits, the system can represent four possible states: <span class="math notranslate nohighlight">\(|00\rangle\)</span>, <span class="math notranslate nohighlight">\(|01\rangle\)</span>, <span class="math notranslate nohighlight">\(|10\rangle\)</span>, and <span class="math notranslate nohighlight">\(|11\rangle\)</span>, again, in superposition.
+The number of possible states grows exponentially as more qubits are added:</p>
+<ul class="simple">
+<li><p>Three qubits can represent eight states: <span class="math notranslate nohighlight">\(|000\rangle\)</span>, <span class="math notranslate nohighlight">\(|001\rangle\)</span>, <span class="math notranslate nohighlight">\(|010\rangle\)</span>, …, <span class="math notranslate nohighlight">\(|111\rangle\)</span>.</p></li>
+<li><p>Four qubits represent 16 states, and so on.</p></li>
+</ul>
+<p>In general, <span class="math notranslate nohighlight">\(n\)</span> qubits can represent <span class="math notranslate nohighlight">\(2^n\)</span> states at once.
+This exponential scaling is what gives quantum computers their enormous potential to perform certain types of calculations far more efficiently than classical computers.</p>
+<p>For example, IBM’s 53-qubit quantum computer can represent <span class="math notranslate nohighlight">\(2^{53}\)</span> states simultaneously.
+In terms of classical information, this is equivalent to storing approximately 1 petabyte (PB) of data, which is comparable to the amount of memory available in some of the world’s largest supercomputers today.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<h3 class="rubric" id="superposition-hypothesis-in-large-language-models">Superposition Hypothesis in Large Language Models</h3>
+<p>The <a class="reference external" href="https://transformer-circuits.pub/2022/toy_model/index.html">Superposition Hypothesis</a> in large language models (LLMs) proposes that individual neurons or parameters can encode multiple overlapping features, depending on context.
+This is analogous to quantum superposition, where qubits represent multiple states simultaneously.</p>
+<p>For example, a single neuron in an LLM might activate for both “dog” and “pet,” enabling efficient reuse of parameters.
+This ability is further supported by high-dimensional embeddings, where concepts are represented as nearly orthogonal vectors, allowing the model to store and distinguish vast amounts of information with minimal interference.
+The <a class="reference external" href="https://en.wikipedia.org/wiki/Johnson%E2%80%93Lindenstrauss_lemma">Johnson–Lindenstrauss Lemma</a> explains how high-dimensional spaces accommodate such efficient representations.</p>
+<p>While the Superposition Hypothesis provides a promising explanation for the efficiency of LLMs, it remains an area of active research to fully understand the mechanisms underlying their success.</p>
+</div>
+</section>
+</section>
+<section id="hardware-implementations">
+<h2>Hardware Implementations<a class="headerlink" href="#hardware-implementations" title="Link to this heading">#</a></h2>
+<blockquote class="epigraph">
+<div><p>The decimal system has been established, somewhat foolishly to be
+sure, according to man’s custom, not from a natural necessity as most
+people think.</p>
+<p class="attribution">—Blaise Pascal (1623–1662)</p>
+</div></blockquote>
+<p>Binary operators are the foundation of computation in digital hardware.
+They are implemented using <strong>logic gates</strong>, which are constructed using CMOS (Complementary Metal-Oxide-Semiconductor) technology.
+This section introduces binary operators, universal gates, CMOS implementation, and key arithmetic circuits like adders.</p>
+<section id="basic-binary-operators">
+<h3>Basic Binary Operators<a class="headerlink" href="#basic-binary-operators" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>AND Operator (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span> <span class="o">|</span>
+<span class="o">|---|---|-------|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">|</span>   <span class="mi">0</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">|</span>   <span class="mi">0</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span>   <span class="o">|</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="2">
+<li><p>OR Operator (<code class="docutils literal notranslate"><span class="pre">|</span></code>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span>
+<span class="o">|---|---|-------|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">|</span>   <span class="mi">0</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">|</span>   <span class="mi">1</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span>   <span class="o">|</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="3">
+<li><p>XOR Operator (<code class="docutils literal notranslate"><span class="pre">^</span></code>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">A</span> <span class="o">^</span> <span class="n">B</span> <span class="o">|</span>
+<span class="o">|---|---|-------|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">|</span>   <span class="mi">0</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">|</span>   <span class="mi">1</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span>   <span class="mi">0</span>   <span class="o">|</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="4">
+<li><p>NOT Operator (<code class="docutils literal notranslate"><span class="pre">~</span></code>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">A</span> <span class="o">|</span> <span class="o">~</span><span class="n">A</span> <span class="o">|</span>
+<span class="o">|---|----|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span>  <span class="mi">0</span> <span class="o">|</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>NAND and NOR Operators</p>
+<ul class="simple">
+<li><p><strong>NAND (NOT AND):</strong> Outputs <code class="docutils literal notranslate"><span class="pre">0</span></code> only when both inputs are <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+<li><p><strong>NOR  (NOT OR):</strong>  Outputs <code class="docutils literal notranslate"><span class="pre">1</span></code> only when both inputs are <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="cmos-implementation">
+<h3>CMOS Implementation<a class="headerlink" href="#cmos-implementation" title="Link to this heading">#</a></h3>
+<p>Logic gates are built using CMOS technology, which utilizes:</p>
+<ul class="simple">
+<li><p><strong>PMOS Transistors:</strong> Conduct when the input is low (logic <code class="docutils literal notranslate"><span class="pre">0</span></code>).</p></li>
+<li><p><strong>NMOS Transistors:</strong> Conduct when the input is high (logic <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p></li>
+</ul>
+<figure class="align-default" id="id4">
+<img alt="../_images/cmos.png" src="../_images/cmos.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Cross section of two transistors in a CMOS gate, in an N-well CMOS process.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the above figure, the terminals of the transistors are labeled as follows:</p>
+<ul class="simple">
+<li><p><strong>Source (S):</strong>
+The terminal through which carriers (electrons or holes) enter the transistor.
+For NMOS transistors, the source is typically connected to a lower potential (e.g., ground),
+while for PMOS transistors, it is connected to a higher potential (e.g., Vdd).</p></li>
+<li><p><strong>Gate (G):</strong>
+The terminal that controls the flow of carriers between the source and drain.
+Applying a voltage to the gate creates an electric field that either allows or prevents current flow, effectively acting as a switch.</p></li>
+<li><p><strong>Drain (D):</strong>
+The terminal through which carriers exit the transistor.
+For NMOS transistors, the drain is usually connected to a higher potential, while for PMOS transistors, it is connected to a lower potential.</p></li>
+<li><p><strong>Body (B):</strong>
+Also known as the bulk or substrate, this terminal is typically connected to a fixed reference potential.
+For NMOS transistors, the body is often connected to ground, and for PMOS transistors, it is connected to Vdd.
+The body helps control leakage currents and influences the transistor’s threshold voltage.</p></li>
+</ul>
+<p>By manipulating the voltage at the gate terminal, transistors act as switches, enabling or disabling the flow of current between the source and drain.
+This switching behavior underpins the operation of all logic gates and digital circuits.</p>
+<p>Here are some CMOS Gate Examples</p>
+<ol class="arabic simple">
+<li><p><strong>NOT Gate:</strong></p>
+<ul class="simple">
+<li><p><strong>PMOS:</strong> Connects the output to <code class="docutils literal notranslate"><span class="pre">Vdd</span></code> (high) when the input is low.</p></li>
+<li><p><strong>NMOS:</strong> Connects the output to ground (low) when the input is high.</p></li>
+</ul>
+</li>
+<li><p><strong>NAND Gate:</strong></p>
+<ul class="simple">
+<li><p><strong>PMOS:</strong> Two transistors in parallel connect to <code class="docutils literal notranslate"><span class="pre">Vdd</span></code> if either input is low.</p></li>
+<li><p><strong>NMOS:</strong> Two transistors in series connect to ground only if both inputs are high.</p></li>
+</ul>
+</li>
+<li><p><strong>NOR Gate:</strong></p>
+<ul class="simple">
+<li><p><strong>PMOS:</strong> Two transistors in series connect to <code class="docutils literal notranslate"><span class="pre">Vdd</span></code> only if both inputs are low.</p></li>
+<li><p><strong>NMOS:</strong> Two transistors in parallel connect to ground if either input is high.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="universal-gates">
+<h3>Universal Gates<a class="headerlink" href="#universal-gates" title="Link to this heading">#</a></h3>
+<p><strong>NAND</strong> and <strong>NOR</strong> gates are also called <strong>universal gates</strong> because any other logic gate can be constructed using just these gates.
+Universal gates are fundamental in hardware design, as they simplify manufacturing by reducing the variety of components needed.</p>
+<p>In practice, the NAND gate is widely used in the industry due to several advantages:</p>
+<ul class="simple">
+<li><p>Less delay</p></li>
+<li><p>Smaller silicon area</p></li>
+<li><p>Uniform transistor sizes</p></li>
+</ul>
+<p>An NAND gate’s truth table looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">NAND</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">|---|---|------------|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span>          <span class="o">|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span>          <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span>          <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span>          <span class="o">|</span>
+</pre></div>
+</div>
+<p>Here is a simple Python function for the NAND gate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">NAND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># NOT (a AND b)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now construct basic gates using only NAND:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A NOT gate can be built by connecting both inputs of a NAND gate to the same value.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">NOT_NAND</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">NAND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># Test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">NOT_NAND</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># Output: 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">NOT_NAND</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># Output: 0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># An AND gate can be built by negating the output of a NAND gate.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">AND_NAND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">NOT_NAND</span><span class="p">(</span><span class="n">NAND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+
+<span class="c1"># Test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">AND_NAND</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Output: 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">AND_NAND</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Output: 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">AND_NAND</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Output: 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">AND_NAND</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Output: 1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+0
+0
+1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using De Morgan&#39;s law: A | B = ~(~A &amp; ~B), we can construct an OR gate.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">OR_NAND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">NAND</span><span class="p">(</span><span class="n">NOT_NAND</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">NOT_NAND</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+
+<span class="c1"># Test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OR_NAND</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Output: 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OR_NAND</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Output: 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OR_NAND</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Output: 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OR_NAND</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Output: 1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+1
+1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># An XOR gate can be built using NAND gates as follows:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">XOR_NAND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">NAND</span><span class="p">(</span><span class="n">NAND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">NAND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)),</span> <span class="n">NAND</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">NAND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+
+<span class="c1"># Test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">XOR_NAND</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Output: 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">XOR_NAND</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Output: 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">XOR_NAND</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Output: 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">XOR_NAND</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Output: 0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+1
+0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="addition-in-the-binary-system">
+<h2>Addition in the Binary System<a class="headerlink" href="#addition-in-the-binary-system" title="Link to this heading">#</a></h2>
+<p>In the binary system, addition follows similar rules to decimal addition, but with only two digits: 0 and 1.
+The key rules are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="n">carryover</span>
+</pre></div>
+</div>
+<p>We start from the rightmost bit, adding the bits with carry when needed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">C</span> <span class="o">=</span> <span class="mi">111</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="mi">0101</span> <span class="p">(</span>  <span class="n">A</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="mi">0011</span> <span class="p">(</span>  <span class="n">B</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">-------------</span>
+<span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">=</span> <span class="mi">1000</span> <span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">B</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="half-adder-building-blocks-for-addition">
+<h3>Half Adder: Building Blocks for Addition<a class="headerlink" href="#half-adder-building-blocks-for-addition" title="Link to this heading">#</a></h3>
+<p>A <strong>half adder</strong> is a fundamental circuit used to add two single-bit binary numbers.
+It produces two outputs:</p>
+<ul class="simple">
+<li><p><strong>Sum</strong>: The result of the XOR operation between the two inputs.</p></li>
+<li><p><strong>Carry</strong>: The result of the AND operation between the two inputs, representing an overflow to the next bit.</p></li>
+</ul>
+<figure class="align-default" id="id5">
+<img alt="../_images/half.png" src="../_images/half.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">“Half” adder.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>However, the half adder is limited because it does not account for a carry input from a previous addition.
+This is why it is called a “half” adder—it handles only the addition of two bits without any carry forwarding.</p>
+<p>The logic for a half adder can be represented as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">=</span> <span class="n">S</span> <span class="p">,</span> <span class="n">C</span>
+<span class="o">-------------</span>
+<span class="mi">0</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This simplicity makes the half adder a foundational component for building more complex adders, like the full adder.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">half_adder</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">XOR_NAND</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>  <span class="c1"># Sum using XOR</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">AND_NAND</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>  <span class="c1"># Carry using AND</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">,</span> <span class="n">C</span>
+
+<span class="c1"># Test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">half_adder</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">half_adder</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">half_adder</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">half_adder</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, 0)
+(1, 0)
+(1, 0)
+(0, 1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="building-a-full-adder-using-nand">
+<h3>Building a Full Adder Using NAND<a class="headerlink" href="#building-a-full-adder-using-nand" title="Link to this heading">#</a></h3>
+<p>A <strong>full adder</strong> extends the half adder by adding a carry input.
+It is capable of handling three inputs:</p>
+<ul class="simple">
+<li><p><strong>A</strong>: First bit</p></li>
+<li><p><strong>B</strong>: Second bit</p></li>
+<li><p><strong>Cin</strong>: Carry from the previous bit addition</p></li>
+</ul>
+<p>It produces two outputs:</p>
+<ul class="simple">
+<li><p><strong>Sum</strong>: Result of adding ( A ), ( B ), and ( Cin ).</p></li>
+<li><p><strong>Carry</strong>: Overflow to the next higher bit.</p></li>
+</ul>
+<p>It can be implemented using two half adder and an OR gate:</p>
+<figure class="align-default" id="id6">
+<img alt="../_images/full.png" src="../_images/full.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">“Full” adder.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">full_adder</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">Cin</span><span class="p">):</span>
+    <span class="n">s</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">half_adder</span><span class="p">(</span><span class="n">A</span><span class="p">,</span>   <span class="n">B</span><span class="p">)</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">half_adder</span><span class="p">(</span><span class="n">Cin</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">Cout</span> <span class="o">=</span> <span class="n">OR_NAND</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">,</span> <span class="n">Cout</span>
+
+<span class="c1"># Test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">full_adder</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Output: (0, 0)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">full_adder</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Output: (1, 0)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">full_adder</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Output: (0, 1)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">full_adder</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Output: (1, 1)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, 0)
+(1, 0)
+(0, 1)
+(1, 1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multi-bit-adder">
+<h3>Multi-Bit Adder<a class="headerlink" href="#multi-bit-adder" title="Link to this heading">#</a></h3>
+<p>A <strong>multi-bit adder</strong> combines multiple full adders to add two binary numbers of arbitrary length.
+Each full adder handles one bit, with the carry output of one adder serving as the carry input to the next.</p>
+<p>For example, to add two 4-bit binary numbers <span class="math notranslate nohighlight">\(A_3 A_2 A_1 A_0\)</span> and <span class="math notranslate nohighlight">\(B_3 B_2 B_1 B_0\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Set the initial carry to 0</p></li>
+<li><p>Use full adders for all bits.
+Then, we can combine multiple full adders to make multi-digit adders.</p></li>
+</ol>
+<figure class="align-default" id="id7">
+<img alt="../_images/multi.png" src="../_images/multi.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Multi-digit adder.</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">multibit_adder</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c1"># Assume A and B are of the same length</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">s</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">full_adder</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">C</span><span class="p">)</span>
+        <span class="n">S</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="n">S</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>  <span class="c1"># Add the final carry</span>
+    <span class="k">return</span> <span class="n">S</span>
+
+<span class="c1"># Test</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># 1 + 2 + 8 = 11 in binary</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># 1 + 8 = 9 in binary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">multibit_adder</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>  <span class="c1"># Output: [0, 0, 1, 0, 1] = 4 + 16 = 20 in binary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 0, 1, 0, 1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="number-of-bits-in-an-integer">
+<h3>Number of Bits in an Integer<a class="headerlink" href="#number-of-bits-in-an-integer" title="Link to this heading">#</a></h3>
+<p>The number of bits used to store an integer determines the range of values it can represent.
+For <strong>unsigned integers</strong>, the range is <span class="math notranslate nohighlight">\([0, 2^b - 1]\)</span>, where <span class="math notranslate nohighlight">\(b\)</span> is the number of bits.
+For <strong>signed integers</strong>, one bit is used for the sign, leaving <span class="math notranslate nohighlight">\(n-1\)</span> bits for the value.
+The range for signed integers is usually <span class="math notranslate nohighlight">\([-2^{n-1}, 2^{n-1} - 1]\)</span> (see below).</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>An 8-bit unsigned integer represents values from 0 to 255.</p></li>
+<li><p>An 8-bit signed integer represents values from -128 to 127.</p></li>
+</ul>
+<p>In modern programming languages, integers may be implemented as fixed-width (e.g., 8, 16, 32, 64 bits) or variable-width types, such as Python’s <code class="docutils literal notranslate"><span class="pre">int</span></code>, which dynamically adjusts to the size of the number.</p>
+</section>
+<section id="overflow-and-underflow-error">
+<h3>Overflow and Underflow Error<a class="headerlink" href="#overflow-and-underflow-error" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">multibit_adder()</span></code> example above indicates that adding two <span class="math notranslate nohighlight">\(b\)</span>-bit integer may result a <span class="math notranslate nohighlight">\((b+1)\)</span>-bit integer.</p>
+<p>In computing, <strong>overflow error</strong> occurs when an integer calculation exceeds the maximum value that can be represented within the allocated number of bits.
+For example, in a 32-bit unsigned integer, the maximum value is <span class="math notranslate nohighlight">\(2^{32} - 1\)</span> (4,294,967,295).
+Adding 1 to this value causes the result to “wrap around” to the minimum value 0.</p>
+<p>Similarly, underflow occurs when subtracting below the minimum value.
+This behavior results from how integers are stored and is particularly problematic in applications where precision and correctness are critical.</p>
+<p>To mitigate these errors, some programming languages and compilers provide tools to detect overflow or implement arbitrary-precision integers, which grow dynamically to store larger values.</p>
+</section>
+<section id="representation-of-negative-numbers">
+<h3>Representation of Negative Numbers<a class="headerlink" href="#representation-of-negative-numbers" title="Link to this heading">#</a></h3>
+<p>Negative integers are typically represented using <strong>two’s complement</strong>, the most common method in modern computing. In a two’s complement system:</p>
+<ol class="arabic simple">
+<li><p>Positive numbers are represented as usual in binary.</p></li>
+<li><p>To represent a negative number:</p>
+<ul class="simple">
+<li><p>Write the binary representation of its absolute value.</p></li>
+<li><p>Invert all the bits (change 1 to 0 and 0 to 1).</p></li>
+<li><p>Add 1 to the result.</p></li>
+</ul>
+</li>
+</ol>
+<p>For example, in an 8-bit system:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(+5\)</span> is represented as <code class="docutils literal notranslate"><span class="pre">00000101</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-5\)</span> is represented as <code class="docutils literal notranslate"><span class="pre">11111011</span></code>.</p></li>
+</ul>
+<p>Advantages of two’s complement include:</p>
+<ul class="simple">
+<li><p>A single representation for 0.</p></li>
+<li><p>Efficient hardware implementation for addition and subtraction.</p></li>
+<li><p>The most significant bit (MSB) acts as the <strong>sign bit</strong>: 0 for positive, 1 for negative.</p></li>
+</ul>
+<p>Other less common systems include <strong>sign-magnitude</strong> and <strong>one’s complement</strong>, but these are mostly historical or used in niche applications.</p>
+</section>
+<section id="integer-conversion">
+<h3>Integer Conversion<a class="headerlink" href="#integer-conversion" title="Link to this heading">#</a></h3>
+<p>Integer conversion refers to changing the representation of an integer between different sizes or types.
+There are two main cases:</p>
+<section id="narrowing-conversion">
+<h4>1. Narrowing Conversion<a class="headerlink" href="#narrowing-conversion" title="Link to this heading">#</a></h4>
+<p>This involves converting an integer from a larger type to a smaller type (e.g., 32-bit to 16-bit).
+If the value exceeds the range of the smaller type, it may result in truncation or overflow, often leading to incorrect results.</p>
+<p><strong>Example:</strong>
+Converting <span class="math notranslate nohighlight">\(2^{16} + 1\)</span> from a 32-bit integer to a 16-bit integer results in <span class="math notranslate nohighlight">\(1\)</span> (wrap-around effect).</p>
+</section>
+<section id="widening-conversion">
+<h4>2. Widening Conversion<a class="headerlink" href="#widening-conversion" title="Link to this heading">#</a></h4>
+<p>This involves converting an integer from a smaller type to a larger type (e.g., 16-bit to 32-bit).
+This is typically safe, as the larger type can represent all values of the smaller type without loss of information.</p>
+<p>When converting signed to unsigned integers (or vice versa), the sign bit may be misinterpreted if not handled properly, leading to unexpected results.
+Some languages, like Python, automatically handle such conversions due to their use of arbitrary-precision integers, but others, like C, require explicit care to avoid bugs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<h3 class="rubric" id="data-type-conversion-errors-can-be-very-costly">Data type conversion errors can be very costly</h3>
+<p>Ariane 5 is the primary launch vehicle of the European Space Agency (ESA) that operates from the Guiana Space Center near Kourou in the French Guiana.
+Its first successful operational flight took place in December 1999, when it carried to space the European X-ray Multi Mirror (XMM) satellite.
+Its first test launch, however, on June 4, 1996 resulted in failure, with the rocket exploding 40 seconds into the flight.</p>
+<p>A study of the accident by an inquiry board found that the failure was caused by a software problem in the Inertial Reference System that was guiding the rocket.
+In particular, the computer program, which was written in the Ada programming language and was inherited from the previous launch vehicle Ariane 4, required at some point in the calculation a conversion of a 64-bit floating point number to a 16-bit integer.
+The initial trajectory of the Ariane 5 launch vehicle, however, is significantly different than that of Ariane 4 and the 16 bits are not enough to store some of the required information.
+The result was an error in the calculation, which the inertial system misinterpreted and caused the rocket to veer off its flight path and explode.
+The cost of the failed launch was upwards of 100 million dollars!</p>
+</div>
+</section>
+</section>
+</section>
+<section id="a-moment-of-zen">
+<h2>A Moment of ZEN<a class="headerlink" href="#a-moment-of-zen" title="Link to this heading">#</a></h2>
+<p>Q: What is the output of this simple code?
+What is the last value of <code class="docutils literal notranslate"><span class="pre">x</span></code> it will print?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mf">0.1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To see the problem, change the f-string to <code class="docutils literal notranslate"><span class="pre">print(f&quot;{x:.17f}&quot;)</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<h3 class="rubric" id="rounding-errors-can-have-fatal-consequences">Rounding Errors Can Have Fatal Consequences</h3>
+<p>On February 25, 1991, during Operation Desert Storm, a Scud missile struck a U.S. army barracks in Dhahran, Saudi Arabia, killing 28 soldiers.
+The base was protected by a Patriot Air Defense System, but the system failed to intercept the missile due to a rounding error in its tracking software.</p>
+<p>The Patriot system relies on radar to detect airborne objects and a computer to calculate their trajectories based on time, tracked in increments of 0.1 seconds.
+However, in binary form, 0.1 seconds is represented as an infinite repeating decimal, <span class="math notranslate nohighlight">\((0.1)_{10} = (0.0001100011…)_2\)</span>, which must be rounded during calculations.
+This small rounding error accumulated over time, and after 300 hours of continuous operation, it caused the system to miscalculate the missile’s trajectory.
+As a result, the Patriot failed to identify the Scud as a threat, leading to the tragic loss of life.</p>
+</div>
+</section>
+<section id="how-do-computers-handle-non-integer-numbers">
+<h2>How Do Computers Handle Non-Integer Numbers?<a class="headerlink" href="#how-do-computers-handle-non-integer-numbers" title="Link to this heading">#</a></h2>
+<section id="floating-point-representation">
+<h3>Floating Point Representation<a class="headerlink" href="#floating-point-representation" title="Link to this heading">#</a></h3>
+<p>The easiest way to describe floating-point representation is through an example.
+Consider the result of the mathematical expression <span class="math notranslate nohighlight">\(e^6 \approx 403.42879\)</span>.
+To express this in normalized floating-point notation, we first write the number in scientific notation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b2aa2c5e-3eaa-48ec-b3f3-757dee840466">
+<span class="eqno">(4)<a class="headerlink" href="#equation-b2aa2c5e-3eaa-48ec-b3f3-757dee840466" title="Permalink to this equation">#</a></span>\[\begin{align}
+e^6 = 4.0342879 \times 10^2
+\end{align}\]</div>
+<p>In scientific notation, the number is written such that the significand (or mantissa) is always smaller than the base (in this case, 10).
+To represent the number in floating-point format, we store the following components:</p>
+<ul class="simple">
+<li><p>The sign of the number,</p></li>
+<li><p>The exponent (the power of 10),</p></li>
+<li><p>The significand (the string of significant digits).</p></li>
+</ul>
+<p>For example, the floating-point representation of <span class="math notranslate nohighlight">\(e^6\)</span> with 4 significant digits is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0499017a-1114-4cef-9aca-57ad6b220c8e">
+<span class="eqno">(5)<a class="headerlink" href="#equation-0499017a-1114-4cef-9aca-57ad6b220c8e" title="Permalink to this equation">#</a></span>\[\begin{align}
+e^6 = (+, 2, 4034).
+\end{align}\]</div>
+<p>And with 8 significant digits:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-81b07527-96cd-4278-80d8-d70e106e46f1">
+<span class="eqno">(6)<a class="headerlink" href="#equation-81b07527-96cd-4278-80d8-d70e106e46f1" title="Permalink to this equation">#</a></span>\[\begin{align}
+e^6 = (+, 2, 40342879).
+\end{align}\]</div>
+</section>
+<section id="single-precision-floating-point">
+<h3>Single-Precision Floating Point<a class="headerlink" href="#single-precision-floating-point" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id8">
+<a class="reference internal image-reference" href="../_images/float.svg"><img alt="../_images/float.svg" src="../_images/float.svg" style="height: 80px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">The value <span class="math notranslate nohighlight">\(+0.15625 = (-1)^{(0)_2} \times 2^{(01111100)_2-127} \times (1.01...0)_2\)</span> stored as single precision float.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The IEEE 754 standard for floating-point arithmetic, used by most modern computers, defines how numbers are stored in formats like single precision (32-bit).
+A normalized number’s significand includes an implicit leading 1 before the binary point, so only the fractional part (bits after the binary point) is stored.
+For instance, the binary number <code class="docutils literal notranslate"><span class="pre">1.101</span></code> is stored as <code class="docutils literal notranslate"><span class="pre">101</span></code>, with the leading <code class="docutils literal notranslate"><span class="pre">1</span></code> assumed. This saves space while effectively adding an extra bit of precision.</p>
+<p>The exponent is stored with a “bias” of 127 in single precision.
+This means the actual exponent is calculated as <code class="docutils literal notranslate"><span class="pre">stored_exponent</span> <span class="pre">-</span> <span class="pre">127</span></code>, allowing representation of both positive and negative exponents.
+The smallest stored exponent (<code class="docutils literal notranslate"><span class="pre">0</span></code>) corresponds to an actual exponent of -127, and the largest (<code class="docutils literal notranslate"><span class="pre">255</span></code>) corresponds to +128.
+Single-precision numbers, such as <code class="docutils literal notranslate"><span class="pre">np.single</span></code> in <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> in <code class="docutils literal notranslate"><span class="pre">C</span></code>, can represent values ranging approximately from <span class="math notranslate nohighlight">\(2^{-127} \approx 6 \times 10^{-39}\)</span> to <span class="math notranslate nohighlight">\(2^{128} \approx 3 \times 10^{38}\)</span>.</p>
+</section>
+<section id="double-precision-floating-point">
+<h3>Double-Precision Floating Point<a class="headerlink" href="#double-precision-floating-point" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id9">
+<a class="reference internal image-reference" href="../_images/double.svg"><img alt="../_images/double.svg" src="../_images/double.svg" style="height: 120px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Memeory layout of a double precision float.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>For double precision (64-bit), the exponent is stored with a bias of <code class="docutils literal notranslate"><span class="pre">1023</span></code> and the significand with an implicit leading 1 is stored in 52 bits.
+The exponent can represent values from -1023 to +1024.
+Double-precision numbers can represent values ranging from approximately <span class="math notranslate nohighlight">\(10^{-308}\)</span> to  <span class="math notranslate nohighlight">\(10^{308}\)</span>, corresponding to the <code class="docutils literal notranslate"><span class="pre">double</span></code> type in C or <code class="docutils literal notranslate"><span class="pre">np.double</span></code> in Python/NumPy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<h3 class="rubric" id="abusing-floating-point-numbers-arepo">Abusing Floating Point Numbers: <code class="docutils literal notranslate"><span class="pre">Arepo</span></code></h3>
+<figure class="align-default" id="id10">
+<a class="reference internal image-reference" href="../_images/arepo1.png"><img alt="../_images/arepo1.png" src="../_images/arepo1.png" style="height: 240px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">The moving mesh code Arepo.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Arepo cosmology code, widely used in astrophysical simulations, employs a moving mesh method to solve fluid dynamics problems with high accuracy and efficiency.</p>
+<figure class="align-default" id="id11">
+<a class="reference internal image-reference" href="../_images/arepo2.png"><img alt="../_images/arepo2.png" src="../_images/arepo2.png" style="height: 480px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">The fast maping between 53-bit integer and double precision float.</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To avoid numerical issues commonly encountered in floating-point arithmetic, Arepo implements an innovative approach to ensure robustness in geometric computations.
+Specifically, it maps the significant digits of double-precision floating-point numbers to a 53-bit integer, which allows for exact arithmetic when evaluating geometric predicates.
+By doing this, Arepo avoids round-off errors that could otherwise compromise the accuracy of simulations.
+This precise handling of numerical data is critical for the accurate modeling of complex cosmological structures.</p>
+</div>
+</section>
+<section id="other-floating-point">
+<h3>Other Floating Point<a class="headerlink" href="#other-floating-point" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>“half percision” <code class="docutils literal notranslate"><span class="pre">float16</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bfloat16</span></code>, used for neural network</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code>, could be 80-bit or 128-bit, dependent on the system.</p></li>
+</ul>
+</section>
+<section id="encoding-of-special-values">
+<h3>Encoding of Special Values<a class="headerlink" href="#encoding-of-special-values" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span>    <span class="n">s_exponent_signcnd</span>
+<span class="o">+</span><span class="n">inf</span> <span class="o">=</span> <span class="mi">0_11111111_0000000</span>
+<span class="o">-</span><span class="n">inf</span> <span class="o">=</span> <span class="mi">1_11111111_0000000</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span>    <span class="n">s_exponent_signcnd</span>
+<span class="o">+</span><span class="n">NaN</span> <span class="o">=</span> <span class="mi">0_11111111</span><span class="n">_klmnopq</span>
+<span class="o">-</span><span class="n">NaN</span> <span class="o">=</span> <span class="mi">1_11111111</span><span class="n">_klmnopq</span>
+</pre></div>
+</div>
+<p>where at least one of <code class="docutils literal notranslate"><span class="pre">k</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">o</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code>, or <code class="docutils literal notranslate"><span class="pre">q</span></code> is 1.</p>
+</section>
+<section id="nan-comparison-rules">
+<h3>NaN Comparison Rules<a class="headerlink" href="#nan-comparison-rules" title="Link to this heading">#</a></h3>
+<p>In Python, like in C, the special value NaN (Not a Number) has unique comparison behavior. Any ordered comparison between a NaN and any other value, including another NaN, always evaluates to False.</p>
+<p>To reliably check if a value is NaN, it is recommended to use the <code class="docutils literal notranslate"><span class="pre">np.isnan()</span></code> function from NumPy, as direct comparisons (e.g., <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">np.nan</span></code>) will not work as expected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Demonstrate NaN comparison rules</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span>  <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span>  <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span>  <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span>  <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+False
+False
+False
+False
+True
+False
+False
+False
+False
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="remarkable-increase-in-computing-speed">
+<h2>Remarkable Increase in Computing Speed<a class="headerlink" href="#remarkable-increase-in-computing-speed" title="Link to this heading">#</a></h2>
+<section id="moore-s-law">
+<h3>Moore’s Law<a class="headerlink" href="#moore-s-law" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id12">
+<a class="reference internal image-reference" href="../_images/Moores_Law.png"><img alt="../_images/Moores_Law.png" src="../_images/Moores_Law.png" style="height: 640px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Moore’s Law.</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="high-performance-computing">
+<h3>High-Performance Computing<a class="headerlink" href="#high-performance-computing" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id13">
+<a class="reference internal image-reference" href="../_images/elgato.jpg"><img alt="../_images/elgato.jpg" src="../_images/elgato.jpg" style="height: 240px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Elgato</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id14">
+<a class="reference internal image-reference" href="../_images/ocelote.jpg"><img alt="../_images/ocelote.jpg" src="../_images/ocelote.jpg" style="height: 240px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Ocelote</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="what-determines-computational-performance">
+<h3>What Determines Computational Performance?<a class="headerlink" href="#what-determines-computational-performance" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id15">
+<a class="reference internal image-reference" href="../_images/42-years-processor-trend.png"><img alt="../_images/42-years-processor-trend.png" src="../_images/42-years-processor-trend.png" style="height: 640px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Origin data up to year 2010 collected and plotted by Horowitz et al.; new data collected and plotted by <a class="reference external" href="https://www.karlrupp.net/2018/02/42-years-of-microprocessor-trend-data/">Rupp</a>.</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<h3 class="rubric" id="abusing-floating-point-numbers-fast-inverse-square-root">Abusing Floating Point Numbers: Fast Inverse Square Root</h3>
+<p>One fascinating example of taking advantage of floating-point representation is the fast inverse square root algorithm, famously used in computer graphics, particularly in the development of 3D engines like those in video games.
+This algorithm provides an efficient way to compute <span class="math notranslate nohighlight">\(1/\sqrt{x}\)</span>, a common operation in tasks like normalizing vectors.
+Instead of relying on the standard floating-point math libraries, the algorithm “hacks” the floating-point representation by manipulating the bits directly to achieve a remarkably fast approximation of the result.
+This method takes advantage of how floating-point numbers are stored, using a clever combination of bitwise operations and mathematical magic to drastically speed up computation.</p>
+<p>The following code is the fast inverse square root implementation from Quake III Arena, stripped of C preprocessor directives, but including <a class="reference external" href="https://web.archive.org/web/20170729072505/https://github.com/id-Software/Quake-III-Arena/blob/master/code/game/q_math.c#L552">modified comment text</a>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="nf">Q_rsqrt</span><span class="p">(</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">	</span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">	</span><span class="kt">float</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">	</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">threehalfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5F</span><span class="p">;</span>
+
+<span class="w">	</span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5F</span><span class="p">;</span>
+<span class="w">	</span><span class="n">y</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="p">;</span>
+<span class="w">	</span><span class="n">i</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">;</span><span class="w">                     </span><span class="c1">// evil floating point bit level hacking</span>
+<span class="w">	</span><span class="n">i</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mh">0x5f3759df</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">);</span><span class="w">             </span><span class="c1">// what the f**k?</span>
+<span class="w">	</span><span class="n">y</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">;</span>
+<span class="w">	</span><span class="n">y</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">threehalfs</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="c1">// 1st iteration</span>
+<span class="c1">//	y  = y * ( threehalfs - ( x2 * y * y ) ); // 2nd iteration, this can be removed</span>
+
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ias.edu/sites/default/files/library/Prelim_Disc_Logical_Design.pdf">Preliminary discussion of the logical design of an electronic computing instrument</a> by Burks, Goldstine, and von Neumann (1964)</p></li>
+<li><p><a class="reference external" href="https://docs.oracle.com/cd/E19957-01/800-7895/800-7895.pdf">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a> by D. Goldberg, in the March 1991 of Computing Surveys</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vahidszd/IUT-Computational-Physics-hbakhshian",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../01/lab.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Git, Jupyter, and Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Errors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#riddle">Riddle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-numbers">Representing Numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-notation-systems">Positional Notation Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-numbers">Binary Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hexadecimal-system">The Hexadecimal System</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-implementations">Hardware Implementations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-binary-operators">Basic Binary Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmos-implementation">CMOS Implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-gates">Universal Gates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-in-the-binary-system">Addition in the Binary System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#half-adder-building-blocks-for-addition">Half Adder: Building Blocks for Addition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-full-adder-using-nand">Building a Full Adder Using NAND</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-bit-adder">Multi-Bit Adder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-bits-in-an-integer">Number of Bits in an Integer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-and-underflow-error">Overflow and Underflow Error</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-of-negative-numbers">Representation of Negative Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-conversion">Integer Conversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#narrowing-conversion">1. Narrowing Conversion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#widening-conversion">2. Widening Conversion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-moment-of-zen">A Moment of ZEN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-computers-handle-non-integer-numbers">How Do Computers Handle Non-Integer Numbers?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-representation">Floating Point Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-precision-floating-point">Single-Precision Floating Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#double-precision-floating-point">Double-Precision Floating Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-floating-point">Other Floating Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-of-special-values">Encoding of Special Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nan-comparison-rules">NaN Comparison Rules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarkable-increase-in-computing-speed">Remarkable Increase in Computing Speed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moore-s-law">Moore’s Law</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-computing">High-Performance Computing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-determines-computational-performance">What Determines Computational Performance?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chi-kwan Chan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

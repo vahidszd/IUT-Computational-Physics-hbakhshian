@@ -1,0 +1,21 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+chapters:
+- file: syllabus
+- file: 01/notes
+- file: 01/lab
+- file: 02/notes
+- file: 02/lab
+- file: 03/notes
+- file: 03/lab
+- file: 03/sol
+- file: 04/notes
+- file: 04/lab
+- file: 05/notes
+- file: 06/notes
+- file: 06/lab
+- file: 07/notes
+- file: 08/notes
