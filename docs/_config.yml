@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: "PHYS 305: Computational Physics"
-author: Chi-kwan Chan
+author: H. Bakhshian
 logo: iutlogo.jpg
 
 parse:
