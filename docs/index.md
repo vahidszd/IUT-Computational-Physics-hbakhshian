@@ -25,7 +25,7 @@ kernelspec:
 **Location:** Social Sciences, Room 206
 
 **Instructor:** Chi-kwan "CK" Chan <chanc@arizona.edu> Office hour: Mon 1-2pm, Wed 11am–noon (SO N332)  
-**Teaching Assistant:** Devendran "Deva" Vemula <devendranvemula@arizona.edu>  
+**Teaching Assistant:** Devendran "Deva" Vemula <devendranvemula@arizona.edu> Consultation hour: Wed 12 - 1pm (PAS 372)
 **Preceptor:** Nikhil Garuda <nikhilgaruda@arizona.edu>  
 Please include "PHYS305" in subjects of emails
 
