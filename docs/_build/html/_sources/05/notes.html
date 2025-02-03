@@ -1,0 +1,1291 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Useful Tools &#8212; PHYS 305: Computational Physics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_sources/05/notes';</script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/language_data.js?v=d4673a71"></script>
+    <script src="../../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/iutlogo.jpg" class="logo__image only-light" alt="PHYS 305: Computational Physics - Home"/>
+    <img src="../../_static/iutlogo.jpg" class="logo__image only-dark pst-js-only" alt="PHYS 305: Computational Physics - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    PHYS 305
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01/notes.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01/lab.html">Git, Jupyter, and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/notes.html">Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/lab.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/notes.html">Numerical Linear Algebra</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../03/lab.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/sol.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/notes.html">Fourier Transform and Spectral Analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/lab.html">Fourier Transform and Spectral Analyses Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/notes.html">Useful Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06/notes.html">Interpolation and Extrapolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06/lab.html">Interpolation and Extrapolation Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07/notes.html">Numerical and Automatic Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08/notes.html">Numerical Integration of Functions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/edit/main/docs/_sources/05/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/issues/new?title=Issue%20on%20page%20%2F_sources/05/notes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/_sources/05/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Useful Tools</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bash">Bash</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-commands">Basic Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripting">Scripting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-processing">Text Processing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-wildcards">Using Wildcards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-tricks-for-basic-terminal-use">Tips and Tricks for Basic Terminal Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-permissions-and-ownership">File Permissions and Ownership</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-running-processes">Viewing Running Processes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-aliases">Creating Aliases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-documentation">Further Documentation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git">Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Basic Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branching-and-merging">Branching and Merging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolving-merge-conflicts">Resolving Merge Conflicts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gitignore">Using .gitignore</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with Remote Repositories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-features">Advanced Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Further Documentation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environments">Virtual Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-in-virtual-environments">Installing Packages in Virtual Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-from-requirements-txt">Installing Packages from requirements.txt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-packages-with-pyproject-toml">Creating Packages with pyproject.toml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editable-installs">Editable Installs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-project-folder-structure">Recommended Project Folder Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-and-running-tests">Writing and Running Tests</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-classes">Python Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-class">Defining a Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-instance">Creating an Instance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance">Inheritance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-subclass">Using the Subclass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-call-method">The <code class="docutils literal notranslate"><span class="pre">__call__</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-call-method">Using the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Further Documentation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <details>
+<summary>Slides</summary>
+<iframe src="https://slides.com/nikhilgaruda/deck/embed" width="720" height="420" title="phys_305_useful_tools" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</details><section class="tex2jax_ignore mathjax_ignore" id="useful-tools">
+<h1>Useful Tools<a class="headerlink" href="#useful-tools" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In this section, we will explore some essential tools that are widely used in software development and data science. These tools include:</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://www.gnu.org/software/bash/">Bash</a></strong>: A Unix shell and command language that provides powerful text processing and scripting capabilities. Bash is essential for automating repetitive tasks, managing system operations, and handling text processing efficiently.</p></li>
+<li><p><strong><a class="reference external" href="https://git-scm.com/">Git</a></strong>: A distributed version control system that helps you track changes in your code and collaborate with others. Git is crucial for maintaining a history of your project, enabling collaboration among team members, and managing different versions of your codebase.</p></li>
+<li><p><strong><a class="reference external" href="https://www.python.org/">Python</a></strong>: A versatile programming language that is popular for its simplicity and readability, and is extensively used in data analysis, machine learning, and web development. Python’s extensive libraries and frameworks make it a go-to choice for various applications, from scripting to building complex applications.</p></li>
+</ul>
+<p>By mastering these tools, you will be able to streamline your workflow, manage your projects more effectively, and enhance your productivity. This section assumes that you have a basic understanding of programming concepts and are familiar with using the command line.</p>
+</section>
+<section id="bash">
+<h2>Bash<a class="headerlink" href="#bash" title="Link to this heading">#</a></h2>
+<p>Bash (Bourne Again SHell) is a Unix shell and command language that is widely used for system administration, scripting, and text processing. It provides a powerful set of tools for automating tasks and managing system operations.</p>
+<section id="basic-commands">
+<h3>Basic Commands<a class="headerlink" href="#basic-commands" title="Link to this heading">#</a></h3>
+<p>Here are some basic Bash commands that you should know:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span></code>: List directory contents. Example: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> lists files in long format. Example: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code> lists all files, including hidden files.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-l
+ls<span class="w"> </span>-a
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code>: Change the current directory. Example: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/path/to/directory</span></code> changes to the specified directory.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/directory
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code>: Print the current working directory. Example: <code class="docutils literal notranslate"><span class="pre">pwd</span></code> displays the full path of the current directory.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cp</span></code>: Copy files and directories. Example: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">source.txt</span> <span class="pre">destination.txt</span></code> copies the source file to the destination.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>source.txt<span class="w"> </span>destination.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mv</span></code>: Move or rename files and directories. Example: <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">oldname.txt</span> <span class="pre">newname.txt</span></code> renames the file.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>oldname.txt<span class="w"> </span>newname.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rm</span></code>: Remove files or directories. Example: <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">file.txt</span></code> deletes the specified file.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>file.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span></code>: Display a line of text. Example: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;Hello,</span> <span class="pre">World!&quot;</span></code> prints the text to the terminal.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cat</span></code>: Concatenate and display file content. Example: <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">file.txt</span></code> displays the content of the file.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>file.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span></code>: Create a new directory. Example: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">new_directory</span></code> creates a new directory with the specified name.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>new_directory
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span></code>: Create a new directory and any necessary parent directories. Example: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/path/to/new_directory</span></code> creates the specified directory along with any missing parent directories.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/path/to/new_directory
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">touch</span></code>: Create a new empty file or update the timestamp of an existing file. Example: <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">newfile.txt</span></code> creates an empty file with the specified name.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>newfile.txt
+</pre></div>
+</div>
+<p>You can combine <code class="docutils literal notranslate"><span class="pre">touch</span></code> with other commands to create multiple files at once or to create files in specific directories. Here are some examples:</p>
+<ul class="simple">
+<li><p>Create multiple files:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>file1.txt<span class="w"> </span>file2.txt<span class="w"> </span>file3.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create a file in a specific directory:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>/path/to/directory/newfile.txt
+</pre></div>
+</div>
+</section>
+<section id="scripting">
+<h3>Scripting<a class="headerlink" href="#scripting" title="Link to this heading">#</a></h3>
+<p>Bash scripting allows you to automate repetitive tasks by writing scripts. A Bash script is simply a text file containing a series of commands. Here is an example of a simple Bash script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+<p>To run the script, save it to a file (e.g., <code class="docutils literal notranslate"><span class="pre">hello.sh</span></code>), make it executable (<code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">hello.sh</span></code>), and then execute it (<code class="docutils literal notranslate"><span class="pre">./hello.sh</span></code>).</p>
+</section>
+<section id="text-processing">
+<h3>Text Processing<a class="headerlink" href="#text-processing" title="Link to this heading">#</a></h3>
+<p>Bash provides powerful text processing capabilities through commands like <code class="docutils literal notranslate"><span class="pre">grep</span></code>, <code class="docutils literal notranslate"><span class="pre">awk</span></code>, and <code class="docutils literal notranslate"><span class="pre">sed</span></code>. These tools allow you to search, filter, and transform text data efficiently. Here are some examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grep</span></code>: Search for patterns in files. Example: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">'pattern'</span> <span class="pre">file.txt</span></code> searches for ‘pattern’ in the file.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep<span class="w"> </span><span class="s1">&#39;pattern&#39;</span><span class="w"> </span>file.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">awk</span></code>: A programming language for text processing. Example: <code class="docutils literal notranslate"><span class="pre">awk</span> <span class="pre">'{print</span> <span class="pre">$1}'</span> <span class="pre">file.txt</span></code> prints the first column of each line in the file.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span>file.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sed</span></code>: Stream editor for filtering and transforming text. Example: <code class="docutils literal notranslate"><span class="pre">sed</span> <span class="pre">'s/old/new/g'</span> <span class="pre">file.txt</span></code> replaces ‘old’ with ‘new’ in the file.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed<span class="w"> </span><span class="s1">&#39;s/old/new/g&#39;</span><span class="w"> </span>file.txt
+</pre></div>
+</div>
+</section>
+<section id="using-wildcards">
+<h3>Using Wildcards<a class="headerlink" href="#using-wildcards" title="Link to this heading">#</a></h3>
+<p>Wildcards are special characters that can be used to match patterns in filenames. Here are some common wildcards:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: Matches any number of characters. Example: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.txt</span></code> lists all files with a <code class="docutils literal notranslate"><span class="pre">.txt</span></code> extension.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>*.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code>: Matches a single character. Example: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">file?.txt</span></code> matches <code class="docutils literal notranslate"><span class="pre">file1.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">file2.txt</span></code>, etc.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>file?.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code>: Matches any one of the characters inside the brackets. Example: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">file[12].txt</span></code> matches <code class="docutils literal notranslate"><span class="pre">file1.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">file2.txt</span></code>.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>file<span class="o">[</span><span class="m">12</span><span class="o">]</span>.txt
+</pre></div>
+</div>
+</section>
+<section id="tips-and-tricks-for-basic-terminal-use">
+<h3>Tips and Tricks for Basic Terminal Use<a class="headerlink" href="#tips-and-tricks-for-basic-terminal-use" title="Link to this heading">#</a></h3>
+<p>Here are some tips and tricks to enhance your terminal usage:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Tab</span></code> for auto-completion of commands and filenames.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">R</span></code> to search through your command history.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code> to cancel the current command.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">L</span></code> to clear the terminal screen.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">!!</span></code> to repeat the last command.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">!&lt;command&gt;</span></code> to repeat the last occurrence of a specific command. Example: <code class="docutils literal notranslate"><span class="pre">!ls</span></code> repeats the last <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p></li>
+</ul>
+</section>
+<section id="file-permissions-and-ownership">
+<h3>File Permissions and Ownership<a class="headerlink" href="#file-permissions-and-ownership" title="Link to this heading">#</a></h3>
+<p>Managing file permissions and ownership is crucial for system security and proper access control. Here are some commands related to file permissions and ownership:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">chmod</span></code>: Change file permissions. Example: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">755</span> <span class="pre">file.txt</span></code> sets the file permissions to read, write, and execute for the owner, and read and execute for others.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>file.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">chown</span></code>: Change file ownership. Example: <code class="docutils literal notranslate"><span class="pre">chown</span> <span class="pre">user:group</span> <span class="pre">file.txt</span></code> changes the owner and group of the file.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chown<span class="w"> </span>user:group<span class="w"> </span>file.txt
+</pre></div>
+</div>
+</section>
+<section id="viewing-running-processes">
+<h3>Viewing Running Processes<a class="headerlink" href="#viewing-running-processes" title="Link to this heading">#</a></h3>
+<p>You can view and manage running processes using the following commands:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ps</span></code>: Display information about running processes. Example: <code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">aux</span></code> shows detailed information about all running processes.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ps<span class="w"> </span>aux
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">top</span></code>: Display real-time information about running processes. Example: <code class="docutils literal notranslate"><span class="pre">top</span></code> shows a dynamic view of system processes.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>top
+</pre></div>
+</div>
+</section>
+<section id="creating-aliases">
+<h3>Creating Aliases<a class="headerlink" href="#creating-aliases" title="Link to this heading">#</a></h3>
+<p>Aliases allow you to create shortcuts for frequently used commands. Here are some examples:</p>
+<ul class="simple">
+<li><p>Create an alias for <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-la</span></code>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span><span class="w"> </span><span class="nv">ll</span><span class="o">=</span><span class="s1">&#39;ls -la&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Make the alias permanent by adding it to your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> or <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> file:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias ll=&#39;ls -la&#39;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</section>
+<section id="further-documentation">
+<h3>Further Documentation<a class="headerlink" href="#further-documentation" title="Link to this heading">#</a></h3>
+<p>For more information and advanced usage, you can refer to the official Bash documentation and resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.gnu.org/software/bash/manual/">Bash Official Documentation</a></p></li>
+<li><p><a class="reference external" href="https://git.savannah.gnu.org/cgit/bash.git">Bash Source Code</a></p></li>
+<li><p><a class="reference external" href="https://tldp.org/LDP/abs/html/">Bash Scripting Guide</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">man</span></code>: The <code class="docutils literal notranslate"><span class="pre">man</span></code> command displays the manual pages for other commands. For example, <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ls</span></code> shows the manual page for the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command. To exit the manual page, press <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>man<span class="w"> </span>ls
+</pre></div>
+</div>
+<p>By mastering Bash, you can significantly enhance your productivity and streamline your workflow.</p>
+</section>
+</section>
+<section id="git">
+<h2>Git<a class="headerlink" href="#git" title="Link to this heading">#</a></h2>
+<p>Git is a distributed version control system that helps you track changes in your code and collaborate with others. It is crucial for maintaining a history of your project, enabling collaboration among team members, and managing different versions of your codebase.</p>
+<section id="id1">
+<h3>Basic Commands<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Here are some basic Git commands that you should know:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>: Initialize a new Git repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code>: Clone an existing repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/user/repo.git
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>: Show the working directory status.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>: Add files to the staging area.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>filename
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>: Commit changes to the repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Commit message&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>: Push changes to a remote repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>branchname
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>: Pull changes from a remote repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>branchname
+</pre></div>
+</div>
+</section>
+<section id="branching-and-merging">
+<h3>Branching and Merging<a class="headerlink" href="#branching-and-merging" title="Link to this heading">#</a></h3>
+<p>Git allows you to create branches to work on different features or fixes independently. Here are some commands related to branching and merging:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code>: List, create, or delete branches.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch
+git<span class="w"> </span>branch<span class="w"> </span>new-branch
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>old-branch
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code>: Switch to a different branch.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>branchname
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code>: Merge changes from one branch into another.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>merge<span class="w"> </span>branchname
+</pre></div>
+</div>
+</section>
+<section id="resolving-merge-conflicts">
+<h3>Resolving Merge Conflicts<a class="headerlink" href="#resolving-merge-conflicts" title="Link to this heading">#</a></h3>
+<p>Merge conflicts occur when changes from different branches conflict with each other. To resolve merge conflicts:</p>
+<ul class="simple">
+<li><p>Identify the conflicting files using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Open the conflicting files and manually resolve the conflicts.</p></li>
+<li><p>Mark the conflicts as resolved by adding the resolved files to the staging area.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>resolved_file.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Commit the resolved changes.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Resolved merge conflicts&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-gitignore">
+<h3>Using .gitignore<a class="headerlink" href="#using-gitignore" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file specifies which files and directories to ignore in a Git repository. Here is an example of a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ignore all .log files</span>
+<span class="o">*.</span><span class="n">log</span>
+
+<span class="c1"># Ignore the node_modules directory</span>
+<span class="n">node_modules</span><span class="o">/</span>
+
+<span class="c1"># Ignore all files in the temp directory</span>
+<span class="n">temp</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-remote-repositories">
+<h3>Working with Remote Repositories<a class="headerlink" href="#working-with-remote-repositories" title="Link to this heading">#</a></h3>
+<p>You can manage remote repositories using the following commands:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span></code>: Manage remote repositories. Example: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">origin</span> <span class="pre">https://github.com/user/repo.git</span></code> adds a remote repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/user/repo.git
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code>: Fetch changes from a remote repository without merging them.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>fetch<span class="w"> </span>origin
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>: Fetch and merge changes from a remote repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>branchname
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>: Push changes to a remote repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>branchname
+</pre></div>
+</div>
+</section>
+<section id="advanced-features">
+<h3>Advanced Features<a class="headerlink" href="#advanced-features" title="Link to this heading">#</a></h3>
+<p>Here are some advanced Git features that can help you manage your codebase more effectively:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code>: Reapply commits on top of another base tip. Example: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">main</span></code> rebases the current branch onto the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rebase<span class="w"> </span>main
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span></code>: Stash changes in a dirty working directory. Example: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span></code> stashes the current changes.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>stash
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">pop</span></code>: Apply stashed changes and remove them from the stash list.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>stash<span class="w"> </span>pop
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Further Documentation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>For more information and advanced usage, you can refer to the official Git documentation and resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://git-scm.com/doc">Git Official Documentation</a></p></li>
+<li><p><a class="reference external" href="https://git-scm.com/book/en/v2">Pro Git Book</a></p></li>
+<li><p><a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">Git Cheat Sheet</a></p></li>
+</ul>
+<p>By mastering Git, you can effectively manage your codebase, collaborate with others, and maintain a history of your project.</p>
+</section>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<p>Python is a versatile programming language that is popular for its simplicity and readability. It is widely used for data analysis, machine learning, web development, scripting, and more.</p>
+<section id="virtual-environments">
+<h3>Virtual Environments<a class="headerlink" href="#virtual-environments" title="Link to this heading">#</a></h3>
+<p>Virtual environments isolate project dependencies, preventing conflicts between different projects and ensuring a consistent environment. Here is a brief comparison of venv vs. conda:</p>
+<p><strong>venv</strong>:</p>
+<ul class="simple">
+<li><p>Included with Python (no separate install).</p></li>
+<li><p>Lightweight, straightforward.</p></li>
+<li><p>Activates a virtual environment in the current shell.</p></li>
+</ul>
+<p>Installation and usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a virtual environment</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv
+<span class="c1"># Activate it (Linux/macOS)</span>
+<span class="nb">source</span><span class="w"> </span>myenv/bin/activate
+<span class="c1"># Activate it (Windows)</span>
+myenv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</pre></div>
+</div>
+<p><strong>conda</strong>:</p>
+<ul class="simple">
+<li><p>Requires Anaconda or Miniconda installation.</p></li>
+<li><p>Manages Python versions and packages efficiently.</p></li>
+<li><p>Provides extensive data science libraries and environment management.</p></li>
+</ul>
+<p>Installation and usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a conda environment</span>
+conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+<span class="c1"># Activate the environment</span>
+conda<span class="w"> </span>activate<span class="w"> </span>myenv
+<span class="c1"># Deactivate the environment</span>
+conda<span class="w"> </span>deactivate
+</pre></div>
+</div>
+<p>You can find flavors of conda via <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda</a> and <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>.</p>
+</section>
+<section id="installing-packages-in-virtual-environments">
+<h3>Installing Packages in Virtual Environments<a class="headerlink" href="#installing-packages-in-virtual-environments" title="Link to this heading">#</a></h3>
+<p>When using a virtual environment, you can install packages with <code class="docutils literal notranslate"><span class="pre">pip</span></code> (if you are using venv or within a conda environment):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>requests
+</pre></div>
+</div>
+<p>For conda environments:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy
+</pre></div>
+</div>
+<p>This ensures packages are isolated within your environment.</p>
+</section>
+<section id="installing-packages-from-requirements-txt">
+<h3>Installing Packages from requirements.txt<a class="headerlink" href="#installing-packages-from-requirements-txt" title="Link to this heading">#</a></h3>
+<p>If you have a <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file listing the dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">requests</span><span class="o">==</span><span class="mf">2.28.1</span>
+<span class="n">numpy</span><span class="o">==</span><span class="mf">1.24.0</span>
+</pre></div>
+</div>
+<p>Install them in your active environment with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>For conda (convert dependencies to conda format if you can, or install pip-based packages in a conda environment):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>--file<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>This helps manage project dependencies in a single file.</p>
+</section>
+<section id="creating-packages-with-pyproject-toml">
+<h3>Creating Packages with pyproject.toml<a class="headerlink" href="#creating-packages-with-pyproject-toml" title="Link to this heading">#</a></h3>
+<p>Modern Python packaging often uses <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> files, following <a class="reference external" href="https://peps.python.org/pep-0518/">PEP 518</a> and related standards. A simple <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> might look like:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;my_package&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;A sample Python package&quot;</span>
+<span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="p">=</span><span class="s2">&quot;Your Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">=</span><span class="s2">&quot;your_email@example.com&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">]</span>
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;requests~=2.28.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;numpy~=1.24.0&quot;</span>
+<span class="p">]</span>
+
+<span class="n">readme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;README.md&quot;</span>
+<span class="n">license</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;MIT&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;=3.7&quot;</span>
+
+<span class="k">[build-system]</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;wheel&quot;</span><span class="p">]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
+</pre></div>
+</div>
+<p>Recommended PEP standards include:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8</a> for code style.</p></li>
+<li><p><a class="reference external" href="https://peps.python.org/pep-0484/">PEP 484</a> for type hints.</p></li>
+<li><p><a class="reference external" href="https://peps.python.org/pep-0517/">PEP 517</a> for building packages.</p></li>
+<li><p><a class="reference external" href="https://peps.python.org/pep-0621/">PEP 621</a> for <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> project metadata</p></li>
+</ul>
+<p>For more in-depth guidance on writing <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and Python packaging, see <a class="reference external" href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#writing-pyproject-toml">Python Packaging Official Docs</a></p>
+</section>
+<section id="editable-installs">
+<h3>Editable Installs<a class="headerlink" href="#editable-installs" title="Link to this heading">#</a></h3>
+<p>If you have a <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> for your project, you can install it in editable mode, allowing local changes to be immediately reflected:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="recommended-project-folder-structure">
+<h3>Recommended Project Folder Structure<a class="headerlink" href="#recommended-project-folder-structure" title="Link to this heading">#</a></h3>
+<p>A typical Python project layout:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>my_project/
+├──<span class="w"> </span>pyproject.toml
+├──<span class="w"> </span>src/
+│<span class="w">   </span>└──<span class="w"> </span>my_project/
+│<span class="w">       </span>├──<span class="w"> </span>__init__.py
+│<span class="w">       </span>└──<span class="w"> </span>main.py
+└──<span class="w"> </span>tests/
+<span class="w">    </span>└──<span class="w"> </span>test_main.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>: Contains packaging configuration.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/my_project/</span></code>: Source code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests/</span></code>: Test files.</p></li>
+</ul>
+<p>Following this structure makes your project easier to maintain and distribute.</p>
+</section>
+<section id="writing-and-running-tests">
+<h3>Writing and Running Tests<a class="headerlink" href="#writing-and-running-tests" title="Link to this heading">#</a></h3>
+<p>Testing is essential for ensuring the correctness and stability of your code. One popular testing framework is <code class="docutils literal notranslate"><span class="pre">pytest</span></code>. A typical setup:</p>
+<ol class="arabic simple">
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">pytest</span></code>:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pytest
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Create a test file, for example <code class="docutils literal notranslate"><span class="pre">test_example.py</span></code>:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_addition</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Run tests:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest
+</pre></div>
+</div>
+<p>Used with continuous integration tools, testing helps maintain a reliable codebase. By mastering virtual environments, packaging with <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, adhering to PEP standards, and writing thorough tests, you will build robust and maintainable Python projects.</p>
+</section>
+</section>
+<section id="python-classes">
+<h2>Python Classes<a class="headerlink" href="#python-classes" title="Link to this heading">#</a></h2>
+<p>In Python, classes are used to create user-defined data structures. They allow you to bundle data and functionality together. Creating a new class creates a new type of object, allowing new instances of that type to be made. Each class instance can have attributes attached to it for maintaining its state. Class instances can also have methods (defined by its class) for modifying its state.</p>
+<section id="defining-a-class">
+<h3>Defining a Class<a class="headerlink" href="#defining-a-class" title="Link to this heading">#</a></h3>
+<p>Here is an example of a simple class definition:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;This shape is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="si">}</span><span class="s2">.&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method is a special method that is called when an instance of the class is created. It initializes the instance with the given arguments. The <code class="docutils literal notranslate"><span class="pre">self</span></code> parameter refers to the instance being created.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">self</span></code> parameter is a reference to the current instance of the class. It is used to access variables and methods associated with the instance.</p>
+</section>
+<section id="creating-an-instance">
+<h3>Creating an Instance<a class="headerlink" href="#creating-an-instance" title="Link to this heading">#</a></h3>
+<p>You can create an instance of the class by calling the class name and passing the required arguments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_shape</span> <span class="o">=</span> <span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_shape</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>  <span class="c1"># Output: This shape is red.</span>
+</pre></div>
+</div>
+</section>
+<section id="inheritance">
+<h3>Inheritance<a class="headerlink" href="#inheritance" title="Link to this heading">#</a></h3>
+<p>Classes can inherit from other classes. This allows you to create a hierarchy of classes that share a set of attributes and methods. Here is an example of a <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> class that inherits from <code class="docutils literal notranslate"><span class="pre">Shape</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;This rectangle is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="si">}</span><span class="s2">, with an area of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">area</span><span class="p">()</span><span class="si">}</span><span class="s2"> square units.&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-subclass">
+<h3>Using the Subclass<a class="headerlink" href="#using-the-subclass" title="Link to this heading">#</a></h3>
+<p>You can create an instance of the subclass and use its methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_rectangle</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_rectangle</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>  <span class="c1"># Output: This rectangle is blue, with an area of 12 square units.</span>
+</pre></div>
+</div>
+</section>
+<section id="the-call-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">__call__</span></code> Method<a class="headerlink" href="#the-call-method" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method allows an instance of the class to be called as a function. Here is an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;This circle is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="si">}</span><span class="s2">, with an area of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">area</span><span class="p">()</span><span class="si">}</span><span class="s2"> square units.&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-call-method">
+<h3>Using the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> Method<a class="headerlink" href="#using-the-call-method" title="Link to this heading">#</a></h3>
+<p>You can create an instance of the class and call it as a function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_circle</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_circle</span><span class="p">())</span>  <span class="c1"># Output: This circle is green, with an area of 78.5 square units.</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Further Documentation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>For more information on Python classes and object-oriented programming, refer to the following resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">Python Official Documentation on Classes</a></p></li>
+<li><p><a class="reference external" href="https://realpython.com/python3-object-oriented-programming/">Real Python’s Guide to Classes and OOP</a></p></li>
+<li><p><a class="reference external" href="https://www.programiz.com/python-programming/object-oriented-programming">Python OOP Tutorial</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vahidszd/IUT-Computational-Physics-hbakhshian",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_sources/05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bash">Bash</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-commands">Basic Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripting">Scripting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-processing">Text Processing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-wildcards">Using Wildcards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-tricks-for-basic-terminal-use">Tips and Tricks for Basic Terminal Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-permissions-and-ownership">File Permissions and Ownership</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-running-processes">Viewing Running Processes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-aliases">Creating Aliases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-documentation">Further Documentation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git">Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Basic Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branching-and-merging">Branching and Merging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolving-merge-conflicts">Resolving Merge Conflicts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gitignore">Using .gitignore</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with Remote Repositories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-features">Advanced Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Further Documentation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environments">Virtual Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-in-virtual-environments">Installing Packages in Virtual Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-from-requirements-txt">Installing Packages from requirements.txt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-packages-with-pyproject-toml">Creating Packages with pyproject.toml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editable-installs">Editable Installs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-project-folder-structure">Recommended Project Folder Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-and-running-tests">Writing and Running Tests</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-classes">Python Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-class">Defining a Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-instance">Creating an Instance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance">Inheritance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-subclass">Using the Subclass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-call-method">The <code class="docutils literal notranslate"><span class="pre">__call__</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-call-method">Using the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Further Documentation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chi-kwan Chan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

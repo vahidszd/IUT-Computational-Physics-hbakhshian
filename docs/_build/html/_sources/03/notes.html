@@ -1,0 +1,1525 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Numerical Linear Algebra &#8212; PHYS 305: Computational Physics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_sources/03/notes';</script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/language_data.js?v=d4673a71"></script>
+    <script src="../../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/iutlogo.jpg" class="logo__image only-light" alt="PHYS 305: Computational Physics - Home"/>
+    <img src="../../_static/iutlogo.jpg" class="logo__image only-dark pst-js-only" alt="PHYS 305: Computational Physics - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    PHYS 305
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01/notes.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01/lab.html">Git, Jupyter, and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/notes.html">Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02/lab.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/notes.html">Numerical Linear Algebra</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../03/lab.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03/sol.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/notes.html">Fourier Transform and Spectral Analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04/lab.html">Fourier Transform and Spectral Analyses Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05/notes.html">Useful Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06/notes.html">Interpolation and Extrapolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06/lab.html">Interpolation and Extrapolation Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07/notes.html">Numerical and Automatic Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08/notes.html">Numerical Integration of Functions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/edit/main/docs/_sources/03/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/issues/new?title=Issue%20on%20page%20%2F_sources/03/notes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/_sources/03/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Numerical Linear Algebra</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Linear Algebra</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-roles">Fundamental Roles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-from-physics">Motivations from Physics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-from-computation">Motivations from Computation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-numerical-linear-algebra">Importance of Numerical Linear Algebra</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-numbers-floating-point-issues">Condition Numbers &amp; Floating-Point Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-epsilon-and-rounding-errors">Machine Epsilon and Rounding Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">Condition Number</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-this-matter">Why Does This Matter?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-solvers">Direct Solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-elimination">Gaussian Elimination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lu-decomposition"><span class="math notranslate nohighlight">\(LU\)</span> Decomposition</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inverse">Matrix Inverse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-solvers-for-large-sparse-systems">Iterative Solvers for Large/Sparse Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-iteration">Jacobi Iteration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gauss-seidel">Gauss-Seidel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problems">Eigenvalue Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-eigenvalue-problem">The Eigenvalue Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-method-for-the-dominant-eigenpair">Power Method for the Dominant Eigenpair</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-algorithm-for-dense-matrices">QR Algorithm for Dense Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-topics">Future Topics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">Singular Value Decomposition (SVD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-pca">Principal Component Analysis (PCA)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="numerical-linear-algebra">
+<h1>Numerical Linear Algebra<a class="headerlink" href="#numerical-linear-algebra" title="Link to this heading">#</a></h1>
+<section id="fundamental-roles">
+<h2>Fundamental Roles<a class="headerlink" href="#fundamental-roles" title="Link to this heading">#</a></h2>
+<p>Linear algebra is a foundation in modern mathematics.
+It enables multidimensional calculus, multivariate statistics, differential geometry, functional analysis, control theory, and more.
+It enables systematic and predictable problem-solving.
+It is fair to say we understand most of the linear mathemtics.
+When faced with non-linear problems, it is common to transform them into linear approximations for analysis and solution.</p>
+<p>Numerical linear algebra further enhances this power, extending it to computational physics.
+It enables solving partial differential equations (PDEs), optimization problems, eigenvalue analyses, and more.
+By bridging theory and computation, numerical linear algebra helps solving some of the most challenging problems in physics and engineering.</p>
+<section id="motivations-from-physics">
+<h3>Motivations from Physics<a class="headerlink" href="#motivations-from-physics" title="Link to this heading">#</a></h3>
+<p><strong>Normal Modes:</strong>
+Normal modes describe vibration patterns in systems near equilibrium.
+It is a generalized eigenvalue problem.
+Applications include identifying resonance frequencies in materials, analyzing sound in acoustics, and studying plasma waves.
+Linear algebra’s role in solving eigenvalue problems is central to understanding these phenomena.</p>
+<p><strong>Quantum Mechanics:</strong>
+Quantum mechanics is linear, governed by the Schrödinger equation.
+This linearity allows quantum systems to be expressed in terms of vectors and matrices, enabling numerical approaches.
+Applications include calculating electronic band structures, solving molecular orbital equations, and diagonalizing Hamiltonians in spin systems.
+Efficient algorithms like Lanczos and Davidson extract eigenvalues and eigenvectors from large matrices are essential for studying quantum systems.</p>
+<p><strong>Discretized PDEs:</strong>
+PDEs, such as the Poisson and heat equations, describe continuous physical systems.
+Discretization transforms them into large (sparse) linear systems, enabling efficient iterative solvers like Conjugate Gradient (CG) and GMRES.
+These methods apply to problems in electrostatics, heat conduction, fluid flow, and structural mechanics.
+Even nonlinear PDEs often require solving linear subproblems iteratively, highlighting the importance of linear algebra in computational physics.</p>
+<p><strong>Linearization of Nonlinear Problems:</strong>
+Nonlinear problems, like turbulence or combustion, are approximated through linearization.
+Applications include solving non-linear PDEs, perturbation theory, and computational fluid dynamics.
+Nonlinear problems often reduce to sequences of linear solves, highlighting the foundational role of linear algebra.</p>
+</section>
+<section id="motivations-from-computation">
+<h3>Motivations from Computation<a class="headerlink" href="#motivations-from-computation" title="Link to this heading">#</a></h3>
+<p><strong>Large-Scale Data</strong>
+Physics experiments and machine learning (ML) tasks both generate large datasets, such as images, sensor readings, or high-dimensional feature vectors.
+Matrix decompositions—including QR, Singular Value Decomposition (SVD), and Principal Component Analysis (PCA)—are critical tools for analyzing and compressing these datasets.
+PCA, in particular, is widely used for dimensionality reduction, feature extraction, noise reduction, and visualization in high-dimensional spaces.
+Similarly, in physics, these techniques are applied to identify dominant modes in fluid flow or material vibrations.
+This shared reliance on linear algebra underscores its cross-disciplinary importance in processing complex data.</p>
+<p><strong>Neural Networks</strong>
+Neural networks rely heavily on linear algebra for their core operations.
+Forward and backpropagation, essential processes in deep learning, primarily involve matrix multiplication between layer weight matrices and input or activation vectors.
+Training large neural networks involves repeated and massive matrix-vector and matrix-matrix operations.
+Efficient linear algebra routines are therefore vital to the success of modern ML systems.</p>
+<p><strong>Hardware Accelerators</strong>
+Efficient linear algebra implementations are critical for leveraging modern hardware, such as GPUs and TPUs, which are optimized for matrix operations.
+Vectorized computations not only accelerate ML tasks but also ensure scalability for large datasets and complex models.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<blockquote class="epigraph">
+<div><p>If Everything Were Linear, We Wouldn’t Need Computers.</p>
+</div></blockquote>
+<p>A popular statement suggests that in a purely linear world, everything would be easy to solve analytically.
+However, this is an oversimplification.
+Even perfectly linear problems can pose significant computational challenges due to two key factors.</p>
+<ul class="simple">
+<li><p>First, high dimensionality makes solving linear systems computationally intensive.
+For instance, systems with millions of unknowns arise in large PDE grids or massive machine learning models.
+Processing such large-scale data requires significant computational power, regardless of linearity.</p></li>
+<li><p>Second, real-world computations face constraints from finite precision.
+Hardware limitations, such as floating-point arithmetic, introduce numerical stability and conditioning challenges, even in linear systems.
+Addressing these issues requires robust algorithms to ensure accurate and efficient solutions.</p></li>
+</ul>
+</div>
+</section>
+<section id="importance-of-numerical-linear-algebra">
+<h3>Importance of Numerical Linear Algebra<a class="headerlink" href="#importance-of-numerical-linear-algebra" title="Link to this heading">#</a></h3>
+<p><strong>Floating-Point Arithmetic and Rounding Errors:</strong>
+As covered in last chapter, numerical analysis addresses the limitations of finite precision in computational hardware.
+Small rounding errors, particularly in ill-conditioned systems, can amplify significantly, leading to unreliable results.
+Techniques like pivoting in Gaussian elimination or employing stable iterative algorithms are crucial for ensuring numerical stability.</p>
+<p><strong>Condition Numbers and Sensitivity:</strong>
+Ill-conditioned matrices amplify small input perturbations, making solutions highly sensitive to errors.
+This issue is prevalent in physics problems, such as nearly degenerate modes, and in machine learning tasks, like poorly scaled data that slows network training.
+Understanding and managing condition numbers is essential for robust computations.</p>
+<p><strong>Solver Complexity and Algorithm Selection:</strong>
+The choice of solver depends on the problem scale and structure.
+Direct solvers, such as Gaussian elimination or LU decomposition, scale as <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span> for dense systems, which can be infeasible for large <span class="math notranslate nohighlight">\(n\)</span>.
+Iterative methods, like Jacobi, Conjugate Gradient, and GMRES, exploit matrix sparsity to handle massive systems efficiently.
+Preconditioning further improves convergence, benefiting both physics simulations and ML optimizations.</p>
+<p><strong>Leveraging Established Theory:</strong>
+Linear algebra is a deeply studied field, and once a problem is expressed as a matrix, powerful theoretical and numerical tools can be applied.
+Techniques like eigen-decomposition and SVD provide consistent and reliable approaches across domains, benefiting applications from quantum mechanics to deep learning.
+This universality makes numerical linear algebra indispensable in modern computational science.</p>
+</section>
+</section>
+<section id="condition-numbers-floating-point-issues">
+<h2>Condition Numbers &amp; Floating-Point Issues<a class="headerlink" href="#condition-numbers-floating-point-issues" title="Link to this heading">#</a></h2>
+<p>Accurate numerical solutions in computational physics depend heavily on <strong>floating-point arithmetic</strong> details and the <strong>condition number</strong> of the problem at hand. Small floating-point errors can be amplified dramatically if the system is ill-conditioned. In this set of notes, we’ll explore the nature of rounding errors, how to spot ill-conditioned problems, and why it all matters.</p>
+<section id="machine-epsilon-and-rounding-errors">
+<h3>Machine Epsilon and Rounding Errors<a class="headerlink" href="#machine-epsilon-and-rounding-errors" title="Link to this heading">#</a></h3>
+<p>Recalling from last lecture…</p>
+<ol class="arabic simple">
+<li><p><strong>Finite Precision</strong></p>
+<ul class="simple">
+<li><p>On a real computer, numbers are stored with a finite number of bits (in Python, <code class="docutils literal notranslate"><span class="pre">float64</span></code> has 53 bits of precision in the significand).</p></li>
+<li><p>The smallest gap between distinct floating-point numbers near 1.0 is the <strong>machine epsilon</strong> (<span class="math notranslate nohighlight">\(\approx 2.22 \times 10^{-16}\)</span> for double precision).</p></li>
+</ul>
+</li>
+<li><p><strong>Rounding &amp; Representation</strong></p>
+<ul class="simple">
+<li><p>Because of finite precision, most real numbers can’t be represented exactly.</p></li>
+<li><p>Operations like addition and multiplication are done to a certain precision; the final result is <em>rounded</em> back into the floating-point format.</p></li>
+</ul>
+</li>
+<li><p><strong>Catastrophic Cancellation</strong></p>
+<ul class="simple">
+<li><p>If two nearly equal numbers are subtracted, the leading digits can cancel out, leaving the result with fewer significant bits of accuracy.</p></li>
+<li><p><strong>Example</strong>: <code class="docutils literal notranslate"><span class="pre">(1e16</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">-</span> <span class="pre">1e16</span></code> might yield <code class="docutils literal notranslate"><span class="pre">0.0</span></code> in floating-point, even though the exact answer is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="condition-number">
+<h3>Condition Number<a class="headerlink" href="#condition-number" title="Link to this heading">#</a></h3>
+<p>Intuitive Definition:</p>
+<ul>
+<li><p>Sensitivity to Input Changes</p>
+<ul class="simple">
+<li><p>A condition number measures how much the solution to a problem can change relative to small changes in the input data.</p></li>
+<li><p>In the context of solving <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span>, if the matrix <span class="math notranslate nohighlight">\(A\)</span> is ill-conditioned, small perturbations in <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> or rounding errors in <span class="math notranslate nohighlight">\(A\)</span> can lead to large changes in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Mathematical Insight</p>
+<ul>
+<li><p>For a non-singular matrix <span class="math notranslate nohighlight">\(A\)</span>, the condition number (in the 2-norm) is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6114584b-2b7c-47d2-923b-6dfb6e63b188">
+<span class="eqno">()<a class="headerlink" href="#equation-6114584b-2b7c-47d2-923b-6dfb6e63b188" title="Permalink to this equation">#</a></span>\[\begin{align}
+  \kappa(A) = |A|_2\,|A^{-1}|_2,
+\end{align}\]</div>
+<p>which also equals the ratio of the largest singular value to the smallest singular value of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</li>
+<li><p>A large <span class="math notranslate nohighlight">\(\kappa(A)\)</span> (e.g., <span class="math notranslate nohighlight">\(10^6\)</span> or <span class="math notranslate nohighlight">\(10^9\)</span>) indicates potential numerical instability.</p></li>
+</ul>
+</li>
+</ul>
+<p>Consider the following simple 2×2 example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9899c666-ad7d-4a8b-b12f-97666ff58ed2">
+<span class="eqno">()<a class="headerlink" href="#equation-9899c666-ad7d-4a8b-b12f-97666ff58ed2" title="Permalink to this equation">#</a></span>\[\begin{align}
+A =
+\begin{pmatrix}
+1 &amp; 1\\
+1 &amp; 1.0001
+\end{pmatrix},
+\quad
+\mathbf{b} =
+\begin{pmatrix}
+2\\
+2.0001
+\end{pmatrix}.
+\end{align}\]</div>
+<p>In the exact World: If we solve <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> symbolically, we’ll get a unique solution.
+However, suppose we change <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> slightly to <span class="math notranslate nohighlight">\(\mathbf{b}' = (2, 2.0000)^T\)</span>.
+This tiny change can produce a surprisingly large change in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+<p>The following python code illustrate this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.0001</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span>
+              <span class="mf">2.0001</span><span class="p">])</span>
+
+<span class="c1"># Solve the original system</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution x for original b:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Slightly perturb b</span>
+<span class="n">bp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.0000</span><span class="p">])</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">bp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution x for perturbed b:&quot;</span><span class="p">,</span> <span class="n">xp</span><span class="p">)</span>
+
+<span class="c1"># Check the condition number of A</span>
+<span class="n">cond_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Condition number of A:&quot;</span><span class="p">,</span> <span class="n">cond_A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution x for original b: [1. 1.]
+Solution x for perturbed b: [2. 0.]
+Condition number of A: 40002.000074949116
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result indicates:</p>
+<ul class="simple">
+<li><p>The original and perturbed solutions might differ noticeably despite only a 0.0001 change in the second component of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p></li>
+<li><p>The condition number <code class="docutils literal notranslate"><span class="pre">cond_A</span></code> will be relatively large, indicating that <span class="math notranslate nohighlight">\(A\)</span> is ill-conditioned.</p></li>
+</ul>
+</section>
+<section id="why-does-this-matter">
+<h3>Why Does This Matter?<a class="headerlink" href="#why-does-this-matter" title="Link to this heading">#</a></h3>
+<p><strong>Direct solvers</strong> (e.g., Gaussian Elimination) can become numerically unreliable if the system is ill-conditioned because floating-point errors from pivoting or rounding are easily amplified.
+Although pivoting helps, it cannot fully correct a severely ill-conditioned system.</p>
+<p><strong>Iterative methods</strong> (e.g., Conjugate Gradient, GMRES) also degrade under ill-conditioning, resulting in slow convergence or the need for heavy preconditioning.
+Even then, convergence may require many iterations or yield poor accuracy.</p>
+<p><strong>Matrix decompositions</strong> (e.g., eigenvalue, SVD) are similarly affected. Small errors in a nearly singular matrix can lead to large deviations in the computed eigenvalues or singular values.</p>
+<p>In <strong>practice</strong>, ill-conditioned matrices can undermine results in physics simulations (e.g., discretized PDEs, linearized nonlinear models) and degrade performance in data science tasks such as large-scale regression or neural network training.</p>
+</section>
+</section>
+<section id="direct-solvers">
+<h2>Direct Solvers<a class="headerlink" href="#direct-solvers" title="Link to this heading">#</a></h2>
+<p>Direct methods are often the first approach taught for solving linear systems <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span>.
+They involve algebraic factorizations that can be computed in a fixed number of steps (roughly <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span>) for an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix.</p>
+<section id="gaussian-elimination">
+<h3>Gaussian Elimination<a class="headerlink" href="#gaussian-elimination" title="Link to this heading">#</a></h3>
+<p><strong>Gaussian Elimination</strong> transforms the system <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> into an equivalent upper-triangular form <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{c}\)</span> via systematic row operations.
+Once in upper-triangular form, one can perform <strong>back-substitution</strong> to solve for <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+<ol class="arabic simple">
+<li><p><strong>Row Operations</strong></p>
+<ul class="simple">
+<li><p>Subtract a multiple of one row from another to eliminate entries below the main diagonal.</p></li>
+<li><p>Aim to create zeros in column <span class="math notranslate nohighlight">\(j\)</span> below row <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Partial Pivoting</strong></p>
+<ul class="simple">
+<li><p>When a pivot (diagonal) element is small (or zero), <strong>swap</strong> the current row with a row below that has a larger pivot element in the same column.</p></li>
+<li><p>This step <strong>mitigates numerical instability</strong> by reducing the chance that small pivots lead to large rounding errors in subsequent operations.</p></li>
+</ul>
+</li>
+<li><p><strong>Result</strong></p>
+<ul class="simple">
+<li><p>After eliminating all sub-diagonal entries, the matrix is in upper-triangular form <span class="math notranslate nohighlight">\(U\)</span>.</p></li>
+<li><p>Solve <span class="math notranslate nohighlight">\(U\mathbf{x} = \mathbf{c}\)</span> via back-substitution.</p></li>
+</ul>
+</li>
+</ol>
+<p>Here is an <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_elimination">exampmle</a>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>System of equations</p></th>
+<th class="head"><p>Row operations</p></th>
+<th class="head"><p>Augmented matrix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-5d4ccc54-6ce2-436c-999a-0f3e0488571b">
+<span class="eqno">()<a class="headerlink" href="#equation-5d4ccc54-6ce2-436c-999a-0f3e0488571b" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+   2x &amp;{}+{}&amp; y &amp;{}-{}&amp;  z &amp;{}={}&amp;   8 &amp; \\
+  -3x &amp;{}-{}&amp; y &amp;{}+{}&amp; 2z &amp;{}={}&amp; -11 &amp; \\
+  -2x &amp;{}+{}&amp; y &amp;{}+{}&amp; 2z &amp;{}={}&amp;  -3 &amp;
+\end{alignat}\]</div>
+</td>
+<td></td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-0aa072cb-20a5-4251-a66e-b9a19e9f249f">
+<span class="eqno">()<a class="headerlink" href="#equation-0aa072cb-20a5-4251-a66e-b9a19e9f249f" title="Permalink to this equation">#</a></span>\[\begin{align}
+\left[\begin{array}{rrr|r}
+   2 &amp;  1 &amp; -1 &amp;   8 \\
+  -3 &amp; -1 &amp;  2 &amp; -11 \\
+  -2 &amp;  1 &amp;  2 &amp;  -3
+\end{array}\right]
+\nonumber
+\end{align}\]</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="amsmath math notranslate nohighlight" id="equation-7fa6cc5d-2683-4746-82f5-4e9dcdd490da">
+<span class="eqno">()<a class="headerlink" href="#equation-7fa6cc5d-2683-4746-82f5-4e9dcdd490da" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+  2x &amp;{}+{}&amp;          y &amp;{}-{}&amp;          z &amp;{}={}&amp; 8 &amp; \\
+     &amp;     &amp; \tfrac12 y &amp;{}+{}&amp; \tfrac12 z &amp;{}={}&amp; 1 &amp; \\
+     &amp;     &amp;         2y &amp;{}+{}&amp;          z &amp;{}={}&amp; 5 &amp;
+\end{alignat}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-4fef6b64-bd0c-4418-9085-97b03caa366f">
+<span class="eqno">()<a class="headerlink" href="#equation-4fef6b64-bd0c-4418-9085-97b03caa366f" title="Permalink to this equation">#</a></span>\[\begin{align}
+  L_2 + \tfrac32 L_1 &amp;\to L_2 \\
+  L_3 +          L_1 &amp;\to L_3
+\end{align}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-5002156f-62c3-45db-82b1-39b9b82742e2">
+<span class="eqno">()<a class="headerlink" href="#equation-5002156f-62c3-45db-82b1-39b9b82742e2" title="Permalink to this equation">#</a></span>\[\begin{align}
+\left[\begin{array}{rrr|r}
+  2 &amp;      1  &amp;     -1  &amp; 8 \\
+  0 &amp; \frac12 &amp; \frac12 &amp; 1 \\
+  0 &amp;      2  &amp;      1  &amp; 5
+\end{array}\right]
+\end{align}\]</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-d501bdf2-8c4e-4014-a4b5-5b97d373cf4e">
+<span class="eqno">()<a class="headerlink" href="#equation-d501bdf2-8c4e-4014-a4b5-5b97d373cf4e" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+  2x &amp;{}+{}&amp;          y &amp;{}-{}&amp;          z &amp;{}={}&amp; 8 &amp; \\
+     &amp;     &amp; \tfrac12 y &amp;{}+{}&amp; \tfrac12 z &amp;{}={}&amp; 1 &amp; \\
+     &amp;     &amp;            &amp;     &amp;         -z &amp;{}={}&amp; 1 &amp;
+\end{alignat}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-ff9a9a66-188a-4469-9bda-cd841069126f">
+<span class="eqno">()<a class="headerlink" href="#equation-ff9a9a66-188a-4469-9bda-cd841069126f" title="Permalink to this equation">#</a></span>\[\begin{align}
+  L_3 + -4 L_2 \to L_3
+\end{align}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-1fdb22a3-f85f-42f1-a255-44ddd1027fde">
+<span class="eqno">()<a class="headerlink" href="#equation-1fdb22a3-f85f-42f1-a255-44ddd1027fde" title="Permalink to this equation">#</a></span>\[\begin{align}
+\left[\begin{array}{rrr|r}
+  2 &amp;      1  &amp;     -1  &amp; 8 \\
+  0 &amp; \frac12 &amp; \frac12 &amp; 1 \\
+  0 &amp;      0  &amp;     -1  &amp; 1
+\end{array}\right]
+\end{align}\]</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The matrix is now in echelon form (also called triangular form):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>System of equations</p></th>
+<th class="head"><p>Row operations</p></th>
+<th class="head"><p>Augmented matrix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-1aba7c70-1d2b-46fb-b77f-19d6a5f1f12d">
+<span class="eqno">()<a class="headerlink" href="#equation-1aba7c70-1d2b-46fb-b77f-19d6a5f1f12d" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+  2x &amp;{}+{}&amp;          y &amp;     &amp;   &amp;{}={}       7  &amp; \\
+     &amp;     &amp; \tfrac12 y &amp;     &amp;   &amp;{}={} \tfrac32 &amp; \\
+     &amp;     &amp;            &amp;{}-{}&amp; z &amp;{}={}       1  &amp;
+\end{alignat}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-37218c95-cbcf-41e1-8a2e-65453af18458">
+<span class="eqno">()<a class="headerlink" href="#equation-37218c95-cbcf-41e1-8a2e-65453af18458" title="Permalink to this equation">#</a></span>\[\begin{align}
+  L_1 -          L_3 &amp;\to L_1\\
+  L_2 + \tfrac12 L_3 &amp;\to L_2 
+\end{align}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-3760aaaa-bb99-40c4-a84e-d1fa84507d67">
+<span class="eqno">()<a class="headerlink" href="#equation-3760aaaa-bb99-40c4-a84e-d1fa84507d67" title="Permalink to this equation">#</a></span>\[\begin{align}
+\left[\begin{array}{rrr|r}
+  2 &amp;      1  &amp;  0 &amp;      7  \\
+  0 &amp; \frac12 &amp;  0 &amp; \frac32 \\
+  0 &amp;      0  &amp; -1 &amp;      1
+\end{array}\right]
+\end{align}\]</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="amsmath math notranslate nohighlight" id="equation-0b591965-503f-44db-a175-4b5d726709d6">
+<span class="eqno">()<a class="headerlink" href="#equation-0b591965-503f-44db-a175-4b5d726709d6" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+  2x &amp;{}+{}&amp; y &amp;\quad&amp;   &amp;{}={}&amp;  7 &amp; \\
+     &amp;     &amp; y &amp;\quad&amp;   &amp;{}={}&amp;  3 &amp; \\
+     &amp;     &amp;   &amp;\quad&amp; z &amp;{}={}&amp; -1 &amp;
+\end{alignat}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-2c26e3d7-90f3-4bbb-9443-2dc60869bf95">
+<span class="eqno">()<a class="headerlink" href="#equation-2c26e3d7-90f3-4bbb-9443-2dc60869bf95" title="Permalink to this equation">#</a></span>\[\begin{align}
+   2 L_2 &amp;\to L_2 \\
+  -L_3 &amp;\to L_3
+\end{align}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-de2c211a-f91d-4285-8983-74d4cb1a3dc3">
+<span class="eqno">()<a class="headerlink" href="#equation-de2c211a-f91d-4285-8983-74d4cb1a3dc3" title="Permalink to this equation">#</a></span>\[\begin{align}
+\left[\begin{array}{rrr|r}
+  2 &amp; 1 &amp; 0 &amp;  7 \\
+  0 &amp; 1 &amp; 0 &amp;  3 \\
+  0 &amp; 0 &amp; 1 &amp; -1
+\end{array}\right]
+\end{align}\]</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-9437974b-f0f2-4160-88b8-d4948137ead7">
+<span class="eqno">()<a class="headerlink" href="#equation-9437974b-f0f2-4160-88b8-d4948137ead7" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+  x &amp;\quad&amp;   &amp;\quad&amp;   &amp;{}={}&amp;  2 &amp; \\
+    &amp;\quad&amp; y &amp;\quad&amp;   &amp;{}={}&amp;  3 &amp; \\
+    &amp;\quad&amp;   &amp;\quad&amp; z &amp;{}={}&amp; -1 &amp;
+\end{alignat}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-407676ad-4e93-464a-bfaf-880c06e2ea2f">
+<span class="eqno">()<a class="headerlink" href="#equation-407676ad-4e93-464a-bfaf-880c06e2ea2f" title="Permalink to this equation">#</a></span>\[\begin{align}
+           L_1 - L_2 &amp;\to L_1 \\
+  \tfrac12 L_1       &amp;\to L_1
+\end{align}\]</div>
+</td>
+<td><div class="amsmath math notranslate nohighlight" id="equation-2c687d61-3b26-4eb1-be7d-865e742ea80d">
+<span class="eqno">()<a class="headerlink" href="#equation-2c687d61-3b26-4eb1-be7d-865e742ea80d" title="Permalink to this equation">#</a></span>\[\begin{align}
+\left[\begin{array}{rrr|r}
+  1 &amp; 0 &amp; 0 &amp;  2 \\
+  0 &amp; 1 &amp; 0 &amp;  3 \\
+  0 &amp; 0 &amp; 1 &amp; -1
+\end{array}\right]
+\end{align}\]</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Below is a simple example comparing <strong>naive Gaussian Elimination</strong> (no pivoting) with <strong>partial pivoting</strong> on a small system.
+While this code is for illustrative purposes (and not as robust as <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve()</span></code>), it shows the basic process.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussian_elimination_naive</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform naive (no pivoting) Gaussian elimination to solve A x = b.</span>
+<span class="sd">    Returns the solution vector x.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>  <span class="c1"># Ensure floating-point</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Forward elimination</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Zero pivot encountered (no pivoting).&quot;</span><span class="p">)</span>
+            <span class="n">factor</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+                <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+    <span class="c1"># Back-substitution</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">-=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gaussian_elimination_partial_pivot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gaussian elimination with partial pivoting to solve A x = b.</span>
+<span class="sd">    Returns the solution vector x.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Forward elimination with partial pivoting</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># Pivot selection: find max pivot in column k</span>
+        <span class="n">pivot_row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">:,</span> <span class="n">k</span><span class="p">]))</span> <span class="o">+</span> <span class="n">k</span>
+        <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">pivot_row</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Matrix is singular or pivot is zero.&quot;</span><span class="p">)</span>
+        <span class="c1"># Swap rows if needed</span>
+        <span class="k">if</span> <span class="n">pivot_row</span> <span class="o">!=</span> <span class="n">k</span><span class="p">:</span>
+            <span class="n">A</span><span class="p">[[</span><span class="n">k</span><span class="p">,</span> <span class="n">pivot_row</span><span class="p">]]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[[</span><span class="n">pivot_row</span><span class="p">,</span> <span class="n">k</span><span class="p">]]</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">pivot_row</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">pivot_row</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">factor</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">:]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">:]</span> <span class="o">-</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">:]</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+    <span class="c1"># Back-substitution</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">-=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Naive Gaussian Elimination:&quot;</span><span class="p">)</span>
+<span class="n">x_naive</span> <span class="o">=</span> <span class="n">gaussian_elimination_naive</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">b</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution:&quot;</span><span class="p">,</span> <span class="n">x_naive</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gaussian Elimination with Partial Pivoting:&quot;</span><span class="p">)</span>
+<span class="n">x_pivot</span> <span class="o">=</span> <span class="n">gaussian_elimination_partial_pivot</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">b</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution:&quot;</span><span class="p">,</span> <span class="n">x_pivot</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compare with numpy&#39;s solve</span>
+<span class="n">x_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">b</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy&#39;s solve:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution:&quot;</span><span class="p">,</span> <span class="n">x_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive Gaussian Elimination:
+Solution: [ 1.58302995 -0.02120263 -0.66124946]
+
+Gaussian Elimination with Partial Pivoting:
+Solution: [ 1.58302995 -0.02120263 -0.66124946]
+
+Numpy&#39;s solve:
+Solution: [ 1.58302995 -0.02120263 -0.66124946]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lu-decomposition">
+<h3><span class="math notranslate nohighlight">\(LU\)</span> Decomposition<a class="headerlink" href="#lu-decomposition" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(LU\)</span> Decomposition is a systematic way to express <span class="math notranslate nohighlight">\(A\)</span> as <span class="math notranslate nohighlight">\(A = P L U\)</span>, where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is a permutation matrix</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> is lower triangular (with 1s on the diagonal following the standard convention).</p></li>
+<li><p><span class="math notranslate nohighlight">\(U\)</span> is upper triangular.</p></li>
+</ul>
+<p>Once <span class="math notranslate nohighlight">\(A\)</span> is factored as <span class="math notranslate nohighlight">\(P L U\)</span>, solving <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> becomes:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(L \mathbf{y} = P^t \mathbf{b}\)</span> (forward substitution)</p></li>
+<li><p><span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span> (back-substitution)</p></li>
+</ol>
+<p>Gaussian elimination essentially constructs the <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> matrices behind the scenes:</p>
+<ul class="simple">
+<li><p>The multipliers used in the row operations become the entries of <span class="math notranslate nohighlight">\(L\)</span>.</p></li>
+<li><p>The final upper-triangular form is <span class="math notranslate nohighlight">\(U\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">la</span>
+
+<span class="c1"># Perform LU decomposition with pivoting</span>
+<span class="n">P</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c1"># P is the permutation matrix</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Permutation matrix P:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lower triangular matrix L:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Upper triangular matrix U:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Forward substitution for L y = Pt b</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve_triangular</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">unit_diagonal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Back substitution for U x = y</span>
+<span class="n">x_LU</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">solve_triangular</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution using LU decomposition:&quot;</span><span class="p">,</span> <span class="n">x_LU</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Check with np.linalg.solve(A, b):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Permutation matrix P:
+[[0. 0. 1.]
+ [0. 1. 0.]
+ [1. 0. 0.]]
+Lower triangular matrix L:
+[[1.         0.         0.        ]
+ [0.7425834  1.         0.        ]
+ [0.28963621 0.70714415 1.        ]]
+Upper triangular matrix U:
+[[ 0.48782174  0.66230352  0.04238887]
+ [ 0.          0.28685955  0.69890458]
+ [ 0.          0.         -0.43812505]]
+
+Solution using LU decomposition: [ 1.58302995 -0.02120263 -0.66124946]
+Check with np.linalg.solve(A, b): [ 1.58302995 -0.02120263 -0.66124946]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="matrix-inverse">
+<h2>Matrix Inverse<a class="headerlink" href="#matrix-inverse" title="Link to this heading">#</a></h2>
+<p>Although the matrix <strong>inverse</strong> <span class="math notranslate nohighlight">\(A^{-1}\)</span> is a central theoretical concept, <strong>explicitly</strong> forming <span class="math notranslate nohighlight">\(A^{-1}\)</span> just to solve <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is almost always unnecessary and can degrade numerical stability.
+Instead, direct approaches (like Gaussian Elimination or LU factorization) find <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> with fewer operations and less error accumulation.
+Both methods cost about <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span>, but computing the entire inverse introduces extra steps and can magnify floating-point errors.</p>
+<p>In <strong>rare</strong> cases, you might actually need <span class="math notranslate nohighlight">\(A^{-1}\)</span>. For example, when:</p>
+<ul class="simple">
+<li><p><strong>Multiple Right-Hand Sides</strong>: If you must solve <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}_i\)</span> for many different <span class="math notranslate nohighlight">\(\mathbf{b}_i\)</span>, you might form or approximate <span class="math notranslate nohighlight">\(A^{-1}\)</span> for convenience.</p></li>
+<li><p><strong>Inverse-Related Operations</strong>: Some advanced algorithms (e.g., computing discrete Green’s functions or certain control theory design methods) explicitly require elements of the inverse.</p></li>
+</ul>
+<p>Below is a <strong>demonstration</strong> in Python, showing how to compute the inverse using <code class="docutils literal notranslate"><span class="pre">np.linalg.inv()</span></code>—though in practice, it’s generally safer and more efficient to solve individual systems via a factorization method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple 2x2 matrix</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Compute inverse using NumPy</span>
+<span class="n">A_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inverse of A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A_inv</span><span class="p">)</span>
+
+<span class="c1"># Verify A_inv is indeed the inverse</span>
+<span class="n">I_check</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">A_inv</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Check A * A_inv = I ?</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">I_check</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inverse of A:
+ [[ 0.66666667 -0.33333333]
+ [-0.33333333  0.66666667]]
+
+Check A * A_inv = I ?
+ [[1. 0.]
+ [0. 1.]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iterative-solvers-for-large-sparse-systems">
+<h2>Iterative Solvers for Large/Sparse Systems<a class="headerlink" href="#iterative-solvers-for-large-sparse-systems" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Large-Scale Problems</strong>: PDE discretizations in 2D/3D can easily lead to systems with millions of unknowns, making <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span> direct approaches infeasible.</p></li>
+<li><p><strong>Sparse Matrices</strong>: Many physical systems produce matrices with a significant number of zero entries.
+Iterative methods typically access only nonzero elements each iteration, saving time and memory.</p></li>
+<li><p><strong>Scalability</strong>: On parallel architectures (clusters, GPUs), iterative methods often scale better than direct factorizations.</p></li>
+</ul>
+<section id="jacobi-iteration">
+<h3>Jacobi Iteration<a class="headerlink" href="#jacobi-iteration" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Idea:</strong> Rewrite <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> as <span class="math notranslate nohighlight">\(\mathbf{x} = D^{-1}(\mathbf{b} - R\mathbf{x})\)</span>, where <span class="math notranslate nohighlight">\(D\)</span> is the diagonal of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(R\)</span> is the remainder.</p></li>
+<li><p><strong>Update Rule:</strong></p>
+<div class="amsmath math notranslate nohighlight" id="equation-2ed2ce84-0683-4a4b-8c17-a33313f39b52">
+<span class="eqno">()<a class="headerlink" href="#equation-2ed2ce84-0683-4a4b-8c17-a33313f39b52" title="Permalink to this equation">#</a></span>\[\begin{align}
+  x_i^{(k+1)} = \frac{1}{a_{ii}} \Big(b_i - \sum_{j \neq i} a_{ij} x_j^{(k)}\Big).
+\end{align}\]</div>
+</li>
+<li><p><strong>Pros/Cons:</strong></p>
+<ul class="simple">
+<li><p><strong>Easy to implement</strong>; each iteration updates <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> using only values from the previous iteration.</p></li>
+<li><p><strong>Slow convergence</strong> unless <span class="math notranslate nohighlight">\(A\)</span> is well-conditioned (e.g., diagonally dominant).</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">jacobi_iteration</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solve A x = b using Jacobi iteration.</span>
+<span class="sd">    A is assumed to be square with non-zero diagonal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">x_old</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="c1"># Sum over off-diagonal terms</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
+                    <span class="n">s</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x_old</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+        
+        <span class="c1"># Check for convergence</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_old</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jacobi converged in </span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> iterations.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">x</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jacobi did not fully converge within max_iter.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example system (small, but let&#39;s pretend it&#39;s &quot;sparse&quot;)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">4.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+              <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">6.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">x_jacobi</span> <span class="o">=</span> <span class="n">jacobi_iteration</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jacobi solution:&quot;</span><span class="p">,</span> <span class="n">x_jacobi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Direct solve comparison:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobi converged in 20 iterations.
+Jacobi solution: [2.14285714 2.57142857 2.14285714]
+Direct solve comparison: [2.14285714 2.57142857 2.14285714]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gauss-seidel">
+<h3>Gauss-Seidel<a class="headerlink" href="#gauss-seidel" title="Link to this heading">#</a></h3>
+<p>Gauss-Seidel iteration is closely related to Jacobi but typically converges faster for many problems, particularly if the system matrix is strictly or diagonally dominant.</p>
+<ol class="arabic">
+<li><p><strong>Idea:</strong></p>
+<ul class="simple">
+<li><p>Instead of using only the old iteration values (from step <span class="math notranslate nohighlight">\(k\)</span>), Gauss-Seidel uses the most recent updates within the same iteration.</p></li>
+<li><p>This often provides faster convergence because you incorporate newly computed values immediately rather than waiting for the next iteration.</p></li>
+</ul>
+</li>
+<li><p><strong>Update Rule:</strong></p>
+<div class="amsmath math notranslate nohighlight" id="equation-200cdcb9-0473-4d8f-aac4-ac2c745891f7">
+<span class="eqno">()<a class="headerlink" href="#equation-200cdcb9-0473-4d8f-aac4-ac2c745891f7" title="Permalink to this equation">#</a></span>\[\begin{align}
+  x_i^{(k+1)} = \frac{1}{a_{ii}} \Big( b_i - \sum_{j &lt; i} a_{ij} x_j^{(k+1)} - \sum_{j &gt; i} a_{ij} x_j^{(k)} \Big).
+\end{align}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> is already partially updated (for <span class="math notranslate nohighlight">\(j &lt; i\)</span>).</p>
+</li>
+<li><p><strong>Convergence Properties:</strong></p>
+<ul class="simple">
+<li><p>Gauss-Seidel can be shown to converge for strictly diagonally dominant matrices, and often outperforms Jacobi in practice.</p></li>
+<li><p>Still relatively slow for large, ill-conditioned systems.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="eigenvalue-problems">
+<h1>Eigenvalue Problems<a class="headerlink" href="#eigenvalue-problems" title="Link to this heading">#</a></h1>
+<p>Eigenvalue problems lie at the heart of many physics applications, including <strong>normal mode analysis</strong>, <strong>quantum Hamiltonians</strong>, and <strong>stability analyses</strong>.</p>
+<ol class="arabic simple">
+<li><p><strong>Normal Modes</strong></p>
+<ul class="simple">
+<li><p>Vibrational analyses of structures or molecules reduce to <span class="math notranslate nohighlight">\(K \mathbf{x} = \omega^2 M \mathbf{x}\)</span>.
+The solutions are eigenpairs <span class="math notranslate nohighlight">\((\omega^2, \mathbf{x})\)</span>.</p></li>
+<li><p>Each eigenvector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> describes a <strong>mode shape</strong>; the eigenvalue <span class="math notranslate nohighlight">\(\omega^2\)</span> is the squared frequency.</p></li>
+</ul>
+</li>
+<li><p><strong>Quantum Hamiltonians</strong></p>
+<ul class="simple">
+<li><p>The Schrödinger equation in matrix form <span class="math notranslate nohighlight">\(\hat{H} |E\rangle = E |E\rangle\)</span> yields eigenvalues <span class="math notranslate nohighlight">\(E\)</span> (energy levels) and eigenstates <span class="math notranslate nohighlight">\(|E\rangle\)</span>.</p></li>
+<li><p>Collecting all eigenvectors (as columns) in a matrix <strong>diagonalizes</strong> <span class="math notranslate nohighlight">\(\hat{H}\)</span> if it is Hermitian.</p></li>
+</ul>
+</li>
+<li><p><strong>Stability &amp; Modal Analysis</strong></p>
+<ul class="simple">
+<li><p>A linearized system near equilibrium produces a Jacobian <span class="math notranslate nohighlight">\(J\)</span>.
+Eigenvalues of <span class="math notranslate nohighlight">\(J\)</span> show growth/decay rates of perturbations.</p></li>
+<li><p>If real parts of eigenvalues are negative, the system is stable; if positive, it’s unstable.</p></li>
+</ul>
+</li>
+</ol>
+<section id="the-eigenvalue-problem">
+<h2>The Eigenvalue Problem<a class="headerlink" href="#the-eigenvalue-problem" title="Link to this heading">#</a></h2>
+<p>Given an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>, the <strong>eigenvalue problem</strong> seeks scalars <span class="math notranslate nohighlight">\(\lambda\)</span> (eigenvalues) and nonzero vectors <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> (eigenvectors) such that:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d9af3ba7-cf00-4a86-af4b-e5802a816c9b">
+<span class="eqno">()<a class="headerlink" href="#equation-d9af3ba7-cf00-4a86-af4b-e5802a816c9b" title="Permalink to this equation">#</a></span>\[\begin{align}
+A \mathbf{v} = \lambda \mathbf{v}.
+\end{align}\]</div>
+<ul class="simple">
+<li><p><strong>Eigenvalues</strong> can be real or complex.</p></li>
+<li><p><strong>Eigenvectors</strong> identify the directions in which <span class="math notranslate nohighlight">\(A\)</span> acts as a simple scale transformation (<span class="math notranslate nohighlight">\(\lambda\)</span>).</p></li>
+</ul>
+</section>
+<section id="power-method-for-the-dominant-eigenpair">
+<h2>Power Method for the Dominant Eigenpair<a class="headerlink" href="#power-method-for-the-dominant-eigenpair" title="Link to this heading">#</a></h2>
+<p>The <strong>Power Method</strong> is a straightforward iterative technique for finding the eigenpair associated with the largest-magnitude eigenvalue:</p>
+<ol class="arabic">
+<li><p><strong>Algorithm Sketch</strong></p>
+<ul>
+<li><p>Begin with an initial vector <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)}\)</span>.</p></li>
+<li><p>Apply <span class="math notranslate nohighlight">\(A\)</span> repeatedly and normalize:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5564c5bb-ec69-4f64-aed1-3141d8139a55">
+<span class="eqno">()<a class="headerlink" href="#equation-5564c5bb-ec69-4f64-aed1-3141d8139a55" title="Permalink to this equation">#</a></span>\[\begin{align}
+  \mathbf{x}^{(k+1)} = \frac{A \mathbf{x}^{(k)}}{\|A \mathbf{x}^{(k)}\|}.
+\end{align}\]</div>
+</li>
+<li><p>Converges to the eigenvector of the eigenvalue with the largest magnitude, assuming it’s distinct.</p></li>
+</ul>
+</li>
+<li><p><strong>Limitations</strong></p>
+<ul class="simple">
+<li><p>Only computes one eigenvalue/eigenvector.</p></li>
+<li><p>Convergence can be slow if other eigenvalues have magnitude close to the dominant one.</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">power_method</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns (lambda_dom, v_dom), the eigenvalue of largest magnitude and its eigenvector.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    
+    <span class="n">lam_old</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">v</span> <span class="c1"># matrix multiplication</span>
+        <span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="n">lam</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="n">lam_old</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">lam</span><span class="p">,</span> <span class="n">v</span>
+        <span class="n">lam_old</span> <span class="o">=</span> <span class="n">lam</span>
+    <span class="k">return</span> <span class="n">lam</span><span class="p">,</span> <span class="n">v</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test the Power Method</span>
+<span class="n">A_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                   <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">lam_dom</span><span class="p">,</span> <span class="n">v_dom</span> <span class="o">=</span> <span class="n">power_method</span><span class="p">(</span><span class="n">A_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dominant eigenvalue (Power Method):&quot;</span><span class="p">,</span> <span class="n">lam_dom</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Corresponding eigenvector:&quot;</span><span class="p">,</span> <span class="n">v_dom</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compare with NumPy</span>
+<span class="n">vals</span><span class="p">,</span> <span class="n">vecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A_test</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">vals</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy&#39;s dominant eigenvalue:&quot;</span><span class="p">,</span> <span class="n">vals</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy&#39;s eigenvector:&quot;</span><span class="p">,</span> <span class="n">vecs</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dominant eigenvalue (Power Method): 3.6180339883736066
+Corresponding eigenvector: [0.52573618 0.85064767]
+
+Numpy&#39;s dominant eigenvalue: 3.618033988749895
+Numpy&#39;s eigenvector: [-0.52573111 -0.85065081]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="qr-algorithm-for-dense-matrices">
+<h2>QR Algorithm for Dense Matrices<a class="headerlink" href="#qr-algorithm-for-dense-matrices" title="Link to this heading">#</a></h2>
+<p>For dense matrices of moderate size, the <span class="math notranslate nohighlight">\(QR\)</span> algorithm (or related methods) is the workhorse for computing all eigenvalues (and optionally eigenvectors).</p>
+<ol class="arabic simple">
+<li><p><strong>Idea:</strong></p>
+<ul class="simple">
+<li><p>Repeatedly factor <span class="math notranslate nohighlight">\(A\)</span> as <span class="math notranslate nohighlight">\(QR\)</span> (<span class="math notranslate nohighlight">\(Q\)</span> orthonormal, <span class="math notranslate nohighlight">\(R\)</span> upper triangular).</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(A \leftarrow RQ\)</span>.</p></li>
+<li><p>After enough iterations, <span class="math notranslate nohighlight">\(A\)</span> becomes near-upper-triangular, revealing the eigenvalues on its diagonal.</p></li>
+</ul>
+</li>
+<li><p>Practical Approach</p>
+<ul class="simple">
+<li><p>In Python, use <code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code> or <code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigh</span></code> (for Hermitian matrices).</p></li>
+<li><p>These functions wrap optimized LAPACK routines implementing <span class="math notranslate nohighlight">\(QR\)</span> or related transformations (e.g., divide-and-conquer, multiple relatively robust representations (MRRR)).</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">5</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">vals</span><span class="p">,</span> <span class="n">vecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eigenvalues:&quot;</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eigenvectors (columns):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">vecs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eigenvalues: [7.04891734 2.30797853 2.64310413]
+Eigenvectors (columns):
+ [[ 0.59100905  0.73697623 -0.32798528]
+ [ 0.32798528 -0.59100905 -0.73697623]
+ [ 0.73697623 -0.32798528  0.59100905]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="future-topics">
+<h2>Future Topics<a class="headerlink" href="#future-topics" title="Link to this heading">#</a></h2>
+<section id="singular-value-decomposition-svd">
+<h3>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Link to this heading">#</a></h3>
+<p>The <strong>singular value decomposition</strong> (SVD) factorizes a matrix <span class="math notranslate nohighlight">\(A\)</span> into <span class="math notranslate nohighlight">\(U \Sigma V^T\)</span>, where <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are orthonormal matrices and <span class="math notranslate nohighlight">\(\Sigma\)</span> is diagonal with singular values.
+This decomposition describes how <span class="math notranslate nohighlight">\(A\)</span> stretches vectors in orthogonal directions and provides the best low-rank approximation of <span class="math notranslate nohighlight">\(A\)</span>.
+In practice, the SVD is immensely valuable for data compression and noise reduction, especially in problems where <span class="math notranslate nohighlight">\(A\)</span> may be ill-conditioned.
+By leveraging its numerical stability, the SVD is frequently used to compute pseudoinverses in cases where direct inversion is error-prone.</p>
+</section>
+<section id="principal-component-analysis-pca">
+<h3>Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Link to this heading">#</a></h3>
+<p><strong>Principal Component Analysis</strong> (PCA) is a data-driven method that identifies the directions of maximum variance in high-dimensional data, typically by applying the SVD to a mean-centered data matrix.
+In physics and related fields, PCA helps extract features and reduce noise in large experimental or simulation datasets.
+By finding a small number of orthogonal “principal components”, researchers can focus on dominant modes or patterns in the data, often leading to simpler models and clearer insights.</p>
+<p>These topics will be explored in more detail later, when we delve into data modeling and machine learning.
+Both SVD and PCA are foundational tools for dimensionality reduction, feature engineering, and tackling ill-conditioned or noisy data challenges.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vahidszd/IUT-Computational-Physics-hbakhshian",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_sources/03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Linear Algebra</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-roles">Fundamental Roles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-from-physics">Motivations from Physics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-from-computation">Motivations from Computation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-numerical-linear-algebra">Importance of Numerical Linear Algebra</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-numbers-floating-point-issues">Condition Numbers &amp; Floating-Point Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-epsilon-and-rounding-errors">Machine Epsilon and Rounding Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">Condition Number</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-this-matter">Why Does This Matter?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-solvers">Direct Solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-elimination">Gaussian Elimination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lu-decomposition"><span class="math notranslate nohighlight">\(LU\)</span> Decomposition</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inverse">Matrix Inverse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-solvers-for-large-sparse-systems">Iterative Solvers for Large/Sparse Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-iteration">Jacobi Iteration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gauss-seidel">Gauss-Seidel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-problems">Eigenvalue Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-eigenvalue-problem">The Eigenvalue Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-method-for-the-dominant-eigenpair">Power Method for the Dominant Eigenpair</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-algorithm-for-dense-matrices">QR Algorithm for Dense Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-topics">Future Topics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">Singular Value Decomposition (SVD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-pca">Principal Component Analysis (PCA)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chi-kwan Chan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

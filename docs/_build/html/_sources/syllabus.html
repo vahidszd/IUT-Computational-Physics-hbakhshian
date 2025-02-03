@@ -1,0 +1,1023 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Syllabus &#8212; PHYS 305: Computational Physics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_sources/syllabus';</script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/language_data.js?v=d4673a71"></script>
+    <script src="../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/iutlogo.jpg" class="logo__image only-light" alt="PHYS 305: Computational Physics - Home"/>
+    <img src="../_static/iutlogo.jpg" class="logo__image only-dark pst-js-only" alt="PHYS 305: Computational Physics - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    PHYS 305
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/notes.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/lab.html">Git, Jupyter, and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/notes.html">Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/lab.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/notes.html">Numerical Linear Algebra</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/lab.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/sol.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/notes.html">Fourier Transform and Spectral Analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lab.html">Fourier Transform and Spectral Analyses Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/notes.html">Useful Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/notes.html">Interpolation and Extrapolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/lab.html">Interpolation and Extrapolation Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/notes.html">Numerical and Automatic Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/notes.html">Numerical Integration of Functions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/edit/main/docs/_sources/syllabus.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/issues/new?title=Issue%20on%20page%20%2F_sources/syllabus.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_sources/syllabus.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Syllabus</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description-of-course">Description of Course</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-prerequisites-or-co-requisites">Course Prerequisites or Co-requisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-and-contact-information">Instructor and Contact Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-format-and-teaching-methods">Course Format and Teaching Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-objectives">Course Objectives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-learning-outcomes">Expected Learning Outcomes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policies-of-course">Policies of Course</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absence-and-class-participation-policy">Absence and Class Participation Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#makeup-policy-for-students-who-register-late">Makeup Policy for Students Who Register Late</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-communications">Course Communications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-materials">Course Materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-texts-or-readings">Required Texts or Readings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-or-special-materials">Required or Special Materials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-extracurricular-activities">Required Extracurricular Activities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignments-and-examinations">Assignments and Examinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schedule-due-dates">Schedule/Due Dates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-requirement">Writing Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-examination-or-project">Final Examination or Project</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-scale-and-policies">Grading Scale and Policies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheduled-topics-activities">Scheduled Topics/Activities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biography">Biography</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-of-conduct">Code of Conduct</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classroom-behavior-policy">Classroom Behavior Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threatening-behavior-policy">Threatening Behavior Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessibility-and-accommodations">Accessibility and Accommodations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-of-academic-integrity">Code of Academic Integrity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nondiscrimination-and-anti-harassment-policy">Nondiscrimination and Anti-harassment Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-of-generative-ai">Usage of Generative AI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources-for-students">Additional Resources for Students</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#campus-health">Campus Health</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counseling-and-psych-services-caps">Counseling and Psych Services (CAPS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dean-of-students-office-s-student-assistance-program">The Dean of Students Office’s Student Assistance Program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survivor-advocacy-program">Survivor Advocacy Program</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-on-campus-and-in-the-classroom">Safety on Campus and in the Classroom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidentiality-of-student-records">Confidentiality of Student Records</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subject-to-change-statement">Subject to Change Statement</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="syllabus">
+<h1>Syllabus<a class="headerlink" href="#syllabus" title="Link to this heading">#</a></h1>
+<p><strong>Course Number &amp; Title:</strong> PHYS 305—001 Computational Physics<br />
+<strong>Course Website:</strong> https://ua-2025q1-phys305.github.io</p>
+<p><strong>Semester and Year:</strong> Spring 2025<br />
+<strong>Time:</strong> Tuesday &amp; Thursday 12:30–1:45pm<br />
+<strong>Location:</strong> Social Sciences, Room 206</p>
+<section id="description-of-course">
+<h2>Description of Course<a class="headerlink" href="#description-of-course" title="Link to this heading">#</a></h2>
+<p>Modern science relies heavily on computational methods and data analysis, in addition to empirical evidence and scientific theory.
+PHYS 305 offers a comprehensive introduction to the essential skills needed for computation- and data-driven physics.
+This course covers a range of computational and numerical methods, including integration of Ordinary Differential Equations (ODEs) and Partial Differential Equations (PDEs), equipping students with the tools necessary to solve complex problems in upper level physics.
+In addition, students will learn modern statistical methods and apply these techniques to physical research.
+The curriculum is designed to bridge theoretical concepts with practical applications.
+Through a combination of lectures, hands-on exercises, and projects, students will develop a robust understanding of the essential tools and techniques required for modern astrophysical research.</p>
+<section id="course-prerequisites-or-co-requisites">
+<h3>Course Prerequisites or Co-requisites<a class="headerlink" href="#course-prerequisites-or-co-requisites" title="Link to this heading">#</a></h3>
+<p>(PHYS 105A or ECE 175) and (PHYS 142 or 143 or 162H) and (PHYS 240 or 241 or 261H).
+Prerequisite or concurrent registration in MATH 254 (Intro to ODE) or MATH 355 (Analysis of ODE).</p>
+<p>This course is a prerequisite for the following courses: PHYS 332, PHYS 426, PHYS 472.</p>
+</section>
+<section id="instructor-and-contact-information">
+<h3>Instructor and Contact Information<a class="headerlink" href="#instructor-and-contact-information" title="Link to this heading">#</a></h3>
+<p><strong>Instructor:</strong> Chi-kwan Chan<br />
+<strong>Email:</strong> chanc&#64;arizona.edu (please include “PHYS305” in subjects of emails)<br />
+<strong>Office:</strong> Steward Observatory N332<br />
+<strong>Office Hours:</strong> Monday 1–2pm, Wednesday 11am–noon (Steward Observatory N332), or by appointment</p>
+<p><strong>Teaching Assistant:</strong> Devendran Vemula<br />
+<strong>Email:</strong> devendranvemula&#64;arizona.edu (please include “PHYS305” in subjects of emails)</p>
+<p><strong>Preceptor:</strong> Nikhil Garuda<br />
+<strong>Email:</strong> nikhilgaruda&#64;arizona.edu (please include “PHYS305” in subjects of emails)</p>
+</section>
+<section id="course-format-and-teaching-methods">
+<h3>Course Format and Teaching Methods<a class="headerlink" href="#course-format-and-teaching-methods" title="Link to this heading">#</a></h3>
+<p>This course is scheduled to be taught in-person.
+We will meet every Tuesday and Thursday from 12:30pm to 1:45pm at <a class="reference external" href="https://map.arizona.edu/33/0114">Saguaro Hall, Room 114</a>.</p>
+<p>Each session will include about 45 minutes of lecture and 30 minutes of hands-on labs.
+You are required to complete your homework assignments and projects on time.</p>
+</section>
+<section id="course-objectives">
+<h3>Course Objectives<a class="headerlink" href="#course-objectives" title="Link to this heading">#</a></h3>
+<p>The goal of this course is to get students ready for modern computation- and data-driven physics.
+In order to do so, we will expose the the students to multiple development tools and software development best practices.
+We will introduce the basic of the <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> programming languages, and provide hands-on on data analysis and numerical problems.
+We will also introduce basic data analysis methods and numerical analysis.
+After taking this course, students should be able to solve simple physics problems numerically, create plots to visualize their results, and document their work and communicate with other physicists.
+See “Expected Learning Outcomes” below.</p>
+</section>
+<section id="expected-learning-outcomes">
+<h3>Expected Learning Outcomes<a class="headerlink" href="#expected-learning-outcomes" title="Link to this heading">#</a></h3>
+<p>Upon completion of this course, students should be able to:</p>
+<ul class="simple">
+<li><p>understand the nature and application of computation methods in physical science;</p></li>
+<li><p>use popular development tools (shell, <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code>, etc);</p></li>
+<li><p>use good software development practices (version control, documentation, and automation);</p></li>
+<li><p>use computational thinking to break down complex (physics) problems into smaller pieces;</p></li>
+<li><p>solve these problems by writing programs in the <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> programming languages;</p></li>
+<li><p>speak and write about scientific knowledge;</p></li>
+<li><p>appreciate computation complexity and have a basic awareness of numerical errors;</p></li>
+<li><p>use data analysis and numerical methods properly, and be aware of their common pitfalls;</p></li>
+<li><p>critically analyze and interpret data and results presented in tables, graphs and charts as well as perform appropriate computations;</p></li>
+<li><p>read and understand scientific literature from popular sources such as magazines and newspapers;</p></li>
+<li><p>aware of a wide range of science use cases, and develop the skill to self-learn computation tools and methods.</p></li>
+</ul>
+</section>
+</section>
+<section id="policies-of-course">
+<h2>Policies of Course<a class="headerlink" href="#policies-of-course" title="Link to this heading">#</a></h2>
+<section id="absence-and-class-participation-policy">
+<h3>Absence and Class Participation Policy<a class="headerlink" href="#absence-and-class-participation-policy" title="Link to this heading">#</a></h3>
+<p>The UA’s policy concerning Class Attendance and Participation is available at: https://catalog.arizona.edu/policy/courses-credit/courses/class-attendance-participation.</p>
+<p>The UA policy regarding absences for any sincerely held religious belief, observance or practice will be accommodated where reasonable, http://policy.arizona.edu/human-resources/religious-accommodation-policy.</p>
+<p>Absences pre-approved by the UA Dean of Students (or Dean Designee) will be honored.
+See: https://deanofstudents.arizona.edu/policies/attendance-policies-and-practices</p>
+<p>Participating in the course and attending lectures and other course events are vital to the learning process.
+As such, attendance is required at all lectures and discussion section meetings.
+Absences may affect a student’s final course grade.
+If you anticipate being absent, are unexpectedly absent, or are unable to participate in class online activities, please contact me as soon as possible.
+To request a disability-related accommodation to this attendance policy, please contact the Disability Resource Center at (520) 621-3268 or disability&#64;arizona.edu.
+If you are experiencing unexpected barriers to your success in your courses, the Dean of Students Office is a central support resource for all students and may be helpful.
+The Dean of Students Office is located in the Robert L. Nugent Building, room 100, or call 520-621-7057.</p>
+</section>
+<section id="makeup-policy-for-students-who-register-late">
+<h3>Makeup Policy for Students Who Register Late<a class="headerlink" href="#makeup-policy-for-students-who-register-late" title="Link to this heading">#</a></h3>
+<p>Statement on whether students who register after the first class meeting may make up missed assignments/quizzes and the deadline for doing so.</p>
+</section>
+<section id="course-communications">
+<h3>Course Communications<a class="headerlink" href="#course-communications" title="Link to this heading">#</a></h3>
+<p>Email is the official method to communicate with the instructor and teaching assistant outside scheduled classes and office hours.</p>
+</section>
+</section>
+<section id="course-materials">
+<h2>Course Materials<a class="headerlink" href="#course-materials" title="Link to this heading">#</a></h2>
+<section id="required-texts-or-readings">
+<h3>Required Texts or Readings<a class="headerlink" href="#required-texts-or-readings" title="Link to this heading">#</a></h3>
+<p>There is no required text.</p>
+<p>The main reference is:</p>
+<ul class="simple">
+<li><p>Numerical Recipes, 2nd Edition in C or 3rd Edition in C++, by William H. Press, Saul A. Teukolsky, William T. Vetterling, &amp; Brian P. Flannery; online versions: https://numerical.recipes</p></li>
+</ul>
+<p>Additional references will be listed in the lecture notes.</p>
+</section>
+<section id="required-or-special-materials">
+<h3>Required or Special Materials<a class="headerlink" href="#required-or-special-materials" title="Link to this heading">#</a></h3>
+<p>As a course on computational physics, students are excepted to have access to computers.
+Although not required, students will be encouraged to install popular development tools such as <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">python</span></code>, and <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code> to their computers.</p>
+</section>
+<section id="required-extracurricular-activities">
+<h3>Required Extracurricular Activities<a class="headerlink" href="#required-extracurricular-activities" title="Link to this heading">#</a></h3>
+<p>The instructor will provide students additional online videos to broaden the students’ knowledge on computational physics.
+When bundled with assignments, students are required to watch them.
+When provided as references, the videos are optional.</p>
+<p>Near the end of the semester, students are encouraged to join a field trip to UA’s Computer Center and see our supercomputers.</p>
+</section>
+</section>
+<section id="assignments-and-examinations">
+<h2>Assignments and Examinations<a class="headerlink" href="#assignments-and-examinations" title="Link to this heading">#</a></h2>
+<section id="schedule-due-dates">
+<h3>Schedule/Due Dates<a class="headerlink" href="#schedule-due-dates" title="Link to this heading">#</a></h3>
+<p>The course includes 6 homework assignments and 2 group projects.
+There are no quizzes or exams.</p>
+<p><strong>Homework Assignments:</strong>
+Assignments will be given approximately every two weeks (see schedule below).
+Students should begin working on them during the hands-on labs and submit them within one week of the assignment date.</p>
+<p><strong>Group Projects:</strong>
+Projects will be completed in teams of approximately four students.
+All project materials must be submitted within one week after the corresponding project presentations.</p>
+</section>
+<section id="writing-requirement">
+<h3>Writing Requirement<a class="headerlink" href="#writing-requirement" title="Link to this heading">#</a></h3>
+<p>Although this is not a writing intensive course, good documentation is essential in communicating science and developing software.
+Students are required to provide enough written explanations in their assignments.</p>
+</section>
+<section id="final-examination-or-project">
+<h3>Final Examination or Project<a class="headerlink" href="#final-examination-or-project" title="Link to this heading">#</a></h3>
+<p>There will be no final exam.
+Instead, students will need to finish two group projects.</p>
+<p>The project presentations are scheduled in the weeks of March 2nd and April 27th.
+All project materials must be submitted within one week after the corresponding project presentations.</p>
+</section>
+</section>
+<section id="grading-scale-and-policies">
+<h2>Grading Scale and Policies<a class="headerlink" href="#grading-scale-and-policies" title="Link to this heading">#</a></h2>
+<p>The course includes 6 homework assignments and 2 group projects.
+Each homework assignment worth 10 points and each project worth 20 points, sum up to 100 points total.
+Students are expected to submit their assignments and projects by the specified deadlines.</p>
+<p>This course provides regular letter grades (A–E), which are based on a simple point system:</p>
+<ul class="simple">
+<li><p>A: 80–100  points</p></li>
+<li><p>B: 70–79.9 points</p></li>
+<li><p>C: 60–69.9 points</p></li>
+<li><p>D: 50–59.9 points</p></li>
+<li><p>E:  0–49.9 points</p></li>
+</ul>
+<p>No scaling will be applied.</p>
+<p><strong>Incomplete (I) or Withdrawal (W):</strong>
+Requests for incomplete (I) or withdrawal (W) must be made in accordance with University policy, which is available at https://catalog.arizona.edu/policy/courses-credit/grading/grading-system.</p>
+<p><strong>Dispute of Grade Policy:</strong>
+If a student disagrees on his or her grade on a homework assignment or a project, the student must send the instructor a formal request through email to re-evaluate the grade within a week from the time that the student receives the grade.
+Because no scaling will be applied in the final grade, the final grade cannot be re-evaluated.
+The student is expected to know his or her own performance throughout the course.</p>
+</section>
+<section id="scheduled-topics-activities">
+<h2>Scheduled Topics/Activities<a class="headerlink" href="#scheduled-topics-activities" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Week</p></th>
+<th class="head"><p>Tuesday</p></th>
+<th class="head"><p>Thursday</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Jan 12–Jan 18</p></td>
+<td><p></p></td>
+<td><p><a class="reference internal" href="01/notes.html"><span class="doc">Overview</span></a> (<a class="reference internal" href="01/lab.html"><span class="doc">lab</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Jan 19–Jan 25</p></td>
+<td><p><a class="reference internal" href="02/notes.html"><span class="doc">Data Representation</span></a> (<a class="reference internal" href="02/lab.html"><span class="doc">lab</span></a>)</p></td>
+<td><p><a class="reference internal" href="03/notes.html"><span class="doc">Numerical Linear Algebra</span></a> (<a class="reference internal" href="03/lab.html"><span class="doc">lab</span></a>, <a class="reference internal" href="03/sol.html"><span class="doc">sol</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Jan 26–Feb  1</p></td>
+<td><p><a class="reference internal" href="04/notes.html"><span class="doc">Fourier Transform and Spectral Analyses</span></a> (<a class="reference internal" href="04/lab.html"><span class="doc">lab</span></a>)</p></td>
+<td><p>Guest lecture: <a class="reference internal" href="05/notes.html"><span class="doc">Useful Tools</span></a> (<a class="reference external" href="https://classroom.github.com/a/pF35huEj">homework 1</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Feb  2–Feb  8</p></td>
+<td><p><a class="reference internal" href="06/notes.html"><span class="doc">Interpolation and Extrapolation</span></a> (<a class="reference internal" href="06/lab.html"><span class="doc">lab</span></a>)</p></td>
+<td><p><a class="reference internal" href="07/notes.html"><span class="doc">Numerical and Automatic Derivatives</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Feb  9–Feb 15</p></td>
+<td><p><a class="reference internal" href="08/notes.html"><span class="doc">Numerical Integration of Functions</span></a></p></td>
+<td><p>Root finding (homework)</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Feb 16–Feb 22</p></td>
+<td><p>Optimization</p></td>
+<td><p>Data modeling I</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Feb 24–Mar  1</p></td>
+<td><p>Data modeling II</p></td>
+<td><p>Selected techniques in machine learning (homework)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Mar  2–Mar  8</p></td>
+<td><p>Project I presentations</p></td>
+<td><p>Project I presentations</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Mar  9–Mar 15</p></td>
+<td><p><strong>Spring recess (no class)</strong></p></td>
+<td><p><strong>Spring recess (no class)</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Mar 16–Mar 22</p></td>
+<td><p>The C programming language</p></td>
+<td><p>ODE integrators I: explicit methods</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Mar 24–Mar 29</p></td>
+<td><p>ODE integrators II: implicit and symplectic methods</p></td>
+<td><p>ODE integrators III: boundary value problems (homework)</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>Mar 30–Apr  5</p></td>
+<td><p>Monte Carlo methods I: random numbers and random walk</p></td>
+<td><p>Monte Carlo methods II: Ising model</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Apr  6–Apr 12</p></td>
+<td><p>Monte Carlo methods III: Hopfield network and Boltzmann machine</p></td>
+<td><p>Parallel computing (homework)</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>Apr 13–Apr 19</p></td>
+<td><p>Numerical PDEs I: properties of PDEs</p></td>
+<td><p>Numerical PDEs II: finite difference and spectral methods</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>Apr 20–Apr 26</p></td>
+<td><p>Numerical PDEs III: finite volume methods</p></td>
+<td><p>Numerical PDEs IV: finite element methods (homework)</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>Apr 27–May  3</p></td>
+<td><p>Project II presentations</p></td>
+<td><p>Project II presentations</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>May  4–May 10</p></td>
+<td><p>Visiting UA HPC</p></td>
+<td><p><strong>Reading Day (no class)</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="biography">
+<h2>Biography<a class="headerlink" href="#biography" title="Link to this heading">#</a></h2>
+<p>Prof. Chi-kwan “CK” Chan is a computational astrophysicist working with cutting edge technologies to advance both theoretical and observational research.
+He has developed new algorithms to study magnetohydrodynamic turbulence, used graphics processing units (GPUs) to accelerate general relativistic ray tracing, designed cloud computing infrastructures to handle big observational data, and applied machine learning algorithms to speed up and automate data processing.
+Some of CK’s active projects include simulating and understanding accretion disks, capturing images of black holes, and visualizing astrophysical simulations in virtual reality.
+A true wildcat, CK received his bachelors and doctoral degrees from the University of Arizona.</p>
+</section>
+<section id="code-of-conduct">
+<h2>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Link to this heading">#</a></h2>
+<section id="classroom-behavior-policy">
+<h3>Classroom Behavior Policy<a class="headerlink" href="#classroom-behavior-policy" title="Link to this heading">#</a></h3>
+<p>To foster a positive learning environment, students and instructors have a shared responsibility.
+We want a safe, welcoming, and inclusive environment where all of us feel comfortable with each other and where we can challenge ourselves to succeed.
+To that end, our focus is on the tasks at hand and not on extraneous activities (e.g., texting, chatting, reading a newspaper, making phone calls, web surfing, etc.).</p>
+</section>
+<section id="threatening-behavior-policy">
+<h3>Threatening Behavior Policy<a class="headerlink" href="#threatening-behavior-policy" title="Link to this heading">#</a></h3>
+<p>The UA Threatening Behavior by Students Policy prohibits threats of physical harm to any member of the University community, including to oneself. See http://policy.arizona.edu/education-and-student-affairs/threatening-behavior-students.</p>
+</section>
+<section id="accessibility-and-accommodations">
+<h3>Accessibility and Accommodations<a class="headerlink" href="#accessibility-and-accommodations" title="Link to this heading">#</a></h3>
+<p>Recommended language is provided on the Disability Resource Center website: http://drc.arizona.edu/instructors/syllabus-statement.</p>
+</section>
+<section id="code-of-academic-integrity">
+<h3>Code of Academic Integrity<a class="headerlink" href="#code-of-academic-integrity" title="Link to this heading">#</a></h3>
+<p>Students are encouraged to share intellectual views and discuss freely the principles and applications of course materials.
+However, graded work/exercises must be the product of independent effort unless otherwise instructed.
+Students are expected to adhere to the UA Code of Academic Integrity as described in the UA General Catalog. See:  https://deanofstudents.arizona.edu/student-rights-responsibilities/academic-integrity.</p>
+<p>The University Libraries have some excellent tips for avoiding plagiarism, available at https://lib.arizona.edu/research/citing/plagiarism.</p>
+<p>Selling class notes and/or other course materials to other students or to a third party for resale is not permitted without the instructor’s express written consent.
+Violations to this and other course rules are subject to the Code of Academic Integrity and may result in course sanctions.
+Additionally, students who use D2L or UA e-mail to sell or buy these copyrighted materials are subject to Code of Conduct Violations for misuse of student e-mail addresses.
+This conduct may also constitute copyright infringement.</p>
+</section>
+<section id="nondiscrimination-and-anti-harassment-policy">
+<h3>Nondiscrimination and Anti-harassment Policy<a class="headerlink" href="#nondiscrimination-and-anti-harassment-policy" title="Link to this heading">#</a></h3>
+<p>The University of Arizona is committed to creating and maintaining an environment free of discrimination.
+In support of this commitment, the University prohibits discrimination, including harassment and retaliation, based on a protected classification, including race, color, religion, sex (including pregnancy), national origin, age, disability, veteran status, sexual orientation, gender identity, or genetic information.
+For more information, including how to report a concern, please see https://policy.arizona.edu/employment-human-resources/nondiscrimination-and-anti-harassment-policy</p>
+<p>Our classroom is a place where everyone is encouraged to express well-formed opinions and their reasons for those opinions.
+We also want to create a tolerant and open environment where such opinions can be expressed without resorting to bullying or discrimination of others.</p>
+</section>
+<section id="usage-of-generative-ai">
+<h3>Usage of Generative AI<a class="headerlink" href="#usage-of-generative-ai" title="Link to this heading">#</a></h3>
+<p>Homework and projects in this course are designed to help students apply class concepts, test their learning, and develop software development and science communication skills.
+Generative AI tools, such as ChatGPT, Google Gemini, and GitHub Co-Pilot, can be useful for brainstorming and debugging.
+However, students must write their own code, take full responsibility for their work, and demonstrate a clear understanding of the concepts.</p>
+<p>While AI tools can assist learning, they may produce inaccurate or biased outputs.
+Students are responsible for verifying facts and critically assessing all submitted material.
+Any use of generative AI must be acknowledged or cited (see <a class="reference external" href="https://libguides.library.arizona.edu/students-chatgpt/citing">guidelines from UA library</a>).
+Failure to disclose such use or to write original code will be considered a violation of academic integrity.</p>
+<p>For questions, contact your instructor.</p>
+</section>
+</section>
+<section id="additional-resources-for-students">
+<h2>Additional Resources for Students<a class="headerlink" href="#additional-resources-for-students" title="Link to this heading">#</a></h2>
+<p>UA Academic policies and procedures are available at http://catalog.arizona.edu/policies</p>
+<section id="campus-health">
+<h3>Campus Health<a class="headerlink" href="#campus-health" title="Link to this heading">#</a></h3>
+<p>http://www.health.arizona.edu/<br />
+Campus Health provides quality medical and mental health care services through virtual and in-person care.<br />
+Phone: 520-621-9202</p>
+</section>
+<section id="counseling-and-psych-services-caps">
+<h3>Counseling and Psych Services (CAPS)<a class="headerlink" href="#counseling-and-psych-services-caps" title="Link to this heading">#</a></h3>
+<p>https://health.arizona.edu/counseling-psych-services<br />
+CAPS provides mental health care, including short-term counseling services.<br />
+Phone: 520-621-3334</p>
+</section>
+<section id="the-dean-of-students-office-s-student-assistance-program">
+<h3>The Dean of Students Office’s Student Assistance Program<a class="headerlink" href="#the-dean-of-students-office-s-student-assistance-program" title="Link to this heading">#</a></h3>
+<p>https://deanofstudents.arizona.edu/support/student-assistance<br />
+Student Assistance helps students manage crises, life traumas, and other barriers that impede success.
+The staff addresses the needs of students who experience issues related to social adjustment, academic challenges, psychological health, physical health, victimization, and relationship issues, through a variety of interventions, referrals, and follow up services.<br />
+Email: DOS-deanofstudents&#64;arizona.edu<br />
+Phone: 520-621-7057</p>
+</section>
+<section id="survivor-advocacy-program">
+<h3>Survivor Advocacy Program<a class="headerlink" href="#survivor-advocacy-program" title="Link to this heading">#</a></h3>
+<p>https://survivoradvocacy.arizona.edu/<br />
+The Survivor Advocacy Program provides confidential support and advocacy services to student survivors of sexual and gender-based violence.
+The Program can also advise students about relevant non-UA resources available within the local community for support.<br />
+Email: survivoradvocacy&#64;arizona.edu<br />
+Phone: 520-621-5767</p>
+</section>
+</section>
+<section id="safety-on-campus-and-in-the-classroom">
+<h2>Safety on Campus and in the Classroom<a class="headerlink" href="#safety-on-campus-and-in-the-classroom" title="Link to this heading">#</a></h2>
+<p>For a list of emergency procedures for all types of incidents, please visit the website of the Critical Incident Response Team (CIRT): https://cirt.arizona.edu/case-emergency/overview</p>
+<p>Also watch the video available at https://arizona.sabacloud.com/Saba/Web_spf/NA7P1PRD161/common/learningeventdetail/crtfy000000000003560</p>
+</section>
+<section id="confidentiality-of-student-records">
+<h2>Confidentiality of Student Records<a class="headerlink" href="#confidentiality-of-student-records" title="Link to this heading">#</a></h2>
+<p>http://www.registrar.arizona.edu/ferpa</p>
+</section>
+<section id="subject-to-change-statement">
+<h2>Subject to Change Statement<a class="headerlink" href="#subject-to-change-statement" title="Link to this heading">#</a></h2>
+<p>Information contained in the course syllabus, other than the grade and absence policy, may be subject to change with advance notice, as deemed appropriate by the instructor.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vahidszd/IUT-Computational-Physics-hbakhshian",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_sources"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description-of-course">Description of Course</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-prerequisites-or-co-requisites">Course Prerequisites or Co-requisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-and-contact-information">Instructor and Contact Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-format-and-teaching-methods">Course Format and Teaching Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-objectives">Course Objectives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-learning-outcomes">Expected Learning Outcomes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policies-of-course">Policies of Course</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absence-and-class-participation-policy">Absence and Class Participation Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#makeup-policy-for-students-who-register-late">Makeup Policy for Students Who Register Late</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-communications">Course Communications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-materials">Course Materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-texts-or-readings">Required Texts or Readings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-or-special-materials">Required or Special Materials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-extracurricular-activities">Required Extracurricular Activities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignments-and-examinations">Assignments and Examinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schedule-due-dates">Schedule/Due Dates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-requirement">Writing Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-examination-or-project">Final Examination or Project</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-scale-and-policies">Grading Scale and Policies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheduled-topics-activities">Scheduled Topics/Activities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biography">Biography</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-of-conduct">Code of Conduct</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classroom-behavior-policy">Classroom Behavior Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threatening-behavior-policy">Threatening Behavior Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessibility-and-accommodations">Accessibility and Accommodations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-of-academic-integrity">Code of Academic Integrity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nondiscrimination-and-anti-harassment-policy">Nondiscrimination and Anti-harassment Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-of-generative-ai">Usage of Generative AI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources-for-students">Additional Resources for Students</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#campus-health">Campus Health</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counseling-and-psych-services-caps">Counseling and Psych Services (CAPS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dean-of-students-office-s-student-assistance-program">The Dean of Students Office’s Student Assistance Program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survivor-advocacy-program">Survivor Advocacy Program</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-on-campus-and-in-the-classroom">Safety on Campus and in the Classroom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidentiality-of-student-records">Confidentiality of Student Records</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subject-to-change-statement">Subject to Change Statement</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chi-kwan Chan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

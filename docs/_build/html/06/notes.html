@@ -1,0 +1,1269 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Interpolation and Extrapolation &#8212; PHYS 305: Computational Physics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '06/notes';</script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/language_data.js?v=d4673a71"></script>
+    <script src="../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interpolation and Extrapolation Lab" href="lab.html" />
+    <link rel="prev" title="Useful Tools" href="../05/notes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/iutlogo.jpg" class="logo__image only-light" alt="PHYS 305: Computational Physics - Home"/>
+    <img src="../_static/iutlogo.jpg" class="logo__image only-dark pst-js-only" alt="PHYS 305: Computational Physics - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    PHYS 305
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/notes.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/lab.html">Git, Jupyter, and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/notes.html">Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/lab.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/notes.html">Numerical Linear Algebra</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/lab.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/sol.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/notes.html">Fourier Transform and Spectral Analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lab.html">Fourier Transform and Spectral Analyses Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/notes.html">Useful Tools</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interpolation and Extrapolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab.html">Interpolation and Extrapolation Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/notes.html">Numerical and Automatic Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/notes.html">Numerical Integration of Functions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/edit/main/docs/06/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/issues/new?title=Issue%20on%20page%20%2F06/notes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/06/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Interpolation and Extrapolation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-methods">Interpolation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-with-extrapolation">Challenges with Extrapolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinguishing-interpolation-and-function-approximation">Distinguishing Interpolation and Function Approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-interpolation">Limitations of Interpolation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries-searching-an-ordered-table">Preliminaries: Searching an Ordered Table</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-search">Linear Search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-search">Bisection Search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunting-method">Hunting Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-interpolation-using-the-hunting-method">Linear Interpolation Using the Hunting Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-interpolation-and-extrapolation">Polynomial Interpolation and Extrapolation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-s-formula">Lagrange’s formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neville-s-algorithm">Neville’s Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="interpolation-and-extrapolation">
+<h1>Interpolation and Extrapolation<a class="headerlink" href="#interpolation-and-extrapolation" title="Link to this heading">#</a></h1>
+<p>This lecture follows closely <a class="reference external" href="https://numerical.recipes/">Numerical Recipes</a> 2nd Edition in C and 3rd Edition in C++, Chapter 3 “Interpolation and Extrapolation”.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In scientific computing and machine learning, interpolation and extrapolation are fundamental tools for estimating function values at new data points based on known information.</p>
+<ul class="simple">
+<li><p>In machine learning, all standard supervised learning tasks can be viewed as interpolation problems in high-dimensional space. Here, models predict outputs <strong>within the range</strong> of their training data.</p></li>
+<li><p>However, when attempting to make predictions outside this range, we face significant challenges in making reliable extrapolations.
+Extrapolation is a particularly challenging task because models typically lack information  beyond their training data.</p></li>
+</ul>
+<section id="interpolation-methods">
+<h3>Interpolation Methods<a class="headerlink" href="#interpolation-methods" title="Link to this heading">#</a></h3>
+<p>Interpolation plays a crucial role in scientific computing and machine learning by estimating function values at new data points based on known information.</p>
+<ul class="simple">
+<li><p>Polynomial interpolation is versatile but can exhibit significant oscillations, particularly at the edges of data (Runge’s phenomenon).</p></li>
+<li><p>This can be mitigated by using rational functions, which offer more stable estimates and are better suited to handle asymptotic behavior.</p></li>
+<li><p>Spline interpolation, especially cubic splines, is valued for its smoothness and continuity up to the second derivative. This makes it effective for applications requiring a smooth fit.</p></li>
+</ul>
+</section>
+<section id="challenges-with-extrapolation">
+<h3>Challenges with Extrapolation<a class="headerlink" href="#challenges-with-extrapolation" title="Link to this heading">#</a></h3>
+<p>Extrapolation remains a difficult task, yet physics-informed machine learning (PIML) presents a promising avenue.
+By embedding known physical laws, such as ordinary differential equations (ODEs), into models, PIML enables extrapolation that aligns with fundamental constraints. This allows for meaningful extensions of predictions beyond the observed data range.</p>
+</section>
+<section id="distinguishing-interpolation-and-function-approximation">
+<h3>Distinguishing Interpolation and Function Approximation<a class="headerlink" href="#distinguishing-interpolation-and-function-approximation" title="Link to this heading">#</a></h3>
+<p>Interpolation and function approximation are related but distinct tasks:</p>
+<ul class="simple">
+<li><p>Interpolation estimates values at specified points within a given dataset.</p></li>
+<li><p>In contrast, function approximation creates a simplified function to replace a more complex one.
+This approach can be used to sample additional points as needed.</p></li>
+<li><p>(See <a class="reference external" href="https://numerical.recipes/">Numerical Recipes</a> Chapter 5 for function approximation.)</p></li>
+</ul>
+</section>
+<section id="limitations-of-interpolation">
+<h3>Limitations of Interpolation<a class="headerlink" href="#limitations-of-interpolation" title="Link to this heading">#</a></h3>
+<p>Even the most sophisticated interpolation schemes can fail when faced with pathological functions.
+For instance, consider a function that behaves smoothly except for a slight singularity at a certain point:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-91b81db1-cffb-4052-88cb-88fe705a9a68">
+<span class="eqno">(116)<a class="headerlink" href="#equation-91b81db1-cffb-4052-88cb-88fe705a9a68" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x) = 3x^2 + \frac{1}{\pi^4}\ln\left[(\pi - x)^2\right] + 1
+\end{align}\]</div>
+<p>Interpolation based on values close to but not precisely at that singularity will likely produce an inaccurate result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.13</span><span class="p">,</span> <span class="mf">3.16</span><span class="p">,</span> <span class="mi">3</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.13</span><span class="p">,</span> <span class="mf">3.16</span><span class="p">,</span> <span class="mi">30</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.13</span><span class="p">,</span> <span class="mf">3.16</span><span class="p">,</span> <span class="mi">300</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.13</span><span class="p">,</span> <span class="mf">3.16</span><span class="p">,</span> <span class="mi">3000</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x4</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x4</span><span class="p">),</span>       <span class="n">label</span><span class="o">=</span><span class="s1">&#39;3001 points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x3</span><span class="p">),</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;301 points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span> <span class="s1">&#39;o:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;31 points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;4 points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10cab2900&gt;
+</pre></div>
+</div>
+<img alt="../_images/2e883f4f8654d0989d3498fa7b5cc86bdc71050ef2a982b60000d04265715938.png" src="../_images/2e883f4f8654d0989d3498fa7b5cc86bdc71050ef2a982b60000d04265715938.png" />
+</div>
+</div>
+<p>These cases highlight the importance of having some error estimates in interpolation routines.</p>
+</section>
+</section>
+<section id="preliminaries-searching-an-ordered-table">
+<h2>Preliminaries: Searching an Ordered Table<a class="headerlink" href="#preliminaries-searching-an-ordered-table" title="Link to this heading">#</a></h2>
+<p>In many interpolation tasks, especially with irregularly sampled data, the process begins with a critical first step: identifying the nearest points surrounding the target interpolation value.</p>
+<p>Unlike regularly spaced data on a uniform grid, where adjacent points are easy to locate by simple indexing, randomly sampled or unevenly spaced data requires additional steps to find nearby values.
+This searching step can be as computationally intensive as the interpolation itself, so efficient search methods are essential to maintain overall performance.</p>
+<p>In Numerical Recipes, two primary methods are presented for this purpose: bisection and hunting.
+Each is suited to different scenarios, depending on whether interpolation points tend to be close to one another or scattered randomly.</p>
+<section id="linear-search">
+<h3>Linear Search<a class="headerlink" href="#linear-search" title="Link to this heading">#</a></h3>
+<p>As a reference, we will implement a linear search:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">linear</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)):</span> <span class="c1"># purposely use for-loop to avoid C optimization in numpy</span>
+        <span class="k">if</span> <span class="n">xs</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">l</span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">v</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+    <span class="n">i</span>  <span class="o">=</span> <span class="n">linear</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> &lt;= </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1"> &lt; </span><span class="si">{</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38.93242503143316 &lt;= 52.5959785776942 &lt; 54.85084210719271
+69.3264566221312 &lt;= 69.55830350471693 &lt; 88.0338693007938
+54.93915540613321 &lt;= 60.942495111426524 &lt; 62.81240957383646
+50.06991586996784 &lt;= 52.330967902547684 &lt; 55.29641157449417
+27.160198986322815 &lt;= 32.21824038455605 &lt; 32.95597514543884
+66.49124660830003 &lt;= 66.97083896774384 &lt; 82.23380657999589
+75.16292391334935 &lt;= 87.19116332161784 &lt; 89.97697382863359
+30.47254616479609 &lt;= 44.655584043129174 &lt; 48.32262829285477
+52.18226088872123 &lt;= 56.380678753665165 &lt; 90.47485373974573
+56.981891515804776 &lt;= 59.47594596418558 &lt; 70.50877867781386
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bisection-search">
+<h3>Bisection Search<a class="headerlink" href="#bisection-search" title="Link to this heading">#</a></h3>
+<p>Bisection search is a reliable method that works by dividing the search interval in half with each step until the target value’s position is found.
+Given a sorted array of <span class="math notranslate nohighlight">\(N\)</span> data points, this method requires approximately <span class="math notranslate nohighlight">\(\log_2(N)\)</span> steps to locate the closest point, making it efficient even for large datasets.
+Bisection is particularly useful when interpolation requests are uncorrelated—meaning there is no pattern in the sequence of target points that could be exploited for faster searching.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bisection</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">l</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">h</span> <span class="o">-</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="n">l</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">target</span> <span class="o">&gt;=</span> <span class="n">xs</span><span class="p">[</span><span class="n">m</span><span class="p">]:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="n">l</span> <span class="c1"># returns index of the closest value less than or equal to target</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above function efficiently narrows down the interval to locate the index of the nearest value.</p>
+<p>We can perform some tests:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">v</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+    <span class="n">i</span>  <span class="o">=</span> <span class="n">bisection</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> &lt;= </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1"> &lt; </span><span class="si">{</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.772041402740978 &lt;= 30.81177836415009 &lt; 41.463203129051294
+37.205610043865576 &lt;= 37.81007552719782 &lt; 49.26523747298669
+58.60661157299843 &lt;= 69.54221561157378 &lt; 80.83229865453734
+77.8508135231171 &lt;= 82.7512291454522 &lt; 98.90518546028567
+76.34714169883975 &lt;= 82.91050918662697 &lt; 93.4341508426229
+73.2293038017093 &lt;= 85.06214012298672 &lt; 85.77334816409969
+46.27280937002294 &lt;= 57.86160981183716 &lt; 61.948026872539465
+35.577655701392494 &lt;= 43.583454013544575 &lt; 50.60660575427322
+13.677576984961881 &lt;= 23.381553595361513 &lt; 54.21965006264791
+44.56078720400102 &lt;= 56.44380682143155 &lt; 60.13581793961787
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hunting-method">
+<h3>Hunting Method<a class="headerlink" href="#hunting-method" title="Link to this heading">#</a></h3>
+<p>For cases where interpolation points are close together in sequence—common in applications with gradually changing target values—the hunting method offers faster performance than bisection from scratch.
+Hunting takes advantage of the idea that, if the previous interpolation point is nearby, the search can start close to the last found position and “hunt” outward in expanding steps to bracket the target value.
+Once the bracket is located, the search is refined using a quick bisection.</p>
+<p>The hunting method is beneficial for correlated data requests, where successive target values are close, as it can skip large portions of the data and converge faster than starting from scratch each time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hunt</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">i_last</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i_last</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># Determine the search direction based on the target value</span>
+    <span class="k">if</span> <span class="n">target</span> <span class="o">&gt;=</span> <span class="n">xs</span><span class="p">[</span><span class="n">i_last</span><span class="p">]:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="n">i_last</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">i_last</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">target</span> <span class="o">&gt;</span> <span class="n">xs</span><span class="p">[</span><span class="n">h</span><span class="p">]:</span>
+            <span class="n">l</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">+</span><span class="n">step</span><span class="p">)</span>
+            <span class="n">step</span> <span class="o">*=</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i_last</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">i_last</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">target</span> <span class="o">&lt;</span> <span class="n">xs</span><span class="p">[</span><span class="n">l</span><span class="p">]:</span>
+            <span class="n">l</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span><span class="o">-</span><span class="n">step</span><span class="p">),</span> <span class="n">l</span>
+            <span class="n">step</span> <span class="o">*=</span> <span class="mi">2</span>
+
+    <span class="c1"># Refine with bisection within the bracketed range</span>
+    <span class="k">return</span> <span class="n">bisection</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">target</span><span class="p">)</span> <span class="o">+</span> <span class="n">l</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">v</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+    <span class="n">i</span>  <span class="o">=</span> <span class="n">hunt</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> &lt;= </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1"> &lt; </span><span class="si">{</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.007584769285938 &lt;= 23.253382795766072 &lt; 56.9233964626754
+79.97101036805698 &lt;= 84.66461751136555 &lt; 97.21292508762768
+24.228220491430463 &lt;= 33.23380208604193 &lt; 35.248719239025974
+44.17282228539023 &lt;= 58.079542775820876 &lt; 71.3657773976265
+35.32243579011352 &lt;= 64.65696511281575 &lt; 77.19078414192852
+69.78239721495166 &lt;= 89.09400860681394 &lt; 92.15268016188325
+79.96483027425442 &lt;= 94.865734672729 &lt; 96.94608713687654
+57.80384873706672 &lt;= 58.84034579100154 &lt; 73.38150680585899
+8.800530585640665 &lt;= 15.597194742888894 &lt; 17.615560862713142
+74.6713893411206 &lt;= 81.4703318786525 &lt; 94.96279042453834
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="linear-interpolation-using-the-hunting-method">
+<h3>Linear Interpolation Using the Hunting Method<a class="headerlink" href="#linear-interpolation-using-the-hunting-method" title="Link to this heading">#</a></h3>
+<p>Once the nearest position is identified, interpolation proceeds with the closest data points.
+Here, we implement a simple linear interpolation using the hunting method to locate the starting position, then use it to calculate the interpolated value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Interpolator</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span> <span class="o">=</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i_last</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">search_method</span><span class="o">=</span><span class="s1">&#39;hunt&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">search_method</span> <span class="o">==</span> <span class="s1">&#39;hunt&#39;</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">hunt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_last</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">search_method</span> <span class="o">==</span> <span class="s1">&#39;bisection&#39;</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">bisection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i_last</span> <span class="o">=</span> <span class="n">i</span>  <span class="c1"># Update last position for future hunts</span>
+
+        <span class="c1"># Linear interpolation using the two nearest points</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span> <span class="o">+</span> <span class="n">y0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">Xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">Ys</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">Xs</span><span class="p">)</span>
+
+<span class="n">fi</span> <span class="o">=</span> <span class="n">Interpolator</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">Xs</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">Xs</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">fi</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Interpolated points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sampling data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10cf91f90&gt;
+</pre></div>
+</div>
+<img alt="../_images/7f78fbd7d729f066d5478270268d98307438710f15a3e46b14f4daa286a64721.png" src="../_images/7f78fbd7d729f066d5478270268d98307438710f15a3e46b14f4daa286a64721.png" />
+</div>
+</div>
+<p>Let’s test if our claim in terms of performance works in real life.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">Ys</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">Xs</span><span class="p">)</span>
+<span class="n">fi</span> <span class="o">=</span> <span class="n">Interpolator</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">Xs</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">Xs</span><span class="p">),</span> <span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> ys = np.array([fi(x, search_method=&#39;linear&#39;) for x in xs])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>74.9 ms ± 41.7 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> ys = np.array([fi(x, search_method=&#39;bisection&#39;) for x in xs])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26.3 ms ± 39.1 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> ys = np.array([fi(x, search_method=&#39;hunt&#39;) for x in xs])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.7 ms ± 195 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="polynomial-interpolation-and-extrapolation">
+<h2>Polynomial Interpolation and Extrapolation<a class="headerlink" href="#polynomial-interpolation-and-extrapolation" title="Link to this heading">#</a></h2>
+<p>Given <span class="math notranslate nohighlight">\(M\)</span> data points <span class="math notranslate nohighlight">\((x_0, y_0), (x_1, y_1), \dots, (x_{M-1}, y_{M_1})\)</span>, there exists a unique polynomial of degree <span class="math notranslate nohighlight">\(M-1\)</span> that pass through all <span class="math notranslate nohighlight">\(M\)</span> points exactly.</p>
+<section id="lagrange-s-formula">
+<h3>Lagrange’s formula<a class="headerlink" href="#lagrange-s-formula" title="Link to this heading">#</a></h3>
+<p>This polynomial is given by Lagrange’s classical formula,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3c1f75bc-35f0-4955-8972-76abac65ad72">
+<span class="eqno">(117)<a class="headerlink" href="#equation-3c1f75bc-35f0-4955-8972-76abac65ad72" title="Permalink to this equation">#</a></span>\[\begin{align}
+P_{M-1}(x)
+&amp;= \frac{(x-x_1)(x-x_2)\dots(x-x_{M-1})}{(x_0-x_1)(x_0-x_2)\dots(x_0-x_{M-1})} y_0 \\
+&amp;+ \frac{(x-x_0)(x-x_2)\dots(x-x_{M-1})}{(x_1-x_0)(x_1-x_2)\dots(x_1-x_{M-1})} y_1 + \dots \\
+&amp;+ \frac{(x-x_0)(x-x_2)\dots(x-x_{M-2})}{(x_{M-1}-x_0)(x_{M-1}-x_1)\dots(x_{M-1}-x_{M-2})} y_{M-1}
+\end{align}\]</div>
+<p>Using summation and product notations, one may rewrite Lagrange’s formula as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ce842e69-be66-4003-a5ab-80951ccebc73">
+<span class="eqno">(118)<a class="headerlink" href="#equation-ce842e69-be66-4003-a5ab-80951ccebc73" title="Permalink to this equation">#</a></span>\[\begin{align}
+P_{M-1}(x)
+= \sum_{m=0}^{M-1} \frac{\prod_{n=0,n\ne m}^{M-1}(x-x_n)}{\prod_{n=0,n\ne m}^{M-1}(x_m-x_n)} y_m
+\end{align}\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(x = x_{m'}\)</span> for <span class="math notranslate nohighlight">\(0 \le m; &lt; M\)</span>, it is straightforward to show</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cef26ab5-be21-49ab-bcd1-5150b56b525b">
+<span class="eqno">(119)<a class="headerlink" href="#equation-cef26ab5-be21-49ab-bcd1-5150b56b525b" title="Permalink to this equation">#</a></span>\[\begin{align}
+P_{M-1}(x_{m'})
+= \sum_{m=0}^{M-1} \delta_{mm'} y_m
+\end{align}\]</div>
+<p>and hence <span class="math notranslate nohighlight">\(P_{M-1}(x)\)</span> does pass through all data points.</p>
+</section>
+<section id="neville-s-algorithm">
+<h3>Neville’s Algorithm<a class="headerlink" href="#neville-s-algorithm" title="Link to this heading">#</a></h3>
+<p>Although one may directly implement Lagrange’s formula, it does not offer a way to estimate errors.
+Instead, we will use Neville’s algorithm, which constructs an interpolating polynomial by combining values in a recursive manner.
+This approach avoids some of the issues in Lagrange interpolation and is particularly useful for small sets of points where we need an error estimate along with the interpolation result.</p>
+<p>Although Numerical Receipts usually give excellent explainations of numerical methods, its section on Neville’s Algorithm is a bit confusing.
+Here, we try to use some python codes to motivate the algorithm step by step.</p>
+<ol class="arabic simple">
+<li><p>Note that a polynomial of 0 dgree is simply a constant.
+We use <span class="math notranslate nohighlight">\(P_m\)</span> to denote the 0 degree polynomails that approxmation points <span class="math notranslate nohighlight">\((x_m, y_m)\)</span>.
+Hence, <span class="math notranslate nohighlight">\(P_m = y_m\)</span>.
+This is represented by the horizontal bars in the following figure.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">Ys</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">Xs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$P_m$: polynomials with 0 degree&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10d01d6d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/6e9354379333b074b0bd4c587376710c345d461da6bcd22ff60ddc76cf32df4e.png" src="../_images/6e9354379333b074b0bd4c587376710c345d461da6bcd22ff60ddc76cf32df4e.png" />
+</div>
+</div>
+<ol class="arabic" start="2">
+<li><p>To improve the accuracy of the approximation, we try to linearly interpolate two nearby points <span class="math notranslate nohighlight">\((x_{m'}, y_{m'})\)</span> and <span class="math notranslate nohighlight">\((x_{m'+1}, y_{m'+1})\)</span>.
+For book keeping reason, we will call this polynomial of 1 degree <span class="math notranslate nohighlight">\(P_{m',m'+1}\)</span>.
+Recall the previous definition <span class="math notranslate nohighlight">\(P_{m'} = y_{m'}\)</span> and <span class="math notranslate nohighlight">\(P_{m'+1} = y_{m'+1}\)</span>,
+we may now use the “two-point form” and write down:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8afc524c-2840-4b97-bf4a-a502ee2b471e">
+<span class="eqno">(120)<a class="headerlink" href="#equation-8afc524c-2840-4b97-bf4a-a502ee2b471e" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{P_{m',m'+1} - P_{m'}}{x - x_{m'}} &amp;= \frac{P_{m'+1} - P_{m'}}{x_{m'+1} - x_{m'}} \\
+P_{m',m'+1} - P_{m'} &amp;= \frac{x - x_{m'}}{x_{m'+1} - x_{m'}}(P_{m'+1} - P_{m'}) \\
+P_{m',m'+1} &amp;= P_{m'} + \frac{x - x_{m'}}{x_{m'+1} - x_{m'}}(P_{m'+1} - P_{m'}) \\
+P_{m',m'+1} &amp;= \frac{x_{m'+1} - x_{m'}}{x_{m'+1} - x_{m'}}P_{m'} + \frac{x - x_{m'}}{x_{m'+1} - x_{m'}}(P_{m'+1} - P_{m'}) \\
+P_{m',m'+1} &amp;= \left(\frac{x_{m'+1} - x_{m'}}{x_{m'+1} - x_{m'}} - \frac{x - x_{m'}}{x_{m'+1} - x_{m'}}\right)P_{m'} + \frac{x - x_{m'}}{x_{m'+1} - x_{m'}}P_{m'+1} \\
+P_{m',m'+1} &amp;= \frac{x_{m'+1} - x}{x_{m'+1} - x_{m'}}P_{m'} + \frac{x - x_{m'}}{x_{m'+1} - x_{m'}}P_{m'+1} \\
+P_{m',m'+1} &amp;= \frac{(x - x_{m'+1})P_{m'} + (x_{m'} - x)P_{m'+1} }{x_{m'} - x_{m'+1}}
+\end{align}\]</div>
+<p>This is nothing but a special case of equation (3.2.3) in Numerical Recipes 3rd Edition in C++.</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Pmm1s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">Pmm1s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">Ys</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">Ys</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">-</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$P_m$: polynomials with 0 degree&#39;</span><span class="p">)</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$P_{m,m+1}$: polynomials with 1 degree&#39;</span>
+<span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">Pmm1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Pmm1s</span><span class="p">):</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">Pmm1</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10d1e65d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/c2a7d025298b08da71d310ab37d8ad15490d6fd45d21d3749079edf6e49dc64b.png" src="../_images/c2a7d025298b08da71d310ab37d8ad15490d6fd45d21d3749079edf6e49dc64b.png" />
+</div>
+</div>
+<ol class="arabic" start="3">
+<li><p>By the same token, to improve the accuracy of the approximation, we linearly interpolate <span class="math notranslate nohighlight">\(P_{m'',m''+1}\)</span> and <span class="math notranslate nohighlight">\(P_{m''+1,m''+2}\)</span>.
+We will call this polynomial of 2 degrees <span class="math notranslate nohighlight">\(P_{m'',m''+1,m''+2}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-06142cb6-c9ec-45a9-be55-d822e3a44d97">
+<span class="eqno">(121)<a class="headerlink" href="#equation-06142cb6-c9ec-45a9-be55-d822e3a44d97" title="Permalink to this equation">#</a></span>\[\begin{align}
+P_{m'',m''+1,m''+2} &amp;= \frac{(x - x_{m''+2})P_{m'',m''+1} + (x_{m''} - x)P_{m''+1,m''+2} }{x_{m'} - x_{m'+2}}.
+\end{align}\]</div>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Pmm1m2s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Xs</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">Pmm1</span>  <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">Ys</span><span class="p">[</span><span class="n">m</span>  <span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span>  <span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">Ys</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span>  <span class="p">]</span> <span class="o">-</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">Pm1m2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">Ys</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">Ys</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">Pmm1m2s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">Pmm1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">Pm1m2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">-</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">2</span><span class="p">])</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$P_m$: polynomials with 0 degree&#39;</span><span class="p">)</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$P_{m,m+1}$: polynomials with 1 degree&#39;</span>
+<span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">Pmm1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Pmm1s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">Pmm1</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$P_{m,m+1,m+2}$: polynomials with 2 degree&#39;</span>
+<span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">Pmm1m2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Pmm1m2s</span><span class="p">):</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">Xs</span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">Pmm1m2</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10d44cf50&gt;
+</pre></div>
+</div>
+<img alt="../_images/47e3a715cf1595470ed763527614e36b63d1a892b7ae71b51f50651188e8eb27.png" src="../_images/47e3a715cf1595470ed763527614e36b63d1a892b7ae71b51f50651188e8eb27.png" />
+</div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Doing this recursively, we obtain Neville’s algorithm, equation (3.2.3) in Numerical Recipes:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f7f55c45-30c9-4cae-bd37-42f15a51bc24">
+<span class="eqno">(122)<a class="headerlink" href="#equation-f7f55c45-30c9-4cae-bd37-42f15a51bc24" title="Permalink to this equation">#</a></span>\[\begin{align}
+P_{m,m+1,\dots,m+n} &amp;= \frac{(x - x_{m+n})P_{m,m+1,\dots,m+n-1} + (x_{m} - x)P_{m+1,m+2,\dots,m+n} }{x_{m} - x_{m+n}}.
+\end{align}\]</div>
+</li>
+</ol>
+<ol class="arabic" start="5">
+<li><p>Recalling the <strong>catastrophic cancellation</strong> discussed in <a class="reference internal" href="#data.md"><code class="xref myst docutils literal notranslate"><span class="pre">data.md</span></code></a>, given that <span class="math notranslate nohighlight">\(P_{m,m+1,\dots,m+n} - P_{m,m+1,\dots,m+n-1}\)</span> has the meaning of “small correction”, it is better to keep track of this small quantities instead of <span class="math notranslate nohighlight">\(P_{m,m+1,\dots,m+n}\)</span> themselves.
+Following Numerical Recipes, we define</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c8c51908-d810-4d16-a660-04764c43597c">
+<span class="eqno">(123)<a class="headerlink" href="#equation-c8c51908-d810-4d16-a660-04764c43597c" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_{n,m} &amp;\equiv P_{m,m+1,\dots,m+n} - P_{m,m+1,\dots,m+n-1} \\
+D_{n,m} &amp;\equiv P_{m,m+1,\dots,m+n} - P_{m+1,m+2,\dots,m+n}
+\end{align}\]</div>
+<p>Neville’s algorithm can now be rewritten as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c24fcb7c-19bd-4c4d-affc-a5cb82cb5b5a">
+<span class="eqno">(124)<a class="headerlink" href="#equation-c24fcb7c-19bd-4c4d-affc-a5cb82cb5b5a" title="Permalink to this equation">#</a></span>\[\begin{align}
+D_{n+1,m} &amp;= \frac{x_{m+n+1}-x}{x_m - x_{m+n+1}}(C_{n,m+1} - D_{n,m}) \\
+C_{n+1,m} &amp;= \frac{x_{n}-x}{x_m - x_{m+n+1}}(C_{n,m+1} - D_{n,m})
+\end{align}\]</div>
+<p>From this expression, it is now clear that the <span class="math notranslate nohighlight">\(C\)</span>’s and <span class="math notranslate nohighlight">\(D\)</span>’s are the corrections that make the interpolation one order higher.</p>
+</li>
+</ol>
+<ol class="arabic simple" start="6">
+<li><p>The final polynomial <span class="math notranslate nohighlight">\(P_{0,1,\dots,M-1}\)</span> is equal to the sum of <em>any</em> <span class="math notranslate nohighlight">\(y_i\)</span> plus a set of <span class="math notranslate nohighlight">\(C\)</span>’s and/or <span class="math notranslate nohighlight">\(D\)</span>’s that form a path through the family tree of <span class="math notranslate nohighlight">\(P_{m,m+1,\dots,m+n}\)</span>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PolynomialInterpolator</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">n</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">n</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">search_method</span><span class="o">=</span><span class="s1">&#39;hunt&#39;</span><span class="p">):</span>
+
+        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">)</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">)</span>
+
+        <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xs</span> <span class="o">-</span> <span class="n">target</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">i</span><span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">ho</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">target</span>
+            <span class="n">hp</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">[</span><span class="o">+</span><span class="n">n</span><span class="p">:]</span> <span class="o">-</span> <span class="n">target</span>
+            <span class="n">w</span>   <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">-</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">D</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="p">]</span>
+            <span class="n">den</span> <span class="o">=</span> <span class="n">ho</span> <span class="o">-</span> <span class="n">hp</span>
+            <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">den</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;two input xs are (to within roundoﬀ) identical.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="n">den</span>
+            <span class="n">D</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">hp</span> <span class="o">*</span> <span class="n">f</span>
+            <span class="n">C</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">ho</span> <span class="o">*</span> <span class="n">f</span>
+
+            <span class="k">if</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">-</span><span class="n">n</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dy</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dy</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
+
+            <span class="n">y</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dy</span>
+
+        <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="c1">#Xs = np.linspace(-5,5,21)</span>
+<span class="c1">#Xs = -5 * np.cos(np.linspace(0, np.pi, 21))</span>
+<span class="n">Ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">Xs</span><span class="o">*</span><span class="n">Xs</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">PolynomialInterpolator</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">201</span><span class="p">)</span>
+<span class="c1">#xs = np.linspace(-5,5,201)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">es</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">:</span>
+    <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">es</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">dy</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+<span class="n">es</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">es</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">es</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10d5a1450&gt;]
+</pre></div>
+</div>
+<img alt="../_images/1620512d1cb7f97231b7ca99c0de94ef3362ac0c8122be4609cddee7c724a532.png" src="../_images/1620512d1cb7f97231b7ca99c0de94ef3362ac0c8122be4609cddee7c724a532.png" />
+</div>
+</div>
+</section>
+<section id="discussion">
+<h3>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>How does the error converge if we increase (or decrease) the number of sampling points?</p></li>
+<li><p>What will happen if we increase the size of the domain?  (This is called Runge phenomenon.)</p></li>
+<li><p>What will happen if we try to extrapolate?</p></li>
+</ul>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>In this lecture, we studied interpolation techniques, focusing on polynomial interpolation.
+We derive and implemented Neville’s Algorithm, a recursive method that constructs an interpolating polynomial while also providing an internal error estimate.
+This technique offers insight into the stability of interpolation at specific points, making it particularly useful for small datasets.</p>
+<p>However, polynomial interpolation is not always the best choice, especially for large datasets or unevenly spaced data.
+Alternative techniques such as cubic splines, rational function interpolation, and multidimensional interpolation provide more robust and flexible approaches.</p>
+<p>For further study, we recommend exploring:</p>
+<ul class="simple">
+<li><p>Cubic Spline Interpolation: A method that ensures smoothness across intervals, mitigating oscillatory behavior.</p></li>
+<li><p>Rational Function Interpolation: A technique that models asymptotic behavior effectively, reducing instability.</p></li>
+<li><p>Interpolating Polynomial Coefficients: A computationally efficient way to determine polynomial coefficients directly.</p></li>
+<li><p>Multidimensional Interpolation: Methods for interpolating data in multiple dimensions, applicable to spatial data analysis.</p></li>
+<li><p>Laplace Interpolation: A specialized approach for interpolating harmonic functions using Laplace’s equation.</p></li>
+</ul>
+<p>Understanding these advanced methods can help address the challenges posed by polynomial interpolation and extend its practical applications to more complex interpolation problems.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vahidszd/IUT-Computational-Physics-hbakhshian",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./06"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../05/notes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Useful Tools</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Interpolation and Extrapolation Lab</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-methods">Interpolation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-with-extrapolation">Challenges with Extrapolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinguishing-interpolation-and-function-approximation">Distinguishing Interpolation and Function Approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-interpolation">Limitations of Interpolation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries-searching-an-ordered-table">Preliminaries: Searching an Ordered Table</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-search">Linear Search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-search">Bisection Search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hunting-method">Hunting Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-interpolation-using-the-hunting-method">Linear Interpolation Using the Hunting Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-interpolation-and-extrapolation">Polynomial Interpolation and Extrapolation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-s-formula">Lagrange’s formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neville-s-algorithm">Neville’s Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chi-kwan Chan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

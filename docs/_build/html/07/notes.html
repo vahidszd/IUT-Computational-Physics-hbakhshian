@@ -1,0 +1,1563 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Numerical and Automatic Derivatives &#8212; PHYS 305: Computational Physics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07/notes';</script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/language_data.js?v=d4673a71"></script>
+    <script src="../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Numerical Integration of Functions" href="../08/notes.html" />
+    <link rel="prev" title="Interpolation and Extrapolation Lab" href="../06/lab.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/iutlogo.jpg" class="logo__image only-light" alt="PHYS 305: Computational Physics - Home"/>
+    <img src="../_static/iutlogo.jpg" class="logo__image only-dark pst-js-only" alt="PHYS 305: Computational Physics - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    PHYS 305
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/notes.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/lab.html">Git, Jupyter, and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/notes.html">Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/lab.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/notes.html">Numerical Linear Algebra</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/lab.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/sol.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/notes.html">Fourier Transform and Spectral Analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lab.html">Fourier Transform and Spectral Analyses Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/notes.html">Useful Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/notes.html">Interpolation and Extrapolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/lab.html">Interpolation and Extrapolation Lab</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Numerical and Automatic Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/notes.html">Numerical Integration of Functions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/edit/main/docs/07/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/issues/new?title=Issue%20on%20page%20%2F07/notes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/07/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Numerical and Automatic Derivatives</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-differentiation">Symbolic Differentiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithmic-approach">Algorithmic Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-computation-with-sympy">Symbolic Computation with SymPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-symbolic-differentiation">Advantages of Symbolic Differentiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#software-tools">Software Tools</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-differentiation">Numerical Differentiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-methods">Finite Difference Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-implementation">Sample Implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-order-finite-difference-methods-finite-difference-method-of-high-order-derivatives">High-Order Finite Difference Methods: Finite Difference Method of High-Order Derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-order-finite-difference-methods-high-order-scheme-for-low-order-derivatives">High-Order Finite Difference Methods: High-Order Scheme for Low-Order Derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-derivatives">Spectral Derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-step-differentiation">Complex Step Differentiation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-differentiation">Automatic Differentiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-automatic-differentiation">Introduction to Automatic Differentiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-numbers-and-forward-mode-ad">Dual Numbers and Forward Mode AD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-differentiating-f-x-x-2">Example: Differentiating <span class="math notranslate nohighlight">\(f(x) = x^2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-autodiff-with-dual-numbers">Implementing Autodiff with Dual Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-complex-step-method">Connection to Complex Step Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverse-mode-ad">Reverse Mode AD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autodiff-and-vectorization-and-jit-in-python-with-jax">Autodiff (and Vectorization and JIT) in Python with JAX</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="numerical-and-automatic-derivatives">
+<h1>Numerical and Automatic Derivatives<a class="headerlink" href="#numerical-and-automatic-derivatives" title="Link to this heading">#</a></h1>
+<p>Derivatives are fundamental in mathematical modeling.
+They provide essential insights into the behavior of physical systems by quantifying rates of change.</p>
+<p>In fields such as computational physics, engineering, and machine learning, the efficient and accurate computation of derivatives is crucial for simulations, optimizations, and analyses.
+Traditional analytical methods for finding derivatives may become intractable for complex or nonlinear functions commonly encountered in real-world applications.
+Consequently, alternative techniques have emerged as indispensable tools in scientific computing.</p>
+<p>The derivative of a real-valued function <span class="math notranslate nohighlight">\(f(x)\)</span> at a point <span class="math notranslate nohighlight">\(x = a\)</span> is defined as the limit:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-da5f3ea3-804c-428e-bee0-a5b12164e147">
+<span class="eqno">(126)<a class="headerlink" href="#equation-da5f3ea3-804c-428e-bee0-a5b12164e147" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}.
+\end{align}\]</div>
+<p>This limit, if it exists, represents the slope of the tangent line to the curve <span class="math notranslate nohighlight">\(y = f(x)\)</span> at <span class="math notranslate nohighlight">\(x = a\)</span>. The derivative function <span class="math notranslate nohighlight">\(f'(x)\)</span> provides the rate of change of <span class="math notranslate nohighlight">\(f\)</span> at any point within its domain where the derivative exists.</p>
+<p>Several fundamental rules facilitating the computation of derivatives are taught in undergraduate calculus courses.
+Among them, the most important one is the chain rule.
+It states that, for <span class="math notranslate nohighlight">\(f(x) = g(h(x))\)</span>, its derivative is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2c0309ca-f1bf-48cf-961d-116d2ff5b414">
+<span class="eqno">(127)<a class="headerlink" href="#equation-2c0309ca-f1bf-48cf-961d-116d2ff5b414" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) = g'(h(x)) h'(x).
+\end{align}\]</div>
+<p>We will show that the chain rule is extremely important in modern numerical and automatic derivatives.</p>
+<p>Methods for computing derivatives include symbolic differentiation, numerical approximation, and automatic differentiation.
+Symbolic differentiation applies analytical rules directly to mathematical expressions, yielding exact derivative formulas.
+Numerical methods, such as finite difference techniques, approximate derivatives using discrete data points and are straightforward to implement but may suffer from truncation and round-off errors.
+Automatic differentiation bridges the gap by systematically applying the chain rule to compute exact derivatives up to machine precision without symbolic manipulation, making it efficient for complex functions and large-scale systems.</p>
+<p>Understanding the principles, advantages, and limitations of these approaches allows for the selection of the most appropriate method for a given problem.
+This lecture will introduce these techniques, providing a comprehensive overview of their theoretical foundations and practical implementations in computational contexts.</p>
+<section id="symbolic-differentiation">
+<h2>Symbolic Differentiation<a class="headerlink" href="#symbolic-differentiation" title="Link to this heading">#</a></h2>
+<p>Symbolic differentiation computes the derivative of a function expressed symbolically by applying calculus rules directly to its mathematical expression.
+Unlike numerical methods that approximate derivatives at specific points, symbolic differentiation yields exact analytical expressions, making it valuable for theoretical analyses and precise computations.</p>
+<section id="algorithmic-approach">
+<h3>Algorithmic Approach<a class="headerlink" href="#algorithmic-approach" title="Link to this heading">#</a></h3>
+<p>The general algorithm for symbolic differentiation involves:</p>
+<ol class="arabic simple">
+<li><p>Parsing the Expression: Represent the function as an expression tree, where each node corresponds to an operation (e.g., addition, multiplication) or operand (e.g., variable, constant).</p></li>
+<li><p>Applying Differentiation Rules: Recursively apply differentiation rules to each node in the expression tree, including the chain rule.</p></li>
+<li><p>Simplifying the Result: After applying the differentiation rules, simplify the resulting expression to make it more readable and computationally efficient.</p></li>
+</ol>
+<p>Consider the function <span class="math notranslate nohighlight">\(f(x) = x^2 \sin(x) + e^{2x}\)</span>.
+To compute <span class="math notranslate nohighlight">\(f'(x)\)</span>, a symbolic differentiation system would:</p>
+<ol class="arabic">
+<li><p>Differentiate <span class="math notranslate nohighlight">\(x^2 \sin(x)\)</span> using the product rule:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9923acc7-4a29-49b6-94a8-168ddc640942">
+<span class="eqno">(128)<a class="headerlink" href="#equation-9923acc7-4a29-49b6-94a8-168ddc640942" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{d}{dx}[x^2 \sin(x)] = x^2 \cos(x) + 2 x \sin(x)
+\end{align}\]</div>
+</li>
+<li><p>Differentiate <span class="math notranslate nohighlight">\(e^{2x}\)</span> using the chain rule:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-40323eae-4063-4e8b-96a1-9fa4f19ca52f">
+<span class="eqno">(129)<a class="headerlink" href="#equation-40323eae-4063-4e8b-96a1-9fa4f19ca52f" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{d}{dx}[e^{2x}] = 2 e^{2x}
+\end{align}\]</div>
+</li>
+<li><p>Combine the results:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e97cfd4e-a2c0-47f9-b466-68ae0acc8b69">
+<span class="eqno">(130)<a class="headerlink" href="#equation-e97cfd4e-a2c0-47f9-b466-68ae0acc8b69" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) = x^2 \cos(x) + 2 x \sin(x) + 2 e^{2x}
+\end{align}\]</div>
+</li>
+</ol>
+</section>
+<section id="symbolic-computation-with-sympy">
+<h3>Symbolic Computation with SymPy<a class="headerlink" href="#symbolic-computation-with-sympy" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SymPy</span></code> is an open-source Python library for symbolic mathematics.
+It allows for symbolic differentiation and manipulation of mathematical expressions.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">SymPy</span></code> to Compute <span class="math notranslate nohighlight">\(f'(x)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>sympy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: sympy in /Users/vahid/ComputationalPhysics/lib/python3.13/site-packages (1.13.3)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /Users/vahid/ComputationalPhysics/lib/python3.13/site-packages (from sympy) (1.3.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">24.3.1</span> -&gt; <span class=" -Color -Color-Green">25.0</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">f_prime</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">f_prime_simplified</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">f_prime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_prime_simplified</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle x^{2} \cos{\left(x \right)} + 2 x \sin{\left(x \right)} + 2 e^{2 x}\]</div>
+</div>
+</div>
+</section>
+<section id="advantages-of-symbolic-differentiation">
+<h3>Advantages of Symbolic Differentiation<a class="headerlink" href="#advantages-of-symbolic-differentiation" title="Link to this heading">#</a></h3>
+<p>Symbolic differentiation provides exact results by producing precise analytical expressions without approximation errors.
+This exactness is crucial in theoretical work where precise solutions are necessary.
+Additionally, symbolic derivatives are valid over continuous ranges of variables, offering general applicability in analyses.
+They facilitate further analytical processes by simplifying tasks such as solving differential equations and optimizing functions, as the exact expressions can be manipulated algebraically to gain deeper insights into the behavior of the system under study.</p>
+</section>
+<section id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h3>
+<p>Symbolic differentiation has limitations that can impact its practicality.
+One challenge is the potential for expression growth of the derivative expressions as the original function’s complexity increases.
+This growth can make the expressions difficult to interpret and computationally intensive to process.
+The computational complexity associated with differentiating complex functions can require substantial resources and time, especially for high-dimensional systems or functions involving intricate compositions.
+Furthermore, symbolic differentiation is not suitable for functions without explicit symbolic forms, such as those defined by experimental data, simulations, or complex numerical algorithms.
+In such cases, alternative methods like numerical differentiation or automatic differentiation are more appropriate.</p>
+</section>
+<section id="software-tools">
+<h3>Software Tools<a class="headerlink" href="#software-tools" title="Link to this heading">#</a></h3>
+<p>Several software tools facilitate symbolic differentiation by automating the application of calculus rules to mathematical expressions:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sympy.org/"><code class="docutils literal notranslate"><span class="pre">SymPy</span></code></a>:
+An open-source Python library that provides capabilities for symbolic differentiation, integration, and equation solving within the Python ecosystem.</p></li>
+<li><p><a class="reference external" href="https://www.wolfram.com/mathematica/"><code class="docutils literal notranslate"><span class="pre">Mathematica</span></code></a>:
+A computational software developed by Wolfram Research, offering extensive symbolic computation features used widely in academia and industry.</p></li>
+<li><p><a class="reference external" href="https://www.maplesoft.com/"><code class="docutils literal notranslate"><span class="pre">Maple</span></code></a>:
+A software package designed for symbolic and numeric computing, providing powerful tools for mathematical analysis.</p></li>
+<li><p><a class="reference external" href="https://maxima.sourceforge.io/"><code class="docutils literal notranslate"><span class="pre">Maxima</span></code></a>:
+An open-source computer algebra system specializing in symbolic manipulation, accessible for users seeking free alternatives.</p></li>
+</ul>
+</section>
+</section>
+<section id="numerical-differentiation">
+<h2>Numerical Differentiation<a class="headerlink" href="#numerical-differentiation" title="Link to this heading">#</a></h2>
+<p>Numerical differentiation estimates the derivative of a function using discrete data points, providing approximate values where analytical derivatives are difficult or impossible to obtain.
+Unlike symbolic differentiation, which yields exact expressions, numerical methods offer flexibility in handling complex, empirical, or high-dimensional functions by leveraging computational algorithms to approximate derivatives at specific points.</p>
+<section id="finite-difference-methods">
+<h3>Finite Difference Methods<a class="headerlink" href="#finite-difference-methods" title="Link to this heading">#</a></h3>
+<p>Finite difference methods are fundamental techniques in numerical differentiation, estimating derivatives by evaluating the function at specific points and computing the ratio of differences.
+These methods are essential when analytical derivatives are difficult or impossible to obtain, particularly for complex or empirical functions encountered in scientific and engineering applications.</p>
+<p>The core idea behind finite difference methods is to approximate the derivative <span class="math notranslate nohighlight">\(f'(x)\)</span> by evaluating the function <span class="math notranslate nohighlight">\(f(x)\)</span> at selected points around <span class="math notranslate nohighlight">\(x\)</span>.
+The three most basic finite difference approximations are forward difference, backward difference, and central difference.</p>
+<p>The <strong>forward difference approximation</strong> estimates the first derivative at a point <span class="math notranslate nohighlight">\(x\)</span> by using the function values at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x + h\)</span>, where <span class="math notranslate nohighlight">\(h\)</span> is a small step size:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8c5f0cb6-1e84-4cfe-ab85-673a2d70123c">
+<span class="eqno">(131)<a class="headerlink" href="#equation-8c5f0cb6-1e84-4cfe-ab85-673a2d70123c" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) \approx \frac{f(x + h) - f(x)}{h}.
+\end{align}\]</div>
+<p>This method is straightforward to implement and requires only one additional function evaluation beyond the point of interest.
+However, its accuracy is limited by a truncation error of order <span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span>.
+As <span class="math notranslate nohighlight">\(h\)</span> decreases, the approximation becomes more accurate, but excessively small values of <span class="math notranslate nohighlight">\(h\)</span> can lead to significant round-off errors due to the limitations of floating-point arithmetic.</p>
+<p>Similarly, the <strong>backward difference approximation</strong> estimates the derivative using the function values at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x - h\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0d25e58f-b6f2-4cc5-b602-3741ae28db1d">
+<span class="eqno">(132)<a class="headerlink" href="#equation-0d25e58f-b6f2-4cc5-b602-3741ae28db1d" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) \approx \frac{f(x) - f(x - h)}{h}.
+\end{align}\]</div>
+<p>Like the forward difference, the backward difference method has the same truncation error of <span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span>.
+It is particularly useful in situations where function evaluations at points greater than <span class="math notranslate nohighlight">\(x\)</span> are not available or are computationally expensive.</p>
+<p>The <strong>central difference approximation</strong> provides a more accurate estimate by averaging the forward and backward differences:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-151a204c-4efd-4722-9434-a45852d146e7">
+<span class="eqno">(133)<a class="headerlink" href="#equation-151a204c-4efd-4722-9434-a45852d146e7" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) \approx \frac{1}{2}\left[\frac{f(x + h) - f(x)}{h} + \frac{f(x) - f(x - h)}{h}\right] = \frac{f(x + h) - f(x - h)}{2h}.
+\end{align}\]</div>
+<p>This method reduces the truncation error to <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span>, making it  more accurate for smooth functions.
+The central difference requires function evaluations at both <span class="math notranslate nohighlight">\(x + h\)</span> and <span class="math notranslate nohighlight">\(x - h\)</span>, effectively doubling the number of required computations compared to the forward or backward methods.
+Nevertheless, the enhanced accuracy often justifies the additional computational effort, especially in applications demanding high precision.</p>
+<p>Finite difference methods involve a trade-off between truncation error and round-off error.
+The truncation error arises from approximating the derivative using discrete differences, while the round-off error is due to the finite precision of floating-point arithmetic used in computations.</p>
+<p>For the forward and backward difference methods, the truncation error is proportional to <span class="math notranslate nohighlight">\(h\)</span>, meaning that decreasing <span class="math notranslate nohighlight">\(h\)</span> improves the approximation’s accuracy linearly.
+In contrast, the central difference method’s truncation error decreases quadratically with <span class="math notranslate nohighlight">\(h\)</span>, offering better accuracy for smaller step sizes.</p>
+<p>However, reducing <span class="math notranslate nohighlight">\(h\)</span> too much can amplify round-off errors, as the difference <span class="math notranslate nohighlight">\(f(x + h) - f(x)\)</span> becomes dominated by floating-point precision limitations.
+Therefore, selecting an optimal step size <span class="math notranslate nohighlight">\(h\)</span> is crucial.
+Typically, <span class="math notranslate nohighlight">\(h\)</span> is chosen to balance the minimization of both truncation and round-off errors, often on the order of the square root of <a class="reference internal" href="#sec:machine-accuracy"><span class="xref myst">machine epsilon</span></a> (e.g., <span class="math notranslate nohighlight">\(h \approx \sqrt{\epsilon}\)</span>), where machine epsilon represents the smallest difference recognizable by the floating-point system.m</p>
+</section>
+<section id="sample-implementation">
+<h3>Sample Implementation<a class="headerlink" href="#sample-implementation" title="Link to this heading">#</a></h3>
+<p>To illustrate finite difference methods, consider the following Python implementation of the forward, backward, and central difference approximations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fx_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fx_backward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fx_central</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">X</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">f</span>    <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">fx</span>   <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">fx_f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">fx_forward</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">),</span>    <span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">fx</span><span class="p">(</span><span class="n">X</span><span class="p">),</span>   <span class="s1">&#39;-&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Analytical&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">fx_f</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Forward Difference&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x113d10830&gt;
+</pre></div>
+</div>
+<img alt="../_images/d5d8c8094d2ca795edb8e388462c0ba2e3cd7680c18b980b78dc27e8515c4592.png" src="../_images/d5d8c8094d2ca795edb8e388462c0ba2e3cd7680c18b980b78dc27e8515c4592.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">errs</span><span class="p">(</span><span class="n">x0</span><span class="p">):</span>
+    <span class="n">fx0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="c1"># true derivative</span>
+    <span class="n">hs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span> <span class="c1"># step sizes</span>
+    <span class="n">errs_f</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">fx_forward</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">fx0</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hs</span><span class="p">]</span>
+    <span class="n">errs_b</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">fx_backward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">fx0</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hs</span><span class="p">]</span>
+    <span class="n">errs_c</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">fx_central</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">fx0</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">hs</span><span class="p">,</span> <span class="n">errs_f</span><span class="p">,</span> <span class="n">errs_b</span><span class="p">,</span> <span class="n">errs_c</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="n">hs</span><span class="p">,</span> <span class="n">errs_f</span><span class="p">,</span> <span class="n">errs_b</span><span class="p">,</span> <span class="n">errs_c</span> <span class="o">=</span> <span class="n">errs</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="p">,</span>    <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_f</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Forward Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_b</span><span class="p">,</span> <span class="s1">&#39;s--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Backward Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_c</span><span class="p">,</span> <span class="s1">&#39;^:&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Central Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1e1</span><span class="p">,</span> <span class="mf">1e-16</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">1e-17</span><span class="p">,</span> <span class="mf">1e0</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Step size h&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Absolute Error&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x113fdd1d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/66934d693e29a0ddfba872422deb87d94b07e3619cd7879f9d8b380b19210c67.png" src="../_images/66934d693e29a0ddfba872422deb87d94b07e3619cd7879f9d8b380b19210c67.png" />
+</div>
+</div>
+<p>Why do the convergence rates do not behave as expected?</p>
+<p>Selecting an appropriate step size <span class="math notranslate nohighlight">\(h\)</span> is critical for minimizing the total error in finite difference approximations.
+An optimal <span class="math notranslate nohighlight">\(h\)</span> balances the reduction of truncation error with the increase in round-off error.
+Empirical testing or theoretical estimates, such as <span class="math notranslate nohighlight">\(h \approx \sqrt{\epsilon}\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is the machine epsilon, can guide the selection of <span class="math notranslate nohighlight">\(h\)</span>.
+In practice, <span class="math notranslate nohighlight">\(h\)</span> is often chosen through experimentation to achieve the best trade-off for the specific function and computational environment.</p>
+</section>
+<section id="high-order-finite-difference-methods-finite-difference-method-of-high-order-derivatives">
+<h3>High-Order Finite Difference Methods: Finite Difference Method of High-Order Derivatives<a class="headerlink" href="#high-order-finite-difference-methods-finite-difference-method-of-high-order-derivatives" title="Link to this heading">#</a></h3>
+<p>Finite difference methods can also be extended beyond first derivatives to approximate higher-order derivatives with increased accuracy.
+One common approach to obtain a second derivative approximation involves combining two central difference formulas.</p>
+<p>To derive the finite difference approximation for the second derivative, consider the Taylor series expansions of <span class="math notranslate nohighlight">\(f(x + h)\)</span> and <span class="math notranslate nohighlight">\(f(x - h)\)</span> around the point <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ac8b48ab-26a1-49b0-8f72-488c07199d14">
+<span class="eqno">(134)<a class="headerlink" href="#equation-ac8b48ab-26a1-49b0-8f72-488c07199d14" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x + h) &amp;= f(x) + h f'(x) + \frac{h^2}{2} f''(x) + \frac{h^3}{6} f'''(x) + \mathcal{O}(h^4), \\
+f(x - h) &amp;= f(x) - h f'(x) + \frac{h^2}{2} f''(x) - \frac{h^3}{6} f'''(x) + \mathcal{O}(h^4).
+\end{align}\]</div>
+<p>Adding these two equations eliminates the first and third derivative terms:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3935f89e-2b4c-4078-9904-6feca10af211">
+<span class="eqno">(135)<a class="headerlink" href="#equation-3935f89e-2b4c-4078-9904-6feca10af211" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x + h) + f(x - h) = 2 f(x) + h^2 f''(x) + \mathcal{O}(h^4).
+\end{align}\]</div>
+<p>Rearranging the equation to solve for <span class="math notranslate nohighlight">\(f''(x)\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-98d27e54-e009-4c28-b678-e10c9120a434">
+<span class="eqno">(136)<a class="headerlink" href="#equation-98d27e54-e009-4c28-b678-e10c9120a434" title="Permalink to this equation">#</a></span>\[\begin{align}
+f''(x) \approx \frac{f(x + h) - 2 f(x) + f(x - h)}{h^2} + \mathcal{O}(h^2).
+\end{align}\]</div>
+<p>This yields the central difference formula for the second derivative with a truncation error of order <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span>.
+It requires evaluating the function at three points: <span class="math notranslate nohighlight">\(x - h\)</span>, <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(x + h\)</span>.</p>
+<p>To demonstrate the application of the central difference formula for the second derivative, consider the function <span class="math notranslate nohighlight">\(f(x) = \sin(x)\)</span>.
+The true second derivative of this function is <span class="math notranslate nohighlight">\(f''(x) = -\sin(x)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fxx_central</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">errs2</span><span class="p">(</span><span class="n">x0</span><span class="p">):</span>
+    <span class="n">fxx0</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="c1"># true derivative</span>
+    <span class="n">hs</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span> <span class="c1"># step sizes</span>
+    <span class="n">errs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">fxx_central</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">fxx0</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">hs</span><span class="p">,</span> <span class="n">errs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="n">hs</span><span class="p">,</span> <span class="n">errs2_c</span> <span class="o">=</span> <span class="n">errs2</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="p">,</span>    <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs2_c</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Central Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1e1</span><span class="p">,</span> <span class="mf">1e-16</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">1e-10</span><span class="p">,</span> <span class="mf">1e15</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Step size h&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Absolute Error&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114317ed0&gt;
+</pre></div>
+</div>
+<img alt="../_images/cc5210737f4d194e90515831a57b485b26cc626e6b832ff70256f775e31bbc02.png" src="../_images/cc5210737f4d194e90515831a57b485b26cc626e6b832ff70256f775e31bbc02.png" />
+</div>
+</div>
+<p>Why do the convergence rates do not behave as expected?</p>
+</section>
+<section id="high-order-finite-difference-methods-high-order-scheme-for-low-order-derivatives">
+<h3>High-Order Finite Difference Methods: High-Order Scheme for Low-Order Derivatives<a class="headerlink" href="#high-order-finite-difference-methods-high-order-scheme-for-low-order-derivatives" title="Link to this heading">#</a></h3>
+<p>Finite difference methods can also be extended to achieve higher-order accuracy by incorporating more function evaluation points and carefully constructing linear combinations that cancel out lower-order error terms.
+High-order finite difference schemes provide more precise derivative approximations, which are particularly beneficial in applications requiring high accuracy, such as computational fluid dynamics, structural analysis, and numerical simulations of physical systems.
+This is not be confused, however, with previous section, where (low-order) finite difference methods are used to compute high-order derivatives.</p>
+<p>To derive high-order finite difference approximations, the standard method is to use Taylor series expansion of the function around the point of interest.
+By considering multiple points symmetrically distributed around the target point, it is possible to eliminate lower-order error terms, thereby increasing the accuracy of the derivative approximation.</p>
+<p>Specifically, consider approximating the first derivative <span class="math notranslate nohighlight">\(f'(x)\)</span> with fourth-order accuracy.
+This requires that the truncation error be of order <span class="math notranslate nohighlight">\(\mathcal{O}(h^4)\)</span>, meaning that the error decreases proportionally to <span class="math notranslate nohighlight">\(h^4\)</span> as the step size <span class="math notranslate nohighlight">\(h\)</span> approaches zero.</p>
+<p>Expand the function <span class="math notranslate nohighlight">\(f\)</span> at points <span class="math notranslate nohighlight">\(x - 2h\)</span>, <span class="math notranslate nohighlight">\(x - h\)</span>, <span class="math notranslate nohighlight">\(x + h\)</span>, and <span class="math notranslate nohighlight">\(x + 2h\)</span> using the Taylor series around <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-61b72a55-55da-424c-8a7a-6a35418272d2">
+<span class="eqno">(137)<a class="headerlink" href="#equation-61b72a55-55da-424c-8a7a-6a35418272d2" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x - 2h) &amp;= f(x) - 2h f'(x) + \frac{(2h)^2}{2} f''(x) - \frac{(2h)^3}{6} f'''(x) + \frac{(2h)^4}{24} f''''(x) + \mathcal{O}(h^5), \\
+f(x -  h) &amp;= f(x) -  h f'(x) + \frac{  h ^2}{2} f''(x) - \frac{  h ^3}{6} f'''(x) + \frac{  h ^4}{24} f''''(x) + \mathcal{O}(h^5), \\
+f(x +  h) &amp;= f(x) +  h f'(x) + \frac{  h ^2}{2} f''(x) + \frac{  h ^3}{6} f'''(x) + \frac{  h ^4}{24} f''''(x) + \mathcal{O}(h^5), \\
+f(x + 2h) &amp;= f(x) + 2h f'(x) + \frac{(2h)^2}{2} f''(x) + \frac{(2h)^3}{6} f'''(x) + \frac{(2h)^4}{24} f''''(x) + \mathcal{O}(h^5).
+\end{align}\]</div>
+<p>We will construct linear combinations of these expansions to eliminate the lower-order terms up to <span class="math notranslate nohighlight">\(h^3\)</span>.
+For example, subtract the expansion at <span class="math notranslate nohighlight">\(x - 2h\)</span> from that at <span class="math notranslate nohighlight">\(x + 2h\)</span> and adjust coefficients to isolate <span class="math notranslate nohighlight">\(f'(x)\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-af953d87-c8ef-4251-814c-153176fe7599">
+<span class="eqno">(138)<a class="headerlink" href="#equation-af953d87-c8ef-4251-814c-153176fe7599" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x + 2h) - f(x - 2h) &amp;= 4h f'(x) + \frac{8h^3}{3} f'''(x) + \mathcal{O}(h^5), \\
+f(x +  h) - f(x -  h) &amp;= 2h f'(x) + \frac{h^3}{3} f'''(x) + \mathcal{O}(h^5).
+\end{align}\]</div>
+<p>It is now straightforward to eliminate the <span class="math notranslate nohighlight">\(f'''(x)\)</span> term:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a6e4c5f6-dc33-4c90-ac33-4a84f1387434">
+<span class="eqno">(139)<a class="headerlink" href="#equation-a6e4c5f6-dc33-4c90-ac33-4a84f1387434" title="Permalink to this equation">#</a></span>\[\begin{align}
+-f(x + 2h) + f(x - 2h) + 8f(x + h) - 8f(x - h) = 12h f'(x)  + \mathcal{O}(h^5).
+\end{align}\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(f'(x)\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c21d7864-f232-4fdb-9919-a2ef426253d5">
+<span class="eqno">(140)<a class="headerlink" href="#equation-c21d7864-f232-4fdb-9919-a2ef426253d5" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) \approx \frac{-f(x + 2h) + 8f(x + h) - 8f(x - h) + f(x - 2h)}{12h} + \mathcal{O}(h^4).
+\end{align}\]</div>
+<p>This leads to the fourth-order central difference formula for the first derivative.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fx_central4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="mi">8</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="mi">8</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">errs4</span><span class="p">(</span><span class="n">x0</span><span class="p">):</span>
+    <span class="n">fx0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="c1"># true derivative</span>
+    <span class="n">hs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span> <span class="c1"># step sizes</span>
+    <span class="n">errs_c4</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">fx_central4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">fx0</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">hs</span><span class="p">,</span> <span class="n">errs_c4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="n">hs</span><span class="p">,</span> <span class="n">errs_f</span><span class="p">,</span> <span class="n">errs_b</span><span class="p">,</span> <span class="n">errs_c</span> <span class="o">=</span> <span class="n">errs</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">hs</span><span class="p">,</span> <span class="n">errs_c4</span>                <span class="o">=</span> <span class="n">errs4</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="p">,</span>    <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_f</span><span class="p">,</span>  <span class="s1">&#39;o-&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Forward Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_b</span><span class="p">,</span>  <span class="s1">&#39;s--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Backward Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_c</span><span class="p">,</span>  <span class="s1">&#39;^:&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Central Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_c4</span><span class="p">,</span> <span class="s1">&#39;.--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;4th-order Central Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1e1</span><span class="p">,</span> <span class="mf">1e-16</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">1e-17</span><span class="p">,</span> <span class="mf">1e0</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Step size h&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Absolute Error&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1144d2ad0&gt;
+</pre></div>
+</div>
+<img alt="../_images/be94e2ec45de51f17361b8342769cc5f6ce375441524f9ce0f299212ff22998b.png" src="../_images/be94e2ec45de51f17361b8342769cc5f6ce375441524f9ce0f299212ff22998b.png" />
+</div>
+</div>
+<p>Does the convergence rate of the 4th-order central difference behave as expected?</p>
+<p>Coefficients of high-order fininte difference for computing low order derivatives have been worked out.
+One may implementing them simply by following <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">tables</a>.
+Nevertheless, it is unusal to go above 6th-order.</p>
+</section>
+<section id="spectral-derivatives">
+<h3>Spectral Derivatives<a class="headerlink" href="#spectral-derivatives" title="Link to this heading">#</a></h3>
+<p>Spectral methods are a class of high-accuracy numerical techniques used to approximate derivatives by representing functions in terms of global basis functions.
+Unlike finite difference methods, which rely on local information, spectral methods utilize the entire domain’s information, enabling exponential convergence rates for sufficiently smooth functions.</p>
+<p>Fourier spectral methods leverage the Fourier series representation of periodic functions to compute derivatives with high precision.
+The fundamental idea is to transform the function into the frequency domain, where differentiation becomes a straightforward algebraic operation.</p>
+<p>For a function  f(x)  defined on a periodic interval  [L/2, L/2), the Fourier series expansion is given by:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-73771661-f1b0-4528-938f-f12588041ba3">
+<span class="eqno">(141)<a class="headerlink" href="#equation-73771661-f1b0-4528-938f-f12588041ba3" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x) = \sum_{n=-N/2}^{N/2} F_n e^{i 2\pi n x / L} \equiv \sum_{n=-N/2}^{N/2} F_k e^{i k_n x},
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of modes, <span class="math notranslate nohighlight">\(F_n\)</span> are the Fourier coefficients, and <span class="math notranslate nohighlight">\(k_n \equiv 2\pi n/L\)</span> are the wavenumbers.</p>
+<p>Differentiation of <span class="math notranslate nohighlight">\(f(x)\)</span> in the spatial domain corresponds to multiplication by <span class="math notranslate nohighlight">\(i k_n\)</span> in the frequency domain.
+Specifically, the first derivative <span class="math notranslate nohighlight">\(f'(x\)</span>) is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5219f9b4-4e47-4c83-a351-84c5fecf88d2">
+<span class="eqno">(142)<a class="headerlink" href="#equation-5219f9b4-4e47-4c83-a351-84c5fecf88d2" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) = \sum_{k=-N/2}^{N/2} i k_n F_k e^{i k_n x}.
+\end{align}\]</div>
+<p>This property simplifies the computation of derivatives, as it converts the differentiation process into a simple multiplication operation in the Fourier space.</p>
+<p>Consider computing the first derivative of <span class="math notranslate nohighlight">\(f(x) = \sin(x)\)</span> on the domain <span class="math notranslate nohighlight">\([-\pi, \pi)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Number of modes</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">64</span>
+
+<span class="c1"># Domain</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fx_spectral</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">f</span>  <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">F</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">k</span>  <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">d</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Multiply by ik to get derivative in frequency domain</span>
+    <span class="n">Fx</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">F</span>
+
+    <span class="c1"># Inverse Fourier transform to get derivative in spatial domain</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Fx</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
+
+<span class="c1"># Spectral derivative</span>
+<span class="n">fx</span>  <span class="o">=</span> <span class="n">fx_spectral</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># True derivative</span>
+<span class="n">fx0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span>  <span class="s1">&#39;ro--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Spectral Derivative&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx0</span><span class="p">,</span> <span class="s1">&#39;b.-&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Derivative&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;f&#39;(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fourier Spectral Derivative of sin(2πx)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/441c24a62314929d993f5e1933be107b6f03a34cd39bb40598672f814eadf95a.png" src="../_images/441c24a62314929d993f5e1933be107b6f03a34cd39bb40598672f814eadf95a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ns</span>     <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">errs_s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">Ns</span><span class="p">:</span>
+    <span class="n">x</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">fx</span>  <span class="o">=</span> <span class="n">fx_spectral</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">fx0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">dfx</span> <span class="o">=</span> <span class="n">fx</span> <span class="o">-</span> <span class="n">fx0</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dfx</span><span class="o">*</span><span class="n">dfx</span><span class="p">))</span>
+    <span class="n">errs_s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="n">errs_s</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of samples N&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;RMS error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2b30b45d243ebc3514cd26e5f65a56cebbe411b899cd5f021478c732a477199a.png" src="../_images/2b30b45d243ebc3514cd26e5f65a56cebbe411b899cd5f021478c732a477199a.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>How should we interpret this convergence plot?</p></li>
+<li><p>What if we change the function to, e.g., a Gaussian?</p></li>
+<li><p>How about Lorentzian <span class="math notranslate nohighlight">\(1/(1+x^2)\)</span>?</p></li>
+<li><p>Does the domain matter?</p></li>
+</ul>
+</section>
+<section id="complex-step-differentiation">
+<h3>Complex Step Differentiation<a class="headerlink" href="#complex-step-differentiation" title="Link to this heading">#</a></h3>
+<p>The Complex Step Method provides an innovative approach to numerical differentiation by evaluating the function at a complex-valued point.
+Unlike finite difference methods, which approximate derivatives using real-valued perturbations and suffer from subtractive cancellation errors, the Complex Step Method utilizes an imaginary perturbation to extract derivative information directly from the imaginary component of the function’s output.
+This technique achieves high accuracy without the need for extremely small step sizes, thereby avoiding the numerical instability associated with finite differences.
+In astrophysics, this method was first used in numerical relativity to mitigate the stability of solving Einstein’s field equation.</p>
+<p>The foundation of the Complex Step Method lies in the application of complex analysis to differentiation.
+Consider a real-valued function <span class="math notranslate nohighlight">\(f(x)\)</span> that is analytic (i.e., differentiable) in a neighborhood around a point <span class="math notranslate nohighlight">\(x\)</span>.
+By introducing a small imaginary perturbation <span class="math notranslate nohighlight">\(ih\)</span> to the input, where <span class="math notranslate nohighlight">\(h\)</span> is a real step size and <span class="math notranslate nohighlight">\(i\)</span> is the imaginary unit, we can express the function as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e2ca7911-c9be-4c33-93d3-cc3ee9c3b324">
+<span class="eqno">(143)<a class="headerlink" href="#equation-e2ca7911-c9be-4c33-93d3-cc3ee9c3b324" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x + ih) = f(x) + ih f'(x) - \frac{h^2}{2} f''(x) - i \frac{h^3}{6} f''(x) + \cdots
+\end{align}\]</div>
+<p>The key insight is that the imaginary part of <span class="math notranslate nohighlight">\(f(x + ih)\)</span> is directly proportional to the first derivative <span class="math notranslate nohighlight">\(f'(x)\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bdfcc6c7-1d80-4c27-96fc-0be909c4ba26">
+<span class="eqno">(144)<a class="headerlink" href="#equation-bdfcc6c7-1d80-4c27-96fc-0be909c4ba26" title="Permalink to this equation">#</a></span>\[\begin{align}
+\operatorname{Im}[f(x + ih)] = h f'(x) + \mathcal{O}(h^3)
+\end{align}\]</div>
+<p>By isolating the imaginary component and dividing by <span class="math notranslate nohighlight">\(h\)</span>, we obtain an approximation for the first derivative:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5141e65b-4968-4fb8-b411-c70066224d94">
+<span class="eqno">(145)<a class="headerlink" href="#equation-5141e65b-4968-4fb8-b411-c70066224d94" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) \approx \frac{\operatorname{Im}[f(x + ih)]}{h}
+\end{align}\]</div>
+<p>Subtractive cancellation errors arise in finite difference approximations when two nearly equal real numbers are subtracted, leading to a significant loss of precision.
+For example, in the central difference formula:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b621e591-8751-42a6-be72-3bb78952c50e">
+<span class="eqno">(146)<a class="headerlink" href="#equation-b621e591-8751-42a6-be72-3bb78952c50e" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) \approx \frac{f(x + h) - f(x - h)}{2h}
+\end{align}\]</div>
+<p>if <span class="math notranslate nohighlight">\(h\)</span> is very small, <span class="math notranslate nohighlight">\(f(x + h)\)</span> and <span class="math notranslate nohighlight">\(f(x - h)\)</span> become nearly identical, and their difference is subject to floating-point round-off errors. This limits the accuracy of the derivative approximation.</p>
+<p>In contrast, the Complex Step Method avoids this issue by perturbing the input in the imaginary direction.
+The derivative information is captured in the imaginary part, which is not subject to the same precision loss.
+As a result, the Complex Step Method can achieve derivative approximations accurate to machine precision without requiring excessively small step sizes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fx_complexstep</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">errscs</span><span class="p">(</span><span class="n">x0</span><span class="p">):</span>
+    <span class="n">fx0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="c1"># true derivative</span>
+    <span class="n">hs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span> <span class="c1"># step sizes</span>
+    <span class="n">errs_c4</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">fx_complexstep</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">fx0</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">hs</span><span class="p">,</span> <span class="n">errs_c4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="n">hs</span><span class="p">,</span> <span class="n">errs_f</span><span class="p">,</span> <span class="n">errs_b</span><span class="p">,</span> <span class="n">errs_c</span> <span class="o">=</span> <span class="n">errs</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">hs</span><span class="p">,</span> <span class="n">errs_c4</span>                <span class="o">=</span> <span class="n">errs4</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">hs</span><span class="p">,</span> <span class="n">errs_cs</span>                <span class="o">=</span> <span class="n">errscs</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="p">,</span>    <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">hs</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_c</span><span class="p">,</span>  <span class="s1">&#39;^:&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Central Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_c4</span><span class="p">,</span> <span class="s1">&#39;.--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;4th-order Central Difference&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">errs_cs</span><span class="p">,</span> <span class="s1">&#39;.--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Complex Step Differentiation&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1e1</span><span class="p">,</span> <span class="mf">1e-16</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">1e-30</span><span class="p">,</span> <span class="mf">1e0</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Step size h&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Absolute Error&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114a3df90&gt;
+</pre></div>
+</div>
+<img alt="../_images/c9e7dc55cb3f8596000d6a27292de87defb6620f02d8c4cd4e9ac0f1f1ba6ae4.png" src="../_images/c9e7dc55cb3f8596000d6a27292de87defb6620f02d8c4cd4e9ac0f1f1ba6ae4.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>What is the convergent rate of Complex Step Differentiation?</p></li>
+<li><p>Is it really better than finite difference?</p></li>
+</ul>
+</section>
+</section>
+<section id="automatic-differentiation">
+<h2>Automatic Differentiation<a class="headerlink" href="#automatic-differentiation" title="Link to this heading">#</a></h2>
+<p>Automatic Differentiation (AD) is a computational technique that enables the precise and efficient calculation of derivatives of functions, leveraging the chain rule of calculus at the elementary operation level.
+Unlike symbolic differentiation, which manipulates mathematical expressions to find exact derivatives, and numerical differentiation, which approximates derivatives using finite differences, AD provides exact derivatives up to machine precision without the complexity and computational overhead associated with symbolic methods.</p>
+<section id="introduction-to-automatic-differentiation">
+<h3>Introduction to Automatic Differentiation<a class="headerlink" href="#introduction-to-automatic-differentiation" title="Link to this heading">#</a></h3>
+<p>Automatic Differentiation (AD) is motivated by the need for accurate and efficient derivative computation, especially in complex, high-dimensional applications such as machine learning, optimization, and scientific computing.
+Traditional numerical methods, like finite differences, balance step size and approximation error, leading to inaccuracies from truncation and round-off errors.
+Symbolic differentiation, while exact, can be computationally infeasible for large-scale problems due to expression growth and memory demands.</p>
+<p>AD bridges the gap between these approaches by applying differentiation rules directly to each operation in a function’s computational graph.
+By breaking functions into elementary operations and applying the chain rule, AD calculates derivatives with precision and efficiency, making it indispensable in fields where gradient information is essential, such as deep learning and physics-informed modeling.</p>
+<p>AD operates in two main modes: forward mode and reverse mode, each suited to different types of problems.</p>
+</section>
+<section id="dual-numbers-and-forward-mode-ad">
+<h3>Dual Numbers and Forward Mode AD<a class="headerlink" href="#dual-numbers-and-forward-mode-ad" title="Link to this heading">#</a></h3>
+<p>In forward mode AD, dual numbers provide a practical and intuitive way to propagate derivative information alongside function values.
+Dual numbers extend real numbers by introducing an additional component representing an infinitesimal value, enabling simultaneous calculation of function values and their derivatives.
+A dual number is represented as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5318ed48-0c9d-4bdb-a59c-8a5dea9a2a10">
+<span class="eqno">(147)<a class="headerlink" href="#equation-5318ed48-0c9d-4bdb-a59c-8a5dea9a2a10" title="Permalink to this equation">#</a></span>\[\begin{align}
+\tilde{x} = x + \delta x',
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the real part, <span class="math notranslate nohighlight">\(x'\)</span> is the dual part representing the derivative, and <span class="math notranslate nohighlight">\(\delta\)</span> is an infinitesimal quantity satisfying <span class="math notranslate nohighlight">\(\delta^2 = 0\)</span>.</p>
+<p>The algebra of dual numbers follows standard arithmetic rules with the additional property that <span class="math notranslate nohighlight">\(\delta^2 = 0\)</span>.
+This property allows for the linear extraction of derivative information without higher-order terms interfering.
+Note that <a class="reference external" href="https://en.wikipedia.org/wiki/Differential_form">exterior calculus</a> requires <span class="math notranslate nohighlight">\(d^2 = 0\)</span>.
+This is the same algebraic rule as dual number.</p>
+<p>Dual numbers follow standard arithmetic rules but with the additional property <span class="math notranslate nohighlight">\(\delta^2 = 0\)</span>, which makes it possible to compute derivatives without higher-order terms.
+This approach mirrors forward mode AD’s method of applying the chain rule step-by-step through the computation, storing both the value and its derivative for each operation.
+Forward mode is particularly efficient when there are few input variables (such as when calculating the gradient of a function with one input and multiple outputs).</p>
+</section>
+<section id="example-differentiating-f-x-x-2">
+<h3>Example: Differentiating <span class="math notranslate nohighlight">\(f(x) = x^2\)</span><a class="headerlink" href="#example-differentiating-f-x-x-2" title="Link to this heading">#</a></h3>
+<p>Consider the function <span class="math notranslate nohighlight">\(f(x) = x^2\)</span>. Using dual numbers:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-363db4e5-d822-4c48-8fc9-45ada03dbf01">
+<span class="eqno">(148)<a class="headerlink" href="#equation-363db4e5-d822-4c48-8fc9-45ada03dbf01" title="Permalink to this equation">#</a></span>\[\begin{align}
+\tilde{x} &amp;= x + \delta, \\
+\tilde{f}(\tilde{x}) &amp;= (x + \delta)^2 = x^2 + 2x\delta + \delta^2 = x^2 + 2x\delta.
+\end{align}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\delta^2 = 0\)</span>, the dual part of <span class="math notranslate nohighlight">\(\tilde{f}(\tilde{x})\)</span> is <span class="math notranslate nohighlight">\(2x\)</span>, which is the derivative <span class="math notranslate nohighlight">\(f'(x)\)</span>.</p>
+<p>By replacing each real input with a dual number, forward mode AD propagates derivative information automatically through computation.
+This approach provides exact derivatives up to machine precision, avoiding the approximation errors of finite differences.</p>
+</section>
+<section id="implementing-autodiff-with-dual-numbers">
+<h3>Implementing Autodiff with Dual Numbers<a class="headerlink" href="#implementing-autodiff-with-dual-numbers" title="Link to this heading">#</a></h3>
+<p>To implement forward mode AD in Python, we can define a <code class="docutils literal notranslate"><span class="pre">Dual</span></code> class that overrides arithmetic operations to handle both the value and derivative parts.
+Additionally, we introduce helper functions <code class="docutils literal notranslate"><span class="pre">V(x)</span></code> and <code class="docutils literal notranslate"><span class="pre">D(x)</span></code> to extract the value and derivative from Dual Numbers or regular numerical inputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">V</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Select the value from a dual number.</span>
+
+<span class="sd">    Work for both python built-in numbers (often used in function) and dual numbers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Dual</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">D</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Select the derivative from a dual number.</span>
+
+<span class="sd">    Work for both python built-in numbers (often used in function) and dual numbers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Dual</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Dual</span><span class="p">(</span><span class="nb">tuple</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dual number for implementing autodiff in pure python&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># tuple is immutable so we cannot use __init__()</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">Dual</span><span class="p">,</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Dual</span><span class="p">(</span>
+            <span class="n">V</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="n">V</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+            <span class="n">D</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="n">D</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="n">l</span> <span class="c1"># addition commutes</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Dual</span><span class="p">(</span>
+            <span class="n">V</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-</span> <span class="n">V</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+            <span class="n">D</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-</span> <span class="n">D</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Dual</span><span class="p">(</span>
+            <span class="n">V</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="n">V</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
+            <span class="n">D</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="n">D</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Dual</span><span class="p">(</span>
+            <span class="n">V</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">*</span> <span class="n">V</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+            <span class="n">D</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">*</span> <span class="n">V</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="n">V</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">*</span> <span class="n">D</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">l</span> <span class="c1"># multiplication commutes</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Dual</span><span class="p">(</span>
+            <span class="n">V</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">/</span> <span class="n">V</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+            <span class="o">...</span><span class="p">,</span> <span class="c1"># leave as exercise</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Dual</span><span class="p">(</span>
+            <span class="n">V</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">/</span> <span class="n">V</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
+            <span class="o">...</span><span class="p">,</span> <span class="c1"># leave as exercise</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span> <span class="c1"># assume r is constant</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">...</span> <span class="c1"># leave as exercise</span>
+        <span class="k">elif</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">...</span> <span class="c1"># leave as exercise</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Dual</span><span class="p">(</span>
+                <span class="n">V</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">**</span><span class="n">r</span><span class="p">,</span>
+                <span class="o">...</span><span class="p">,</span> <span class="c1"># leave as exercise</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s it!
+We’ve implemented (a limited version of) autodiff in pure python!</p>
+<p>To validate our Dual Number implementation, we define a simple function and compute its derivative using AD.
+Consider the function <span class="math notranslate nohighlight">\(f(x) = x + x^2\)</span>.
+We evaluate this function using Dual Numbers and plot both the function and its derivative.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+
+<span class="n">X</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">F</span><span class="p">,</span> <span class="n">Fx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">Dual</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">fx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">Fx</span><span class="p">))[::</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span>    <span class="n">x</span><span class="o">+</span><span class="mf">0.05</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">f</span><span class="o">-</span><span class="mf">0.05</span><span class="o">*</span><span class="n">fx</span><span class="p">,</span> <span class="n">f</span><span class="o">+</span><span class="mf">0.05</span><span class="o">*</span><span class="n">fx</span><span class="p">],</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5afbc36a0feb7a3b155d3dea64df2d426924f760326bdc5963c6b9a08ee71722.png" src="../_images/5afbc36a0feb7a3b155d3dea64df2d426924f760326bdc5963c6b9a08ee71722.png" />
+</div>
+</div>
+<p>The initial implementation of the Dual class handles basic arithmetic operations.
+However, to support more complex functions such as trigonometric functions, we need to define additional operations that correctly propagate derivative information.
+This can be achieved by implementing helper functions that operate on Dual Numbers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Dual</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="n">D</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># chain rule: d/dx sin(x) = cos(x) * x&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">F</span><span class="p">,</span> <span class="n">Fx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">Dual</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">fx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">Fx</span><span class="p">))[::</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span>    <span class="n">x</span><span class="o">+</span><span class="mf">0.05</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">f</span><span class="o">-</span><span class="mf">0.05</span><span class="o">*</span><span class="n">fx</span><span class="p">,</span> <span class="n">f</span><span class="o">+</span><span class="mf">0.05</span><span class="o">*</span><span class="n">fx</span><span class="p">],</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8ff3421ec3bc32624ab9b181c79a370444ce8cff209099d8ffc25f55fe970497.png" src="../_images/8ff3421ec3bc32624ab9b181c79a370444ce8cff209099d8ffc25f55fe970497.png" />
+</div>
+</div>
+</section>
+<section id="connection-to-complex-step-method">
+<h3>Connection to Complex Step Method<a class="headerlink" href="#connection-to-complex-step-method" title="Link to this heading">#</a></h3>
+<p>The Dual Number formulation is conceptually similar to the Complex Step Method discussed earlier.
+Both techniques add an additional component to capture derivative information accurately without introducing significant numerical errors.</p>
+<p>Consider the above example <span class="math notranslate nohighlight">\(f(x) = x^2\)</span>.
+In the Complex Step Method, the function is evaluated at a complex point <span class="math notranslate nohighlight">\(x + ih\)</span>, where <span class="math notranslate nohighlight">\(h\)</span> is a small step size and <span class="math notranslate nohighlight">\(i\)</span> is the imaginary unit:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-54f07080-37a1-40d4-9692-cfb34c8719b2">
+<span class="eqno">(149)<a class="headerlink" href="#equation-54f07080-37a1-40d4-9692-cfb34c8719b2" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x + ih) = (x + ih)^2 = x^2 - h^2 + 2ihx.
+\end{align}\]</div>
+<p>By isolating the imaginary part and dividing by <span class="math notranslate nohighlight">\(h\)</span>, we obtain an approximation of the derivative:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-462f8e69-3f8d-4097-aaa4-6c24bd306b1b">
+<span class="eqno">(150)<a class="headerlink" href="#equation-462f8e69-3f8d-4097-aaa4-6c24bd306b1b" title="Permalink to this equation">#</a></span>\[\begin{align}
+f'(x) \approx \frac{\operatorname{Im}[f(x + ih)]}{h} = 2x.
+\end{align}\]</div>
+<p>In this example, the imaginary part directly corresponds to the derivative, mirroring the Dual Number approach where the dual component carries derivative information.
+The real part contains an extra term <span class="math notranslate nohighlight">\(-h^2\)</span>, which becomes negligible when <span class="math notranslate nohighlight">\(h\)</span> is sufficiently small.
+Specifically, by choosing <span class="math notranslate nohighlight">\(h &lt; \sqrt{\epsilon}\)</span> (recalling <span class="math notranslate nohighlight">\(\epsilon\)</span> is the machine precision), the term <span class="math notranslate nohighlight">\(-h^2\)</span> effectively vanishes due to round off erroir in finite precision arithmetic.</p>
+<p>This demonstrates that when <span class="math notranslate nohighlight">\(h\)</span> is appropriately small, the Complex Step Method effectively reduces to the Dual Number formulation, providing an exact derivative within the limits of machine precision.
+Both methods avoid the subtractive cancellation errors inherent in traditional finite difference approaches by utilizing an augmented input.
+Dual numbers use an infinitesimal component, while the Complex Step Method employs a small imaginary perturbation.
+This connection demostrates how both techniques achieve high-accuracy derivative computations by embedding derivative information directly into the evaluation process.</p>
+</section>
+<section id="reverse-mode-ad">
+<h3>Reverse Mode AD<a class="headerlink" href="#reverse-mode-ad" title="Link to this heading">#</a></h3>
+<p>While forward mode AD, implemented through dual numbers, is efficient for functions with few inputs, reverse mode AD is more suitable for functions with many inputs and a single output.
+Reverse mode AD computes derivatives by tracing the computational graph in reverse, calculating the gradient with respect to all inputs in a single backward pass.
+This makes it highly effective for machine learning models, where the goal is often to compute derivatives with respect to numerous parameters (such as weights in neural networks).</p>
+<p>In practice, reverse mode AD requires tracking the computational graph of operations from inputs to outputs, storing intermediate values for each operation.
+This graph is then traversed in reverse during the backpropagation process, systematically applying the chain rule to compute gradients.
+Modern machine learning frameworks (e.g., <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code>, <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code>, and <code class="docutils literal notranslate"><span class="pre">JAX</span></code>) utilize reverse mode AD to optimize models with many parameters, leveraging memory-efficient strategies like checkpointing to handle large-scale models.</p>
+</section>
+<section id="autodiff-and-vectorization-and-jit-in-python-with-jax">
+<h3>Autodiff (and Vectorization and JIT) in Python with JAX<a class="headerlink" href="#autodiff-and-vectorization-and-jit-in-python-with-jax" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://jax.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">JAX</span></code></a> is a high-performance numerical computing library developed by Google that provides powerful tools for AD.
+It extends NumPy with the ability to automatically compute gradients, making it particularly useful in machine learning, optimization, and scientific computing applications.
+<code class="docutils literal notranslate"><span class="pre">JAX</span></code> combines the ease of use of NumPy with the efficiency of Just-In-Time (JIT) compilation, enabling rapid and scalable computations.
+Key Features of JAX includes:</p>
+<ul class="simple">
+<li><p>Automatic Differentiation: JAX supports both forward and reverse mode AD, allowing for efficient computation of gradients, Jacobians, and Hessians.</p></li>
+<li><p>JIT Compilation: Utilizing XLA (Accelerated Linear Algebra), JAX can compile and optimize numerical code for faster execution on CPUs and GPUs.</p></li>
+<li><p>Composability: JAX’s functional programming paradigm allows users to compose complex transformations seamlessly.</p></li>
+<li><p>Interoperability: JAX integrates smoothly with existing NumPy code, requiring minimal changes to leverage its advanced features.</p></li>
+</ul>
+<p>To begin using JAX, ensure it is installed in your Python environment.
+You can install JAX via pip: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">&quot;jax[cpu]&quot;</span></code>.</p>
+<p>Let’s demonstrate how to use JAX to compute the derivative of a function.
+We’ll use the function <span class="math notranslate nohighlight">\(f(x) = \sin(x + x^2)\)</span>, combining our previous Dual Number examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>jax
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jax in /Users/vahid/ComputationalPhysics/lib/python3.13/site-packages (0.4.38)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jaxlib&lt;=0.4.38,&gt;=0.4.38 in /Users/vahid/ComputationalPhysics/lib/python3.13/site-packages (from jax) (0.4.38)
+Requirement already satisfied: ml_dtypes&gt;=0.4.0 in /Users/vahid/ComputationalPhysics/lib/python3.13/site-packages (from jax) (0.5.1)
+Requirement already satisfied: numpy&gt;=1.24 in /Users/vahid/ComputationalPhysics/lib/python3.13/site-packages (from jax) (2.2.2)
+Requirement already satisfied: opt_einsum in /Users/vahid/ComputationalPhysics/lib/python3.13/site-packages (from jax) (3.4.0)
+Requirement already satisfied: scipy&gt;=1.10 in /Users/vahid/ComputationalPhysics/lib/python3.13/site-packages (from jax) (1.15.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">24.3.1</span> -&gt; <span class=" -Color -Color-Green">25.0</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">jax</span><span class="w"> </span><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">jnp</span><span class="p">,</span> <span class="n">grad</span><span class="p">,</span> <span class="n">vmap</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">X</span>  <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">F</span>  <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">Fx</span> <span class="o">=</span> <span class="n">vmap</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">))(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">fx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">Fx</span><span class="p">))[::</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span>    <span class="n">x</span><span class="o">+</span><span class="mf">0.05</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">f</span><span class="o">-</span><span class="mf">0.05</span><span class="o">*</span><span class="n">fx</span><span class="p">,</span> <span class="n">f</span><span class="o">+</span><span class="mf">0.05</span><span class="o">*</span><span class="n">fx</span><span class="p">],</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8ff3421ec3bc32624ab9b181c79a370444ce8cff209099d8ffc25f55fe970497.png" src="../_images/8ff3421ec3bc32624ab9b181c79a370444ce8cff209099d8ffc25f55fe970497.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>Differentiation is a fundamental tool in mathematics, science, and engineering, essential for function analysis and optimization.
+Primary methods include Symbolic Differentiation, Numerical Differentiation, and AD, each with unique strengths and limitations.</p>
+<p>Symbolic Differentiation provides exact analytical derivatives, ideal for theoretical insights, but struggles with complexity and memory demands for large-scale functions due to expression swell.
+Numerical Differentiation approximates derivatives using finite differences, offering simplicity and flexibility but often limited by truncation and round-off errors, requiring careful step-size management for stability.</p>
+<p>Automatic Differentiation bridges symbolic and numerical methods by calculating exact derivatives up to machine precision through systematic application of the chain rule in a function’s computational graph.
+Forward Mode AD, often implemented with Dual Numbers, is efficient for functions with few inputs, while Reverse Mode AD is well-suited for functions with many inputs and a single output, such as in neural network training via backpropagation.
+Though highly accurate, AD can be memory-intensive, especially in large-scale applications, and may encounter issues with non-differentiable functions and dynamic control flows.</p>
+<p>Comparing these methods:</p>
+<ul class="simple">
+<li><p>Symbolic Differentiation is exact but computationally intensive for complex functions.</p></li>
+<li><p>Numerical Differentiation is accessible but prone to approximation errors.</p></li>
+<li><p>Automatic Differentiation combines precision and efficiency, making it indispensable in machine learning and optimization but challenging to scale efficiently.</p></li>
+<li><p>Complex Step Differentiation address the round off error problem of Numerical Differentiation, and is numerically identical to the Dual number formulation in forward AD with small enough complex step <span class="math notranslate nohighlight">\(ih\)</span>.</p></li>
+</ul>
+<p>Future research is focused on improving the scalability of AD for large models, supporting higher-order derivatives (e.g., Jacobians, Hessians), and better managing non-differentiable functions and dynamic graphs.
+Hybrid approaches combining symbolic, numerical, and automatic differentiation could provide more robust solutions.</p>
+<p>For further exploration:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sympy.org/en/index.html">SymPy Documentations</a></p></li>
+<li><p><a class="reference external" href="https://numerical.recipes/">Numerical Recipes</a></p></li>
+<li><p><a class="reference external" href="https://jax.readthedocs.io/en/latest/">JAX Documentations</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vahidszd/IUT-Computational-Physics-hbakhshian",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./07"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../06/lab.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Interpolation and Extrapolation Lab</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../08/notes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Numerical Integration of Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-differentiation">Symbolic Differentiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithmic-approach">Algorithmic Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-computation-with-sympy">Symbolic Computation with SymPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-symbolic-differentiation">Advantages of Symbolic Differentiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#software-tools">Software Tools</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-differentiation">Numerical Differentiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-methods">Finite Difference Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-implementation">Sample Implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-order-finite-difference-methods-finite-difference-method-of-high-order-derivatives">High-Order Finite Difference Methods: Finite Difference Method of High-Order Derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-order-finite-difference-methods-high-order-scheme-for-low-order-derivatives">High-Order Finite Difference Methods: High-Order Scheme for Low-Order Derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-derivatives">Spectral Derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-step-differentiation">Complex Step Differentiation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-differentiation">Automatic Differentiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-automatic-differentiation">Introduction to Automatic Differentiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-numbers-and-forward-mode-ad">Dual Numbers and Forward Mode AD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-differentiating-f-x-x-2">Example: Differentiating <span class="math notranslate nohighlight">\(f(x) = x^2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-autodiff-with-dual-numbers">Implementing Autodiff with Dual Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-complex-step-method">Connection to Complex Step Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverse-mode-ad">Reverse Mode AD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autodiff-and-vectorization-and-jit-in-python-with-jax">Autodiff (and Vectorization and JIT) in Python with JAX</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chi-kwan Chan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

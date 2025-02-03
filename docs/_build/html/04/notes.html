@@ -1,0 +1,1682 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Fourier Transform and Spectral Analyses &#8212; PHYS 305: Computational Physics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04/notes';</script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/language_data.js?v=d4673a71"></script>
+    <script src="../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fourier Transform and Spectral Analyses Lab" href="lab.html" />
+    <link rel="prev" title="Numerical Linear Algebra Lab" href="../03/sol.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/iutlogo.jpg" class="logo__image only-light" alt="PHYS 305: Computational Physics - Home"/>
+    <img src="../_static/iutlogo.jpg" class="logo__image only-dark pst-js-only" alt="PHYS 305: Computational Physics - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    PHYS 305
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/notes.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/lab.html">Git, Jupyter, and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/notes.html">Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/lab.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/notes.html">Numerical Linear Algebra</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/lab.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/sol.html">Numerical Linear Algebra Lab</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fourier Transform and Spectral Analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab.html">Fourier Transform and Spectral Analyses Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/notes.html">Useful Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/notes.html">Interpolation and Extrapolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/lab.html">Interpolation and Extrapolation Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/notes.html">Numerical and Automatic Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/notes.html">Numerical Integration of Functions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/edit/main/docs/04/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vahidszd/IUT-Computational-Physics-hbakhshian/issues/new?title=Issue%20on%20page%20%2F04/notes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/04/notes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fourier Transform and Spectral Analyses</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-context-and-the-heat-equation">Historical Context and the Heat Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-separation-of-variables">Solution Using Separation of Variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-series-foundation-and-interpretation">Fourier Series: Foundation and Interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products-and-hilbert-spaces">Inner Products and Hilbert Spaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-fourier-series-in-python">Implementing Fourier Series in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-analysis">Error Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-fourier-series">Complex Fourier Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-to-fourier-transform">Transition to Fourier Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-discrete-to-continuous-spectrum">From Discrete to Continuous Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-fourier-transform-definitions">Complex Fourier Transform Definitions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-theory-and-discrete-fourier-transform-dft">Sampling Theory and Discrete Fourier Transform (DFT)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-continuous-signals">Sampling Continuous Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nyquist-sampling-theorem">The Nyquist Sampling Theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing-errors">Aliasing Errors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-transform-dft">Discrete Fourier Transform (DFT)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-dft">Definition of the DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-dft">Properties of the DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-dft-in-python">Implementing the DFT in Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dft-as-a-linear-transformation">The DFT as a Linear Transformation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing-in-the-dft">Aliasing in the DFT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-fft-and-computational-efficiency">Fast Fourier Transform (FFT) and Computational Efficiency</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-background-of-the-fft">Historical Background of the FFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-fft-algorithm">Understanding the FFT Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-of-dft-vs-fft">Performance of DFT vs. FFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variations-and-generalizations-of-the-fft">Variations and Generalizations of the FFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-the-fft-on-computational-astrophysics">Impact of the FFT on Computational Astrophysics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-and-correlation">Convolution and Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Convolution and Correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-and-correlation-theorems">Convolution and Correlation Theorems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-implications">Practical Implications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parseval-s-theorem">Parseval’s Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-interesting-toipics">Other Interesting Toipics:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fourier-transform-and-spectral-analyses">
+<h1>Fourier Transform and Spectral Analyses<a class="headerlink" href="#fourier-transform-and-spectral-analyses" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>The Fourier Transform is a fundamental tool in computational astrophysics and many other fields of science and engineering.
+It allows for the decomposition of complex functions or signals into sums of sinusoidal components, facilitating the analysis of their frequency content.
+This capability is essential for understanding various phenomena, from the distribution of matter in the universe to the behavior of signals received from distant astronomical objects.</p>
+<p>The development of the Fast Fourier Transform (FFT) algorithm significantly advanced computational methods in the 20th century.
+The FFT reduces the computational complexity of performing Fourier Transforms from <span class="math notranslate nohighlight">\(\mathcal{O}(N^2)\)</span> to <span class="math notranslate nohighlight">\(\mathcal{O}(N \log N)\)</span>, enabling efficient processing of large datasets typical in astronomical observations and simulations.
+Its applications include:</p>
+<ul class="simple">
+<li><p>Communication Systems:</p>
+<ul>
+<li><p>Signal Processing: Fundamental in digital communication for encoding and decoding signals, allowing efficient data transmission over various frequencies without interference.</p></li>
+<li><p>Compression: Techniques like MP3 (audio) and JPEG (image) rely on Fourier Transform methods to compress data by transforming signals into frequency components and discarding less significant ones.</p></li>
+</ul>
+</li>
+<li><p>Radar and Sonar:</p>
+<ul>
+<li><p>Object Detection: Helps interpret reflected electromagnetic or sound waves to determine the distance, speed, and characteristics of objects, crucial for navigation, meteorology, and defense.</p></li>
+<li><p>Doppler Shifts: Analyzing frequency shifts in returned signals enables calculation of the velocity of moving objects.</p></li>
+</ul>
+</li>
+<li><p>Astronomy:</p>
+<ul>
+<li><p>Spectroscopy: Used to analyze light spectra from celestial objects, determining their composition, temperature, velocity, and other properties.</p></li>
+<li><p>Imaging: Employed in reconstructing images from interferometric data, enhancing resolution beyond the limitations of individual telescopes.</p></li>
+<li><p>Very Long Baseline Interferometry (VLBI): Combines data from multiple telescopes across vast distances to simulate a telescope the size of Earth, relying on Fourier analysis to synthesize high-resolution images of distant astronomical sources.</p></li>
+</ul>
+</li>
+</ul>
+<section id="historical-context-and-the-heat-equation">
+<h3>Historical Context and the Heat Equation<a class="headerlink" href="#historical-context-and-the-heat-equation" title="Link to this heading">#</a></h3>
+<p>The origins of Fourier analysis trace back to the early 19th century with the work of Jean-Baptiste Joseph Fourier (1768–1830), a French mathematician and physicist.
+While studying heat flow, Fourier introduced the revolutionary idea that any periodic function could be expressed as an infinite sum of sine and cosine functions—known today as the Fourier Series.</p>
+<p>The one-dimensional heat equation is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-384f646c-96e9-4c4d-9fcf-02daca8bba09">
+<span class="eqno">(72)<a class="headerlink" href="#equation-384f646c-96e9-4c4d-9fcf-02daca8bba09" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{\partial u(x,t)}{\partial t} = \alpha \frac{\partial^2 u(x,t)}{\partial x^2},
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(u(x,t)\)</span> is the temperature distribution along a rod at position <span class="math notranslate nohighlight">\(x\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\alpha\)</span> is the thermal diffusivity constant of the material.</p>
+</section>
+<section id="solution-using-separation-of-variables">
+<h3>Solution Using Separation of Variables<a class="headerlink" href="#solution-using-separation-of-variables" title="Link to this heading">#</a></h3>
+<p>We use the method of separation of variables to solve the heat equation, which involves assuming the solution can be written as a product of functions, each depending only on a single variable:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a801d7cf-849f-44bc-8be1-0961cdbb7ff0">
+<span class="eqno">(73)<a class="headerlink" href="#equation-a801d7cf-849f-44bc-8be1-0961cdbb7ff0" title="Permalink to this equation">#</a></span>\[\begin{align}
+u(x,t) = X(x) T(t).
+\end{align}\]</div>
+<p>Substituting into the heat equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-982104b1-74b2-42a3-96e4-9d4e4c103584">
+<span class="eqno">(74)<a class="headerlink" href="#equation-982104b1-74b2-42a3-96e4-9d4e4c103584" title="Permalink to this equation">#</a></span>\[\begin{align}
+X(x) \frac{dT(t)}{dt} = \alpha T(t) \frac{d^2 X(x)}{dx^2}.
+\end{align}\]</div>
+<p>Dividing both sides by <span class="math notranslate nohighlight">\(X(x) T(t)\)</span>, we obtain:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-26dc3872-d54e-49ac-a3bc-2402a1d9664f">
+<span class="eqno">(75)<a class="headerlink" href="#equation-26dc3872-d54e-49ac-a3bc-2402a1d9664f" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{1}{T(t)} \frac{dT(t)}{dt} = \alpha \frac{1}{X(x)} \frac{d^2 X(x)}{dx^2}.
+\end{align}\]</div>
+<p>Since the left side depends only on <span class="math notranslate nohighlight">\(t\)</span> and the right side only on <span class="math notranslate nohighlight">\(x\)</span>, both sides must equal a constant <span class="math notranslate nohighlight">\(-\lambda\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-044c2d3e-edf5-4c2b-b513-a382698f74c7">
+<span class="eqno">(76)<a class="headerlink" href="#equation-044c2d3e-edf5-4c2b-b513-a382698f74c7" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{1}{T(t)} \frac{dT(t)}{dt} = -\lambda = \alpha \frac{1}{X(x)} \frac{d^2 X(x)}{dx^2}.
+\end{align}\]</div>
+<p>This yields two ordinary differential equations (ODEs):</p>
+<ol class="arabic simple">
+<li><p>Temporal Equation: <span class="math notranslate nohighlight">\(\frac{dT(t)}{dt} + \lambda T(t) = 0\)</span>.</p></li>
+<li><p>Spatial Equation: <span class="math notranslate nohighlight">\(\frac{d^2 X(x)}{dx^2} + \frac{\lambda}{\alpha} X(x) = 0\)</span>.</p></li>
+</ol>
+<p>The general solution to the spatial equation is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9cf21303-f182-4c8e-8fb4-793b5fcf5d45">
+<span class="eqno">(77)<a class="headerlink" href="#equation-9cf21303-f182-4c8e-8fb4-793b5fcf5d45" title="Permalink to this equation">#</a></span>\[\begin{align}
+X(x) = A \sin(kx) + B \cos(kx),
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k^2 = \lambda / \alpha\)</span>.
+This form of solution originates from the second-order derivative.</p>
+<p>Assuming Dirichlet boundary conditions for a rod of length <span class="math notranslate nohighlight">\(L\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fce3261b-0b93-4cd7-bd82-299246e1861c">
+<span class="eqno">(78)<a class="headerlink" href="#equation-fce3261b-0b93-4cd7-bd82-299246e1861c" title="Permalink to this equation">#</a></span>\[\begin{align}
+u(0,t) = u(L,t) = 0,
+\end{align}\]</div>
+<p>we find:</p>
+<ul>
+<li><p>At <span class="math notranslate nohighlight">\(x = 0\)</span>, <span class="math notranslate nohighlight">\(X(0) = 0 \implies B = 0\)</span>.</p></li>
+<li><p>At <span class="math notranslate nohighlight">\(x = L\)</span>, non-trivial solutions (<span class="math notranslate nohighlight">\(A \neq 0\)</span>) require:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-255e2525-56c8-431b-b407-b9bf115d8da9">
+<span class="eqno">(79)<a class="headerlink" href="#equation-255e2525-56c8-431b-b407-b9bf115d8da9" title="Permalink to this equation">#</a></span>\[\begin{align}
+\sin(kL) = 0 \implies kL = n\pi, \quad n = 1,2,3,\dots
+\end{align}\]</div>
+</li>
+</ul>
+<p>Thus, the “eigenvalues” are:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c8a4545a-4818-44d6-9d6b-9dbb356f10b6">
+<span class="eqno">(80)<a class="headerlink" href="#equation-c8a4545a-4818-44d6-9d6b-9dbb356f10b6" title="Permalink to this equation">#</a></span>\[\begin{align}
+k_n = \frac{n\pi}{L},
+\end{align}\]</div>
+<p>and the eigenfunctions are:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-83d333c1-95c8-48a2-b7b2-d60735439d99">
+<span class="eqno">(81)<a class="headerlink" href="#equation-83d333c1-95c8-48a2-b7b2-d60735439d99" title="Permalink to this equation">#</a></span>\[\begin{align}
+X_n(x) = \sin\left( \frac{n\pi x}{L} \right).
+\end{align}\]</div>
+<p>With <span class="math notranslate nohighlight">\(\lambda_n = \alpha k_n^2\)</span>, the temporal ODE becomes:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ba951a67-6843-4f20-b698-9e08eeaff3f0">
+<span class="eqno">(82)<a class="headerlink" href="#equation-ba951a67-6843-4f20-b698-9e08eeaff3f0" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{dT_n(t)}{dt} + \alpha \left( \frac{n\pi}{L} \right)^2 T_n(t) = 0,
+\end{align}\]</div>
+<p>with solution:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-49ae49fd-2d65-43fd-a280-07fb8e979294">
+<span class="eqno">(83)<a class="headerlink" href="#equation-49ae49fd-2d65-43fd-a280-07fb8e979294" title="Permalink to this equation">#</a></span>\[\begin{align}
+T_n(t) = C_n \exp\left[ -\alpha \left( \frac{n\pi}{L} \right)^2 t \right].
+\end{align}\]</div>
+<p>Combining spatial and temporal parts and realizing the heat equation is linear, the general solution is the sum of all solutions:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6c88eb91-9832-4916-adb7-88f3b370a9b7">
+<span class="eqno">(84)<a class="headerlink" href="#equation-6c88eb91-9832-4916-adb7-88f3b370a9b7" title="Permalink to this equation">#</a></span>\[\begin{align}
+u(x,t) = \sum_{n=1}^\infty C_n \sin\left( \frac{n\pi x}{L} \right) \exp\left[ -\alpha \left( \frac{n\pi}{L} \right)^2 t \right],
+\end{align}\]</div>
+<p>and the coefficients <span class="math notranslate nohighlight">\(C_n\)</span> are determined from the initial condition <span class="math notranslate nohighlight">\(u(x,0) = f(x)\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3961c0ea-3e5d-4de6-947f-e1e2831bfb9d">
+<span class="eqno">(85)<a class="headerlink" href="#equation-3961c0ea-3e5d-4de6-947f-e1e2831bfb9d" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_n = \frac{2}{L} \int_0^L f(x) \sin\left( \frac{n\pi x}{L} \right) dx.
+\end{align}\]</div>
+<p>This represents the Fourier sine series expansion of <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
+</section>
+</section>
+<section id="fourier-series-foundation-and-interpretation">
+<h2>Fourier Series: Foundation and Interpretation<a class="headerlink" href="#fourier-series-foundation-and-interpretation" title="Link to this heading">#</a></h2>
+<p>In many physical systems, including those encountered in astrophysics, functions describing phenomena are often periodic or can be approximated as such over certain intervals.
+The Fourier Series provides a powerful method to represent these periodic functions as infinite sums of simpler sinusoidal functions—sines and cosines.
+This enables us to break down complex periodic functions and simplifies analysis and computation.</p>
+<p>Since many physical systems can be described by harmonic components, the Fourier Series naturally enables physical interpretation.
+In astrophysics, signals received from observations can be decomposed to analyze their frequency content.</p>
+<p>A function <span class="math notranslate nohighlight">\(f(x)\)</span> is said to be periodic with period <span class="math notranslate nohighlight">\(L\)</span> if:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f7396a1e-26e0-43ca-88c3-eadc1a971b5f">
+<span class="eqno">(86)<a class="headerlink" href="#equation-f7396a1e-26e0-43ca-88c3-eadc1a971b5f" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x + L) = f(x) \quad \text{for all } x.
+\end{align}\]</div>
+<p>Any reasonably well-behaved, periodic function <span class="math notranslate nohighlight">\(f(x)\)</span> with period <span class="math notranslate nohighlight">\(L\)</span> can be expressed as a Fourier Series:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-33f93e1d-e18c-45f0-ac0e-53b958e0fe52">
+<span class="eqno">(87)<a class="headerlink" href="#equation-33f93e1d-e18c-45f0-ac0e-53b958e0fe52" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x) = \frac{A_0}{2} + \sum_{n=1}^\infty \left[ A_n \cos\left( \frac{2n\pi x}{L} \right) + B_n \sin\left( \frac{2n\pi x}{L} \right) \right].
+\end{align}\]</div>
+<p><span class="math notranslate nohighlight">\(A_n\)</span> and <span class="math notranslate nohighlight">\(B_n\)</span> are the Fourier coefficients, which quantify the contribution of each harmonic component.</p>
+<p>The coefficients are calculated using the orthogonality properties of sine and cosine functions:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-13e81d13-e9f4-4ca1-b208-e4296f844889">
+<span class="eqno">(88)<a class="headerlink" href="#equation-13e81d13-e9f4-4ca1-b208-e4296f844889" title="Permalink to this equation">#</a></span>\[\begin{align}
+A_n &amp;= \frac{2}{L} \int_{-L/2}^{L/2} f(x) \cos\left( \frac{2n\pi x}{L} \right) dx, \quad n = 0,1,2,\dots \\
+B_n &amp;= \frac{2}{L} \int_{-L/2}^{L/2} f(x) \sin\left( \frac{2n\pi x}{L} \right) dx, \quad n = 1,2,3,\dots
+\end{align}\]</div>
+<section id="inner-products-and-hilbert-spaces">
+<h3>Inner Products and Hilbert Spaces<a class="headerlink" href="#inner-products-and-hilbert-spaces" title="Link to this heading">#</a></h3>
+<p>An inner product in a function space is a generalization of the dot product from finite-dimensional vector spaces to infinite-dimensional spaces of functions.
+For functions <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(g(x)\)</span> defined over an interval <span class="math notranslate nohighlight">\([a, b]\)</span>, the inner product is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ea0a3664-c0a9-4b8a-aa66-541c79540ae9">
+<span class="eqno">(89)<a class="headerlink" href="#equation-ea0a3664-c0a9-4b8a-aa66-541c79540ae9" title="Permalink to this equation">#</a></span>\[\begin{align}
+\langle f, g \rangle = \int_a^b f(x) g^*(x) \, dx,
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(g^*(x)\)</span> denotes the complex conjugate of <span class="math notranslate nohighlight">\(g(x)\)</span>.</p>
+<p>The sine and cosine functions used in the Fourier Series form an orthogonal (and can be normalized to be orthonormal) set with respect to this inner product:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a6b42eaf-493a-4da3-b8d2-f64be0ae5805">
+<span class="eqno">(90)<a class="headerlink" href="#equation-a6b42eaf-493a-4da3-b8d2-f64be0ae5805" title="Permalink to this equation">#</a></span>\[\begin{align}
+  \left\langle \cos\left( \frac{2n\pi x}{L} \right), \cos\left( \frac{2m\pi x}{L} \right) \right\rangle =
+  \begin{cases}
+    0,   &amp; n \ne m, \\
+    L/2, &amp; n = m,
+  \end{cases}
+\end{align}\]</div>
+<p>and similarly for the sine functions.</p>
+<p>A Hilbert space is a complete vector space equipped with an inner product.
+Functions that are square-integrable over a given interval form a Hilbert space, denoted as <span class="math notranslate nohighlight">\(L^2([a, b])\)</span>.
+The Fourier Series represents functions in <span class="math notranslate nohighlight">\(L^2\)</span> as infinite linear combinations of orthonormal basis functions.</p>
+<p>By projecting a function onto the orthonormal basis of sines and cosines, we obtain the Fourier coefficients, which serve as the “coordinates” of the function in this function space.
+Thus, the Fourier Series can be viewed as a coordinate transformation from the “time” or “spatial” domain to the “frequency” or “wavenumber” domain.
+This transformation is analogous to expressing a vector in terms of its components along orthogonal axes in finite-dimensional space.</p>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<p>Consider a square wave function defined over the interval <span class="math notranslate nohighlight">\([-L/2, L/2)\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a5c9a6ae-91f1-497f-9604-9b5f043760f8">
+<span class="eqno">(91)<a class="headerlink" href="#equation-a5c9a6ae-91f1-497f-9604-9b5f043760f8" title="Permalink to this equation">#</a></span>\[\begin{align}
+  f(x) =
+  \begin{cases}
+     1, &amp; 0 &lt; x &lt; L/2, \\
+    -1, &amp; -L/2 &lt; x &lt; 0.
+  \end{cases}
+\end{align}\]</div>
+<p>The Fourier coefficients for this function can be computed using the integrals above.
+Due to the function’s odd symmetry, only sine terms are present (i.e., <span class="math notranslate nohighlight">\(A_n = 0\)</span>).
+The Fourier coefficients <span class="math notranslate nohighlight">\(B_n\)</span> are:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7acabc90-6e5f-4978-978f-3df20b627ee2">
+<span class="eqno">(92)<a class="headerlink" href="#equation-7acabc90-6e5f-4978-978f-3df20b627ee2" title="Permalink to this equation">#</a></span>\[\begin{align}
+  B_n = \frac{4}{n\pi}
+  \begin{cases}
+    0, &amp; \text{even } n, \\
+    1, &amp; \text{odd } n.
+  \end{cases}
+\end{align}\]</div>
+<p>This series expansion demonstrates how complex functions can be represented as infinite sums of simple orthogonal functions.</p>
+<p>We can implement the Fourier Series representation of functions using Python.
+We compute the Fourier coefficients numerically and reconstruct the original function from these coefficients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">x</span> <span class="o">%</span> <span class="n">L</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f_approx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">fsum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>  <span class="c1"># sum over odd n</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+        <span class="n">fsum</span> <span class="o">+=</span> <span class="n">B</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fsum</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span>  <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># Period is 2 pi</span>
+<span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Original function</span>
+<span class="n">fi</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">fi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Square Wave&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fourier series approximation</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">N</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="n">fi_n</span> <span class="o">=</span> <span class="n">f_approx</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">fi_n</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Fourier Series Approximation (N=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d4e00522b011e17f1a61e33ebf7b59e0f8e17b4710b8374ede57acc10e5537a1.png" src="../_images/d4e00522b011e17f1a61e33ebf7b59e0f8e17b4710b8374ede57acc10e5537a1.png" />
+</div>
+</div>
+<p>Near points of discontinuity in the function (e.g., the jumps in a square wave), the Fourier series overshoots the function’s value.
+This overshoot does not diminish as more terms are added;
+instead, the maximum overshoot approaches a finite limit (<span class="math notranslate nohighlight">\(\sim 9\%\)</span> of the jump’s magnitude).
+This is known as the Gibbs Phenomenon.</p>
+</section>
+</section>
+<section id="implementing-fourier-series-in-python">
+<h2>Implementing Fourier Series in Python<a class="headerlink" href="#implementing-fourier-series-in-python" title="Link to this heading">#</a></h2>
+<p>We will implement the Fourier Series representation of functions using Python.
+We will compute the Fourier coefficients numerically and reconstruct the original function from these coefficients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">An</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">Bn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Fourier_coefficients</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="n">An</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">)]</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Fourier_series</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">fsum</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">An</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">fsum</span> <span class="o">+=</span> <span class="n">An</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">Bn</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">fsum</span> <span class="o">+=</span> <span class="n">Bn</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fsum</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can obtain Fourier series numerically using arbitrary functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># closure on L</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">b</span> <span class="o">=</span>  <span class="n">L</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="mi">32</span><span class="p">)</span>
+
+<span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10_000</span><span class="p">)</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">Fourier_coefficients</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Original function</span>
+<span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="mi">20_000</span><span class="p">)</span>
+<span class="n">fi</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">fi</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original function&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fourier series approximation</span>
+<span class="n">N</span>    <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fi_N</span> <span class="o">=</span> <span class="p">[</span><span class="n">Fourier_series</span><span class="p">(</span><span class="n">A</span><span class="p">[:</span><span class="n">n</span><span class="p">],</span> <span class="n">B</span><span class="p">[:</span><span class="n">n</span><span class="p">],</span> <span class="n">L</span><span class="p">,</span> <span class="n">xi</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">N</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">fi_n</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">fi_N</span><span class="p">))[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">fi_n</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Fourier Series Approximation (N=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d0b2b89ca13d94842b147e65368606cdabcccd8f61564bffae76c65a871b597e.png" src="../_images/d0b2b89ca13d94842b147e65368606cdabcccd8f61564bffae76c65a871b597e.png" />
+</div>
+</div>
+<section id="error-analysis">
+<h3>Error Analysis<a class="headerlink" href="#error-analysis" title="Link to this heading">#</a></h3>
+<p>We can quantify how the approximation improves with <span class="math notranslate nohighlight">\(N\)</span> by calculating the Mean Squared Error (MSE) between the original function and its Fourier series approximation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">mse</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_N</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="n">f_N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span> <span class="o">*</span> <span class="n">df</span><span class="p">))</span>
+
+<span class="n">errs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fi_n</span> <span class="ow">in</span> <span class="n">fi_N</span><span class="p">:</span>
+    <span class="n">errs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mse</span><span class="p">(</span><span class="n">fi</span><span class="p">,</span> <span class="n">fi_n</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">errs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N^{-1}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10dbf4b90&gt;
+</pre></div>
+</div>
+<img alt="../_images/29b2bd3fb7415cd353aa33aa3baa0106621c3c42475a7474d7125f09b02ad838.png" src="../_images/29b2bd3fb7415cd353aa33aa3baa0106621c3c42475a7474d7125f09b02ad838.png" />
+</div>
+</div>
+<p>Try adjust different functions and observe how the errors behave.</p>
+</section>
+</section>
+<section id="complex-fourier-series">
+<h2>Complex Fourier Series<a class="headerlink" href="#complex-fourier-series" title="Link to this heading">#</a></h2>
+<p>It is often convenient to combine the sine and cosine in the Fourier series into a single exponential term using Euler’s formula:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0f13a82c-d35e-4e47-a790-f80f2adb5c46">
+<span class="eqno">(93)<a class="headerlink" href="#equation-0f13a82c-d35e-4e47-a790-f80f2adb5c46" title="Permalink to this equation">#</a></span>\[\begin{align}
+e^{i\theta} = \cos(\theta) + i\sin(\theta).
+\end{align}\]</div>
+<p>Therefore,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7b9f2cd8-41fc-4f96-93fc-5eedb02ef670">
+<span class="eqno">(94)<a class="headerlink" href="#equation-7b9f2cd8-41fc-4f96-93fc-5eedb02ef670" title="Permalink to this equation">#</a></span>\[\begin{align}
+\cos(\theta) &amp;= \frac{e^{i\theta} + e^{-i\theta}}{2}, \\
+\sin(\theta) &amp;= \frac{e^{i\theta} - e^{-i\theta}}{2i}.
+\end{align}\]</div>
+<p>Substituting these into the definition of the Fourier series, we obtain the Complex Fourier Series:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a85c0b03-a454-4b9b-80e6-cdf81860cdc9">
+<span class="eqno">(95)<a class="headerlink" href="#equation-a85c0b03-a454-4b9b-80e6-cdf81860cdc9" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x) = \sum_{n=-\infty}^{\infty} C_n e^{i n \omega_1 x},
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega_1 = 2\pi/L\)</span> is the fundamental angular frequency.</p>
+<p>The complex coefficients <span class="math notranslate nohighlight">\(C_n\)</span> are given by:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-82418d8d-55d9-4efe-bd40-568bdc34738a">
+<span class="eqno">(96)<a class="headerlink" href="#equation-82418d8d-55d9-4efe-bd40-568bdc34738a" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_n = \frac{1}{L} \int_{-L/2}^{L/2} f(x) e^{-i n \omega_1 x} dx.
+\end{align}\]</div>
+<div class="admonition-exercises admonition">
+<p class="admonition-title">Exercises</p>
+<p>What are the relationship between the complex Fourier coefficients <span class="math notranslate nohighlight">\(C_n\)</span> and the Fourier series coefficients <span class="math notranslate nohighlight">\(A_n\)</span> and <span class="math notranslate nohighlight">\(B_n\)</span>?</p>
+</div>
+<p>If <span class="math notranslate nohighlight">\(f(x)\)</span> is purely real, then the complex Fourier coefficients satisfy the conjugate symmetry:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-109f5568-63b6-4e06-9337-c523f5e13490">
+<span class="eqno">(97)<a class="headerlink" href="#equation-109f5568-63b6-4e06-9337-c523f5e13490" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_{-n} = C_n^*,
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_n^*\)</span> denotes the complex conjugate of <span class="math notranslate nohighlight">\(C_n\)</span>.
+This property, sometimes referred as Hermitian, Hermit symmetry, or conjugate symmetry, ensures that the Fourier series representation remains real-valued.</p>
+<div class="admonition-exercises admonition">
+<p class="admonition-title">Exercises</p>
+<p>Demonstrate the Hermit symmetry using the relationship between the complex Fourier coefficients <span class="math notranslate nohighlight">\(C_n\)</span> and the Fourier series coefficients <span class="math notranslate nohighlight">\(A_n\)</span> and <span class="math notranslate nohighlight">\(B_n\)</span> derived above.</p>
+</div>
+<p>In the context of complex Fourier series, the functions <span class="math notranslate nohighlight">\(\exp(i n \omega_1 x)\)</span> form an orthonormal set under the inner product:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-85bd8658-5195-4778-80a2-ea6309b3867d">
+<span class="eqno">(98)<a class="headerlink" href="#equation-85bd8658-5195-4778-80a2-ea6309b3867d" title="Permalink to this equation">#</a></span>\[\begin{align}
+\langle e^{i n \omega_1 x}, e^{i m \omega_1 x} \rangle = \int_{-L/2}^{L/2} e^{i n \omega_1 x} e^{-i m \omega_1 x} dx = L \delta_{n m},
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta_{n m}\)</span> is the Kronecker delta function.</p>
+<p>The Fourier coefficients <span class="math notranslate nohighlight">\(C_n\)</span> are obtained by projecting <span class="math notranslate nohighlight">\(f(x)\)</span> onto these orthonormal basis functions, analogous to finding the components of a vector along orthogonal axes.
+Thus, the Fourier series expansion is a coordinate transformation from the function space to the space spanned by the basis functions <span class="math notranslate nohighlight">\(\exp(i n \omega_1 x)\)</span>.</p>
+</section>
+<section id="transition-to-fourier-transform">
+<h2>Transition to Fourier Transform<a class="headerlink" href="#transition-to-fourier-transform" title="Link to this heading">#</a></h2>
+<p>In the previous sections, we explored how periodic functions can be represented as sums of sines and cosines using Fourier Series.
+However, many functions of interest in physics and engineering are not periodic or are defined over an infinite domain.
+To analyze such functions, we need to extend the concept of Fourier Series to the Fourier Transform.</p>
+<section id="from-discrete-to-continuous-spectrum">
+<h3>From Discrete to Continuous Spectrum<a class="headerlink" href="#from-discrete-to-continuous-spectrum" title="Link to this heading">#</a></h3>
+<p>For a function <span class="math notranslate nohighlight">\(f(x)\)</span> with period <span class="math notranslate nohighlight">\(L\)</span>, the Fourier Series has discrete frequencies <span class="math notranslate nohighlight">\(\omega_n = 2n\pi/L \equiv n \omega_1\)</span>.</p>
+<p>As the period <span class="math notranslate nohighlight">\(L\)</span> becomes infinitely large (<span class="math notranslate nohighlight">\(L \rightarrow \infty\)</span>), the spacing between the frequencies in the Fourier Series becomes infinitesimally small, turning the sum into an integral:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9502b139-5d5d-4cb7-9a76-04e57efb2c8f">
+<span class="eqno">(99)<a class="headerlink" href="#equation-9502b139-5d5d-4cb7-9a76-04e57efb2c8f" title="Permalink to this equation">#</a></span>\[\begin{align}
+\sum_{n=-\infty}^{\infty} \rightarrow
+\int_{-\infty}^{\infty} \frac{d\omega}{\omega_1}.
+\end{align}\]</div>
+<p>The discrete set of frequencies <span class="math notranslate nohighlight">\(\omega_n\)</span> becomes a continuous variable <span class="math notranslate nohighlight">\(\omega\)</span>.
+This limit leads us to the Fourier Transform, which represents non-periodic functions defined over the entire real line.</p>
+</section>
+<section id="complex-fourier-transform-definitions">
+<h3>Complex Fourier Transform Definitions<a class="headerlink" href="#complex-fourier-transform-definitions" title="Link to this heading">#</a></h3>
+<p>The Fourier Transform <span class="math notranslate nohighlight">\(F(\omega)\)</span> of a function <span class="math notranslate nohighlight">\(f(x)\)</span> is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f2221db6-2fbd-4213-a387-82d821f5a59e">
+<span class="eqno">(100)<a class="headerlink" href="#equation-f2221db6-2fbd-4213-a387-82d821f5a59e" title="Permalink to this equation">#</a></span>\[\begin{align}
+F(\omega) = \int_{-\infty}^{\infty} f(x) e^{-i \omega x} dx.
+\end{align}\]</div>
+<p>The Inverse Fourier Transform is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ac7d8bfb-a956-4d71-8c04-fb08fccc7972">
+<span class="eqno">(101)<a class="headerlink" href="#equation-ac7d8bfb-a956-4d71-8c04-fb08fccc7972" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega) e^{i \omega x} d\omega.
+\end{align}\]</div>
+<p>These equations allow us to transform a time-domain function <span class="math notranslate nohighlight">\(f(x)\)</span> into its frequency-domain representation <span class="math notranslate nohighlight">\(F(\omega)\)</span>, and vice versa.</p>
+<p>If <span class="math notranslate nohighlight">\(f(x)\)</span> is real-valued, then <span class="math notranslate nohighlight">\(F(-\omega) = F^*(\omega)\)</span>, similar to the Fourier series case.
+This property ensures that the inverse transform yields a real function.</p>
+<p>In the context of the Fourier Transform, the inner product between two functions <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(g(x)\)</span> over the entire real line is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cf8a95dc-1086-467c-8bf2-84e6ec7640a4">
+<span class="eqno">(102)<a class="headerlink" href="#equation-cf8a95dc-1086-467c-8bf2-84e6ec7640a4" title="Permalink to this equation">#</a></span>\[\begin{align}
+\langle f, g \rangle = \int_{-\infty}^{\infty} f(x) g^*(x) \, dx.
+\end{align}\]</div>
+<p>The functions <span class="math notranslate nohighlight">\(e^{i \omega x}\)</span> form an orthogonal set with respect to this inner product.
+As a result, similar to the Fourier Series, the Fourier Transform can be seen as projecting <span class="math notranslate nohighlight">\(f(x)\)</span> onto the infinite-dimensional basis of complex exponentials <span class="math notranslate nohighlight">\(e^{i \omega x}\)</span>.
+The transform coefficients <span class="math notranslate nohighlight">\(F(\omega)\)</span> represent the “coordinates” of <span class="math notranslate nohighlight">\(f(x)\)</span> in the frequency domain.</p>
+</section>
+</section>
+<section id="sampling-theory-and-discrete-fourier-transform-dft">
+<h2>Sampling Theory and Discrete Fourier Transform (DFT)<a class="headerlink" href="#sampling-theory-and-discrete-fourier-transform-dft" title="Link to this heading">#</a></h2>
+<p>In this section, we delve into the implications of sampling continuous signals, introduce the Nyquist Sampling Theorem, explore the phenomenon of aliasing, and explain the role of the Discrete Fourier Transform (DFT) in analyzing discrete signals.
+For clarity, we will switch our notation from <span class="math notranslate nohighlight">\(f(x)\)</span> to <span class="math notranslate nohighlight">\(f(t)\)</span>, emphasizing the temporal aspect of signals.</p>
+<section id="sampling-continuous-signals">
+<h3>Sampling Continuous Signals<a class="headerlink" href="#sampling-continuous-signals" title="Link to this heading">#</a></h3>
+<p>When working with real-world signals, we often need to convert continuous signals into discrete ones for digital processing.
+This conversion is achieved through sampling, where a continuous signal <span class="math notranslate nohighlight">\(f(t)\)</span> is measured at discrete intervals.
+The distinction between continuous and discrete signals is fundamental:</p>
+<ul class="simple">
+<li><p>Continuous Signal: A function <span class="math notranslate nohighlight">\(f(t)\)</span> defined for all real values of <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>Discrete Signal:   A sequence of values <span class="math notranslate nohighlight">\(f_n = f(n T_s)\)</span>, where <span class="math notranslate nohighlight">\(T_s\)</span> is the sampling interval (the time between samples) and <span class="math notranslate nohighlight">\(n\)</span> is an integer index.</p></li>
+</ul>
+<p>The sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span> is the reciprocal of the sampling interval, <span class="math notranslate nohighlight">\(f_s = \frac{1}{T_s}\)</span>, and the sampling angular frequency is <span class="math notranslate nohighlight">\(\omega_s = 2\pi f_s\)</span>.</p>
+<p>Understanding how to sample a continuous signal without losing essential information is critical.
+If the sampling rate is too low, important details in the signal may be missed, leading to errors in analysis.</p>
+</section>
+<section id="the-nyquist-sampling-theorem">
+<h3>The Nyquist Sampling Theorem<a class="headerlink" href="#the-nyquist-sampling-theorem" title="Link to this heading">#</a></h3>
+<p>The Nyquist Sampling Theorem provides a criterion for the minimum sampling rate required to reconstruct a continuous signal from its samples without loss of information.
+It states:</p>
+<p>A band-limited continuous-time signal with maximum frequency <span class="math notranslate nohighlight">\(f_{\text{max}}\)</span> can be perfectly reconstructed from its samples if the sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span> is greater than twice the maximum frequency of the signal:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0909a6ab-b0dc-4e99-9e94-2cd3cf7a6267">
+<span class="eqno">(103)<a class="headerlink" href="#equation-0909a6ab-b0dc-4e99-9e94-2cd3cf7a6267" title="Permalink to this equation">#</a></span>\[\begin{align}
+f_s &gt; 2 f_{\text{max}},
+\end{align}\]</div>
+<p>where the Nyquist Rate is the minimum sampling rate required, <span class="math notranslate nohighlight">\(f_{\text{Nyquist}} = 2 f_{\text{max}}\)</span>; and the Nyquist Frequency is half the sampling frequency, <span class="math notranslate nohighlight">\(f_{\text{Nyquist}} = \frac{f_s}{2}\)</span>.</p>
+<p>Sampling above the Nyquist rate ensures that high-frequency components of the signal do not overlap (a phenomenon known as aliasing), which would cause distortion and loss of information.
+Under ideal conditions, if a signal is band-limited (contains no frequencies higher than <span class="math notranslate nohighlight">\(f_{\text{max}}\)</span>), sampling it at a rate higher than the Nyquist rate allows for perfect reconstruction of the original continuous signal from its discrete samples.</p>
+</section>
+<section id="aliasing-errors">
+<h3>Aliasing Errors<a class="headerlink" href="#aliasing-errors" title="Link to this heading">#</a></h3>
+<p>Aliasing occurs when a continuous signal is sampled at a rate insufficient to capture its changes accurately.
+This under-sampling causes different frequency components to become indistinguishable in the sampled signal.
+High-frequency components (above the Nyquist frequency) are effectively “folded” back into lower frequencies, leading to distortion.</p>
+<p>To visualize aliasing, consider the following example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
+<span class="n">f_signal</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Frequency of the original signal in Hz</span>
+<span class="n">f_alias</span>  <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Aliased frequency in Hz (due to undersampling)</span>
+<span class="n">f_s</span>      <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># Sampling frequency in Hz (below Nyquist rate)</span>
+<span class="n">t_end</span>    <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Duration in seconds</span>
+
+<span class="c1"># Time arrays</span>
+<span class="n">t_cont</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># Continuous time</span>
+<span class="n">t_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">f_s</span><span class="p">)</span>   <span class="c1"># Discrete sampling times</span>
+
+<span class="c1"># Signals</span>
+<span class="n">x_cont</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f_signal</span> <span class="o">*</span> <span class="n">t_cont</span><span class="p">)</span>  <span class="c1"># Original continuous signal</span>
+<span class="n">x_alias</span> <span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f_alias</span>  <span class="o">*</span> <span class="n">t_cont</span><span class="p">)</span>  <span class="c1"># Aliased signal for comparison</span>
+<span class="n">x_s</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f_signal</span> <span class="o">*</span> <span class="n">t_s</span><span class="p">)</span>     <span class="c1"># Sampled signal</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_cont</span><span class="p">,</span> <span class="n">x_cont</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Signal (3 Hz)&#39;</span><span class="p">,</span>      <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_cont</span><span class="p">,</span> <span class="n">x_alias</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Aliased Signal (1 Hz)&#39;</span><span class="p">,</span>       <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_s</span><span class="p">,</span> <span class="n">x_s</span><span class="p">,</span>     <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Sampled Points at </span><span class="si">{</span><span class="n">f_s</span><span class="si">}</span><span class="s1"> Hz&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ec4cc25a35fa17b52ef3965c3819664ccda4876db89752bfff0d8957eb43e7f7.png" src="../_images/ec4cc25a35fa17b52ef3965c3819664ccda4876db89752bfff0d8957eb43e7f7.png" />
+</div>
+</div>
+<p>In this example, the original signal at 3 Hz is sampled at 4 Hz, which is below the Nyquist rate of 6 Hz (twice the signal frequency).
+The sampled points misrepresent the original signal, making it appear as if it has a frequency of 1 Hz.
+This misrepresentation is the essence of aliasing.</p>
+</section>
+</section>
+<section id="discrete-fourier-transform-dft">
+<h2>Discrete Fourier Transform (DFT)<a class="headerlink" href="#discrete-fourier-transform-dft" title="Link to this heading">#</a></h2>
+<p>When working with digital signals, especially in computational astrophysics and signal processing, we often deal with discrete data rather than continuous functions.
+The Discrete Fourier Transform (DFT) is a mathematical tool that allows us to analyze the frequency content of discrete signals.
+It transforms a finite sequence of equally spaced samples of a function into a sequence of complex numbers representing the signal’s frequency spectrum.</p>
+<section id="definition-of-the-dft">
+<h3>Definition of the DFT<a class="headerlink" href="#definition-of-the-dft" title="Link to this heading">#</a></h3>
+<p>Given a sequence of <span class="math notranslate nohighlight">\(N\)</span> complex numbers <span class="math notranslate nohighlight">\(f_n\)</span>, where <span class="math notranslate nohighlight">\(n = 0, 1, 2, \dots, N-1\)</span>, the Discrete Fourier Transform <span class="math notranslate nohighlight">\(F_k\)</span> is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-38477543-84b1-4e01-8040-4bde9096d04d">
+<span class="eqno">(104)<a class="headerlink" href="#equation-38477543-84b1-4e01-8040-4bde9096d04d" title="Permalink to this equation">#</a></span>\[\begin{align}
+F_k = \sum_{n=0}^{N-1} f_n \, e^{-i 2\pi k n / N}, \quad \text{for } k = 0, 1, 2, \dots, N-1.
+\end{align}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(F_k\)</span> represents the amplitude and phase of the <span class="math notranslate nohighlight">\(k\)</span>-th frequency component of the signal.
+The inverse DFT, which allows us to reconstruct the original signal from its frequency components, is given by:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c202f274-efd1-4f97-959b-70070129dbd8">
+<span class="eqno">(105)<a class="headerlink" href="#equation-c202f274-efd1-4f97-959b-70070129dbd8" title="Permalink to this equation">#</a></span>\[\begin{align}
+f_n = \frac{1}{N} \sum_{k=0}^{N-1} F_k \, e^{i 2\pi k n / N}, \quad \text{for } n = 0, 1, 2, \dots, N-1.
+\end{align}\]</div>
+</section>
+<section id="properties-of-the-dft">
+<h3>Properties of the DFT<a class="headerlink" href="#properties-of-the-dft" title="Link to this heading">#</a></h3>
+<p>Understanding the properties of the DFT is crucial for effectively applying it to signal analysis:</p>
+<ul class="simple">
+<li><p>Periodicity: Both the input sequence <span class="math notranslate nohighlight">\(f_n\)</span> and the output sequence <span class="math notranslate nohighlight">\(F_k\)</span> are periodic with period <span class="math notranslate nohighlight">\(N\)</span>.
+This means that <span class="math notranslate nohighlight">\(f_{n+N} = f_n\)</span> and <span class="math notranslate nohighlight">\(F_{k+N} = F_k\)</span> for all integers <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(k\)</span>.
+The periodicity arises from the finite length of the sequences and the assumption that they represent one period of a periodic signal.</p></li>
+<li><p>Orthogonality: The set of complex exponentials <span class="math notranslate nohighlight">\(e^{-i 2\pi k n / N}\)</span> used in the DFT are orthogonal over the interval <span class="math notranslate nohighlight">\(n = 0, 1, \dots, N-1\)</span>.
+This orthogonality allows the DFT to decompose the signal into independent frequency components, analogous to how the Fourier Series decomposes continuous periodic functions.</p></li>
+<li><p>Linearity: The DFT is a linear transformation.
+If <span class="math notranslate nohighlight">\(f_n\)</span> and <span class="math notranslate nohighlight">\(g_n\)</span> are sequences and <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are scalars, then the DFT of <span class="math notranslate nohighlight">\(a f_n + b g_n\)</span> is <span class="math notranslate nohighlight">\(a F_k + b G_k\)</span>, where <span class="math notranslate nohighlight">\(F_k\)</span> and <span class="math notranslate nohighlight">\(G_k\)</span> are the DFTs of <span class="math notranslate nohighlight">\(f_n\)</span> and <span class="math notranslate nohighlight">\(g_n\)</span>, respectively.</p></li>
+<li><p>Energy Conservation (Parseval’s Theorem, see below): The total energy of the signal is preserved between the time domain and the frequency domain.
+Specifically, the sum of the squares of the magnitudes of the time-domain samples equals <span class="math notranslate nohighlight">\(1/N\)</span> times the sum of the squares of the magnitudes of the frequency-domain coefficients.</p></li>
+</ul>
+</section>
+<section id="implementing-the-dft-in-python">
+<h3>Implementing the DFT in Python<a class="headerlink" href="#implementing-the-dft-in-python" title="Link to this heading">#</a></h3>
+<p>To gain a deeper understanding of how the DFT works, we can implement it directly in Python.
+Although practical applications use optimized algorithms like the Fast Fourier Transform (FFT), implementing the DFT from scratch helps illustrate the underlying computations.</p>
+<p>Here is a simple implementation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">DFT</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">F</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">f</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">F</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this function, we compute each frequency component <span class="math notranslate nohighlight">\(F_k\)</span> by summing over all time-domain samples <span class="math notranslate nohighlight">\(f_n\)</span>, weighted by the complex exponential basis functions.
+The nested loops result in a computational complexity of <span class="math notranslate nohighlight">\(\mathcal{O}(N^2)\)</span>, which is acceptable for small <span class="math notranslate nohighlight">\(N\)</span> but inefficient for large datasets.</p>
+<p>Let’s apply the DFT to analyze a discrete signal composed of a single sine wave:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Signal parameters</span>
+<span class="n">f_signal</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c1"># Frequency in Hz</span>
+<span class="n">f_s</span>      <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Sampling frequency in Hz</span>
+<span class="n">N</span>        <span class="o">=</span> <span class="mi">100</span> <span class="c1"># Number of samples</span>
+
+<span class="c1"># Time vector</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">/</span> <span class="n">f_s</span>
+
+<span class="c1"># Signal generation</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f_signal</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Compute the DFT</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">DFT</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># Frequency vector</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">f_s</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">freq</span><span class="p">[:</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">F</span><span class="p">[:</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">N</span><span class="p">),</span> <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1241075e434a2d753314354169f044609f9e9aef670eab4f3d1bc86fc953c278.png" src="../_images/1241075e434a2d753314354169f044609f9e9aef670eab4f3d1bc86fc953c278.png" />
+</div>
+</div>
+<p>In this example, the magnitude spectrum shows a peak at 5 Hz, corresponding to the frequency of the sine wave in the signal.
+This confirms that the DFT correctly identifies the dominant frequency component.</p>
+<p>Note: We multiply the magnitude by <span class="math notranslate nohighlight">\(2 / N\)</span> to normalize the amplitude, accounting for the scaling factors in the DFT and plotting only the positive frequencies.</p>
+</section>
+<section id="the-dft-as-a-linear-transformation">
+<h3>The DFT as a Linear Transformation<a class="headerlink" href="#the-dft-as-a-linear-transformation" title="Link to this heading">#</a></h3>
+<p>The DFT can also be expressed in matrix form, highlighting its nature as a linear transformation from the time domain to the frequency domain.
+In matrix notation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d5fe5438-ce1b-4e67-a061-c6bbbefff0d7">
+<span class="eqno">(106)<a class="headerlink" href="#equation-d5fe5438-ce1b-4e67-a061-c6bbbefff0d7" title="Permalink to this equation">#</a></span>\[\begin{align}
+\mathbf{F} = \mathbf{W} \mathbf{f},
+\end{align}\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(\mathbf{f}\)</span> is the column vector of input samples <span class="math notranslate nohighlight">\(f_n\)</span>,
+<span class="math notranslate nohighlight">\(\mathbf{F}\)</span> is the column vector of DFT coefficients <span class="math notranslate nohighlight">\(F_k\)</span>, and
+<span class="math notranslate nohighlight">\(\mathbf{W}\)</span> is the DFT matrix, whose elements are <span class="math notranslate nohighlight">\(W_{k n} = e^{-2\pi i k n / N}\)</span>.</p>
+<p>Implementing the DFT using matrix multiplication in Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">DFT_matrix</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">W</span>
+
+<span class="c1"># Compute DFT using matrix multiplication</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">DFT_matrix</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">freq</span><span class="p">[:</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">F_matrix</span><span class="p">[:</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">N</span><span class="p">),</span> <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1241075e434a2d753314354169f044609f9e9aef670eab4f3d1bc86fc953c278.png" src="../_images/1241075e434a2d753314354169f044609f9e9aef670eab4f3d1bc86fc953c278.png" />
+</div>
+</div>
+<p>This method produces the same result as the direct computation but is also computationally intensive with <span class="math notranslate nohighlight">\(\mathcal{O}(N^2)\)</span> complexity.
+The matrix representation is useful for theoretical analysis and understanding properties of the DFT, such as its eigenvalues and eigenvectors.</p>
+</section>
+<section id="aliasing-in-the-dft">
+<h3>Aliasing in the DFT<a class="headerlink" href="#aliasing-in-the-dft" title="Link to this heading">#</a></h3>
+<p>An important consideration when applying the DFT is the effect of aliasing.
+Due to the finite sampling rate, the DFT interprets the sampled signal as being periodic with period <span class="math notranslate nohighlight">\(N T_s\)</span>.
+If the original continuous signal contains frequency components higher than the Nyquist frequency (<span class="math notranslate nohighlight">\(f_{\text{Nyquist}} = f_s/2\)</span>), these components are reflected back into lower frequencies in the DFT output.
+This phenomenon is known as aliasing.</p>
+<p>Aliasing can lead to misleading results, as high-frequency components masquerade as lower frequencies in the analyzed data.
+It is crucial to ensure that the signal is properly band-limited before sampling or to use appropriate anti-aliasing filters.</p>
+<p>To prevent aliasing, an anti-aliasing filter is applied to the continuous signal before sampling.
+This filter is typically a low-pass filter that attenuates frequency components above the Nyquist frequency, ensuring that the sampled signal does not contain frequencies that could cause aliasing.
+In hardware, analog filters are used for this purpose, conditioning the signal prior to digitization.</p>
+<p>Another approach to preventing aliasing is to sample at a rate significantly higher than the Nyquist rate, a practice known as oversampling.
+Oversampling provides a buffer against aliasing by increasing the Nyquist frequency.
+Additionally, adaptive sampling techniques can adjust the sampling rate based on the signal’s frequency content, sampling more rapidly when high-frequency components are present.</p>
+</section>
+</section>
+<section id="fast-fourier-transform-fft-and-computational-efficiency">
+<h2>Fast Fourier Transform (FFT) and Computational Efficiency<a class="headerlink" href="#fast-fourier-transform-fft-and-computational-efficiency" title="Link to this heading">#</a></h2>
+<p>The Discrete Fourier Transform (DFT) is a fundamental tool for analyzing discrete signals in the frequency domain.
+However, its direct computation is computationally intensive, with a complexity of <span class="math notranslate nohighlight">\(\mathcal{O}(N^2)\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the number of data points.
+This quadratic scaling becomes impractical for large datasets commonly encountered in computational astrophysics, such as those generated by telescopes or large-scale simulations.</p>
+<p>To overcome this limitation, the Fast Fourier Transform (FFT) algorithm was developed.
+The FFT revolutionized signal processing by reducing the computational complexity of computing the DFT from <span class="math notranslate nohighlight">\(\mathcal{O}(N^2)\)</span> to <span class="math notranslate nohighlight">\(\mathcal{O}(N \log N)\)</span>.
+This dramatic improvement enables efficient processing of large datasets, making the FFT an indispensable tool in various scientific and engineering fields.</p>
+<section id="historical-background-of-the-fft">
+<h3>Historical Background of the FFT<a class="headerlink" href="#historical-background-of-the-fft" title="Link to this heading">#</a></h3>
+<p>While the FFT algorithm gained widespread recognition after the publication by James Cooley and John Tukey in 1965, the fundamental ideas behind it date back much further.
+Remarkably, the mathematician Carl Friedrich Gauss discovered an early version of the FFT as early as 1805.
+Gauss developed efficient methods for interpolating asteroid orbits, which involved computations similar to the FFT, although his work remained unpublished in this context until much later.</p>
+<p>Over the years, several mathematicians and engineers independently discovered and rediscovered the FFT algorithm.
+It wasn’t until Cooley and Tukey’s seminal paper that the FFT became widely known and appreciated for its computational advantages.
+Their work sparked a revolution in digital signal processing and had a profound impact on many fields, including astrophysics, communications, and image processing.</p>
+</section>
+<section id="understanding-the-fft-algorithm">
+<h3>Understanding the FFT Algorithm<a class="headerlink" href="#understanding-the-fft-algorithm" title="Link to this heading">#</a></h3>
+<p>The key idea behind the FFT is to exploit symmetries and redundancies in the DFT calculations to reduce the number of computations required.
+Specifically, the FFT algorithm employs a divide and conquer strategy, recursively breaking down a DFT of size <span class="math notranslate nohighlight">\(N\)</span> into smaller DFTs, thereby minimizing redundant calculations.</p>
+<p>Consider the DFT of a sequence <span class="math notranslate nohighlight">\(f_n\)</span> of length <span class="math notranslate nohighlight">\(N\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5a7c5dec-ba5a-4829-9b5a-87046201d497">
+<span class="eqno">(107)<a class="headerlink" href="#equation-5a7c5dec-ba5a-4829-9b5a-87046201d497" title="Permalink to this equation">#</a></span>\[\begin{align}
+F_k = \sum_{n=0}^{N-1} f_n e^{-i 2\pi k n / N}, \quad k = 0, 1, \dots, N-1.
+\end{align}\]</div>
+<p>If <span class="math notranslate nohighlight">\(N\)</span> is even, we can separate the sum into even and odd indexed terms:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9b984396-3303-4820-a552-124d71ce20b0">
+<span class="eqno">(108)<a class="headerlink" href="#equation-9b984396-3303-4820-a552-124d71ce20b0" title="Permalink to this equation">#</a></span>\[\begin{align}
+F_k &amp;= \sum_{n=0}^{N/2 -1} f_{2n} e^{-i 2\pi k (2n) / N} + \sum_{n=0}^{N/2 -1} f_{2n+1} e^{-i 2\pi k (2n+1) / N} \\
+    &amp;= \sum_{n=0}^{N/2 -1} f_{2n} e^{-i 2\pi k n / (N/2)} + e^{-i 2\pi k / N} \sum_{n=0}^{N/2 -1} f_{2n+1} e^{-i 2\pi k n / (N/2)}.
+\end{align}\]</div>
+<p>This decomposition reveals that the DFT of size <span class="math notranslate nohighlight">\(N\)</span> can be expressed in terms of two DFTs of size <span class="math notranslate nohighlight">\(N/2\)</span>, one for the even-indexed samples <span class="math notranslate nohighlight">\(f_{2n}\)</span> and one for the odd-indexed samples <span class="math notranslate nohighlight">\(f_{2n+1}\)</span>.
+This recursive approach can be applied repeatedly until the DFTs are reduced to size 1, at which point the computation is trivial.</p>
+<p>By reusing the results of smaller DFTs and exploiting the periodicity and symmetry properties of the complex exponential functions, the FFT algorithm significantly reduces the total number of computations from <span class="math notranslate nohighlight">\(\mathcal{O}(N^2)\)</span> to <span class="math notranslate nohighlight">\(\mathcal{O}(N \log_2 N)\)</span>.</p>
+<p>The computational savings provided by the FFT are substantial, especially for large <span class="math notranslate nohighlight">\(N\)</span>.
+For example, if <span class="math notranslate nohighlight">\(N = 1,000,000\)</span>:</p>
+<ul class="simple">
+<li><p>Direct DFT: Approximately <span class="math notranslate nohighlight">\(10^{12}\)</span> operations.</p></li>
+<li><p>FFT: Approximately <span class="math notranslate nohighlight">\(20,000,000\)</span> operations.
+This reduction makes the FFT practical for large datasets, enabling real-time signal processing and efficient analysis of astronomical data.</p></li>
+</ul>
+</section>
+<section id="performance-of-dft-vs-fft">
+<h3>Performance of DFT vs. FFT<a class="headerlink" href="#performance-of-dft-vs-fft" title="Link to this heading">#</a></h3>
+<p>Modern programming languages and scientific computing libraries provide optimized implementations of the FFT algorithm.
+In Python, the numpy library includes the fft module, which offers fast and reliable FFT computations.</p>
+<p>Let’s compare the performance of our naive DFT implementation with the optimized FFT provided by numpy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy.fft</span><span class="w"> </span><span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">ifft</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">signal_lengths</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">)]</span>
+
+<span class="n">dft_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">fft_times</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">signal_lengths</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+    <span class="c1"># Time DFT</span>
+    <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">2048</span><span class="p">:</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">DFT</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">dft_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span>
+
+    <span class="c1"># Time FFT</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">fft_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span>
+
+<span class="c1"># Plotting the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">signal_lengths</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">dft_times</span><span class="p">)],</span> <span class="n">dft_times</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;DFT Time&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">signal_lengths</span><span class="p">,</span> <span class="n">fft_times</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;FFT Time&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Signal Length N&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Time [seconds]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/08142091a3f52958b58b06d9dab6d1ea5638119accc1591edb79199f9ae4a1f3.png" src="../_images/08142091a3f52958b58b06d9dab6d1ea5638119accc1591edb79199f9ae4a1f3.png" />
+</div>
+</div>
+<p>The plot clearly shows that the FFT is orders of magnitude faster than the direct DFT implementation, even for relatively small <span class="math notranslate nohighlight">\(N\)</span>.
+As <span class="math notranslate nohighlight">\(N\)</span> increases, the performance gap widens significantly.</p>
+</section>
+<section id="variations-and-generalizations-of-the-fft">
+<h3>Variations and Generalizations of the FFT<a class="headerlink" href="#variations-and-generalizations-of-the-fft" title="Link to this heading">#</a></h3>
+<p>While we have discussed the radix-2 FFT algorithm, which requires <span class="math notranslate nohighlight">\(N\)</span> to be a power of two, there are other variations of the FFT that handle sequences of arbitrary length:</p>
+<ul class="simple">
+<li><p>Mixed-Radix FFT: Handles composite sizes by factoring <span class="math notranslate nohighlight">\(N\)</span> into smaller integers (radices), such as 2, 3, 5, etc., and applying the FFT recursively.</p></li>
+<li><p>Prime Factor FFT: Used when <span class="math notranslate nohighlight">\(N\)</span> can be factored into coprime integers, exploiting the Chinese Remainder Theorem.</p></li>
+<li><p>Bluestein’s Algorithm (Chirp Z-Transform): Computes the DFT for any <span class="math notranslate nohighlight">\(N\)</span> by converting it into a convolution problem.
+These algorithms extend the applicability of the FFT to a wide range of problems and data sizes, making it a versatile tool in computational practice.</p></li>
+</ul>
+</section>
+<section id="impact-of-the-fft-on-computational-astrophysics">
+<h3>Impact of the FFT on Computational Astrophysics<a class="headerlink" href="#impact-of-the-fft-on-computational-astrophysics" title="Link to this heading">#</a></h3>
+<p>The FFT has had a profound impact on computational astrophysics and related fields.
+Its ability to efficiently process large datasets enables:</p>
+<ul class="simple">
+<li><p>Signal Analysis: Detection of periodic signals in time-series data, such as pulsar timing and variable star observations.</p></li>
+<li><p>Image Processing: Enhancement and restoration of astronomical images, including deconvolution and filtering.</p></li>
+<li><p>Simulation Analysis: Analysis of simulation data in cosmology and fluid dynamics, where spectral methods are used to solve differential equations.</p></li>
+</ul>
+</section>
+</section>
+<section id="convolution-and-correlation">
+<h2>Convolution and Correlation<a class="headerlink" href="#convolution-and-correlation" title="Link to this heading">#</a></h2>
+<p>Convolution and correlation are fundamental operations in signal processing and computational astrophysics, allowing us to analyze how signals interact and to measure the similarity between signals.
+These operations are closely related mathematically and have profound implications when analyzed in the frequency domain, especially through their respective theorems involving the Fourier Transform.
+Understanding their similarities and differences is crucial for leveraging their full potential in practical applications.</p>
+<p>Both convolution and correlation involve integrating (or summing, in the discrete case) the product of two functions, one of which is shifted in time or space.
+The key difference lies in how the functions are shifted and whether one of them is reversed.</p>
+<section id="id1">
+<h3>Convolution and Correlation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>For continuous functions <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(g(t)\)</span>, the convolution <span class="math notranslate nohighlight">\(h(t)\)</span> is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-43308993-9dfc-4d50-b9f4-5380ad26b755">
+<span class="eqno">(109)<a class="headerlink" href="#equation-43308993-9dfc-4d50-b9f4-5380ad26b755" title="Permalink to this equation">#</a></span>\[\begin{align}
+h(t) = (f * g)(t)
+    &amp;= \int_{-\infty}^{\infty} f(\tau) \, g(t - \tau) \, d\tau \\
+    &amp;= \int_{-\infty}^{\infty} f(t - \tau) \, g(\tau) \, d\tau.
+\end{align}\]</div>
+<p>In the discrete case, for sequences <span class="math notranslate nohighlight">\(f_n\)</span> and <span class="math notranslate nohighlight">\(g_n\)</span>, the convolution is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-97895db8-26a8-4264-8b49-49fc16f13bf1">
+<span class="eqno">(110)<a class="headerlink" href="#equation-97895db8-26a8-4264-8b49-49fc16f13bf1" title="Permalink to this equation">#</a></span>\[\begin{align}
+h_n = (f * g)_n = \sum_{m=0}^{N-1} f_m \, g_{n - m}.
+\end{align}\]</div>
+<p>Convolution computes the amount of overlap between <span class="math notranslate nohighlight">\(f\)</span> and a reversed and shifted version of <span class="math notranslate nohighlight">\(g\)</span>.
+It effectively “slides” the function <span class="math notranslate nohighlight">\(g(t)\)</span> over <span class="math notranslate nohighlight">\(f(t)\)</span>, multiplying and integrating at each position.</p>
+<p>Correlation measures the similarity between two functions as one is shifted over the other, without reversing.
+The cross-correlation <span class="math notranslate nohighlight">\(C_{fg}(t)\)</span> of continuous functions <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(g(t)\)</span> is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-80646d33-b837-4ae7-9d65-55338c4ba43a">
+<span class="eqno">(111)<a class="headerlink" href="#equation-80646d33-b837-4ae7-9d65-55338c4ba43a" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_{fg}(t) = (f \star g)(t)
+         &amp;= \int_{-\infty}^{\infty} f^*(\tau) \, g(\tau + t) \, d\tau \\
+         &amp;= \int_{-\infty}^{\infty} f^*(\tau - t) \, g(\tau) \, d\tau.
+\end{align}\]</div>
+<p>In the discrete case:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1ad8408e-01cf-4201-9557-7b5150b0b375">
+<span class="eqno">(112)<a class="headerlink" href="#equation-1ad8408e-01cf-4201-9557-7b5150b0b375" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_{fg}[n] = (f \star g)[n] = \sum_{m=0}^{N-1} f_m^* \, g_{m + n}.
+\end{align}\]</div>
+<p>Correlation computes the similarity between <span class="math notranslate nohighlight">\(f\)</span> and a shifted version of <span class="math notranslate nohighlight">\(g\)</span> (without reversal), accounting for complex conjugation in the case of complex-valued functions.</p>
+<ul class="simple">
+<li><p>Both operations involve integrating (or summing) the product of one function with a shifted version of another.</p></li>
+<li><p>Convolution reverses one of the functions before shifting (i.e., <span class="math notranslate nohighlight">\(g(t - \tau)\)</span>), while correlation does not (i.e., <span class="math notranslate nohighlight">\(g(\tau + t)\)</span>).</p></li>
+<li><p>Both operations reduce to similar forms for real-valued, symmetric functions.</p></li>
+</ul>
+</section>
+<section id="convolution-and-correlation-theorems">
+<h3>Convolution and Correlation Theorems<a class="headerlink" href="#convolution-and-correlation-theorems" title="Link to this heading">#</a></h3>
+<p>The Convolution Theorem states that the Fourier Transform of the convolution of two functions is equal to the product of their individual Fourier Transforms:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-88d79577-56f7-4aff-8500-03a37b8a680a">
+<span class="eqno">(113)<a class="headerlink" href="#equation-88d79577-56f7-4aff-8500-03a37b8a680a" title="Permalink to this equation">#</a></span>\[\begin{align}
+\mathcal{F}\{ f(t) * g(t) \} = F(\omega) \cdot G(\omega),
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{F}\{ \cdot \}\)</span> denotes the Fourier Transform and <span class="math notranslate nohighlight">\(F(\omega)\)</span> and <span class="math notranslate nohighlight">\(G(\omega)\)</span> are the Fourier Transforms of <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(g(t)\)</span>, respectively.
+This theorem shows that convolution in the time domain corresponds to multiplication in the frequency domain.</p>
+<p>The Correlation Theorem states that the Fourier Transform of the cross-correlation of two functions is equal to the product of the Fourier Transform of one function and the complex conjugate of the Fourier Transform of the other:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5755b05d-d0e0-47f8-9d24-95ac68a96190">
+<span class="eqno">(114)<a class="headerlink" href="#equation-5755b05d-d0e0-47f8-9d24-95ac68a96190" title="Permalink to this equation">#</a></span>\[\begin{align}
+\mathcal{F}\{ f(t) \star g(t) \} = F^*(\omega) \cdot G(\omega),
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(F^*(\omega)\)</span> is the complex conjugate of <span class="math notranslate nohighlight">\(F(\omega)\)</span>.
+Similarly, the cross-correlation in the time domain corresponds to the multiplication of the Fourier Transform of one function with the complex conjugate of the Fourier Transform of the other in the frequency domain.</p>
+<p>The key similarities between the two theorems are:</p>
+<ul class="simple">
+<li><p>Both relate an operation in the time domain (convolution or correlation) to multiplication in the frequency domain.</p></li>
+<li><p>The difference lies in whether or not one of the Fourier Transforms is conjugated:</p>
+<ul>
+<li><p>Convolution involves the product <span class="math notranslate nohighlight">\(F(\omega) \cdot G(\omega)\)</span>.</p></li>
+<li><p>Correlation involves the product <span class="math notranslate nohighlight">\(F^*(\omega) \cdot G(\omega)\)</span>.</p></li>
+</ul>
+</li>
+<li><p>This reflects the time-reversal aspect of convolution versus the direct comparison in correlation.</p></li>
+</ul>
+</section>
+<section id="practical-implications">
+<h3>Practical Implications<a class="headerlink" href="#practical-implications" title="Link to this heading">#</a></h3>
+<p>Understanding these theorems allows us to compute convolution and correlation efficiently using FFT.
+Instead of performing <span class="math notranslate nohighlight">\(\mathcal{O}(N^2)\)</span> operations in the time domain, we can perform the following steps:</p>
+<ol class="arabic simple">
+<li><p>Compute the Fourier Transforms <span class="math notranslate nohighlight">\(F(\omega)\)</span> and <span class="math notranslate nohighlight">\(G(\omega)\)</span> of the signals using the FFT (<span class="math notranslate nohighlight">\(\mathcal{O}(N \log N)\)</span> operations).</p></li>
+<li><p>Perform element-wise multiplication:</p>
+<ul class="simple">
+<li><p>For convolution: Multiply <span class="math notranslate nohighlight">\(F(\omega)\)</span>   and <span class="math notranslate nohighlight">\(G(\omega)\)</span>.</p></li>
+<li><p>For correlation: Multiply <span class="math notranslate nohighlight">\(F^*(\omega)\)</span> and <span class="math notranslate nohighlight">\(G(\omega)\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Compute the inverse Fourier Transform of the product to obtain the result in the time domain.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">),</span>                            <span class="p">(</span><span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">,</span> <span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">,</span> <span class="n">N</span><span class="o">//</span><span class="mi">4</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+
+<span class="n">conv1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">g</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="o">+</span><span class="n">t</span><span class="p">))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">))])</span>
+<span class="n">conv2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">f</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="o">+</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">))])</span>
+<span class="n">conv3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">ifft</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">*</span> <span class="n">fft</span><span class="p">(</span><span class="n">g</span><span class="p">)))</span>
+
+<span class="n">corr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="o">-</span><span class="n">t</span><span class="p">))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">))])</span>
+<span class="n">corr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">conj</span><span class="p">(),</span>  <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">))])</span>
+<span class="n">corr3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">ifft</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span> <span class="o">*</span> <span class="n">fft</span><span class="p">(</span><span class="n">g</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>  <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conv1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Convolution (Direct Sum, Shift $g$)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>  <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conv2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Convolution (Direct Sum, Shift $f$)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conv3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Convolution (FFT)&#39;</span><span class="p">,</span>      <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span>  <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">corr1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Convolution (Direct Sum, Shift $g$)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>  <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">corr2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Convolution (Direct Sum, Shift $f$)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">corr3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Convolution (FFT)&#39;</span><span class="p">,</span>                   <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span>  <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/22d4c2ee5b5192b7184c4a0923c817904e38f3dd96de12d1d666c6bf7ab6ab07.png" src="../_images/22d4c2ee5b5192b7184c4a0923c817904e38f3dd96de12d1d666c6bf7ab6ab07.png" />
+</div>
+</div>
+<p>The plots demonstrate that the results obtained via direct computation in the time domain match those obtained using the Fourier Transform in the frequency domain, confirming both the Convolution and Correlation Theorems.</p>
+</section>
+</section>
+<section id="parseval-s-theorem">
+<h2>Parseval’s Theorem<a class="headerlink" href="#parseval-s-theorem" title="Link to this heading">#</a></h2>
+<p>Parseval’s Theorem further connects the time and frequency domains by relating the total energy of a signal in one domain to the total energy in the other.
+For discrete signals <span class="math notranslate nohighlight">\(f_n\)</span>, the theorem states:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3802ab15-f54d-412e-9b46-ddcbdc8a86c8">
+<span class="eqno">(115)<a class="headerlink" href="#equation-3802ab15-f54d-412e-9b46-ddcbdc8a86c8" title="Permalink to this equation">#</a></span>\[\begin{align}
+\sum_{n=0}^{N-1} |f_n|^2 = \frac{1}{N} \sum_{k=0}^{N-1} |F_k|^2,
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(F_k\)</span> is the Discrete Fourier Transform (DFT) of <span class="math notranslate nohighlight">\(f_n\)</span>.</p>
+<p>Parseval’s Theorem implies that the energy (or power) of a signal is preserved between the time and frequency domains.
+This conservation is essential when analyzing signals, as it assures us that transforming between domains does not introduce or remove energy.</p>
+<p>In the context of convolution and correlation:</p>
+<ul class="simple">
+<li><p>Convolution may spread the signal’s energy over a wider range in time, but the total energy remains constant.</p></li>
+<li><p>Correlation measures the similarity between signals, and Parseval’s Theorem ensures that the energy content used in this measurement is consistent between domains.</p></li>
+</ul>
+<p>We can verify Parseval’s Theorem using the signals from our previous example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute energies in the time domain</span>
+<span class="n">E_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">E_g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Compute energies in the frequency domain</span>
+<span class="n">E_F</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">E_G</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">g</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energy of f[n] in time domain: </span><span class="si">{</span><span class="n">E_f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energy of f[n] in freq domain: </span><span class="si">{</span><span class="n">E_F</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energy of g[n] in time domain: </span><span class="si">{</span><span class="n">E_g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energy of g[n] in freq domain: </span><span class="si">{</span><span class="n">E_G</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Energy of f[n] in time domain: 32.0
+Energy of f[n] in freq domain: 31.999999999999996
+Energy of g[n] in time domain: 11.171875
+Energy of g[n] in freq domain: 11.171875
+</pre></div>
+</div>
+</div>
+</div>
+<p>The energies computed in the time and frequency domains are equal (within numerical precision), confirming Parseval’s Theorem.</p>
+<p>The close relationship between convolution, correlation, and their respective theorems has significant practical implications:</p>
+<ul class="simple">
+<li><p>Filter Design: Convolution is used to apply filters to signals, such as smoothing or sharpening filters in image processing.
+Understanding the frequency response via the Convolution Theorem helps in designing filters with desired characteristics.</p></li>
+<li><p>Signal Detection: Correlation is crucial in detecting known patterns or signals within noisy data.
+For example, in astrophysics, correlating observed signals with theoretical models helps identify celestial events or objects.</p></li>
+<li><p>Computational Efficiency: Leveraging the Fourier Transform to compute convolution and correlation reduces computational complexity, enabling the analysis of large datasets common in astrophysics.</p></li>
+</ul>
+</section>
+<section id="other-interesting-toipics">
+<h2>Other Interesting Toipics:<a class="headerlink" href="#other-interesting-toipics" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Time-Frequency Analysis</p></li>
+<li><p>Power Spectrum Estimation Using the FFT (See <a class="reference external" href="https://numerical.recipes/book.html">Numerical Recipes</a> Section 13.4)</p></li>
+<li><p>Denoising and Signal Processing Applications</p></li>
+<li><p>Astrophysical Applications and <a class="reference external" href="https://focisrc.github.io/eht-databook/intro/correlation.html">VLBI</a></p></li>
+<li><p>Calibration Algorithm for ADC Interleaving</p></li>
+<li><p><a class="reference internal" href="#sec:spectral-derivatives"><code class="xref myst docutils literal notranslate"><span class="pre">sec:spectral-derivatives</span></code></a></p></li>
+<li><p>Fourier Transform and the Heat Equation (see “Numerical PDE IV: spectral methods”)</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vahidszd/IUT-Computational-Physics-hbakhshian",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../03/sol.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Numerical Linear Algebra Lab</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fourier Transform and Spectral Analyses Lab</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-context-and-the-heat-equation">Historical Context and the Heat Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-separation-of-variables">Solution Using Separation of Variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-series-foundation-and-interpretation">Fourier Series: Foundation and Interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products-and-hilbert-spaces">Inner Products and Hilbert Spaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-fourier-series-in-python">Implementing Fourier Series in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-analysis">Error Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-fourier-series">Complex Fourier Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-to-fourier-transform">Transition to Fourier Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-discrete-to-continuous-spectrum">From Discrete to Continuous Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-fourier-transform-definitions">Complex Fourier Transform Definitions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-theory-and-discrete-fourier-transform-dft">Sampling Theory and Discrete Fourier Transform (DFT)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-continuous-signals">Sampling Continuous Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nyquist-sampling-theorem">The Nyquist Sampling Theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing-errors">Aliasing Errors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-transform-dft">Discrete Fourier Transform (DFT)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-dft">Definition of the DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-dft">Properties of the DFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-dft-in-python">Implementing the DFT in Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dft-as-a-linear-transformation">The DFT as a Linear Transformation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing-in-the-dft">Aliasing in the DFT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-fourier-transform-fft-and-computational-efficiency">Fast Fourier Transform (FFT) and Computational Efficiency</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-background-of-the-fft">Historical Background of the FFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-fft-algorithm">Understanding the FFT Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-of-dft-vs-fft">Performance of DFT vs. FFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variations-and-generalizations-of-the-fft">Variations and Generalizations of the FFT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-the-fft-on-computational-astrophysics">Impact of the FFT on Computational Astrophysics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-and-correlation">Convolution and Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Convolution and Correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-and-correlation-theorems">Convolution and Correlation Theorems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-implications">Practical Implications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parseval-s-theorem">Parseval’s Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-interesting-toipics">Other Interesting Toipics:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chi-kwan Chan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
