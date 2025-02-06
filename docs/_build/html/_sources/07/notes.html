@@ -498,16 +498,16 @@ They provide essential insights into the behavior of physical systems by quantif
 Traditional analytical methods for finding derivatives may become intractable for complex or nonlinear functions commonly encountered in real-world applications.
 Consequently, alternative techniques have emerged as indispensable tools in scientific computing.</p>
 <p>The derivative of a real-valued function <span class="math notranslate nohighlight">\(f(x)\)</span> at a point <span class="math notranslate nohighlight">\(x = a\)</span> is defined as the limit:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a64a416e-d36e-44b3-8c85-1613b7e44301">
-<span class="eqno">()<a class="headerlink" href="#equation-a64a416e-d36e-44b3-8c85-1613b7e44301" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6dae8ff7-329e-4802-85a5-e69f2113abc7">
+<span class="eqno">()<a class="headerlink" href="#equation-6dae8ff7-329e-4802-85a5-e69f2113abc7" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}.
 \end{align}\]</div>
 <p>This limit, if it exists, represents the slope of the tangent line to the curve <span class="math notranslate nohighlight">\(y = f(x)\)</span> at <span class="math notranslate nohighlight">\(x = a\)</span>. The derivative function <span class="math notranslate nohighlight">\(f'(x)\)</span> provides the rate of change of <span class="math notranslate nohighlight">\(f\)</span> at any point within its domain where the derivative exists.</p>
 <p>Several fundamental rules facilitating the computation of derivatives are taught in undergraduate calculus courses.
 Among them, the most important one is the chain rule.
 It states that, for <span class="math notranslate nohighlight">\(f(x) = g(h(x))\)</span>, its derivative is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b424dc01-1bd5-47cf-ac08-ffd5257b59ad">
-<span class="eqno">()<a class="headerlink" href="#equation-b424dc01-1bd5-47cf-ac08-ffd5257b59ad" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f6c88d29-a42d-4596-99ea-2dfc70925060">
+<span class="eqno">()<a class="headerlink" href="#equation-f6c88d29-a42d-4596-99ea-2dfc70925060" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) = g'(h(x)) h'(x).
 \end{align}\]</div>
 <p>We will show that the chain rule is extremely important in modern numerical and automatic derivatives.</p>
@@ -533,20 +533,20 @@ Unlike numerical methods that approximate derivatives at specific points, symbol
 To compute <span class="math notranslate nohighlight">\(f'(x)\)</span>, a symbolic differentiation system would:</p>
 <ol class="arabic">
 <li><p>Differentiate <span class="math notranslate nohighlight">\(x^2 \sin(x)\)</span> using the product rule:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a86095e4-e68e-44c6-9cb9-77120d6ca5ff">
-<span class="eqno">()<a class="headerlink" href="#equation-a86095e4-e68e-44c6-9cb9-77120d6ca5ff" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-82b6f979-364b-4f37-b607-dd6fd7255f12">
+<span class="eqno">()<a class="headerlink" href="#equation-82b6f979-364b-4f37-b607-dd6fd7255f12" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{d}{dx}[x^2 \sin(x)] = x^2 \cos(x) + 2 x \sin(x)
 \end{align}\]</div>
 </li>
 <li><p>Differentiate <span class="math notranslate nohighlight">\(e^{2x}\)</span> using the chain rule:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3fe1c617-3a3d-48c7-9fd5-90b4e0fbae92">
-<span class="eqno">()<a class="headerlink" href="#equation-3fe1c617-3a3d-48c7-9fd5-90b4e0fbae92" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0c668307-dc96-462e-962d-a5427f17a31c">
+<span class="eqno">()<a class="headerlink" href="#equation-0c668307-dc96-462e-962d-a5427f17a31c" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{d}{dx}[e^{2x}] = 2 e^{2x}
 \end{align}\]</div>
 </li>
 <li><p>Combine the results:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-451f4e97-07cc-40ea-bd29-9e26f1ed04dd">
-<span class="eqno">()<a class="headerlink" href="#equation-451f4e97-07cc-40ea-bd29-9e26f1ed04dd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d280f953-8977-47ee-80fd-9d8038a4e04a">
+<span class="eqno">()<a class="headerlink" href="#equation-d280f953-8977-47ee-80fd-9d8038a4e04a" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) = x^2 \cos(x) + 2 x \sin(x) + 2 e^{2x}
 \end{align}\]</div>
 </li>
@@ -640,23 +640,23 @@ These methods are essential when analytical derivatives are difficult or impossi
 <p>The core idea behind finite difference methods is to approximate the derivative <span class="math notranslate nohighlight">\(f'(x)\)</span> by evaluating the function <span class="math notranslate nohighlight">\(f(x)\)</span> at selected points around <span class="math notranslate nohighlight">\(x\)</span>.
 The three most basic finite difference approximations are forward difference, backward difference, and central difference.</p>
 <p>The <strong>forward difference approximation</strong> estimates the first derivative at a point <span class="math notranslate nohighlight">\(x\)</span> by using the function values at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x + h\)</span>, where <span class="math notranslate nohighlight">\(h\)</span> is a small step size:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a1e2c828-5abc-4b26-84d8-8ce3d5f70cff">
-<span class="eqno">()<a class="headerlink" href="#equation-a1e2c828-5abc-4b26-84d8-8ce3d5f70cff" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-de37db5c-7166-40ca-93b3-d96da3971b4d">
+<span class="eqno">()<a class="headerlink" href="#equation-de37db5c-7166-40ca-93b3-d96da3971b4d" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) \approx \frac{f(x + h) - f(x)}{h}.
 \end{align}\]</div>
 <p>This method is straightforward to implement and requires only one additional function evaluation beyond the point of interest.
 However, its accuracy is limited by a truncation error of order <span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span>.
 As <span class="math notranslate nohighlight">\(h\)</span> decreases, the approximation becomes more accurate, but excessively small values of <span class="math notranslate nohighlight">\(h\)</span> can lead to significant round-off errors due to the limitations of floating-point arithmetic.</p>
 <p>Similarly, the <strong>backward difference approximation</strong> estimates the derivative using the function values at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x - h\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c3c12b7c-23ed-4f59-b5ac-82bcd77ee5c5">
-<span class="eqno">()<a class="headerlink" href="#equation-c3c12b7c-23ed-4f59-b5ac-82bcd77ee5c5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-00607aca-6a8c-469e-b8c0-208f5abce199">
+<span class="eqno">()<a class="headerlink" href="#equation-00607aca-6a8c-469e-b8c0-208f5abce199" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) \approx \frac{f(x) - f(x - h)}{h}.
 \end{align}\]</div>
 <p>Like the forward difference, the backward difference method has the same truncation error of <span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span>.
 It is particularly useful in situations where function evaluations at points greater than <span class="math notranslate nohighlight">\(x\)</span> are not available or are computationally expensive.</p>
 <p>The <strong>central difference approximation</strong> provides a more accurate estimate by averaging the forward and backward differences:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-13da9deb-2f9f-483c-8a25-95b103a5db56">
-<span class="eqno">()<a class="headerlink" href="#equation-13da9deb-2f9f-483c-8a25-95b103a5db56" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-05e1c439-91c2-4a93-9671-a4f740652268">
+<span class="eqno">()<a class="headerlink" href="#equation-05e1c439-91c2-4a93-9671-a4f740652268" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) \approx \frac{1}{2}\left[\frac{f(x + h) - f(x)}{h} + \frac{f(x) - f(x - h)}{h}\right] = \frac{f(x + h) - f(x - h)}{2h}.
 \end{align}\]</div>
 <p>This method reduces the truncation error to <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span>, making it  more accurate for smooth functions.
@@ -707,7 +707,7 @@ Typically, <span class="math notranslate nohighlight">\(h\)</span> is chosen to 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11448c830&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10edac830&gt;
 </pre></div>
 </div>
 <img alt="../../_images/d5d8c8094d2ca795edb8e388462c0ba2e3cd7680c18b980b78dc27e8515c4592.png" src="../../_images/d5d8c8094d2ca795edb8e388462c0ba2e3cd7680c18b980b78dc27e8515c4592.png" />
@@ -750,7 +750,7 @@ Typically, <span class="math notranslate nohighlight">\(h\)</span> is chosen to 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1147511d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10eff51d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/66934d693e29a0ddfba872422deb87d94b07e3619cd7879f9d8b380b19210c67.png" src="../../_images/66934d693e29a0ddfba872422deb87d94b07e3619cd7879f9d8b380b19210c67.png" />
@@ -767,19 +767,19 @@ In practice, <span class="math notranslate nohighlight">\(h\)</span> is often ch
 <p>Finite difference methods can also be extended beyond first derivatives to approximate higher-order derivatives with increased accuracy.
 One common approach to obtain a second derivative approximation involves combining two central difference formulas.</p>
 <p>To derive the finite difference approximation for the second derivative, consider the Taylor series expansions of <span class="math notranslate nohighlight">\(f(x + h)\)</span> and <span class="math notranslate nohighlight">\(f(x - h)\)</span> around the point <span class="math notranslate nohighlight">\(x\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ad8b5364-7802-4651-9e6c-579c47a119c7">
-<span class="eqno">()<a class="headerlink" href="#equation-ad8b5364-7802-4651-9e6c-579c47a119c7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-711e3b35-e627-4852-a512-f7aa5e682bea">
+<span class="eqno">()<a class="headerlink" href="#equation-711e3b35-e627-4852-a512-f7aa5e682bea" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x + h) &amp;= f(x) + h f'(x) + \frac{h^2}{2} f''(x) + \frac{h^3}{6} f'''(x) + \mathcal{O}(h^4), \\
 f(x - h) &amp;= f(x) - h f'(x) + \frac{h^2}{2} f''(x) - \frac{h^3}{6} f'''(x) + \mathcal{O}(h^4).
 \end{align}\]</div>
 <p>Adding these two equations eliminates the first and third derivative terms:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0f903a85-1489-4969-9d56-8e9efd586c6d">
-<span class="eqno">()<a class="headerlink" href="#equation-0f903a85-1489-4969-9d56-8e9efd586c6d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1191cc65-c232-4dc3-81f2-b914de36e200">
+<span class="eqno">()<a class="headerlink" href="#equation-1191cc65-c232-4dc3-81f2-b914de36e200" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x + h) + f(x - h) = 2 f(x) + h^2 f''(x) + \mathcal{O}(h^4).
 \end{align}\]</div>
 <p>Rearranging the equation to solve for <span class="math notranslate nohighlight">\(f''(x)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-36862333-60da-4eae-a3d5-fbd49df3978b">
-<span class="eqno">()<a class="headerlink" href="#equation-36862333-60da-4eae-a3d5-fbd49df3978b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c546e428-b533-4ffe-8170-6fc17d1a621f">
+<span class="eqno">()<a class="headerlink" href="#equation-c546e428-b533-4ffe-8170-6fc17d1a621f" title="Permalink to this equation">#</a></span>\[\begin{align}
 f''(x) \approx \frac{f(x + h) - 2 f(x) + f(x - h)}{h^2} + \mathcal{O}(h^2).
 \end{align}\]</div>
 <p>This yields the central difference formula for the second derivative with a truncation error of order <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span>.
@@ -821,7 +821,7 @@ The true second derivative of this function is <span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114a87ed0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10f323ed0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/cc5210737f4d194e90515831a57b485b26cc626e6b832ff70256f775e31bbc02.png" src="../../_images/cc5210737f4d194e90515831a57b485b26cc626e6b832ff70256f775e31bbc02.png" />
@@ -839,8 +839,8 @@ By considering multiple points symmetrically distributed around the target point
 <p>Specifically, consider approximating the first derivative <span class="math notranslate nohighlight">\(f'(x)\)</span> with fourth-order accuracy.
 This requires that the truncation error be of order <span class="math notranslate nohighlight">\(\mathcal{O}(h^4)\)</span>, meaning that the error decreases proportionally to <span class="math notranslate nohighlight">\(h^4\)</span> as the step size <span class="math notranslate nohighlight">\(h\)</span> approaches zero.</p>
 <p>Expand the function <span class="math notranslate nohighlight">\(f\)</span> at points <span class="math notranslate nohighlight">\(x - 2h\)</span>, <span class="math notranslate nohighlight">\(x - h\)</span>, <span class="math notranslate nohighlight">\(x + h\)</span>, and <span class="math notranslate nohighlight">\(x + 2h\)</span> using the Taylor series around <span class="math notranslate nohighlight">\(x\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fd087723-67d0-4a21-99fd-2a6bbddd8b1a">
-<span class="eqno">()<a class="headerlink" href="#equation-fd087723-67d0-4a21-99fd-2a6bbddd8b1a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cd0679b7-a2a2-452b-a745-adf5a79afdfd">
+<span class="eqno">()<a class="headerlink" href="#equation-cd0679b7-a2a2-452b-a745-adf5a79afdfd" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x - 2h) &amp;= f(x) - 2h f'(x) + \frac{(2h)^2}{2} f''(x) - \frac{(2h)^3}{6} f'''(x) + \frac{(2h)^4}{24} f''''(x) + \mathcal{O}(h^5), \\
 f(x -  h) &amp;= f(x) -  h f'(x) + \frac{  h ^2}{2} f''(x) - \frac{  h ^3}{6} f'''(x) + \frac{  h ^4}{24} f''''(x) + \mathcal{O}(h^5), \\
 f(x +  h) &amp;= f(x) +  h f'(x) + \frac{  h ^2}{2} f''(x) + \frac{  h ^3}{6} f'''(x) + \frac{  h ^4}{24} f''''(x) + \mathcal{O}(h^5), \\
@@ -848,19 +848,19 @@ f(x + 2h) &amp;= f(x) + 2h f'(x) + \frac{(2h)^2}{2} f''(x) + \frac{(2h)^3}{6} f'
 \end{align}\]</div>
 <p>We will construct linear combinations of these expansions to eliminate the lower-order terms up to <span class="math notranslate nohighlight">\(h^3\)</span>.
 For example, subtract the expansion at <span class="math notranslate nohighlight">\(x - 2h\)</span> from that at <span class="math notranslate nohighlight">\(x + 2h\)</span> and adjust coefficients to isolate <span class="math notranslate nohighlight">\(f'(x)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8c9a7c4e-acbd-4f9f-840e-47982197ab15">
-<span class="eqno">()<a class="headerlink" href="#equation-8c9a7c4e-acbd-4f9f-840e-47982197ab15" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-34d47357-8303-4593-8304-736092cd3830">
+<span class="eqno">()<a class="headerlink" href="#equation-34d47357-8303-4593-8304-736092cd3830" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x + 2h) - f(x - 2h) &amp;= 4h f'(x) + \frac{8h^3}{3} f'''(x) + \mathcal{O}(h^5), \\
 f(x +  h) - f(x -  h) &amp;= 2h f'(x) + \frac{h^3}{3} f'''(x) + \mathcal{O}(h^5).
 \end{align}\]</div>
 <p>It is now straightforward to eliminate the <span class="math notranslate nohighlight">\(f'''(x)\)</span> term:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4ae926ae-c863-4430-97f7-554fa575b499">
-<span class="eqno">()<a class="headerlink" href="#equation-4ae926ae-c863-4430-97f7-554fa575b499" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-afad3e85-84b9-4133-9902-c37c74a0313c">
+<span class="eqno">()<a class="headerlink" href="#equation-afad3e85-84b9-4133-9902-c37c74a0313c" title="Permalink to this equation">#</a></span>\[\begin{align}
 -f(x + 2h) + f(x - 2h) + 8f(x + h) - 8f(x - h) = 12h f'(x)  + \mathcal{O}(h^5).
 \end{align}\]</div>
 <p>Solving for <span class="math notranslate nohighlight">\(f'(x)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-74278f9c-8b24-487e-9d68-0dc4139345e6">
-<span class="eqno">()<a class="headerlink" href="#equation-74278f9c-8b24-487e-9d68-0dc4139345e6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ec3e6b61-9d19-413b-a81d-84c2851dd17b">
+<span class="eqno">()<a class="headerlink" href="#equation-ec3e6b61-9d19-413b-a81d-84c2851dd17b" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) \approx \frac{-f(x + 2h) + 8f(x + h) - 8f(x - h) + f(x - 2h)}{12h} + \mathcal{O}(h^4).
 \end{align}\]</div>
 <p>This leads to the fourth-order central difference formula for the first derivative.</p>
@@ -903,7 +903,7 @@ f'(x) \approx \frac{-f(x + 2h) + 8f(x + h) - 8f(x - h) + f(x - 2h)}{12h} + \math
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114c3ead0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10f4dead0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/be94e2ec45de51f17361b8342769cc5f6ce375441524f9ce0f299212ff22998b.png" src="../../_images/be94e2ec45de51f17361b8342769cc5f6ce375441524f9ce0f299212ff22998b.png" />
@@ -921,15 +921,15 @@ Unlike finite difference methods, which rely on local information, spectral meth
 <p>Fourier spectral methods leverage the Fourier series representation of periodic functions to compute derivatives with high precision.
 The fundamental idea is to transform the function into the frequency domain, where differentiation becomes a straightforward algebraic operation.</p>
 <p>For a function  f(x)  defined on a periodic interval  [L/2, L/2), the Fourier series expansion is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-26fc149f-c519-4bec-8138-f71456089717">
-<span class="eqno">()<a class="headerlink" href="#equation-26fc149f-c519-4bec-8138-f71456089717" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f1322e29-27b1-4533-8027-90104045aca3">
+<span class="eqno">()<a class="headerlink" href="#equation-f1322e29-27b1-4533-8027-90104045aca3" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x) = \sum_{n=-N/2}^{N/2} F_n e^{i 2\pi n x / L} \equiv \sum_{n=-N/2}^{N/2} F_k e^{i k_n x},
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of modes, <span class="math notranslate nohighlight">\(F_n\)</span> are the Fourier coefficients, and <span class="math notranslate nohighlight">\(k_n \equiv 2\pi n/L\)</span> are the wavenumbers.</p>
 <p>Differentiation of <span class="math notranslate nohighlight">\(f(x)\)</span> in the spatial domain corresponds to multiplication by <span class="math notranslate nohighlight">\(i k_n\)</span> in the frequency domain.
 Specifically, the first derivative <span class="math notranslate nohighlight">\(f'(x\)</span>) is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-caba7619-7f52-4c2d-897b-28b21a7ba439">
-<span class="eqno">()<a class="headerlink" href="#equation-caba7619-7f52-4c2d-897b-28b21a7ba439" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-28fc8c67-9f2e-4ef6-9485-d0ad79a515a6">
+<span class="eqno">()<a class="headerlink" href="#equation-28fc8c67-9f2e-4ef6-9485-d0ad79a515a6" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) = \sum_{k=-N/2}^{N/2} i k_n F_k e^{i k_n x}.
 \end{align}\]</div>
 <p>This property simplifies the computation of derivatives, as it converts the differentiation process into a simple multiplication operation in the Fourier space.</p>
@@ -1021,24 +1021,24 @@ In astrophysics, this method was first used in numerical relativity to mitigate 
 <p>The foundation of the Complex Step Method lies in the application of complex analysis to differentiation.
 Consider a real-valued function <span class="math notranslate nohighlight">\(f(x)\)</span> that is analytic (i.e., differentiable) in a neighborhood around a point <span class="math notranslate nohighlight">\(x\)</span>.
 By introducing a small imaginary perturbation <span class="math notranslate nohighlight">\(ih\)</span> to the input, where <span class="math notranslate nohighlight">\(h\)</span> is a real step size and <span class="math notranslate nohighlight">\(i\)</span> is the imaginary unit, we can express the function as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9bf3b03c-a647-4c2e-a148-e70b60c64784">
-<span class="eqno">()<a class="headerlink" href="#equation-9bf3b03c-a647-4c2e-a148-e70b60c64784" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b60145f2-2ab7-4937-a05e-73bef4da90e0">
+<span class="eqno">()<a class="headerlink" href="#equation-b60145f2-2ab7-4937-a05e-73bef4da90e0" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x + ih) = f(x) + ih f'(x) - \frac{h^2}{2} f''(x) - i \frac{h^3}{6} f''(x) + \cdots
 \end{align}\]</div>
 <p>The key insight is that the imaginary part of <span class="math notranslate nohighlight">\(f(x + ih)\)</span> is directly proportional to the first derivative <span class="math notranslate nohighlight">\(f'(x)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b1e121b8-be26-4a54-9d3f-3c73a63386a4">
-<span class="eqno">()<a class="headerlink" href="#equation-b1e121b8-be26-4a54-9d3f-3c73a63386a4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-92e6feaf-564f-41b4-b75e-6ae9571d27de">
+<span class="eqno">()<a class="headerlink" href="#equation-92e6feaf-564f-41b4-b75e-6ae9571d27de" title="Permalink to this equation">#</a></span>\[\begin{align}
 \operatorname{Im}[f(x + ih)] = h f'(x) + \mathcal{O}(h^3)
 \end{align}\]</div>
 <p>By isolating the imaginary component and dividing by <span class="math notranslate nohighlight">\(h\)</span>, we obtain an approximation for the first derivative:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-91631ec6-f89b-403a-8335-dbe3e311f64f">
-<span class="eqno">()<a class="headerlink" href="#equation-91631ec6-f89b-403a-8335-dbe3e311f64f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-206d6b0c-baee-4bfe-96af-282431676f8e">
+<span class="eqno">()<a class="headerlink" href="#equation-206d6b0c-baee-4bfe-96af-282431676f8e" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) \approx \frac{\operatorname{Im}[f(x + ih)]}{h}
 \end{align}\]</div>
 <p>Subtractive cancellation errors arise in finite difference approximations when two nearly equal real numbers are subtracted, leading to a significant loss of precision.
 For example, in the central difference formula:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-295c965b-9073-488d-bce6-9a22eb804a58">
-<span class="eqno">()<a class="headerlink" href="#equation-295c965b-9073-488d-bce6-9a22eb804a58" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-87bc9695-6b18-4f7f-ba72-4a07027c85b0">
+<span class="eqno">()<a class="headerlink" href="#equation-87bc9695-6b18-4f7f-ba72-4a07027c85b0" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) \approx \frac{f(x + h) - f(x - h)}{2h}
 \end{align}\]</div>
 <p>if <span class="math notranslate nohighlight">\(h\)</span> is very small, <span class="math notranslate nohighlight">\(f(x + h)\)</span> and <span class="math notranslate nohighlight">\(f(x - h)\)</span> become nearly identical, and their difference is subject to floating-point round-off errors. This limits the accuracy of the derivative approximation.</p>
@@ -1084,7 +1084,7 @@ As a result, the Complex Step Method can achieve derivative approximations accur
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x115195f90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10fa39f90&gt;
 </pre></div>
 </div>
 <img alt="../../_images/c9e7dc55cb3f8596000d6a27292de87defb6620f02d8c4cd4e9ac0f1f1ba6ae4.png" src="../../_images/c9e7dc55cb3f8596000d6a27292de87defb6620f02d8c4cd4e9ac0f1f1ba6ae4.png" />
@@ -1114,8 +1114,8 @@ By breaking functions into elementary operations and applying the chain rule, AD
 <p>In forward mode AD, dual numbers provide a practical and intuitive way to propagate derivative information alongside function values.
 Dual numbers extend real numbers by introducing an additional component representing an infinitesimal value, enabling simultaneous calculation of function values and their derivatives.
 A dual number is represented as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eb859785-3b37-4afb-a2fb-078cb782f64a">
-<span class="eqno">()<a class="headerlink" href="#equation-eb859785-3b37-4afb-a2fb-078cb782f64a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e1f4756b-df0b-4398-b081-92af3d0f4764">
+<span class="eqno">()<a class="headerlink" href="#equation-e1f4756b-df0b-4398-b081-92af3d0f4764" title="Permalink to this equation">#</a></span>\[\begin{align}
 \tilde{x} = x + \delta x',
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the real part, <span class="math notranslate nohighlight">\(x'\)</span> is the dual part representing the derivative, and <span class="math notranslate nohighlight">\(\delta\)</span> is an infinitesimal quantity satisfying <span class="math notranslate nohighlight">\(\delta^2 = 0\)</span>.</p>
@@ -1130,8 +1130,8 @@ Forward mode is particularly efficient when there are few input variables (such 
 <section id="example-differentiating-f-x-x-2">
 <h3>Example: Differentiating <span class="math notranslate nohighlight">\(f(x) = x^2\)</span><a class="headerlink" href="#example-differentiating-f-x-x-2" title="Link to this heading">#</a></h3>
 <p>Consider the function <span class="math notranslate nohighlight">\(f(x) = x^2\)</span>. Using dual numbers:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7d9dd752-f668-44e5-8783-5d55835fcb96">
-<span class="eqno">()<a class="headerlink" href="#equation-7d9dd752-f668-44e5-8783-5d55835fcb96" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-96847ba8-cd0d-45e0-a3e3-18733d8c6135">
+<span class="eqno">()<a class="headerlink" href="#equation-96847ba8-cd0d-45e0-a3e3-18733d8c6135" title="Permalink to this equation">#</a></span>\[\begin{align}
 \tilde{x} &amp;= x + \delta, \\
 \tilde{f}(\tilde{x}) &amp;= (x + \delta)^2 = x^2 + 2x\delta + \delta^2 = x^2 + 2x\delta.
 \end{align}\]</div>
@@ -1295,13 +1295,13 @@ This can be achieved by implementing helper functions that operate on Dual Numbe
 Both techniques add an additional component to capture derivative information accurately without introducing significant numerical errors.</p>
 <p>Consider the above example <span class="math notranslate nohighlight">\(f(x) = x^2\)</span>.
 In the Complex Step Method, the function is evaluated at a complex point <span class="math notranslate nohighlight">\(x + ih\)</span>, where <span class="math notranslate nohighlight">\(h\)</span> is a small step size and <span class="math notranslate nohighlight">\(i\)</span> is the imaginary unit:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c0130784-fad7-4398-bb36-93db38607428">
-<span class="eqno">()<a class="headerlink" href="#equation-c0130784-fad7-4398-bb36-93db38607428" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ebc6f7c5-aa36-4b5d-8838-d336543979de">
+<span class="eqno">()<a class="headerlink" href="#equation-ebc6f7c5-aa36-4b5d-8838-d336543979de" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x + ih) = (x + ih)^2 = x^2 - h^2 + 2ihx.
 \end{align}\]</div>
 <p>By isolating the imaginary part and dividing by <span class="math notranslate nohighlight">\(h\)</span>, we obtain an approximation of the derivative:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d3df78bd-1285-4883-b13b-415a38fcadaf">
-<span class="eqno">()<a class="headerlink" href="#equation-d3df78bd-1285-4883-b13b-415a38fcadaf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d38018b5-f7a0-4070-9f9d-980e1ef79d28">
+<span class="eqno">()<a class="headerlink" href="#equation-d38018b5-f7a0-4070-9f9d-980e1ef79d28" title="Permalink to this equation">#</a></span>\[\begin{align}
 f'(x) \approx \frac{\operatorname{Im}[f(x + ih)]}{h} = 2x.
 \end{align}\]</div>
 <p>In this example, the imaginary part directly corresponds to the derivative, mirroring the Dual Number approach where the dual component carries derivative information.
@@ -1500,7 +1500,7 @@ Hybrid approaches combining symbolic, numerical, and automatic differentiation c
   <div class="footer-item">
     
 <p class="component-author">
-By Chi-kwan Chan
+By H. Bakhshian
 </p>
 
   </div>

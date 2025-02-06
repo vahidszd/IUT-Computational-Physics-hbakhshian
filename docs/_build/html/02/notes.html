@@ -542,21 +542,21 @@ In positional notation, each digit’s place corresponds to a specific power of 
 <li><p>Decide on the base (or radix) <span class="math notranslate nohighlight">\(b\)</span>.</p></li>
 <li><p>Define the notation for the digits.</p></li>
 <li><p>Write the number as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-40ed4cff-3359-43b1-b5fd-26ee679fe891">
-<span class="eqno">(1)<a class="headerlink" href="#equation-40ed4cff-3359-43b1-b5fd-26ee679fe891" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5d95a3a4-a4b4-4c81-b8ad-77e992e56454">
+<span class="eqno">(1)<a class="headerlink" href="#equation-5d95a3a4-a4b4-4c81-b8ad-77e992e56454" title="Permalink to this equation">#</a></span>\[\begin{align}
 \pm (\dots d_3 d_2 d_1 d_0 . d_{-1} d_{-2} d_{-3} \dots),
 \end{align}\]</div>
 <p>which represents:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-91c49e3c-73ab-49cf-b8a5-299afe6d515a">
-<span class="eqno">(2)<a class="headerlink" href="#equation-91c49e3c-73ab-49cf-b8a5-299afe6d515a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b9f3432c-21e5-4291-b085-e3f42334f653">
+<span class="eqno">(2)<a class="headerlink" href="#equation-b9f3432c-21e5-4291-b085-e3f42334f653" title="Permalink to this equation">#</a></span>\[\begin{align}
 \pm (\dots + d_3 b^3 + d_2 b^2 + d_1 b^1 + d_0 b^0 + d_{-1} b^{-1} + d_{-2} b^{-2} + d_{-3} b^{-3} + \dots).
 \end{align}\]</div>
 </li>
 </ol>
 <p>To convert a number from base <span class="math notranslate nohighlight">\(b\)</span> to decimal, we apply this definition directly.
 For example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-07c03c1b-acaf-4daf-8ac9-807def42d63d">
-<span class="eqno">(3)<a class="headerlink" href="#equation-07c03c1b-acaf-4daf-8ac9-807def42d63d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-960b9310-8844-4043-8228-201033c277f2">
+<span class="eqno">(3)<a class="headerlink" href="#equation-960b9310-8844-4043-8228-201033c277f2" title="Permalink to this equation">#</a></span>\[\begin{align}
 (256.4)_8 = 2\times8^2 + 5\times8^1 + 6\times8^0 + 4\times8^{-1} = (174.5)_{10}.
 \end{align}\]</div>
 </section>
@@ -1254,8 +1254,8 @@ As a result, the Patriot failed to identify the Scud as a threat, leading to the
 <p>The easiest way to describe floating-point representation is through an example.
 Consider the result of the mathematical expression <span class="math notranslate nohighlight">\(e^6 \approx 403.42879\)</span>.
 To express this in normalized floating-point notation, we first write the number in scientific notation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b2aa2c5e-3eaa-48ec-b3f3-757dee840466">
-<span class="eqno">(4)<a class="headerlink" href="#equation-b2aa2c5e-3eaa-48ec-b3f3-757dee840466" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-164c8df6-484e-4f84-abef-10123469bb0d">
+<span class="eqno">(4)<a class="headerlink" href="#equation-164c8df6-484e-4f84-abef-10123469bb0d" title="Permalink to this equation">#</a></span>\[\begin{align}
 e^6 = 4.0342879 \times 10^2
 \end{align}\]</div>
 <p>In scientific notation, the number is written such that the significand (or mantissa) is always smaller than the base (in this case, 10).
@@ -1266,13 +1266,13 @@ To represent the number in floating-point format, we store the following compone
 <li><p>The significand (the string of significant digits).</p></li>
 </ul>
 <p>For example, the floating-point representation of <span class="math notranslate nohighlight">\(e^6\)</span> with 4 significant digits is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0499017a-1114-4cef-9aca-57ad6b220c8e">
-<span class="eqno">(5)<a class="headerlink" href="#equation-0499017a-1114-4cef-9aca-57ad6b220c8e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0f58730d-845f-4875-a172-60ddabcd5f1e">
+<span class="eqno">(5)<a class="headerlink" href="#equation-0f58730d-845f-4875-a172-60ddabcd5f1e" title="Permalink to this equation">#</a></span>\[\begin{align}
 e^6 = (+, 2, 4034).
 \end{align}\]</div>
 <p>And with 8 significant digits:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-81b07527-96cd-4278-80d8-d70e106e46f1">
-<span class="eqno">(6)<a class="headerlink" href="#equation-81b07527-96cd-4278-80d8-d70e106e46f1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7618f9df-6a6d-40d7-820e-9a1c6c0c2436">
+<span class="eqno">(6)<a class="headerlink" href="#equation-7618f9df-6a6d-40d7-820e-9a1c6c0c2436" title="Permalink to this equation">#</a></span>\[\begin{align}
 e^6 = (+, 2, 40342879).
 \end{align}\]</div>
 </section>
@@ -1590,7 +1590,7 @@ This method takes advantage of how floating-point numbers are stored, using a cl
   <div class="footer-item">
     
 <p class="component-author">
-By Chi-kwan Chan
+By H. Bakhshian
 </p>
 
   </div>

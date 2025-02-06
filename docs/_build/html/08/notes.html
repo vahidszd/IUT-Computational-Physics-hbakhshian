@@ -495,8 +495,8 @@ This makes numerical integration essential for approximating solutions in comput
 <section id="id1">
 <h3>Numerical Integration of Functions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Before diving into the numerical methods for solving complex differential equations, we start with a simpler, yet essential case: the numerical evaluation of a definite integral, represented as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-792a95b0-fc76-4e04-8839-eeb782dcd782">
-<span class="eqno">(151)<a class="headerlink" href="#equation-792a95b0-fc76-4e04-8839-eeb782dcd782" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-99301213-3c09-47e0-95eb-c95873d2690b">
+<span class="eqno">(151)<a class="headerlink" href="#equation-99301213-3c09-47e0-95eb-c95873d2690b" title="Permalink to this equation">#</a></span>\[\begin{align}
 I = \int_a^b f(x) \, dx.
 \end{align}\]</div>
 <p>In many ways, this task is a special case of solving an initial-value problem for an ODE.
@@ -512,14 +512,14 @@ However, to build our understanding, let’s start with a function that does hav
 This approach allows us to test and validate our algorithms and implementations.</p>
 <p>Consider the function <span class="math notranslate nohighlight">\(f(x) = e^x\)</span>.
 Its indefinite integral is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a8e4e94e-1551-4ffa-9357-bfbb0bfec0f1">
-<span class="eqno">(152)<a class="headerlink" href="#equation-a8e4e94e-1551-4ffa-9357-bfbb0bfec0f1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d2184afc-dce6-4d84-b165-f336132e95d3">
+<span class="eqno">(152)<a class="headerlink" href="#equation-d2184afc-dce6-4d84-b165-f336132e95d3" title="Permalink to this equation">#</a></span>\[\begin{align}
 \int f(x) \, dx = e^x + C
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(C\)</span> is the constant of integration.
 For a definite integral over the interval <span class="math notranslate nohighlight">\([a, b]\)</span>, we have:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-41f23fd5-cc3b-483e-8966-c92b0d2f7073">
-<span class="eqno">(153)<a class="headerlink" href="#equation-41f23fd5-cc3b-483e-8966-c92b0d2f7073" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7e233a50-90fd-4897-82b2-f1ea8cbfd1a1">
+<span class="eqno">(153)<a class="headerlink" href="#equation-7e233a50-90fd-4897-82b2-f1ea8cbfd1a1" title="Permalink to this equation">#</a></span>\[\begin{align}
 \int_a^b f(x) \, dx = e^b - e^a
 \end{align}\]</div>
 <p>Below, we plot this function over the interval <span class="math notranslate nohighlight">\([0, 1]\)</span> for visualization.</p>
@@ -557,8 +557,8 @@ For a definite integral over the interval <span class="math notranslate nohighli
 <p>The Riemann sum is a foundational approach to numerical integration.
 It approximates the area under a curve by summing up the values of the function at specific points across the interval, multiplied by the width of each sub-interval.</p>
 <p>A general Riemann sum for an interval <span class="math notranslate nohighlight">\([a, b]\)</span> is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bfe437ce-6f18-4c23-8302-7d80ad18dd06">
-<span class="eqno">(154)<a class="headerlink" href="#equation-bfe437ce-6f18-4c23-8302-7d80ad18dd06" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-33fa07c6-a7b0-4404-93ef-359099d45180">
+<span class="eqno">(154)<a class="headerlink" href="#equation-33fa07c6-a7b0-4404-93ef-359099d45180" title="Permalink to this equation">#</a></span>\[\begin{align}
 I \approx S = \sum_{i=1}^n f(x_i^*) \Delta x_i
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Delta x_i = x_i - x_{i-1}\)</span> is the width of each sub-interval.</p>
@@ -876,8 +876,8 @@ This suggests that, overall, the middle Riemann sum converges more rapidly than 
 From now on, we’ll adopt a “vertex” formulation for points, where <span class="math notranslate nohighlight">\(x_i = a + i \Delta x\)</span> and <span class="math notranslate nohighlight">\(\Delta x = (b - a)/N\)</span>.</p>
 <p>The trapezoidal rule approximates the area under a curve by treating each segment as a trapezoid.
 For a single interval <span class="math notranslate nohighlight">\([x_0, x_1]\)</span>, we approximate:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a2ef9b35-f36e-4344-9581-d2577f86db5f">
-<span class="eqno">(155)<a class="headerlink" href="#equation-a2ef9b35-f36e-4344-9581-d2577f86db5f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5688d9e6-fe21-40b1-83d1-d1efa26a21e8">
+<span class="eqno">(155)<a class="headerlink" href="#equation-5688d9e6-fe21-40b1-83d1-d1efa26a21e8" title="Permalink to this equation">#</a></span>\[\begin{align}
 \int_{x_0}^{x_1} f(x) \, dx \approx h \left( \frac{1}{2} f(x_0) + \frac{1}{2} f(x_1) \right) + \mathcal{O}(h^3 f'')
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(h = x_1 - x_0\)</span>.
@@ -897,7 +897,7 @@ If <span class="math notranslate nohighlight">\(f\)</span> is linear (i.e., <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.FillBetweenPolyCollection at 0x10cd38050&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.FillBetweenPolyCollection at 0x112ce0050&gt;
 </pre></div>
 </div>
 <img alt="../_images/c615f4286da3f25dbe89a3db1c9fc3e3c75baabe8aaee7c54d82dbb6383da3bd.png" src="../_images/c615f4286da3f25dbe89a3db1c9fc3e3c75baabe8aaee7c54d82dbb6383da3bd.png" />
@@ -937,8 +937,8 @@ Naturally, we may wonder if there’s a method exact for quadratic functions.
 This leads us to Simpson’s Rule.</p>
 <p>Simpson’s rule approximates the integral over two intervals <span class="math notranslate nohighlight">\([x_0, x_2]\)</span> by fitting a quadratic polynomial.
 This yields:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a5cf1e45-7879-453f-88e5-0e70d26dc77f">
-<span class="eqno">(156)<a class="headerlink" href="#equation-a5cf1e45-7879-453f-88e5-0e70d26dc77f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3f48303d-4ce2-41ce-a9cc-7c4b6baae1cb">
+<span class="eqno">(156)<a class="headerlink" href="#equation-3f48303d-4ce2-41ce-a9cc-7c4b6baae1cb" title="Permalink to this equation">#</a></span>\[\begin{align}
 \int_{x_0}^{x_2} f(x) \, dx \approx h \left( \frac{1}{3} f(x_0) + \frac{4}{3} f(x_1) + \frac{1}{3} f(x_2) \right) + \mathcal{O}(h^5 f^{(4)})
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(h = \frac{x_2 - x_0}{2}\)</span> and <span class="math notranslate nohighlight">\(x_1 = \frac{x_0 + x_2}{2}\)</span>.
@@ -982,8 +982,8 @@ This error term indicates that Simpson’s Rule is fourth-order accurate—even 
 <p>Simpson’s rule is exact for quadratic polynomials, but what if we want a rule that is exact for quartic polynomials?
 Bode’s Rule addresses this, using a polynomial fit across four intervals to achieve even higher accuracy.</p>
 <p>Bode’s rule integrates over four intervals, providing an approximation that is exact for polynomials up to degree four:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78cd9322-6462-4080-a3e9-01c3df2d5973">
-<span class="eqno">(157)<a class="headerlink" href="#equation-78cd9322-6462-4080-a3e9-01c3df2d5973" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f44145f1-cb4f-4e15-a977-ceb824f3fda1">
+<span class="eqno">(157)<a class="headerlink" href="#equation-f44145f1-cb4f-4e15-a977-ceb824f3fda1" title="Permalink to this equation">#</a></span>\[\begin{align}
 \int_{x_0}^{x_4} f(x) , dx \approx h \left( \frac{14}{45} f(x_0) + \frac{64}{45} f(x_1) + \frac{24}{45} f(x_2) + \frac{64}{45} f(x_3) + \frac{14}{45} f(x_4) \right) + \mathcal{O}(h^7 f^{(6)})
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(h = (x_4 - x_0)/4\)</span>.
@@ -1183,7 +1183,7 @@ Error:  8.833911380179416e-11
   <div class="footer-item">
     
 <p class="component-author">
-By Chi-kwan Chan
+By H. Bakhshian
 </p>
 
   </div>

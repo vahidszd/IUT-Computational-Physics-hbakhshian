@@ -478,13 +478,13 @@
 <section id="machine-accuracy">
 <h2>Machine Accuracy<a class="headerlink" href="#machine-accuracy" title="Link to this heading">#</a></h2>
 <p>In order to quantify round-off errors, we define:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-da4d9ba4-0fd4-4bac-9eeb-74e5c092e158">
-<span class="eqno">()<a class="headerlink" href="#equation-da4d9ba4-0fd4-4bac-9eeb-74e5c092e158" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f2d7defb-72fa-4d1f-912e-700d6f60a52c">
+<span class="eqno">()<a class="headerlink" href="#equation-f2d7defb-72fa-4d1f-912e-700d6f60a52c" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{(relative error)} \equiv \frac{x - \bar{x}}{x}.
 \end{align}\]</div>
 <p>If we use a numeral system of base <span class="math notranslate nohighlight">\(b\)</span> and keep <span class="math notranslate nohighlight">\(p\)</span> significant digits, the machine accuracy is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6a3f9b88-2c98-4bd5-b4e1-4aff16d5bb80">
-<span class="eqno">()<a class="headerlink" href="#equation-6a3f9b88-2c98-4bd5-b4e1-4aff16d5bb80" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c8be9be7-4f1d-48b1-934a-865f5ff303a7">
+<span class="eqno">()<a class="headerlink" href="#equation-c8be9be7-4f1d-48b1-934a-865f5ff303a7" title="Permalink to this equation">#</a></span>\[\begin{align}
 \epsilon = \left(\frac{b}{2}\right) b^{-p}.
 \end{align}\]</div>
 <p>A single-precision floating-point number, which stores 23 significant digits in binary (the mantissa), provides a machine accuracy of approximately <span class="math notranslate nohighlight">\(\epsilon_\mathrm{single} = 2^{-23} \approx 10^{-7}\)</span> in decimal.
@@ -655,8 +655,8 @@ Here, we simply will try it out.</p>
 </div>
 </div>
 <p>We all learned in high school that the solutions (roots) to the qudratic equation <span class="math notranslate nohighlight">\(a x^2 + b x + c = 0\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6be9745b-c66a-40cf-b6e2-2040438ef011">
-<span class="eqno">()<a class="headerlink" href="#equation-6be9745b-c66a-40cf-b6e2-2040438ef011" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-34acbfe3-707a-461d-ba15-c51555d74df8">
+<span class="eqno">()<a class="headerlink" href="#equation-34acbfe3-707a-461d-ba15-c51555d74df8" title="Permalink to this equation">#</a></span>\[\begin{align}
 x = \frac{-b \pm \sqrt{b^2 - 4 a c}}{2a}.
 \end{align}\]</div>
 <p>Q: Why one of the roots become zero when solving the qudratic equation with <span class="math notranslate nohighlight">\(b = 1\)</span> and <span class="math notranslate nohighlight">\(a = c = 10^{-9}\)</span>?</p>
@@ -680,15 +680,15 @@ x = \frac{-b \pm \sqrt{b^2 - 4 a c}}{2a}.
 </div>
 </div>
 <p>It is straightforward to show in the limit <span class="math notranslate nohighlight">\(a, c \ll b\)</span>, the roots are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-11d2cc3d-b7d6-4ad0-b5eb-60e9a0b6ac32">
-<span class="eqno">()<a class="headerlink" href="#equation-11d2cc3d-b7d6-4ad0-b5eb-60e9a0b6ac32" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-61a82409-d49d-4132-b018-2e805522ddbe">
+<span class="eqno">()<a class="headerlink" href="#equation-61a82409-d49d-4132-b018-2e805522ddbe" title="Permalink to this equation">#</a></span>\[\begin{align}
 x \approx -\frac{b}{a} \mbox{ or } -\frac{c}{b}
 \end{align}\]</div>
 <p>Is it possible to recover the small root <span class="math notranslate nohighlight">\(-c/b\)</span>?</p>
 <p>When <span class="math notranslate nohighlight">\(b &gt; 0\)</span>, a catastrophic cancellation (see below) happens only in the “+” equation.
 We may replace the first qudratic equation by its “conjugate” form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-451527fc-3d0f-40a6-a5e4-5d43a1d91579">
-<span class="eqno">()<a class="headerlink" href="#equation-451527fc-3d0f-40a6-a5e4-5d43a1d91579" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9ba2c939-edc8-4c85-afa7-45a9d9044934">
+<span class="eqno">()<a class="headerlink" href="#equation-9ba2c939-edc8-4c85-afa7-45a9d9044934" title="Permalink to this equation">#</a></span>\[\begin{align}
 x = \frac{2c}{-b \mp \sqrt{b^2 - 4 a c}}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -699,8 +699,8 @@ x = \frac{2c}{-b \mp \sqrt{b^2 - 4 a c}}
 </div>
 </div>
 <p>Equivalently, we may use the “numerically stable form”,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba3fbe0b-104f-4e9e-ae71-d924189ffd8d">
-<span class="eqno">()<a class="headerlink" href="#equation-ba3fbe0b-104f-4e9e-ae71-d924189ffd8d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eb60d620-92cd-47d5-bcbc-81907f3b65c9">
+<span class="eqno">()<a class="headerlink" href="#equation-eb60d620-92cd-47d5-bcbc-81907f3b65c9" title="Permalink to this equation">#</a></span>\[\begin{align}
 x_1 &amp;= \frac{-b - \mathrm{sign}(b)\sqrt{b^2 - 4 a c}}{2a} \\
 x_2 &amp;= \frac{c}{a x_1}
 \end{align}\]</div>
@@ -812,7 +812,7 @@ To mitigate catastrophic cancellation, techniques like reformulating equations t
   <div class="footer-item">
     
 <p class="component-author">
-By Chi-kwan Chan
+By H. Bakhshian
 </p>
 
   </div>

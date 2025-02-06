@@ -548,8 +548,8 @@ Its applications include:</p>
 <p>The origins of Fourier analysis trace back to the early 19th century with the work of Jean-Baptiste Joseph Fourier (1768–1830), a French mathematician and physicist.
 While studying heat flow, Fourier introduced the revolutionary idea that any periodic function could be expressed as an infinite sum of sine and cosine functions—known today as the Fourier Series.</p>
 <p>The one-dimensional heat equation is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a0c37282-19e8-4c83-b374-b486af9db7c2">
-<span class="eqno">()<a class="headerlink" href="#equation-a0c37282-19e8-4c83-b374-b486af9db7c2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-59ae6ab0-16b1-4d2b-92ac-6f73f283a5f5">
+<span class="eqno">()<a class="headerlink" href="#equation-59ae6ab0-16b1-4d2b-92ac-6f73f283a5f5" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{\partial u(x,t)}{\partial t} = \alpha \frac{\partial^2 u(x,t)}{\partial x^2},
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(u(x,t)\)</span> is the temperature distribution along a rod at position <span class="math notranslate nohighlight">\(x\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\alpha\)</span> is the thermal diffusivity constant of the material.</p>
@@ -557,23 +557,23 @@ While studying heat flow, Fourier introduced the revolutionary idea that any per
 <section id="solution-using-separation-of-variables">
 <h3>Solution Using Separation of Variables<a class="headerlink" href="#solution-using-separation-of-variables" title="Link to this heading">#</a></h3>
 <p>We use the method of separation of variables to solve the heat equation, which involves assuming the solution can be written as a product of functions, each depending only on a single variable:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0a096af5-a3f6-4189-8050-e5e9ef221de8">
-<span class="eqno">()<a class="headerlink" href="#equation-0a096af5-a3f6-4189-8050-e5e9ef221de8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-770d3c76-aa54-4dcd-8c7c-04f46571a8e5">
+<span class="eqno">()<a class="headerlink" href="#equation-770d3c76-aa54-4dcd-8c7c-04f46571a8e5" title="Permalink to this equation">#</a></span>\[\begin{align}
 u(x,t) = X(x) T(t).
 \end{align}\]</div>
 <p>Substituting into the heat equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d1ea742f-2846-47b3-b889-a0cc680155cc">
-<span class="eqno">()<a class="headerlink" href="#equation-d1ea742f-2846-47b3-b889-a0cc680155cc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f0dfe7ab-e87b-479d-b43a-c9e674ada463">
+<span class="eqno">()<a class="headerlink" href="#equation-f0dfe7ab-e87b-479d-b43a-c9e674ada463" title="Permalink to this equation">#</a></span>\[\begin{align}
 X(x) \frac{dT(t)}{dt} = \alpha T(t) \frac{d^2 X(x)}{dx^2}.
 \end{align}\]</div>
 <p>Dividing both sides by <span class="math notranslate nohighlight">\(X(x) T(t)\)</span>, we obtain:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e2ddbff7-48a4-4743-b8be-367dae638f29">
-<span class="eqno">()<a class="headerlink" href="#equation-e2ddbff7-48a4-4743-b8be-367dae638f29" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3c6c6dd6-d7d1-46a6-9207-642ecc693e95">
+<span class="eqno">()<a class="headerlink" href="#equation-3c6c6dd6-d7d1-46a6-9207-642ecc693e95" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{1}{T(t)} \frac{dT(t)}{dt} = \alpha \frac{1}{X(x)} \frac{d^2 X(x)}{dx^2}.
 \end{align}\]</div>
 <p>Since the left side depends only on <span class="math notranslate nohighlight">\(t\)</span> and the right side only on <span class="math notranslate nohighlight">\(x\)</span>, both sides must equal a constant <span class="math notranslate nohighlight">\(-\lambda\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-546c0755-9bf2-41af-91b6-a81195ab2722">
-<span class="eqno">()<a class="headerlink" href="#equation-546c0755-9bf2-41af-91b6-a81195ab2722" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1c893d45-4ef4-4829-94b4-9baad1df05d0">
+<span class="eqno">()<a class="headerlink" href="#equation-1c893d45-4ef4-4829-94b4-9baad1df05d0" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{1}{T(t)} \frac{dT(t)}{dt} = -\lambda = \alpha \frac{1}{X(x)} \frac{d^2 X(x)}{dx^2}.
 \end{align}\]</div>
 <p>This yields two ordinary differential equations (ODEs):</p>
@@ -582,55 +582,55 @@ X(x) \frac{dT(t)}{dt} = \alpha T(t) \frac{d^2 X(x)}{dx^2}.
 <li><p>Spatial Equation: <span class="math notranslate nohighlight">\(\frac{d^2 X(x)}{dx^2} + \frac{\lambda}{\alpha} X(x) = 0\)</span>.</p></li>
 </ol>
 <p>The general solution to the spatial equation is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-04056feb-7607-48b2-9a41-6ab0fd42c925">
-<span class="eqno">()<a class="headerlink" href="#equation-04056feb-7607-48b2-9a41-6ab0fd42c925" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9ef1d0b7-2880-42e6-979d-32ee13bdfd05">
+<span class="eqno">()<a class="headerlink" href="#equation-9ef1d0b7-2880-42e6-979d-32ee13bdfd05" title="Permalink to this equation">#</a></span>\[\begin{align}
 X(x) = A \sin(kx) + B \cos(kx),
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(k^2 = \lambda / \alpha\)</span>.
 This form of solution originates from the second-order derivative.</p>
 <p>Assuming Dirichlet boundary conditions for a rod of length <span class="math notranslate nohighlight">\(L\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9b59bdde-aa1a-48af-be05-dfbc6ce823bd">
-<span class="eqno">()<a class="headerlink" href="#equation-9b59bdde-aa1a-48af-be05-dfbc6ce823bd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7428219e-9d81-4b99-bf06-84ea3ed0d374">
+<span class="eqno">()<a class="headerlink" href="#equation-7428219e-9d81-4b99-bf06-84ea3ed0d374" title="Permalink to this equation">#</a></span>\[\begin{align}
 u(0,t) = u(L,t) = 0,
 \end{align}\]</div>
 <p>we find:</p>
 <ul>
 <li><p>At <span class="math notranslate nohighlight">\(x = 0\)</span>, <span class="math notranslate nohighlight">\(X(0) = 0 \implies B = 0\)</span>.</p></li>
 <li><p>At <span class="math notranslate nohighlight">\(x = L\)</span>, non-trivial solutions (<span class="math notranslate nohighlight">\(A \neq 0\)</span>) require:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d4ab2672-fdc2-4c47-a79c-2cf47adb84cf">
-<span class="eqno">()<a class="headerlink" href="#equation-d4ab2672-fdc2-4c47-a79c-2cf47adb84cf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7dcecb90-9c38-4e1a-8364-5d23347d7a7a">
+<span class="eqno">()<a class="headerlink" href="#equation-7dcecb90-9c38-4e1a-8364-5d23347d7a7a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sin(kL) = 0 \implies kL = n\pi, \quad n = 1,2,3,\dots
 \end{align}\]</div>
 </li>
 </ul>
 <p>Thus, the “eigenvalues” are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fed174e0-f9ea-48e4-b238-3c952ee758fd">
-<span class="eqno">()<a class="headerlink" href="#equation-fed174e0-f9ea-48e4-b238-3c952ee758fd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ac24e932-05aa-48ec-bc3b-4225a049d01a">
+<span class="eqno">()<a class="headerlink" href="#equation-ac24e932-05aa-48ec-bc3b-4225a049d01a" title="Permalink to this equation">#</a></span>\[\begin{align}
 k_n = \frac{n\pi}{L},
 \end{align}\]</div>
 <p>and the eigenfunctions are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8d29d87a-c3e4-40ea-984b-0a8693e8679b">
-<span class="eqno">()<a class="headerlink" href="#equation-8d29d87a-c3e4-40ea-984b-0a8693e8679b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e402148b-34cb-48c9-9cec-9465227bcd44">
+<span class="eqno">()<a class="headerlink" href="#equation-e402148b-34cb-48c9-9cec-9465227bcd44" title="Permalink to this equation">#</a></span>\[\begin{align}
 X_n(x) = \sin\left( \frac{n\pi x}{L} \right).
 \end{align}\]</div>
 <p>With <span class="math notranslate nohighlight">\(\lambda_n = \alpha k_n^2\)</span>, the temporal ODE becomes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fbd46e8d-395c-4ffd-be23-d00bf7d4216f">
-<span class="eqno">()<a class="headerlink" href="#equation-fbd46e8d-395c-4ffd-be23-d00bf7d4216f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d637520c-ac5f-4dd2-9a4c-1d788faea7f1">
+<span class="eqno">()<a class="headerlink" href="#equation-d637520c-ac5f-4dd2-9a4c-1d788faea7f1" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dT_n(t)}{dt} + \alpha \left( \frac{n\pi}{L} \right)^2 T_n(t) = 0,
 \end{align}\]</div>
 <p>with solution:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c94cb6be-1d3d-4331-a147-83e2a614da4b">
-<span class="eqno">()<a class="headerlink" href="#equation-c94cb6be-1d3d-4331-a147-83e2a614da4b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-396f2354-655f-4020-b10c-e17423ab1d98">
+<span class="eqno">()<a class="headerlink" href="#equation-396f2354-655f-4020-b10c-e17423ab1d98" title="Permalink to this equation">#</a></span>\[\begin{align}
 T_n(t) = C_n \exp\left[ -\alpha \left( \frac{n\pi}{L} \right)^2 t \right].
 \end{align}\]</div>
 <p>Combining spatial and temporal parts and realizing the heat equation is linear, the general solution is the sum of all solutions:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9bfd9067-2fa7-48c9-bef1-a94adfa0c89f">
-<span class="eqno">()<a class="headerlink" href="#equation-9bfd9067-2fa7-48c9-bef1-a94adfa0c89f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6527cda6-5597-4004-8cfa-43d0da55e049">
+<span class="eqno">()<a class="headerlink" href="#equation-6527cda6-5597-4004-8cfa-43d0da55e049" title="Permalink to this equation">#</a></span>\[\begin{align}
 u(x,t) = \sum_{n=1}^\infty C_n \sin\left( \frac{n\pi x}{L} \right) \exp\left[ -\alpha \left( \frac{n\pi}{L} \right)^2 t \right],
 \end{align}\]</div>
 <p>and the coefficients <span class="math notranslate nohighlight">\(C_n\)</span> are determined from the initial condition <span class="math notranslate nohighlight">\(u(x,0) = f(x)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-083e73fc-f765-40b8-ae81-01906a7cc75b">
-<span class="eqno">()<a class="headerlink" href="#equation-083e73fc-f765-40b8-ae81-01906a7cc75b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-736bd8f2-da29-4bbe-9fc4-7ae16d98550a">
+<span class="eqno">()<a class="headerlink" href="#equation-736bd8f2-da29-4bbe-9fc4-7ae16d98550a" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_n = \frac{2}{L} \int_0^L f(x) \sin\left( \frac{n\pi x}{L} \right) dx.
 \end{align}\]</div>
 <p>This represents the Fourier sine series expansion of <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
@@ -644,19 +644,19 @@ This enables us to break down complex periodic functions and simplifies analysis
 <p>Since many physical systems can be described by harmonic components, the Fourier Series naturally enables physical interpretation.
 In astrophysics, signals received from observations can be decomposed to analyze their frequency content.</p>
 <p>A function <span class="math notranslate nohighlight">\(f(x)\)</span> is said to be periodic with period <span class="math notranslate nohighlight">\(L\)</span> if:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4edd9afa-396b-49cf-b722-09be155b9516">
-<span class="eqno">()<a class="headerlink" href="#equation-4edd9afa-396b-49cf-b722-09be155b9516" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-138260ef-9b18-4671-bdb2-876a7b303fb6">
+<span class="eqno">()<a class="headerlink" href="#equation-138260ef-9b18-4671-bdb2-876a7b303fb6" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x + L) = f(x) \quad \text{for all } x.
 \end{align}\]</div>
 <p>Any reasonably well-behaved, periodic function <span class="math notranslate nohighlight">\(f(x)\)</span> with period <span class="math notranslate nohighlight">\(L\)</span> can be expressed as a Fourier Series:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a6b77ead-f204-400d-83a7-cafb969f1628">
-<span class="eqno">()<a class="headerlink" href="#equation-a6b77ead-f204-400d-83a7-cafb969f1628" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f9df9f63-5311-44c5-8960-7462a48ad09f">
+<span class="eqno">()<a class="headerlink" href="#equation-f9df9f63-5311-44c5-8960-7462a48ad09f" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x) = \frac{A_0}{2} + \sum_{n=1}^\infty \left[ A_n \cos\left( \frac{2n\pi x}{L} \right) + B_n \sin\left( \frac{2n\pi x}{L} \right) \right].
 \end{align}\]</div>
 <p><span class="math notranslate nohighlight">\(A_n\)</span> and <span class="math notranslate nohighlight">\(B_n\)</span> are the Fourier coefficients, which quantify the contribution of each harmonic component.</p>
 <p>The coefficients are calculated using the orthogonality properties of sine and cosine functions:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-daabe81b-b030-46b8-aaf4-98b240b91a36">
-<span class="eqno">()<a class="headerlink" href="#equation-daabe81b-b030-46b8-aaf4-98b240b91a36" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f83c054b-ae61-48d5-b5eb-853b6394e18d">
+<span class="eqno">()<a class="headerlink" href="#equation-f83c054b-ae61-48d5-b5eb-853b6394e18d" title="Permalink to this equation">#</a></span>\[\begin{align}
 A_n &amp;= \frac{2}{L} \int_{-L/2}^{L/2} f(x) \cos\left( \frac{2n\pi x}{L} \right) dx, \quad n = 0,1,2,\dots \\
 B_n &amp;= \frac{2}{L} \int_{-L/2}^{L/2} f(x) \sin\left( \frac{2n\pi x}{L} \right) dx, \quad n = 1,2,3,\dots
 \end{align}\]</div>
@@ -664,14 +664,14 @@ B_n &amp;= \frac{2}{L} \int_{-L/2}^{L/2} f(x) \sin\left( \frac{2n\pi x}{L} \righ
 <h3>Inner Products and Hilbert Spaces<a class="headerlink" href="#inner-products-and-hilbert-spaces" title="Link to this heading">#</a></h3>
 <p>An inner product in a function space is a generalization of the dot product from finite-dimensional vector spaces to infinite-dimensional spaces of functions.
 For functions <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(g(x)\)</span> defined over an interval <span class="math notranslate nohighlight">\([a, b]\)</span>, the inner product is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-87d4a52d-0527-4ed4-82ba-33d2e0755d95">
-<span class="eqno">()<a class="headerlink" href="#equation-87d4a52d-0527-4ed4-82ba-33d2e0755d95" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d6575a0b-89be-4972-92c8-9883dbd752bb">
+<span class="eqno">()<a class="headerlink" href="#equation-d6575a0b-89be-4972-92c8-9883dbd752bb" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle f, g \rangle = \int_a^b f(x) g^*(x) \, dx,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(g^*(x)\)</span> denotes the complex conjugate of <span class="math notranslate nohighlight">\(g(x)\)</span>.</p>
 <p>The sine and cosine functions used in the Fourier Series form an orthogonal (and can be normalized to be orthonormal) set with respect to this inner product:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-586509b9-6410-4d5d-9ef5-939747ba76de">
-<span class="eqno">()<a class="headerlink" href="#equation-586509b9-6410-4d5d-9ef5-939747ba76de" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4d9fc582-48d5-442b-9fed-7d98b7417224">
+<span class="eqno">()<a class="headerlink" href="#equation-4d9fc582-48d5-442b-9fed-7d98b7417224" title="Permalink to this equation">#</a></span>\[\begin{align}
   \left\langle \cos\left( \frac{2n\pi x}{L} \right), \cos\left( \frac{2m\pi x}{L} \right) \right\rangle =
   \begin{cases}
     0,   &amp; n \ne m, \\
@@ -689,8 +689,8 @@ This transformation is analogous to expressing a vector in terms of its componen
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <p>Consider a square wave function defined over the interval <span class="math notranslate nohighlight">\([-L/2, L/2)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-30ae546c-bd35-421b-a1be-44d2cec88287">
-<span class="eqno">()<a class="headerlink" href="#equation-30ae546c-bd35-421b-a1be-44d2cec88287" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9a579003-1572-430d-8847-f28858f9105e">
+<span class="eqno">()<a class="headerlink" href="#equation-9a579003-1572-430d-8847-f28858f9105e" title="Permalink to this equation">#</a></span>\[\begin{align}
   f(x) =
   \begin{cases}
      1, &amp; 0 &lt; x &lt; L/2, \\
@@ -700,8 +700,8 @@ This transformation is analogous to expressing a vector in terms of its componen
 <p>The Fourier coefficients for this function can be computed using the integrals above.
 Due to the function’s odd symmetry, only sine terms are present (i.e., <span class="math notranslate nohighlight">\(A_n = 0\)</span>).
 The Fourier coefficients <span class="math notranslate nohighlight">\(B_n\)</span> are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0c03795e-61b6-4510-b41a-7e6cd142199c">
-<span class="eqno">()<a class="headerlink" href="#equation-0c03795e-61b6-4510-b41a-7e6cd142199c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5300b61c-7236-485a-af62-d53a4d5e82c2">
+<span class="eqno">()<a class="headerlink" href="#equation-5300b61c-7236-485a-af62-d53a4d5e82c2" title="Permalink to this equation">#</a></span>\[\begin{align}
   B_n = \frac{4}{n\pi}
   \begin{cases}
     0, &amp; \text{even } n, \\
@@ -865,7 +865,7 @@ We will compute the Fourier coefficients numerically and reconstruct the origina
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10e09cb90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10919cb90&gt;
 </pre></div>
 </div>
 <img alt="../../_images/29b2bd3fb7415cd353aa33aa3baa0106621c3c42475a7474d7125f09b02ad838.png" src="../../_images/29b2bd3fb7415cd353aa33aa3baa0106621c3c42475a7474d7125f09b02ad838.png" />
@@ -877,25 +877,25 @@ We will compute the Fourier coefficients numerically and reconstruct the origina
 <section id="complex-fourier-series">
 <h2>Complex Fourier Series<a class="headerlink" href="#complex-fourier-series" title="Link to this heading">#</a></h2>
 <p>It is often convenient to combine the sine and cosine in the Fourier series into a single exponential term using Euler’s formula:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-08f67df4-22bd-4bd4-af84-e7759849bd1b">
-<span class="eqno">()<a class="headerlink" href="#equation-08f67df4-22bd-4bd4-af84-e7759849bd1b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-28935249-3ec0-430a-a38b-c34b1d920929">
+<span class="eqno">()<a class="headerlink" href="#equation-28935249-3ec0-430a-a38b-c34b1d920929" title="Permalink to this equation">#</a></span>\[\begin{align}
 e^{i\theta} = \cos(\theta) + i\sin(\theta).
 \end{align}\]</div>
 <p>Therefore,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e7f7d4ba-e86e-43d4-b8c4-acc66a56c9d8">
-<span class="eqno">()<a class="headerlink" href="#equation-e7f7d4ba-e86e-43d4-b8c4-acc66a56c9d8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fe705b88-8570-4b35-9ca5-7e2ec79873dd">
+<span class="eqno">()<a class="headerlink" href="#equation-fe705b88-8570-4b35-9ca5-7e2ec79873dd" title="Permalink to this equation">#</a></span>\[\begin{align}
 \cos(\theta) &amp;= \frac{e^{i\theta} + e^{-i\theta}}{2}, \\
 \sin(\theta) &amp;= \frac{e^{i\theta} - e^{-i\theta}}{2i}.
 \end{align}\]</div>
 <p>Substituting these into the definition of the Fourier series, we obtain the Complex Fourier Series:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-58c64f5f-77c0-489f-becf-c67636b0c9dc">
-<span class="eqno">()<a class="headerlink" href="#equation-58c64f5f-77c0-489f-becf-c67636b0c9dc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-28f276cf-ffae-4e42-968f-d5ba7e623591">
+<span class="eqno">()<a class="headerlink" href="#equation-28f276cf-ffae-4e42-968f-d5ba7e623591" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x) = \sum_{n=-\infty}^{\infty} C_n e^{i n \omega_1 x},
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega_1 = 2\pi/L\)</span> is the fundamental angular frequency.</p>
 <p>The complex coefficients <span class="math notranslate nohighlight">\(C_n\)</span> are given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-feabcf00-b203-48fc-b319-2662ffdfd21c">
-<span class="eqno">()<a class="headerlink" href="#equation-feabcf00-b203-48fc-b319-2662ffdfd21c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9219af35-e71e-4fa5-9211-a19d47ab38c9">
+<span class="eqno">()<a class="headerlink" href="#equation-9219af35-e71e-4fa5-9211-a19d47ab38c9" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_n = \frac{1}{L} \int_{-L/2}^{L/2} f(x) e^{-i n \omega_1 x} dx.
 \end{align}\]</div>
 <div class="admonition-exercises admonition">
@@ -903,8 +903,8 @@ C_n = \frac{1}{L} \int_{-L/2}^{L/2} f(x) e^{-i n \omega_1 x} dx.
 <p>What are the relationship between the complex Fourier coefficients <span class="math notranslate nohighlight">\(C_n\)</span> and the Fourier series coefficients <span class="math notranslate nohighlight">\(A_n\)</span> and <span class="math notranslate nohighlight">\(B_n\)</span>?</p>
 </div>
 <p>If <span class="math notranslate nohighlight">\(f(x)\)</span> is purely real, then the complex Fourier coefficients satisfy the conjugate symmetry:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-af5e64f9-54bf-447d-8cf1-7e6dcbd70b0b">
-<span class="eqno">()<a class="headerlink" href="#equation-af5e64f9-54bf-447d-8cf1-7e6dcbd70b0b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-24516b15-6e91-461b-a891-250cf6aeaccf">
+<span class="eqno">()<a class="headerlink" href="#equation-24516b15-6e91-461b-a891-250cf6aeaccf" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_{-n} = C_n^*,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(C_n^*\)</span> denotes the complex conjugate of <span class="math notranslate nohighlight">\(C_n\)</span>.
@@ -914,8 +914,8 @@ This property, sometimes referred as Hermitian, Hermit symmetry, or conjugate sy
 <p>Demonstrate the Hermit symmetry using the relationship between the complex Fourier coefficients <span class="math notranslate nohighlight">\(C_n\)</span> and the Fourier series coefficients <span class="math notranslate nohighlight">\(A_n\)</span> and <span class="math notranslate nohighlight">\(B_n\)</span> derived above.</p>
 </div>
 <p>In the context of complex Fourier series, the functions <span class="math notranslate nohighlight">\(\exp(i n \omega_1 x)\)</span> form an orthonormal set under the inner product:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6d2d4ecc-4120-4177-b28e-18e31a7184e9">
-<span class="eqno">()<a class="headerlink" href="#equation-6d2d4ecc-4120-4177-b28e-18e31a7184e9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ddb4caf8-7445-45ff-ac37-965ef4ebd22f">
+<span class="eqno">()<a class="headerlink" href="#equation-ddb4caf8-7445-45ff-ac37-965ef4ebd22f" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle e^{i n \omega_1 x}, e^{i m \omega_1 x} \rangle = \int_{-L/2}^{L/2} e^{i n \omega_1 x} e^{-i m \omega_1 x} dx = L \delta_{n m},
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\delta_{n m}\)</span> is the Kronecker delta function.</p>
@@ -931,8 +931,8 @@ To analyze such functions, we need to extend the concept of Fourier Series to th
 <h3>From Discrete to Continuous Spectrum<a class="headerlink" href="#from-discrete-to-continuous-spectrum" title="Link to this heading">#</a></h3>
 <p>For a function <span class="math notranslate nohighlight">\(f(x)\)</span> with period <span class="math notranslate nohighlight">\(L\)</span>, the Fourier Series has discrete frequencies <span class="math notranslate nohighlight">\(\omega_n = 2n\pi/L \equiv n \omega_1\)</span>.</p>
 <p>As the period <span class="math notranslate nohighlight">\(L\)</span> becomes infinitely large (<span class="math notranslate nohighlight">\(L \rightarrow \infty\)</span>), the spacing between the frequencies in the Fourier Series becomes infinitesimally small, turning the sum into an integral:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-16865f7e-7824-4550-ad97-bf946c1ac62a">
-<span class="eqno">()<a class="headerlink" href="#equation-16865f7e-7824-4550-ad97-bf946c1ac62a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4f69e078-cb90-4aab-91e5-6289411a7f52">
+<span class="eqno">()<a class="headerlink" href="#equation-4f69e078-cb90-4aab-91e5-6289411a7f52" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{n=-\infty}^{\infty} \rightarrow
 \int_{-\infty}^{\infty} \frac{d\omega}{\omega_1}.
 \end{align}\]</div>
@@ -942,21 +942,21 @@ This limit leads us to the Fourier Transform, which represents non-periodic func
 <section id="complex-fourier-transform-definitions">
 <h3>Complex Fourier Transform Definitions<a class="headerlink" href="#complex-fourier-transform-definitions" title="Link to this heading">#</a></h3>
 <p>The Fourier Transform <span class="math notranslate nohighlight">\(F(\omega)\)</span> of a function <span class="math notranslate nohighlight">\(f(x)\)</span> is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a7465913-af72-4dc1-849c-0e98c19a7ad5">
-<span class="eqno">()<a class="headerlink" href="#equation-a7465913-af72-4dc1-849c-0e98c19a7ad5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7018360a-4bd9-4574-aa3e-1ffb0128dfb7">
+<span class="eqno">()<a class="headerlink" href="#equation-7018360a-4bd9-4574-aa3e-1ffb0128dfb7" title="Permalink to this equation">#</a></span>\[\begin{align}
 F(\omega) = \int_{-\infty}^{\infty} f(x) e^{-i \omega x} dx.
 \end{align}\]</div>
 <p>The Inverse Fourier Transform is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-168f15bd-4371-4699-8f01-beca7bf378eb">
-<span class="eqno">()<a class="headerlink" href="#equation-168f15bd-4371-4699-8f01-beca7bf378eb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bfa7d9df-d6e2-473c-ac85-a3b4b8e02b86">
+<span class="eqno">()<a class="headerlink" href="#equation-bfa7d9df-d6e2-473c-ac85-a3b4b8e02b86" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega) e^{i \omega x} d\omega.
 \end{align}\]</div>
 <p>These equations allow us to transform a time-domain function <span class="math notranslate nohighlight">\(f(x)\)</span> into its frequency-domain representation <span class="math notranslate nohighlight">\(F(\omega)\)</span>, and vice versa.</p>
 <p>If <span class="math notranslate nohighlight">\(f(x)\)</span> is real-valued, then <span class="math notranslate nohighlight">\(F(-\omega) = F^*(\omega)\)</span>, similar to the Fourier series case.
 This property ensures that the inverse transform yields a real function.</p>
 <p>In the context of the Fourier Transform, the inner product between two functions <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(g(x)\)</span> over the entire real line is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-490f3276-5b09-4d51-9dd2-68d7bae00666">
-<span class="eqno">()<a class="headerlink" href="#equation-490f3276-5b09-4d51-9dd2-68d7bae00666" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-906350d2-69d8-4f29-ac2c-3e8caf1db8cf">
+<span class="eqno">()<a class="headerlink" href="#equation-906350d2-69d8-4f29-ac2c-3e8caf1db8cf" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle f, g \rangle = \int_{-\infty}^{\infty} f(x) g^*(x) \, dx.
 \end{align}\]</div>
 <p>The functions <span class="math notranslate nohighlight">\(e^{i \omega x}\)</span> form an orthogonal set with respect to this inner product.
@@ -986,8 +986,8 @@ If the sampling rate is too low, important details in the signal may be missed, 
 <p>The Nyquist Sampling Theorem provides a criterion for the minimum sampling rate required to reconstruct a continuous signal from its samples without loss of information.
 It states:</p>
 <p>A band-limited continuous-time signal with maximum frequency <span class="math notranslate nohighlight">\(f_{\text{max}}\)</span> can be perfectly reconstructed from its samples if the sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span> is greater than twice the maximum frequency of the signal:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f9c22f16-698a-4be3-8e85-8935cb65ee64">
-<span class="eqno">()<a class="headerlink" href="#equation-f9c22f16-698a-4be3-8e85-8935cb65ee64" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2ea795ad-5632-460a-bb5a-3f80cd43208c">
+<span class="eqno">()<a class="headerlink" href="#equation-2ea795ad-5632-460a-bb5a-3f80cd43208c" title="Permalink to this equation">#</a></span>\[\begin{align}
 f_s &gt; 2 f_{\text{max}},
 \end{align}\]</div>
 <p>where the Nyquist Rate is the minimum sampling rate required, <span class="math notranslate nohighlight">\(f_{\text{Nyquist}} = 2 f_{\text{max}}\)</span>; and the Nyquist Frequency is half the sampling frequency, <span class="math notranslate nohighlight">\(f_{\text{Nyquist}} = \frac{f_s}{2}\)</span>.</p>
@@ -1047,14 +1047,14 @@ It transforms a finite sequence of equally spaced samples of a function into a s
 <section id="definition-of-the-dft">
 <h3>Definition of the DFT<a class="headerlink" href="#definition-of-the-dft" title="Link to this heading">#</a></h3>
 <p>Given a sequence of <span class="math notranslate nohighlight">\(N\)</span> complex numbers <span class="math notranslate nohighlight">\(f_n\)</span>, where <span class="math notranslate nohighlight">\(n = 0, 1, 2, \dots, N-1\)</span>, the Discrete Fourier Transform <span class="math notranslate nohighlight">\(F_k\)</span> is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-25d233c8-b8ff-4324-9c2b-2d18fb02201e">
-<span class="eqno">()<a class="headerlink" href="#equation-25d233c8-b8ff-4324-9c2b-2d18fb02201e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-03bec795-6da7-45f5-87a5-dec56840ca48">
+<span class="eqno">()<a class="headerlink" href="#equation-03bec795-6da7-45f5-87a5-dec56840ca48" title="Permalink to this equation">#</a></span>\[\begin{align}
 F_k = \sum_{n=0}^{N-1} f_n \, e^{-i 2\pi k n / N}, \quad \text{for } k = 0, 1, 2, \dots, N-1.
 \end{align}\]</div>
 <p>Here, <span class="math notranslate nohighlight">\(F_k\)</span> represents the amplitude and phase of the <span class="math notranslate nohighlight">\(k\)</span>-th frequency component of the signal.
 The inverse DFT, which allows us to reconstruct the original signal from its frequency components, is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bd2fff74-b3da-48c9-83ba-41f20eae8458">
-<span class="eqno">()<a class="headerlink" href="#equation-bd2fff74-b3da-48c9-83ba-41f20eae8458" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8a527afa-a223-48f1-92bd-4ed424c429a7">
+<span class="eqno">()<a class="headerlink" href="#equation-8a527afa-a223-48f1-92bd-4ed424c429a7" title="Permalink to this equation">#</a></span>\[\begin{align}
 f_n = \frac{1}{N} \sum_{k=0}^{N-1} F_k \, e^{i 2\pi k n / N}, \quad \text{for } n = 0, 1, 2, \dots, N-1.
 \end{align}\]</div>
 </section>
@@ -1134,8 +1134,8 @@ This confirms that the DFT correctly identifies the dominant frequency component
 <h3>The DFT as a Linear Transformation<a class="headerlink" href="#the-dft-as-a-linear-transformation" title="Link to this heading">#</a></h3>
 <p>The DFT can also be expressed in matrix form, highlighting its nature as a linear transformation from the time domain to the frequency domain.
 In matrix notation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bda182cb-c1ca-483d-be7b-0f53762c9290">
-<span class="eqno">()<a class="headerlink" href="#equation-bda182cb-c1ca-483d-be7b-0f53762c9290" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6fab12e3-9cf3-4acf-a0fa-90a063e7d93a">
+<span class="eqno">()<a class="headerlink" href="#equation-6fab12e3-9cf3-4acf-a0fa-90a063e7d93a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbf{F} = \mathbf{W} \mathbf{f},
 \end{align}\]</div>
 <p>where
@@ -1215,13 +1215,13 @@ Their work sparked a revolution in digital signal processing and had a profound 
 <p>The key idea behind the FFT is to exploit symmetries and redundancies in the DFT calculations to reduce the number of computations required.
 Specifically, the FFT algorithm employs a divide and conquer strategy, recursively breaking down a DFT of size <span class="math notranslate nohighlight">\(N\)</span> into smaller DFTs, thereby minimizing redundant calculations.</p>
 <p>Consider the DFT of a sequence <span class="math notranslate nohighlight">\(f_n\)</span> of length <span class="math notranslate nohighlight">\(N\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-46aaa7b8-d540-4d70-b98f-69f919a7d048">
-<span class="eqno">()<a class="headerlink" href="#equation-46aaa7b8-d540-4d70-b98f-69f919a7d048" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-56572b42-d690-47a8-bbc0-0b021e232b3c">
+<span class="eqno">()<a class="headerlink" href="#equation-56572b42-d690-47a8-bbc0-0b021e232b3c" title="Permalink to this equation">#</a></span>\[\begin{align}
 F_k = \sum_{n=0}^{N-1} f_n e^{-i 2\pi k n / N}, \quad k = 0, 1, \dots, N-1.
 \end{align}\]</div>
 <p>If <span class="math notranslate nohighlight">\(N\)</span> is even, we can separate the sum into even and odd indexed terms:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5bbb59b0-acd5-4677-a2cb-b44f48c64721">
-<span class="eqno">()<a class="headerlink" href="#equation-5bbb59b0-acd5-4677-a2cb-b44f48c64721" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-53bdc87b-f9bb-4584-9d4e-2227ad606b3c">
+<span class="eqno">()<a class="headerlink" href="#equation-53bdc87b-f9bb-4584-9d4e-2227ad606b3c" title="Permalink to this equation">#</a></span>\[\begin{align}
 F_k &amp;= \sum_{n=0}^{N/2 -1} f_{2n} e^{-i 2\pi k (2n) / N} + \sum_{n=0}^{N/2 -1} f_{2n+1} e^{-i 2\pi k (2n+1) / N} \\
     &amp;= \sum_{n=0}^{N/2 -1} f_{2n} e^{-i 2\pi k n / (N/2)} + e^{-i 2\pi k / N} \sum_{n=0}^{N/2 -1} f_{2n+1} e^{-i 2\pi k n / (N/2)}.
 \end{align}\]</div>
@@ -1278,7 +1278,7 @@ In Python, the numpy library includes the fft module, which offers fast and reli
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/73fb7043437afe5d522572508623f0744beb2fa95297639ab7ee160a1babecbe.png" src="../../_images/73fb7043437afe5d522572508623f0744beb2fa95297639ab7ee160a1babecbe.png" />
+<img alt="../../_images/1cbbe1fe1441fbd5821f4c0ccdaac01dfb8b98b1f8b72e324d117e8ee37ac238.png" src="../../_images/1cbbe1fe1441fbd5821f4c0ccdaac01dfb8b98b1f8b72e324d117e8ee37ac238.png" />
 </div>
 </div>
 <p>The plot clearly shows that the FFT is orders of magnitude faster than the direct DFT implementation, even for relatively small <span class="math notranslate nohighlight">\(N\)</span>.
@@ -1315,30 +1315,30 @@ The key difference lies in how the functions are shifted and whether one of them
 <section id="id1">
 <h3>Convolution and Correlation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>For continuous functions <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(g(t)\)</span>, the convolution <span class="math notranslate nohighlight">\(h(t)\)</span> is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b81956a6-5f32-4b77-b69f-79049d9df68d">
-<span class="eqno">()<a class="headerlink" href="#equation-b81956a6-5f32-4b77-b69f-79049d9df68d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4e9bb60d-8c71-428f-b1f8-9ee00c96146f">
+<span class="eqno">()<a class="headerlink" href="#equation-4e9bb60d-8c71-428f-b1f8-9ee00c96146f" title="Permalink to this equation">#</a></span>\[\begin{align}
 h(t) = (f * g)(t)
     &amp;= \int_{-\infty}^{\infty} f(\tau) \, g(t - \tau) \, d\tau \\
     &amp;= \int_{-\infty}^{\infty} f(t - \tau) \, g(\tau) \, d\tau.
 \end{align}\]</div>
 <p>In the discrete case, for sequences <span class="math notranslate nohighlight">\(f_n\)</span> and <span class="math notranslate nohighlight">\(g_n\)</span>, the convolution is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6fc3d604-5f59-449a-bb35-ff76cfb69b26">
-<span class="eqno">()<a class="headerlink" href="#equation-6fc3d604-5f59-449a-bb35-ff76cfb69b26" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-17c70892-6a54-41f7-8451-09b08251c5a7">
+<span class="eqno">()<a class="headerlink" href="#equation-17c70892-6a54-41f7-8451-09b08251c5a7" title="Permalink to this equation">#</a></span>\[\begin{align}
 h_n = (f * g)_n = \sum_{m=0}^{N-1} f_m \, g_{n - m}.
 \end{align}\]</div>
 <p>Convolution computes the amount of overlap between <span class="math notranslate nohighlight">\(f\)</span> and a reversed and shifted version of <span class="math notranslate nohighlight">\(g\)</span>.
 It effectively “slides” the function <span class="math notranslate nohighlight">\(g(t)\)</span> over <span class="math notranslate nohighlight">\(f(t)\)</span>, multiplying and integrating at each position.</p>
 <p>Correlation measures the similarity between two functions as one is shifted over the other, without reversing.
 The cross-correlation <span class="math notranslate nohighlight">\(C_{fg}(t)\)</span> of continuous functions <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(g(t)\)</span> is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b556d5f0-9a66-4a82-90e5-2f9ce7bc1903">
-<span class="eqno">()<a class="headerlink" href="#equation-b556d5f0-9a66-4a82-90e5-2f9ce7bc1903" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cd8e89a1-eaca-4b58-ad83-91468b58cdd1">
+<span class="eqno">()<a class="headerlink" href="#equation-cd8e89a1-eaca-4b58-ad83-91468b58cdd1" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_{fg}(t) = (f \star g)(t)
          &amp;= \int_{-\infty}^{\infty} f^*(\tau) \, g(\tau + t) \, d\tau \\
          &amp;= \int_{-\infty}^{\infty} f^*(\tau - t) \, g(\tau) \, d\tau.
 \end{align}\]</div>
 <p>In the discrete case:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8646892e-5abb-44ac-a5a5-9620e31a29dc">
-<span class="eqno">()<a class="headerlink" href="#equation-8646892e-5abb-44ac-a5a5-9620e31a29dc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b38590a0-88e6-4514-b688-4a96ba7e6bf0">
+<span class="eqno">()<a class="headerlink" href="#equation-b38590a0-88e6-4514-b688-4a96ba7e6bf0" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_{fg}[n] = (f \star g)[n] = \sum_{m=0}^{N-1} f_m^* \, g_{m + n}.
 \end{align}\]</div>
 <p>Correlation computes the similarity between <span class="math notranslate nohighlight">\(f\)</span> and a shifted version of <span class="math notranslate nohighlight">\(g\)</span> (without reversal), accounting for complex conjugation in the case of complex-valued functions.</p>
@@ -1351,15 +1351,15 @@ C_{fg}[n] = (f \star g)[n] = \sum_{m=0}^{N-1} f_m^* \, g_{m + n}.
 <section id="convolution-and-correlation-theorems">
 <h3>Convolution and Correlation Theorems<a class="headerlink" href="#convolution-and-correlation-theorems" title="Link to this heading">#</a></h3>
 <p>The Convolution Theorem states that the Fourier Transform of the convolution of two functions is equal to the product of their individual Fourier Transforms:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-42a0bd97-36b6-4647-8227-8d6fcdd168c5">
-<span class="eqno">()<a class="headerlink" href="#equation-42a0bd97-36b6-4647-8227-8d6fcdd168c5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bdf57bba-da29-4624-b691-482a06852e53">
+<span class="eqno">()<a class="headerlink" href="#equation-bdf57bba-da29-4624-b691-482a06852e53" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathcal{F}\{ f(t) * g(t) \} = F(\omega) \cdot G(\omega),
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathcal{F}\{ \cdot \}\)</span> denotes the Fourier Transform and <span class="math notranslate nohighlight">\(F(\omega)\)</span> and <span class="math notranslate nohighlight">\(G(\omega)\)</span> are the Fourier Transforms of <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(g(t)\)</span>, respectively.
 This theorem shows that convolution in the time domain corresponds to multiplication in the frequency domain.</p>
 <p>The Correlation Theorem states that the Fourier Transform of the cross-correlation of two functions is equal to the product of the Fourier Transform of one function and the complex conjugate of the Fourier Transform of the other:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a79ef295-52cb-4991-a770-6755c9a8b2e1">
-<span class="eqno">()<a class="headerlink" href="#equation-a79ef295-52cb-4991-a770-6755c9a8b2e1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-05740563-356b-4084-be42-89f95f3a0f9a">
+<span class="eqno">()<a class="headerlink" href="#equation-05740563-356b-4084-be42-89f95f3a0f9a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathcal{F}\{ f(t) \star g(t) \} = F^*(\omega) \cdot G(\omega),
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(F^*(\omega)\)</span> is the complex conjugate of <span class="math notranslate nohighlight">\(F(\omega)\)</span>.
@@ -1447,8 +1447,8 @@ Instead of performing <span class="math notranslate nohighlight">\(\mathcal{O}(N
 <h2>Parseval’s Theorem<a class="headerlink" href="#parseval-s-theorem" title="Link to this heading">#</a></h2>
 <p>Parseval’s Theorem further connects the time and frequency domains by relating the total energy of a signal in one domain to the total energy in the other.
 For discrete signals <span class="math notranslate nohighlight">\(f_n\)</span>, the theorem states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b11ac3d9-679e-4eef-986b-f3b6513a46b4">
-<span class="eqno">()<a class="headerlink" href="#equation-b11ac3d9-679e-4eef-986b-f3b6513a46b4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-74342a34-0eb5-4991-bb30-c651ece5ecbf">
+<span class="eqno">()<a class="headerlink" href="#equation-74342a34-0eb5-4991-bb30-c651ece5ecbf" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{n=0}^{N-1} |f_n|^2 = \frac{1}{N} \sum_{k=0}^{N-1} |F_k|^2,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(F_k\)</span> is the Discrete Fourier Transform (DFT) of <span class="math notranslate nohighlight">\(f_n\)</span>.</p>
@@ -1621,7 +1621,7 @@ For example, in astrophysics, correlating observed signals with theoretical mode
   <div class="footer-item">
     
 <p class="component-author">
-By Chi-kwan Chan
+By H. Bakhshian
 </p>
 
   </div>

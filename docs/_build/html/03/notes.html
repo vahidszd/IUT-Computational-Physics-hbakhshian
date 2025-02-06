@@ -629,8 +629,8 @@ This universality makes numerical linear algebra indispensable in modern computa
 <li><p>Mathematical Insight</p>
 <ul>
 <li><p>For a non-singular matrix <span class="math notranslate nohighlight">\(A\)</span>, the condition number (in the 2-norm) is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cf3cd896-536d-4857-b06d-5fb27e2da9eb">
-<span class="eqno">(13)<a class="headerlink" href="#equation-cf3cd896-536d-4857-b06d-5fb27e2da9eb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-00ca4be1-9ca5-43cd-944b-49375d5eed7a">
+<span class="eqno">(13)<a class="headerlink" href="#equation-00ca4be1-9ca5-43cd-944b-49375d5eed7a" title="Permalink to this equation">#</a></span>\[\begin{align}
   \kappa(A) = |A|_2\,|A^{-1}|_2,
 \end{align}\]</div>
 <p>which also equals the ratio of the largest singular value to the smallest singular value of <span class="math notranslate nohighlight">\(A\)</span>.</p>
@@ -640,8 +640,8 @@ This universality makes numerical linear algebra indispensable in modern computa
 </li>
 </ul>
 <p>Consider the following simple 2×2 example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-002bc927-e4b6-4f90-a27f-ab850f7e68f9">
-<span class="eqno">(14)<a class="headerlink" href="#equation-002bc927-e4b6-4f90-a27f-ab850f7e68f9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8546f632-2adf-43c8-9710-6554a1b9e8c1">
+<span class="eqno">(14)<a class="headerlink" href="#equation-8546f632-2adf-43c8-9710-6554a1b9e8c1" title="Permalink to this equation">#</a></span>\[\begin{align}
 A =
 \begin{pmatrix}
 1 &amp; 1\\
@@ -743,16 +743,16 @@ Once in upper-triangular form, one can perform <strong>back-substitution</strong
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-f9c5e89c-9dd2-41a3-8306-1a14adf5c7ac">
-<span class="eqno">(15)<a class="headerlink" href="#equation-f9c5e89c-9dd2-41a3-8306-1a14adf5c7ac" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-f01ab4b6-521b-4ce2-9693-11c7a56ff351">
+<span class="eqno">(15)<a class="headerlink" href="#equation-f01ab4b6-521b-4ce2-9693-11c7a56ff351" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
    2x &amp;{}+{}&amp; y &amp;{}-{}&amp;  z &amp;{}={}&amp;   8 &amp; \\
   -3x &amp;{}-{}&amp; y &amp;{}+{}&amp; 2z &amp;{}={}&amp; -11 &amp; \\
   -2x &amp;{}+{}&amp; y &amp;{}+{}&amp; 2z &amp;{}={}&amp;  -3 &amp;
 \end{alignat}\]</div>
 </td>
 <td></td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-6a4af613-b99b-4a11-b4fa-a5b8bf0decee">
-<span class="eqno">(16)<a class="headerlink" href="#equation-6a4af613-b99b-4a11-b4fa-a5b8bf0decee" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-406a3e24-0722-4f3c-ac31-7a690c8fd0b2">
+<span class="eqno">(16)<a class="headerlink" href="#equation-406a3e24-0722-4f3c-ac31-7a690c8fd0b2" title="Permalink to this equation">#</a></span>\[\begin{align}
 \left[\begin{array}{rrr|r}
    2 &amp;  1 &amp; -1 &amp;   8 \\
   -3 &amp; -1 &amp;  2 &amp; -11 \\
@@ -762,21 +762,21 @@ Once in upper-triangular form, one can perform <strong>back-substitution</strong
 \end{align}\]</div>
 </td>
 </tr>
-<tr class="row-odd"><td><div class="amsmath math notranslate nohighlight" id="equation-2c18cf5f-5a21-4526-99c2-bf16e22a6e61">
-<span class="eqno">(17)<a class="headerlink" href="#equation-2c18cf5f-5a21-4526-99c2-bf16e22a6e61" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+<tr class="row-odd"><td><div class="amsmath math notranslate nohighlight" id="equation-6ff45e6c-725f-4a05-9d35-dfbedd452ceb">
+<span class="eqno">(17)<a class="headerlink" href="#equation-6ff45e6c-725f-4a05-9d35-dfbedd452ceb" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
   2x &amp;{}+{}&amp;          y &amp;{}-{}&amp;          z &amp;{}={}&amp; 8 &amp; \\
      &amp;     &amp; \tfrac12 y &amp;{}+{}&amp; \tfrac12 z &amp;{}={}&amp; 1 &amp; \\
      &amp;     &amp;         2y &amp;{}+{}&amp;          z &amp;{}={}&amp; 5 &amp;
 \end{alignat}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-af09b30d-ad33-4d01-a560-d262898b7872">
-<span class="eqno">(18)<a class="headerlink" href="#equation-af09b30d-ad33-4d01-a560-d262898b7872" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-a7d4b199-2dd5-4ee1-97ec-9192a26aaf79">
+<span class="eqno">(18)<a class="headerlink" href="#equation-a7d4b199-2dd5-4ee1-97ec-9192a26aaf79" title="Permalink to this equation">#</a></span>\[\begin{align}
   L_2 + \tfrac32 L_1 &amp;\to L_2 \\
   L_3 +          L_1 &amp;\to L_3
 \end{align}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-c58644e0-2a41-4dbb-bb36-df96234f9c2c">
-<span class="eqno">(19)<a class="headerlink" href="#equation-c58644e0-2a41-4dbb-bb36-df96234f9c2c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-5a8b8c0a-f50b-48e8-938a-cc76f0e858d0">
+<span class="eqno">(19)<a class="headerlink" href="#equation-5a8b8c0a-f50b-48e8-938a-cc76f0e858d0" title="Permalink to this equation">#</a></span>\[\begin{align}
 \left[\begin{array}{rrr|r}
   2 &amp;      1  &amp;     -1  &amp; 8 \\
   0 &amp; \frac12 &amp; \frac12 &amp; 1 \\
@@ -785,20 +785,20 @@ Once in upper-triangular form, one can perform <strong>back-substitution</strong
 \end{align}\]</div>
 </td>
 </tr>
-<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-a55387c3-878e-4257-9486-5c23a4967579">
-<span class="eqno">(20)<a class="headerlink" href="#equation-a55387c3-878e-4257-9486-5c23a4967579" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-4557b622-7e74-4596-8933-ac4947d49a93">
+<span class="eqno">(20)<a class="headerlink" href="#equation-4557b622-7e74-4596-8933-ac4947d49a93" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
   2x &amp;{}+{}&amp;          y &amp;{}-{}&amp;          z &amp;{}={}&amp; 8 &amp; \\
      &amp;     &amp; \tfrac12 y &amp;{}+{}&amp; \tfrac12 z &amp;{}={}&amp; 1 &amp; \\
      &amp;     &amp;            &amp;     &amp;         -z &amp;{}={}&amp; 1 &amp;
 \end{alignat}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-c4e9b5f5-d7b4-43b7-92f1-a81f02fb8a27">
-<span class="eqno">(21)<a class="headerlink" href="#equation-c4e9b5f5-d7b4-43b7-92f1-a81f02fb8a27" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-5333544d-1b6d-432f-ae9c-d4f753610ea5">
+<span class="eqno">(21)<a class="headerlink" href="#equation-5333544d-1b6d-432f-ae9c-d4f753610ea5" title="Permalink to this equation">#</a></span>\[\begin{align}
   L_3 + -4 L_2 \to L_3
 \end{align}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-454f82b2-f30c-44f7-8834-4a1e03644cc7">
-<span class="eqno">(22)<a class="headerlink" href="#equation-454f82b2-f30c-44f7-8834-4a1e03644cc7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-ce0b82a7-929e-4aa8-a6c8-5f7fab0bc60e">
+<span class="eqno">(22)<a class="headerlink" href="#equation-ce0b82a7-929e-4aa8-a6c8-5f7fab0bc60e" title="Permalink to this equation">#</a></span>\[\begin{align}
 \left[\begin{array}{rrr|r}
   2 &amp;      1  &amp;     -1  &amp; 8 \\
   0 &amp; \frac12 &amp; \frac12 &amp; 1 \\
@@ -819,21 +819,21 @@ Once in upper-triangular form, one can perform <strong>back-substitution</strong
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-08cd18cf-0200-4b38-b6a5-70b4a42bc14b">
-<span class="eqno">(23)<a class="headerlink" href="#equation-08cd18cf-0200-4b38-b6a5-70b4a42bc14b" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-fc6da4cd-2b43-4a52-85bc-9b19ea7ab349">
+<span class="eqno">(23)<a class="headerlink" href="#equation-fc6da4cd-2b43-4a52-85bc-9b19ea7ab349" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
   2x &amp;{}+{}&amp;          y &amp;     &amp;   &amp;{}={}       7  &amp; \\
      &amp;     &amp; \tfrac12 y &amp;     &amp;   &amp;{}={} \tfrac32 &amp; \\
      &amp;     &amp;            &amp;{}-{}&amp; z &amp;{}={}       1  &amp;
 \end{alignat}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-d7a16663-806d-4753-b0b5-a979574a5ccf">
-<span class="eqno">(24)<a class="headerlink" href="#equation-d7a16663-806d-4753-b0b5-a979574a5ccf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-a972affe-8733-4f72-aac3-ecbd0eead5dd">
+<span class="eqno">(24)<a class="headerlink" href="#equation-a972affe-8733-4f72-aac3-ecbd0eead5dd" title="Permalink to this equation">#</a></span>\[\begin{align}
   L_1 -          L_3 &amp;\to L_1\\
   L_2 + \tfrac12 L_3 &amp;\to L_2 
 \end{align}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-231e4a6c-bcd2-4250-820d-c83183700b14">
-<span class="eqno">(25)<a class="headerlink" href="#equation-231e4a6c-bcd2-4250-820d-c83183700b14" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-db74c205-2179-4fda-9bbe-6d6f88395c88">
+<span class="eqno">(25)<a class="headerlink" href="#equation-db74c205-2179-4fda-9bbe-6d6f88395c88" title="Permalink to this equation">#</a></span>\[\begin{align}
 \left[\begin{array}{rrr|r}
   2 &amp;      1  &amp;  0 &amp;      7  \\
   0 &amp; \frac12 &amp;  0 &amp; \frac32 \\
@@ -842,21 +842,21 @@ Once in upper-triangular form, one can perform <strong>back-substitution</strong
 \end{align}\]</div>
 </td>
 </tr>
-<tr class="row-odd"><td><div class="amsmath math notranslate nohighlight" id="equation-7e3dbaad-5d5d-4e40-9dc3-c24516f2fed0">
-<span class="eqno">(26)<a class="headerlink" href="#equation-7e3dbaad-5d5d-4e40-9dc3-c24516f2fed0" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+<tr class="row-odd"><td><div class="amsmath math notranslate nohighlight" id="equation-f68cb761-2602-4847-b96a-cdf71819e3be">
+<span class="eqno">(26)<a class="headerlink" href="#equation-f68cb761-2602-4847-b96a-cdf71819e3be" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
   2x &amp;{}+{}&amp; y &amp;\quad&amp;   &amp;{}={}&amp;  7 &amp; \\
      &amp;     &amp; y &amp;\quad&amp;   &amp;{}={}&amp;  3 &amp; \\
      &amp;     &amp;   &amp;\quad&amp; z &amp;{}={}&amp; -1 &amp;
 \end{alignat}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-eef4d6af-f79d-4ec4-8409-922a17fc2960">
-<span class="eqno">(27)<a class="headerlink" href="#equation-eef4d6af-f79d-4ec4-8409-922a17fc2960" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-ad356de0-afc2-49c6-810e-b3da6e8155a6">
+<span class="eqno">(27)<a class="headerlink" href="#equation-ad356de0-afc2-49c6-810e-b3da6e8155a6" title="Permalink to this equation">#</a></span>\[\begin{align}
    2 L_2 &amp;\to L_2 \\
   -L_3 &amp;\to L_3
 \end{align}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-aff75ec1-5b29-4df2-bcb7-7545b4771146">
-<span class="eqno">(28)<a class="headerlink" href="#equation-aff75ec1-5b29-4df2-bcb7-7545b4771146" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-29732adc-2fed-4937-a420-cacb814beb05">
+<span class="eqno">(28)<a class="headerlink" href="#equation-29732adc-2fed-4937-a420-cacb814beb05" title="Permalink to this equation">#</a></span>\[\begin{align}
 \left[\begin{array}{rrr|r}
   2 &amp; 1 &amp; 0 &amp;  7 \\
   0 &amp; 1 &amp; 0 &amp;  3 \\
@@ -865,21 +865,21 @@ Once in upper-triangular form, one can perform <strong>back-substitution</strong
 \end{align}\]</div>
 </td>
 </tr>
-<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-cf2e2081-d09f-4c7f-a8e7-c2cb876f976d">
-<span class="eqno">(29)<a class="headerlink" href="#equation-cf2e2081-d09f-4c7f-a8e7-c2cb876f976d" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
+<tr class="row-even"><td><div class="amsmath math notranslate nohighlight" id="equation-dcd95d90-98ef-4936-bf2f-e0f9d8cdacc8">
+<span class="eqno">(29)<a class="headerlink" href="#equation-dcd95d90-98ef-4936-bf2f-e0f9d8cdacc8" title="Permalink to this equation">#</a></span>\[\begin{alignat}{4}
   x &amp;\quad&amp;   &amp;\quad&amp;   &amp;{}={}&amp;  2 &amp; \\
     &amp;\quad&amp; y &amp;\quad&amp;   &amp;{}={}&amp;  3 &amp; \\
     &amp;\quad&amp;   &amp;\quad&amp; z &amp;{}={}&amp; -1 &amp;
 \end{alignat}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-9e0fd8ff-1372-422e-8afe-c64ef2f93b6e">
-<span class="eqno">(30)<a class="headerlink" href="#equation-9e0fd8ff-1372-422e-8afe-c64ef2f93b6e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-17e436e7-8fa4-4626-b6e4-0e5105fffe2c">
+<span class="eqno">(30)<a class="headerlink" href="#equation-17e436e7-8fa4-4626-b6e4-0e5105fffe2c" title="Permalink to this equation">#</a></span>\[\begin{align}
            L_1 - L_2 &amp;\to L_1 \\
   \tfrac12 L_1       &amp;\to L_1
 \end{align}\]</div>
 </td>
-<td><div class="amsmath math notranslate nohighlight" id="equation-57586453-fa84-4796-97cb-c0aae1050d7a">
-<span class="eqno">(31)<a class="headerlink" href="#equation-57586453-fa84-4796-97cb-c0aae1050d7a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<td><div class="amsmath math notranslate nohighlight" id="equation-86d076f4-0c48-4782-8a64-916faa745d46">
+<span class="eqno">(31)<a class="headerlink" href="#equation-86d076f4-0c48-4782-8a64-916faa745d46" title="Permalink to this equation">#</a></span>\[\begin{align}
 \left[\begin{array}{rrr|r}
   1 &amp; 0 &amp; 0 &amp;  2 \\
   0 &amp; 1 &amp; 0 &amp;  3 \\
@@ -989,13 +989,13 @@ While this code is for illustrative purposes (and not as robust as <code class="
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Naive Gaussian Elimination:
-Solution: [ 0.86764686  5.66851991 -6.516928  ]
+Solution: [-0.11893369  0.24815626  0.49961301]
 
 Gaussian Elimination with Partial Pivoting:
-Solution: [ 0.86764686  5.66851991 -6.516928  ]
+Solution: [-0.11893369  0.24815626  0.49961301]
 
 Numpy&#39;s solve:
-Solution: [ 0.86764686  5.66851991 -6.516928  ]
+Solution: [-0.11893369  0.24815626  0.49961301]
 </pre></div>
 </div>
 </div>
@@ -1045,20 +1045,20 @@ Solution: [ 0.86764686  5.66851991 -6.516928  ]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Permutation matrix P:
-[[0. 0. 1.]
- [0. 1. 0.]
- [1. 0. 0.]]
+[[1. 0. 0.]
+ [0. 0. 1.]
+ [0. 1. 0.]]
 Lower triangular matrix L:
-[[1.         0.         0.        ]
- [0.25110541 1.         0.        ]
- [0.80458296 0.4253424  1.        ]]
+[[ 1.          0.          0.        ]
+ [ 0.87911204  1.          0.        ]
+ [ 0.71304923 -0.36070609  1.        ]]
 Upper triangular matrix U:
-[[ 0.81598326  0.14268482  0.18040273]
- [ 0.          0.75455653  0.64490179]
- [ 0.          0.         -0.05440861]]
+[[ 0.93455299  0.83715815  0.86270995]
+ [ 0.         -0.71276254 -0.23916821]
+ [ 0.          0.         -0.33019033]]
 
-Solution using LU decomposition: [ 0.86764686  5.66851991 -6.516928  ]
-Check with np.linalg.solve(A, b): [ 0.86764686  5.66851991 -6.516928  ]
+Solution using LU decomposition: [-0.11893369  0.24815626  0.49961301]
+Check with np.linalg.solve(A, b): [-0.11893369  0.24815626  0.49961301]
 </pre></div>
 </div>
 </div>
@@ -1118,8 +1118,8 @@ Iterative methods typically access only nonzero elements each iteration, saving 
 <ol class="arabic">
 <li><p><strong>Idea:</strong> Rewrite <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> as <span class="math notranslate nohighlight">\(\mathbf{x} = D^{-1}(\mathbf{b} - R\mathbf{x})\)</span>, where <span class="math notranslate nohighlight">\(D\)</span> is the diagonal of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(R\)</span> is the remainder.</p></li>
 <li><p><strong>Update Rule:</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-a193b997-f1da-4008-8ab4-f1ea0945206a">
-<span class="eqno">(32)<a class="headerlink" href="#equation-a193b997-f1da-4008-8ab4-f1ea0945206a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-685cd7af-5e81-461d-a5df-c5edcbfdc4d2">
+<span class="eqno">(32)<a class="headerlink" href="#equation-685cd7af-5e81-461d-a5df-c5edcbfdc4d2" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_i^{(k+1)} = \frac{1}{a_{ii}} \Big(b_i - \sum_{j \neq i} a_{ij} x_j^{(k)}\Big).
 \end{align}\]</div>
 </li>
@@ -1195,8 +1195,8 @@ Direct solve comparison: [2.14285714 2.57142857 2.14285714]
 </ul>
 </li>
 <li><p><strong>Update Rule:</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-79ffe40c-44b2-4b1c-be93-23c02d0ebce2">
-<span class="eqno">(33)<a class="headerlink" href="#equation-79ffe40c-44b2-4b1c-be93-23c02d0ebce2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3218f85b-34e1-4f24-99a7-7a7bf2f24ba6">
+<span class="eqno">(33)<a class="headerlink" href="#equation-3218f85b-34e1-4f24-99a7-7a7bf2f24ba6" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_i^{(k+1)} = \frac{1}{a_{ii}} \Big( b_i - \sum_{j &lt; i} a_{ij} x_j^{(k+1)} - \sum_{j &gt; i} a_{ij} x_j^{(k)} \Big).
 \end{align}\]</div>
 <p>Note that <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> is already partially updated (for <span class="math notranslate nohighlight">\(j &lt; i\)</span>).</p>
@@ -1239,8 +1239,8 @@ Eigenvalues of <span class="math notranslate nohighlight">\(J\)</span> show grow
 <section id="the-eigenvalue-problem">
 <h2>The Eigenvalue Problem<a class="headerlink" href="#the-eigenvalue-problem" title="Link to this heading">#</a></h2>
 <p>Given an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>, the <strong>eigenvalue problem</strong> seeks scalars <span class="math notranslate nohighlight">\(\lambda\)</span> (eigenvalues) and nonzero vectors <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> (eigenvectors) such that:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3b15e6aa-d467-4dc4-be55-e4bf87dd208a">
-<span class="eqno">(34)<a class="headerlink" href="#equation-3b15e6aa-d467-4dc4-be55-e4bf87dd208a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-33b4cdbc-cbdd-4219-89b6-389c89039939">
+<span class="eqno">(34)<a class="headerlink" href="#equation-33b4cdbc-cbdd-4219-89b6-389c89039939" title="Permalink to this equation">#</a></span>\[\begin{align}
 A \mathbf{v} = \lambda \mathbf{v}.
 \end{align}\]</div>
 <ul class="simple">
@@ -1256,8 +1256,8 @@ A \mathbf{v} = \lambda \mathbf{v}.
 <ul>
 <li><p>Begin with an initial vector <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)}\)</span>.</p></li>
 <li><p>Apply <span class="math notranslate nohighlight">\(A\)</span> repeatedly and normalize:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e0a4fb0a-6cc5-41e6-987a-e535221f7ee6">
-<span class="eqno">(35)<a class="headerlink" href="#equation-e0a4fb0a-6cc5-41e6-987a-e535221f7ee6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-19ae537b-560e-402a-89cf-c3e8aa2fa16f">
+<span class="eqno">(35)<a class="headerlink" href="#equation-19ae537b-560e-402a-89cf-c3e8aa2fa16f" title="Permalink to this equation">#</a></span>\[\begin{align}
   \mathbf{x}^{(k+1)} = \frac{A \mathbf{x}^{(k)}}{\|A \mathbf{x}^{(k)}\|}.
 \end{align}\]</div>
 </li>
@@ -1500,7 +1500,7 @@ Both SVD and PCA are foundational tools for dimensionality reduction, feature en
   <div class="footer-item">
     
 <p class="component-author">
-By Chi-kwan Chan
+By H. Bakhshian
 </p>
 
   </div>

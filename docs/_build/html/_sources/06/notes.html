@@ -522,8 +522,8 @@ This approach can be used to sample additional points as needed.</p></li>
 <h3>Limitations of Interpolation<a class="headerlink" href="#limitations-of-interpolation" title="Link to this heading">#</a></h3>
 <p>Even the most sophisticated interpolation schemes can fail when faced with pathological functions.
 For instance, consider a function that behaves smoothly except for a slight singularity at a certain point:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a162e13-86ff-43d0-ba9e-4fa8f1f87138">
-<span class="eqno">()<a class="headerlink" href="#equation-9a162e13-86ff-43d0-ba9e-4fa8f1f87138" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8453281d-d2c5-4dc0-ae7a-d09db1b36ab7">
+<span class="eqno">()<a class="headerlink" href="#equation-8453281d-d2c5-4dc0-ae7a-d09db1b36ab7" title="Permalink to this equation">#</a></span>\[\begin{align}
 f(x) = 3x^2 + \frac{1}{\pi^4}\ln\left[(\pi - x)^2\right] + 1
 \end{align}\]</div>
 <p>Interpolation based on values close to but not precisely at that singularity will likely produce an inaccurate result.</p>
@@ -555,7 +555,7 @@ f(x) = 3x^2 + \frac{1}{\pi^4}\ln\left[(\pi - x)^2\right] + 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114e3a900&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x107bbe900&gt;
 </pre></div>
 </div>
 <img alt="../../_images/2e883f4f8654d0989d3498fa7b5cc86bdc71050ef2a982b60000d04265715938.png" src="../../_images/2e883f4f8654d0989d3498fa7b5cc86bdc71050ef2a982b60000d04265715938.png" />
@@ -597,16 +597,16 @@ Each is suited to different scenarios, depending on whether interpolation points
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.41173186334634 &lt;= 27.908335401469316 &lt; 33.85407557707089
-58.93105479506361 &lt;= 67.55746154256585 &lt; 82.36478669813032
-70.43563571228232 &lt;= 74.68438325018963 &lt; 82.34797430201093
-49.207168951502275 &lt;= 56.60141243072503 &lt; 67.46864511870342
-71.19786687240163 &lt;= 73.3711043095302 &lt; 74.61714173621417
-55.15268339167354 &lt;= 69.72331265749739 &lt; 83.91370724453516
-5.177884740845185 &lt;= 41.35873061370397 &lt; 48.24911716742124
-25.62523073330376 &lt;= 26.03107316315234 &lt; 37.4676420832482
-80.5190274441702 &lt;= 86.77459968008974 &lt; 93.4837636021099
-71.14138884392526 &lt;= 71.45621659264735 &lt; 78.85029296666912
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1885735091077505 &lt;= 11.332372193973278 &lt; 17.51901187131988
+34.82308976245406 &lt;= 40.451477438000616 &lt; 60.622076108344814
+41.85235384027204 &lt;= 51.773119122914345 &lt; 84.51285201905795
+39.97518340901344 &lt;= 48.24394404899185 &lt; 57.75737152030863
+58.443297077578514 &lt;= 73.20571939475731 &lt; 78.32091133967782
+31.286278343449148 &lt;= 38.011751777092314 &lt; 41.69008084756758
+48.141717713719736 &lt;= 54.17278889421651 &lt; 65.63260876441711
+69.06199641599756 &lt;= 69.62838636315212 &lt; 73.50665745593273
+29.861510896375478 &lt;= 30.56527204726192 &lt; 36.41182485500754
+49.75738931901089 &lt;= 54.40801777193186 &lt; 58.694932947664135
 </pre></div>
 </div>
 </div>
@@ -645,16 +645,16 @@ Bisection is particularly useful when interpolation requests are uncorrelated—
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17.70213533722591 &lt;= 25.460395997795874 &lt; 31.329581031853728
-80.60344761232088 &lt;= 84.90694844383009 &lt; 91.00616369451043
-11.226446868110852 &lt;= 34.208688666466266 &lt; 38.049099980651725
-32.914813236639084 &lt;= 34.86613473667859 &lt; 44.42173895799494
-26.0808394783683 &lt;= 26.727649177639897 &lt; 33.41214855252538
-64.16149262535201 &lt;= 68.36651948167909 &lt; 70.85758381302593
-23.126286212262347 &lt;= 23.41256879220702 &lt; 25.7097799623204
-39.93076525317234 &lt;= 39.97344865724492 &lt; 65.57640531852257
-72.45258535837206 &lt;= 79.02426252789995 &lt; 79.30317811696018
-20.697122515966793 &lt;= 24.064876571744435 &lt; 45.88377120436968
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.82776662694939 &lt;= 27.53956776595744 &lt; 32.754528095457616
+41.14116161014677 &lt;= 74.58668062592372 &lt; 82.44763140671746
+57.27396648287871 &lt;= 57.807523350890754 &lt; 96.21441708327558
+28.71432954495149 &lt;= 29.684887929718922 &lt; 35.40192842772626
+54.64947682701029 &lt;= 64.23574397271423 &lt; 87.08400969840638
+25.030011103659465 &lt;= 33.44748428721756 &lt; 33.57775598846066
+42.463774922200926 &lt;= 45.46775664570605 &lt; 53.798865480255245
+42.733534005838095 &lt;= 47.42592618251287 &lt; 55.780142831530796
+57.18369668530574 &lt;= 80.99309464490557 &lt; 81.52874804887462
+33.95795600474979 &lt;= 49.06417586642076 &lt; 79.82193363080438
 </pre></div>
 </div>
 </div>
@@ -702,16 +702,16 @@ Once the bracket is located, the search is refined using a quick bisection.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46.40901043442884 &lt;= 53.99676520116102 &lt; 69.78471401606029
-6.789632052426942 &lt;= 12.441529021265602 &lt; 17.84842212070339
-49.385099301998316 &lt;= 59.13558754524344 &lt; 59.77529146087086
-12.878200812696805 &lt;= 23.763601053339734 &lt; 33.78694682775778
-91.57988843875627 &lt;= 91.97444933739934 &lt; 93.09639886283125
-47.71818712965354 &lt;= 56.23732978370625 &lt; 63.01764304157774
-79.29820632406184 &lt;= 84.53866729540647 &lt; 91.97562661723184
-28.101743696746805 &lt;= 34.62313387910195 &lt; 54.06724985132182
-75.29023226897648 &lt;= 85.66463629707226 &lt; 85.70878383850545
-25.096830783816436 &lt;= 27.231128276746873 &lt; 33.127233907376905
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.72367683557327 &lt;= 59.956818519635945 &lt; 60.82951092429828
+36.922223217218416 &lt;= 38.73083095843652 &lt; 45.254746655099076
+29.923146224520757 &lt;= 37.35264517494014 &lt; 41.86147701958676
+27.336526614365543 &lt;= 31.741065452681916 &lt; 55.52978546291827
+25.45411801178149 &lt;= 45.128613497380584 &lt; 46.89526546549647
+11.382556109627995 &lt;= 20.338245103531193 &lt; 24.744176150752782
+1.567563504176861 &lt;= 8.49517057649927 &lt; 30.224806348396793
+67.28675478889014 &lt;= 86.53600813003172 &lt; 92.84626295390207
+85.32430035176705 &lt;= 88.08438524894385 &lt; 89.12474646113456
+22.737655867199692 &lt;= 36.05639410495444 &lt; 38.97499260035687
 </pre></div>
 </div>
 </div>
@@ -772,10 +772,10 @@ Here, we implement a simple linear interpolation using the hunting method to loc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114f69f90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x107e5df90&gt;
 </pre></div>
 </div>
-<img alt="../../_images/20c02420f80eda7afb08e4b2fb19e0cb3374e3ae55d753e0badc24180680e8f5.png" src="../../_images/20c02420f80eda7afb08e4b2fb19e0cb3374e3ae55d753e0badc24180680e8f5.png" />
+<img alt="../../_images/b0be7b0e215c9a0941b391d8074d4e5542a9fdebd579aa299e043cd1fe34421b.png" src="../../_images/b0be7b0e215c9a0941b391d8074d4e5542a9fdebd579aa299e043cd1fe34421b.png" />
 </div>
 </div>
 <p>Let’s test if our claim in terms of performance works in real life.</p>
@@ -797,7 +797,7 @@ Here, we implement a simple linear interpolation using the hunting method to loc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>77.7 ms ± 26.5 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56.9 ms ± 1.45 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -809,7 +809,7 @@ Here, we implement a simple linear interpolation using the hunting method to loc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26 ms ± 382 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.4 ms ± 429 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -821,7 +821,7 @@ Here, we implement a simple linear interpolation using the hunting method to loc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.6 ms ± 43.8 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.6 ms ± 226 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -834,22 +834,22 @@ Here, we implement a simple linear interpolation using the hunting method to loc
 <section id="lagrange-s-formula">
 <h3>Lagrange’s formula<a class="headerlink" href="#lagrange-s-formula" title="Link to this heading">#</a></h3>
 <p>This polynomial is given by Lagrange’s classical formula,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-752d799a-1818-4e0c-be21-d04f041e208c">
-<span class="eqno">()<a class="headerlink" href="#equation-752d799a-1818-4e0c-be21-d04f041e208c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-50045975-f714-451a-92ba-78ceb3e2e0f1">
+<span class="eqno">()<a class="headerlink" href="#equation-50045975-f714-451a-92ba-78ceb3e2e0f1" title="Permalink to this equation">#</a></span>\[\begin{align}
 P_{M-1}(x)
 &amp;= \frac{(x-x_1)(x-x_2)\dots(x-x_{M-1})}{(x_0-x_1)(x_0-x_2)\dots(x_0-x_{M-1})} y_0 \\
 &amp;+ \frac{(x-x_0)(x-x_2)\dots(x-x_{M-1})}{(x_1-x_0)(x_1-x_2)\dots(x_1-x_{M-1})} y_1 + \dots \\
 &amp;+ \frac{(x-x_0)(x-x_2)\dots(x-x_{M-2})}{(x_{M-1}-x_0)(x_{M-1}-x_1)\dots(x_{M-1}-x_{M-2})} y_{M-1}
 \end{align}\]</div>
 <p>Using summation and product notations, one may rewrite Lagrange’s formula as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e6ff6d5b-34cb-4314-8254-877e2dabb0b8">
-<span class="eqno">()<a class="headerlink" href="#equation-e6ff6d5b-34cb-4314-8254-877e2dabb0b8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c171f42e-3f7d-4e1a-bf99-ed5c40e64763">
+<span class="eqno">()<a class="headerlink" href="#equation-c171f42e-3f7d-4e1a-bf99-ed5c40e64763" title="Permalink to this equation">#</a></span>\[\begin{align}
 P_{M-1}(x)
 = \sum_{m=0}^{M-1} \frac{\prod_{n=0,n\ne m}^{M-1}(x-x_n)}{\prod_{n=0,n\ne m}^{M-1}(x_m-x_n)} y_m
 \end{align}\]</div>
 <p>Substituting <span class="math notranslate nohighlight">\(x = x_{m'}\)</span> for <span class="math notranslate nohighlight">\(0 \le m; &lt; M\)</span>, it is straightforward to show</p>
-<div class="amsmath math notranslate nohighlight" id="equation-35d176c7-e773-4af4-938d-870d5fca9b6e">
-<span class="eqno">()<a class="headerlink" href="#equation-35d176c7-e773-4af4-938d-870d5fca9b6e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0f6ecfcb-f22f-4d0f-ba60-eccf652cc575">
+<span class="eqno">()<a class="headerlink" href="#equation-0f6ecfcb-f22f-4d0f-ba60-eccf652cc575" title="Permalink to this equation">#</a></span>\[\begin{align}
 P_{M-1}(x_{m'})
 = \sum_{m=0}^{M-1} \delta_{mm'} y_m
 \end{align}\]</div>
@@ -881,10 +881,10 @@ This is represented by the horizontal bars in the following figure.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x115000f50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x107eed6d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/3a689edafa46c96810f21a17ef707178bd746fe663e86e6af35f9e567b0477a1.png" src="../../_images/3a689edafa46c96810f21a17ef707178bd746fe663e86e6af35f9e567b0477a1.png" />
+<img alt="../../_images/4ec6d7ad1b24fb335f8e066b25756d411b7e7df515db2afa041fea07f46b7fe1.png" src="../../_images/4ec6d7ad1b24fb335f8e066b25756d411b7e7df515db2afa041fea07f46b7fe1.png" />
 </div>
 </div>
 <ol class="arabic" start="2">
@@ -892,8 +892,8 @@ This is represented by the horizontal bars in the following figure.</p></li>
 For book keeping reason, we will call this polynomial of 1 degree <span class="math notranslate nohighlight">\(P_{m',m'+1}\)</span>.
 Recall the previous definition <span class="math notranslate nohighlight">\(P_{m'} = y_{m'}\)</span> and <span class="math notranslate nohighlight">\(P_{m'+1} = y_{m'+1}\)</span>,
 we may now use the “two-point form” and write down:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c6eec662-c8b8-46e1-8c5e-761652377385">
-<span class="eqno">()<a class="headerlink" href="#equation-c6eec662-c8b8-46e1-8c5e-761652377385" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3938e857-dce6-4a48-bbc2-e59bb8a0f27e">
+<span class="eqno">()<a class="headerlink" href="#equation-3938e857-dce6-4a48-bbc2-e59bb8a0f27e" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{P_{m',m'+1} - P_{m'}}{x - x_{m'}} &amp;= \frac{P_{m'+1} - P_{m'}}{x_{m'+1} - x_{m'}} \\
 P_{m',m'+1} - P_{m'} &amp;= \frac{x - x_{m'}}{x_{m'+1} - x_{m'}}(P_{m'+1} - P_{m'}) \\
 P_{m',m'+1} &amp;= P_{m'} + \frac{x - x_{m'}}{x_{m'+1} - x_{m'}}(P_{m'+1} - P_{m'}) \\
@@ -932,17 +932,17 @@ P_{m',m'+1} &amp;= \frac{(x - x_{m'+1})P_{m'} + (x_{m'} - x)P_{m'+1} }{x_{m'} - 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1154f5e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1082725d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/26e9d29fcf245dda56fd5aa94b3535882e772cfd0849f326f16da6b0570dfd20.png" src="../../_images/26e9d29fcf245dda56fd5aa94b3535882e772cfd0849f326f16da6b0570dfd20.png" />
+<img alt="../../_images/12ab7a6d110f8318ef767e4145e21fcb57eb6243aefb486ee6ad6cbdb99c67b8.png" src="../../_images/12ab7a6d110f8318ef767e4145e21fcb57eb6243aefb486ee6ad6cbdb99c67b8.png" />
 </div>
 </div>
 <ol class="arabic" start="3">
 <li><p>By the same token, to improve the accuracy of the approximation, we linearly interpolate <span class="math notranslate nohighlight">\(P_{m'',m''+1}\)</span> and <span class="math notranslate nohighlight">\(P_{m''+1,m''+2}\)</span>.
 We will call this polynomial of 2 degrees <span class="math notranslate nohighlight">\(P_{m'',m''+1,m''+2}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-53e1cdaa-c854-43dc-8900-ebc10950eeee">
-<span class="eqno">()<a class="headerlink" href="#equation-53e1cdaa-c854-43dc-8900-ebc10950eeee" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ff3e3b49-948e-4c77-82ac-3670e2cfcfa7">
+<span class="eqno">()<a class="headerlink" href="#equation-ff3e3b49-948e-4c77-82ac-3670e2cfcfa7" title="Permalink to this equation">#</a></span>\[\begin{align}
 P_{m'',m''+1,m''+2} &amp;= \frac{(x - x_{m''+2})P_{m'',m''+1} + (x_{m''} - x)P_{m''+1,m''+2} }{x_{m'} - x_{m'+2}}.
 \end{align}\]</div>
 </li>
@@ -985,16 +985,16 @@ P_{m'',m''+1,m''+2} &amp;= \frac{(x - x_{m''+2})P_{m'',m''+1} + (x_{m''} - x)P_{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11575c7d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1084d8f50&gt;
 </pre></div>
 </div>
-<img alt="../../_images/5ce2bf876781d068e9e5c28e3bbd2116764af03c7f4512e9fc2d7a60891fbf71.png" src="../../_images/5ce2bf876781d068e9e5c28e3bbd2116764af03c7f4512e9fc2d7a60891fbf71.png" />
+<img alt="../../_images/c0170e6e68002af20bc9c1b001de34d44f8fb4e729cabb749e5d8978f119c0dd.png" src="../../_images/c0170e6e68002af20bc9c1b001de34d44f8fb4e729cabb749e5d8978f119c0dd.png" />
 </div>
 </div>
 <ol class="arabic" start="4">
 <li><p>Doing this recursively, we obtain Neville’s algorithm, equation (3.2.3) in Numerical Recipes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0584ca5c-26b2-4fe4-8fee-0fcd32ea2b5b">
-<span class="eqno">()<a class="headerlink" href="#equation-0584ca5c-26b2-4fe4-8fee-0fcd32ea2b5b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-316a4267-5c43-4cc3-b2f8-d2cfc3259930">
+<span class="eqno">()<a class="headerlink" href="#equation-316a4267-5c43-4cc3-b2f8-d2cfc3259930" title="Permalink to this equation">#</a></span>\[\begin{align}
 P_{m,m+1,\dots,m+n} &amp;= \frac{(x - x_{m+n})P_{m,m+1,\dots,m+n-1} + (x_{m} - x)P_{m+1,m+2,\dots,m+n} }{x_{m} - x_{m+n}}.
 \end{align}\]</div>
 </li>
@@ -1002,14 +1002,14 @@ P_{m,m+1,\dots,m+n} &amp;= \frac{(x - x_{m+n})P_{m,m+1,\dots,m+n-1} + (x_{m} - x
 <ol class="arabic" start="5">
 <li><p>Recalling the <strong>catastrophic cancellation</strong> discussed in <a class="reference internal" href="#data.md"><code class="xref myst docutils literal notranslate"><span class="pre">data.md</span></code></a>, given that <span class="math notranslate nohighlight">\(P_{m,m+1,\dots,m+n} - P_{m,m+1,\dots,m+n-1}\)</span> has the meaning of “small correction”, it is better to keep track of this small quantities instead of <span class="math notranslate nohighlight">\(P_{m,m+1,\dots,m+n}\)</span> themselves.
 Following Numerical Recipes, we define</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9aaee33f-3c4f-4bdd-bb5f-ef998474db4d">
-<span class="eqno">()<a class="headerlink" href="#equation-9aaee33f-3c4f-4bdd-bb5f-ef998474db4d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bbfe2afa-a6ab-44fa-a15a-38160380de61">
+<span class="eqno">()<a class="headerlink" href="#equation-bbfe2afa-a6ab-44fa-a15a-38160380de61" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_{n,m} &amp;\equiv P_{m,m+1,\dots,m+n} - P_{m,m+1,\dots,m+n-1} \\
 D_{n,m} &amp;\equiv P_{m,m+1,\dots,m+n} - P_{m+1,m+2,\dots,m+n}
 \end{align}\]</div>
 <p>Neville’s algorithm can now be rewritten as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-06b19416-5c12-4b4a-bfa6-95ac6ed62b44">
-<span class="eqno">()<a class="headerlink" href="#equation-06b19416-5c12-4b4a-bfa6-95ac6ed62b44" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-02ba6873-b510-4656-99cd-f507b5db2975">
+<span class="eqno">()<a class="headerlink" href="#equation-02ba6873-b510-4656-99cd-f507b5db2975" title="Permalink to this equation">#</a></span>\[\begin{align}
 D_{n+1,m} &amp;= \frac{x_{m+n+1}-x}{x_m - x_{m+n+1}}(C_{n,m+1} - D_{n,m}) \\
 C_{n+1,m} &amp;= \frac{x_{n}-x}{x_m - x_{m+n+1}}(C_{n,m+1} - D_{n,m})
 \end{align}\]</div>
@@ -1091,7 +1091,7 @@ C_{n+1,m} &amp;= \frac{x_{n}-x}{x_m - x_{m+n+1}}(C_{n,m+1} - D_{n,m})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1158a5090&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x108625810&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/1620512d1cb7f97231b7ca99c0de94ef3362ac0c8122be4609cddee7c724a532.png" src="../../_images/1620512d1cb7f97231b7ca99c0de94ef3362ac0c8122be4609cddee7c724a532.png" />
@@ -1208,7 +1208,7 @@ Alternative techniques such as cubic splines, rational function interpolation, a
   <div class="footer-item">
     
 <p class="component-author">
-By Chi-kwan Chan
+By H. Bakhshian
 </p>
 
   </div>

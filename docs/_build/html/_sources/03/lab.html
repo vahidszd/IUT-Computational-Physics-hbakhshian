@@ -474,8 +474,8 @@
 <h2>Iterative Solvers: Update Jacobi to Gauss-Seidel<a class="headerlink" href="#iterative-solvers-update-jacobi-to-gauss-seidel" title="Link to this heading">#</a></h2>
 <p>We learned in the lecture about the Jacobi interation method for solving <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> in the linear equation <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span>.
 The algorithm states that by applying the update rule:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d496e644-4bd7-472e-9a09-6249d11de530">
-<span class="eqno">()<a class="headerlink" href="#equation-d496e644-4bd7-472e-9a09-6249d11de530" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-93a2196b-b521-4cde-9af5-add8ceabe248">
+<span class="eqno">()<a class="headerlink" href="#equation-93a2196b-b521-4cde-9af5-add8ceabe248" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_i^{(k+1)} = \frac{1}{a_{ii}} \Big(b_i - \sum_{j \neq i} a_{ij} x_j^{(k)}\Big),
 \end{align}\]</div>
 <p><span class="math notranslate nohighlight">\(x_i^{(k+1)}\)</span> will converge to the solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
@@ -537,8 +537,8 @@ Direct solve comparison: [2.14285714 2.57142857 2.14285714]
 </div>
 <p>For the first hands-on, please update the above Jacobi algorithm and turn it into a working Gauss Seidel algorithm.</p>
 <p>Recalling from the lecture that the update step in the Gauss Seidel algorithm is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78e718fc-5d71-4673-ac0b-05ee91ba1304">
-<span class="eqno">()<a class="headerlink" href="#equation-78e718fc-5d71-4673-ac0b-05ee91ba1304" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bff512b9-54ea-45f9-a01c-7289285dbf27">
+<span class="eqno">()<a class="headerlink" href="#equation-bff512b9-54ea-45f9-a01c-7289285dbf27" title="Permalink to this equation">#</a></span>\[\begin{align}
      x_i^{(k+1)} = \frac{1}{a_{ii}} \Big( b_i - \sum_{j &lt; i} a_{ij} x_j^{(k+1)} - \sum_{j &gt; i} a_{ij} x_j^{(k)} \Big).
 \end{align}\]</div>
 <p>Note that <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> is already partially updated (for <span class="math notranslate nohighlight">\(j &lt; i\)</span>).</p>
@@ -607,8 +607,8 @@ if <span class="math notranslate nohighlight">\(x_1 &gt; x_2\)</span>, it pulls 
 The net contribution is <span class="math notranslate nohighlight">\(-k (x_1 - x_2)\)</span>.</p></li>
 </ol>
 <p>Summing forces (Newton’s second law) gives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-75a891bb-cf95-4c37-ab1b-2a3dd96e989c">
-<span class="eqno">()<a class="headerlink" href="#equation-75a891bb-cf95-4c37-ab1b-2a3dd96e989c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-51472109-826b-4625-bee3-0ab8e2789e10">
+<span class="eqno">()<a class="headerlink" href="#equation-51472109-826b-4625-bee3-0ab8e2789e10" title="Permalink to this equation">#</a></span>\[\begin{align}
 m \, \ddot{x}_1 = -k\,x_1 - k\,(x_1 - x_2).
 \end{align}\]</div>
 </li>
@@ -618,28 +618,28 @@ m \, \ddot{x}_1 = -k\,x_1 - k\,(x_1 - x_2).
 <li><p>The coupling force from the middle spring: <span class="math notranslate nohighlight">\(-k(x_2 - x_1)\)</span>.</p></li>
 </ol>
 <p>Hence,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5f5b2753-66ca-4824-8ca5-ae646300d425">
-<span class="eqno">()<a class="headerlink" href="#equation-5f5b2753-66ca-4824-8ca5-ae646300d425" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-800fed7a-c02f-4f06-a06b-8bc1a890011e">
+<span class="eqno">()<a class="headerlink" href="#equation-800fed7a-c02f-4f06-a06b-8bc1a890011e" title="Permalink to this equation">#</a></span>\[\begin{align}
 m \, \ddot{x}_2 = -k\,x_2 - k\,(x_2 - x_1).
 \end{align}\]</div>
 </li>
 </ul>
 <p>Rewrite each equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d55968f0-6de5-4f14-8dfb-e6080c858638">
-<span class="eqno">()<a class="headerlink" href="#equation-d55968f0-6de5-4f14-8dfb-e6080c858638" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0f6e164b-5e42-432a-bed0-e41efc5e579d">
+<span class="eqno">()<a class="headerlink" href="#equation-0f6e164b-5e42-432a-bed0-e41efc5e579d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{cases}
 m\,\ddot{x}_1 + 2k\,x_1 -  k\,x_2 = 0,\\
 m\,\ddot{x}_2 -  k\,x_1 + 2k\,x_2 = 0.
 \end{cases}
 \end{align}\]</div>
 <p>We can write <span class="math notranslate nohighlight">\(\mathbf{x} = \begin{pmatrix}x_1 \\ x_2\end{pmatrix}\)</span> and express the system as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-af8bdfb5-4c77-44dc-8b91-1d5f1e642fd9">
-<span class="eqno">()<a class="headerlink" href="#equation-af8bdfb5-4c77-44dc-8b91-1d5f1e642fd9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-410ff70b-7d9a-40c1-b042-f8bc2589f28c">
+<span class="eqno">()<a class="headerlink" href="#equation-410ff70b-7d9a-40c1-b042-f8bc2589f28c" title="Permalink to this equation">#</a></span>\[\begin{align}
 m \,\ddot{\mathbf{x}} + K\,\mathbf{x} = \mathbf{0},
 \end{align}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf2968b9-7a29-41cb-8bca-f5f2fdc333fa">
-<span class="eqno">()<a class="headerlink" href="#equation-bf2968b9-7a29-41cb-8bca-f5f2fdc333fa" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3bf6317a-8b5f-423c-a9c9-da63b858c3e1">
+<span class="eqno">()<a class="headerlink" href="#equation-3bf6317a-8b5f-423c-a9c9-da63b858c3e1" title="Permalink to this equation">#</a></span>\[\begin{align}
 m \,\ddot{\mathbf{x}} = m \begin{pmatrix}\ddot{x}_1 \\[6pt] \ddot{x}_2\end{pmatrix}, \quad
 K = \begin{pmatrix}
 2k &amp; -k \\
@@ -647,60 +647,60 @@ K = \begin{pmatrix}
 \end{pmatrix}.
 \end{align}\]</div>
 <p>Equivalently,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b816a793-c09d-455a-aecf-4c05a84df359">
-<span class="eqno">()<a class="headerlink" href="#equation-b816a793-c09d-455a-aecf-4c05a84df359" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d8232ca6-447c-4842-88c9-ffe8a3764bda">
+<span class="eqno">()<a class="headerlink" href="#equation-d8232ca6-447c-4842-88c9-ffe8a3764bda" title="Permalink to this equation">#</a></span>\[\begin{align}
 \ddot{\mathbf{x}} + \frac{1}{m}\,K \,\mathbf{x} = \mathbf{0}.
 \end{align}\]</div>
 <p>This is a <strong>second-order linear system</strong> describing small oscillations.</p>
 <p>We look for solutions of the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8f2eeac7-4d3f-4fb8-9b52-17a987250e57">
-<span class="eqno">()<a class="headerlink" href="#equation-8f2eeac7-4d3f-4fb8-9b52-17a987250e57" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-833aba23-ba47-40c1-b5be-7093702127d8">
+<span class="eqno">()<a class="headerlink" href="#equation-833aba23-ba47-40c1-b5be-7093702127d8" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbf{x}(t) = \mathbf{x}(0)\, e^{\,i\,\omega\,t},
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{x}(0)\)</span> is the initial condition and <span class="math notranslate nohighlight">\(\omega\)</span> is the (angular) oscillation frequency.</p>
 <p>Plugging into <span class="math notranslate nohighlight">\(m\,\ddot{\mathbf{x}} + K\,\mathbf{x} = 0\)</span> gives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73351896-9cd2-43cd-85ca-e963e122c9a7">
-<span class="eqno">()<a class="headerlink" href="#equation-73351896-9cd2-43cd-85ca-e963e122c9a7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-afdbe2d4-b88e-4e86-88ff-676b7a32412c">
+<span class="eqno">()<a class="headerlink" href="#equation-afdbe2d4-b88e-4e86-88ff-676b7a32412c" title="Permalink to this equation">#</a></span>\[\begin{align}
 -\,m\,\omega^2 \,\mathbf{X} + K\,\mathbf{X} = \mathbf{0}
 \quad \Longrightarrow \quad
 \left(K - m\,\omega^2 I\right)\,\mathbf{X} = \mathbf{0}.
 \end{align}\]</div>
 <p>Nontrivial solutions exist only if</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2aa42961-5d6a-41b3-b43c-881b72cb01a7">
-<span class="eqno">()<a class="headerlink" href="#equation-2aa42961-5d6a-41b3-b43c-881b72cb01a7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d87bfc55-d5ba-488b-b006-5e6367e14f37">
+<span class="eqno">()<a class="headerlink" href="#equation-d87bfc55-d5ba-488b-b006-5e6367e14f37" title="Permalink to this equation">#</a></span>\[\begin{align}
 \det(K - m\,\omega^2 I) = 0,
 \end{align}\]</div>
 <p>which is the <strong>eigenvalue problem</strong> for <span class="math notranslate nohighlight">\(\omega^2\)</span>.</p>
 <p>Explicitly, <span class="math notranslate nohighlight">\(K - m\,\omega^2 I\)</span> is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e8d671fd-49cc-4c74-bdf3-119d8104ba44">
-<span class="eqno">()<a class="headerlink" href="#equation-e8d671fd-49cc-4c74-bdf3-119d8104ba44" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-44b4de22-a432-40e4-b5e5-3441b6c819a4">
+<span class="eqno">()<a class="headerlink" href="#equation-44b4de22-a432-40e4-b5e5-3441b6c819a4" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{pmatrix}
 2k - m\,\omega^2 &amp; -k \\
 -k &amp; 2k - m\,\omega^2
 \end{pmatrix}.
 \end{align}\]</div>
 <p>The determinant is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a646d3e3-786e-4b72-85a3-9ad72e52a2a6">
-<span class="eqno">()<a class="headerlink" href="#equation-a646d3e3-786e-4b72-85a3-9ad72e52a2a6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fdb747f9-ec26-479c-bc73-050b6e8de853">
+<span class="eqno">()<a class="headerlink" href="#equation-fdb747f9-ec26-479c-bc73-050b6e8de853" title="Permalink to this equation">#</a></span>\[\begin{align}
 (2k - m\,\omega^2)(2k - m\,\omega^2) - (-k)(-k)
 = (2k - m\,\omega^2)^2 - k^2.
 \end{align}\]</div>
 <p>Setting this to zero results</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5c378c74-044a-4106-abba-2aa4057efe33">
-<span class="eqno">()<a class="headerlink" href="#equation-5c378c74-044a-4106-abba-2aa4057efe33" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3e4e64c4-352b-4fda-bc3b-2a8efdef0f14">
+<span class="eqno">()<a class="headerlink" href="#equation-3e4e64c4-352b-4fda-bc3b-2a8efdef0f14" title="Permalink to this equation">#</a></span>\[\begin{align}
 2k - m\,\omega^2 = \pm\,k.
 \end{align}\]</div>
 <p>Hence, we get <strong>two</strong> solutions for <span class="math notranslate nohighlight">\(\omega^2\)</span>:</p>
 <ol class="arabic">
 <li><p><strong><span class="math notranslate nohighlight">\(\omega_+^2\)</span></strong>: taking the <span class="math notranslate nohighlight">\(+\)</span> sign:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f0bdb5e0-9f48-41f7-8a64-9493d24b3070">
-<span class="eqno">()<a class="headerlink" href="#equation-f0bdb5e0-9f48-41f7-8a64-9493d24b3070" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ee3d3aa4-e85a-48a0-966d-5775b462cfb5">
+<span class="eqno">()<a class="headerlink" href="#equation-ee3d3aa4-e85a-48a0-966d-5775b462cfb5" title="Permalink to this equation">#</a></span>\[\begin{align}
 2k - m\,\omega_+^2 = k \quad \Longrightarrow \quad \omega_+^2 = \frac{k}{m} \quad \Longrightarrow \quad \omega_1 = \sqrt{\frac{k}{m}}.
 \end{align}\]</div>
 </li>
 <li><p><strong><span class="math notranslate nohighlight">\(\omega_-^2\)</span></strong>: taking the <span class="math notranslate nohighlight">\(-\)</span> sign:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c91985fa-7df5-4144-b16d-dee17027d2d6">
-<span class="eqno">()<a class="headerlink" href="#equation-c91985fa-7df5-4144-b16d-dee17027d2d6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-80b007e5-3455-4a62-934d-63b6d4d70d30">
+<span class="eqno">()<a class="headerlink" href="#equation-80b007e5-3455-4a62-934d-63b6d4d70d30" title="Permalink to this equation">#</a></span>\[\begin{align}
 2k - m\,\omega_-^2 = -\,k \quad \Longrightarrow \quad \omega_-^2 = \frac{3k}{m} \quad \Longrightarrow \quad \omega_2 = \sqrt{\frac{3k}{m}}.
 \end{align}\]</div>
 </li>
@@ -710,8 +710,8 @@ K = \begin{pmatrix}
 <li><p><strong>Lower Frequency</strong> <span class="math notranslate nohighlight">\(\omega_+ = \sqrt{k/m}\)</span>:
 Plug <span class="math notranslate nohighlight">\(\omega_+^2 = k/m\)</span> back into <span class="math notranslate nohighlight">\((K - m\,\omega_+^2 I)\mathbf{X} = 0\)</span>.
 For instance,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-759a3e78-4542-455e-905e-cf39389c000e">
-<span class="eqno">()<a class="headerlink" href="#equation-759a3e78-4542-455e-905e-cf39389c000e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0ccf45c0-b9e8-42ee-bcc2-fb6aad7c5fbc">
+<span class="eqno">()<a class="headerlink" href="#equation-0ccf45c0-b9e8-42ee-bcc2-fb6aad7c5fbc" title="Permalink to this equation">#</a></span>\[\begin{align}
   \begin{pmatrix}
   2k - k &amp; -k \\
   -k &amp; 2k - k
@@ -730,8 +730,8 @@ Physically, the <strong>in-phase</strong> mode has both masses moving together.<
 </ul>
 <ul>
 <li><p><strong>Higher Frequency</strong> <span class="math notranslate nohighlight">\(\omega_- = \sqrt{3k/m}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ee58b7b1-4d7e-4079-9b66-fe0bdf49ce98">
-<span class="eqno">()<a class="headerlink" href="#equation-ee58b7b1-4d7e-4079-9b66-fe0bdf49ce98" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-62ffcb49-dadf-4619-8795-804907aab278">
+<span class="eqno">()<a class="headerlink" href="#equation-62ffcb49-dadf-4619-8795-804907aab278" title="Permalink to this equation">#</a></span>\[\begin{align}
   \begin{pmatrix}
   2k - 3k &amp; -k \\
   -k &amp; 2k - 3k
@@ -968,7 +968,7 @@ Physically, the <strong>out-of-phase</strong> mode has the two masses moving in 
   <div class="footer-item">
     
 <p class="component-author">
-By Chi-kwan Chan
+By H. Bakhshian
 </p>
 
   </div>
