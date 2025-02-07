@@ -15,7 +15,7 @@ kernelspec:
 # PHYS 305
 
 +++
-
+<div dir="rtl">
 **شماره و نام درس:** ۱۳۰۳-۱۳۰۴ ترم ۱ فیزیک محاسباتی  
 **وب‌ گاه درس:** https://vahidszd.github.io/IUT-Computational-Physics-hbakhshian
 
@@ -25,9 +25,8 @@ kernelspec:
 **مکان تشکیل کلاس:** طبقه ۳ کلاس ۷
 
 **استاد درس:** دکتر حامد بخشیان
-**دستیار آموزشی:**وحید صدیق‌زاده
-**Preceptor:** Nikhil Garuda <nikhilgaruda@arizona.edu>  
-Please include "PHYS305" in subjects of emails
+**دستیار آموزشی:** وحید صدیق‌زاده
+</div> 
 
 +++
 
