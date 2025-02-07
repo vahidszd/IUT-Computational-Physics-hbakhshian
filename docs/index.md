@@ -16,16 +16,16 @@ kernelspec:
 
 +++
 
-**Course Number & Title:** PHYS 305—001 Computational Physics  
-**Course Website:** https://ua-2025q1-phys305.github.io
+**شماره و نام درس:** ۱۳۰۳-۱۳۰۴ ترم ۱ فیزیک محاسباتی  
+**وب‌ گاه درس:** https://vahidszd.github.io/IUT-Computational-Physics-hbakhshian
 
-**Full Syllabus:** {doc}`syllabus`
+**سرفصل ها:** {doc}`syllabus`
 
-**Time:** Tuesday & Thursday 12:30--1:45pm  
-**Location:** Social Sciences, Room 206
+**زمان:** شنبه و دوشنبه ۱۵:۰۰-۱۶:۳۰   
+**مکان تشکیل کلاس:** طبقه ۳ کلاس ۷
 
-**Instructor:** Chi-kwan "CK" Chan <chanc@arizona.edu> Office hour: Mon 1-2pm, Wed 11am–noon (SO N332)  
-**Teaching Assistant:** Devendran "Deva" Vemula <devendranvemula@arizona.edu> Consultation hour: Wed 12 - 1pm (PAS 372)
+**استاد درس:** دکتر حامد بخشیان
+**دستیار آموزشی:**وحید صدیق‌زاده
 **Preceptor:** Nikhil Garuda <nikhilgaruda@arizona.edu>  
 Please include "PHYS305" in subjects of emails
 
